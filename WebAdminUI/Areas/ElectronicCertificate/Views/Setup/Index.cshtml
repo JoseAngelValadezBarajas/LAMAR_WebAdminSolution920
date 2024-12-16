@@ -1,0 +1,110 @@
+<!--
+    <copyright file="Index.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+
+@{
+    ViewBag.Title = WebAdminUI.Resources.ElectronicCertificate.Setup.lblSetupElectronicCertificate;
+}
+
+<div class="esg-card-header">
+    <div class="esg-page-header__core-wrapper">
+        <h1 class="esg-page-header__title">@WebAdminUI.Resources.ElectronicCertificate.Setup.lblSetupElectronicCertificate</h1>
+        <div>
+            <span class="esg-icon__container">
+                <svg class="esg-icon esg-icon--left">
+                    <use xlink:href="#icon-arrow"></use>
+                </svg>
+            </span>
+            <a href="@Url.Action("Index", "Menu")">
+                <div class="esg-icon__label">
+                    <span>@WebAdminUI.Resources.ElectronicCertificate.Setup.btnBack</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<br />
+<div class="esg-row">
+    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+        <div class="esg-pattern-wrap">
+            <div class="esg-card">
+                <span class="esg-icon__container">
+                    <svg class="esg-icon">
+                        <use xlink:href="#icon-settings"></use>
+                    </svg>
+                </span>
+                <a href="@Url.Action("Index", "InstitutionCampuses")">
+                    <div class="esg-icon__label">
+                        <h3>@WebAdminUI.Resources.ElectronicCertificate.Setup.lblInstitutionsCampuses</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+        <div class="esg-pattern-wrap">
+            <div class="esg-card">
+                <span class="esg-icon__container">
+                    <svg class="esg-icon">
+                        <use xlink:href="#icon-settings"></use>
+                    </svg>
+                </span>
+                <a href="@Url.Action("Index", "Operators")">
+                    <div class="esg-icon__label">
+                        <h3>@WebAdminUI.Resources.ElectronicCertificate.Setup.lblOperators</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+        <div class="esg-pattern-wrap">
+            <div class="esg-card">
+                <span class="esg-icon__container">
+                    <svg class="esg-icon">
+                        <use xlink:href="#icon-settings"></use>
+                    </svg>
+                </span>
+                <a href="@Url.Action("Index", "Responsibles")">
+                    <div class="esg-icon__label">
+                        <h3>@WebAdminUI.Resources.ElectronicCertificate.Setup.lblResponsibles</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+        <div class="esg-pattern-wrap">
+            <div class="esg-card">
+                <span class="esg-icon__container">
+                    <svg class="esg-icon">
+                        <use xlink:href="#icon-settings"></use>
+                    </svg>
+                </span>
+                <a href="@Url.Action("Index", "AcademicPlans")">
+                    <div class="esg-icon__label">
+                        <h3>@WebAdminUI.Resources.ElectronicCertificate.Setup.lblAcademicPlan</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+        <div class="esg-pattern-wrap">
+            <div class="esg-card">
+                <span class="esg-icon__container">
+                    <svg class="esg-icon">
+                        <use xlink:href="#icon-settings"></use>
+                    </svg>
+                </span>
+                <a href="@Url.Action("FederalEntity", "Catalogs")">
+                    <div class="esg-icon__label">
+                        <h3>@WebAdminUI.Resources.ElectronicCertificate.Setup.lblCatalogs</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

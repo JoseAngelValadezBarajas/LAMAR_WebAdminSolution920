@@ -1,0 +1,346 @@
+<!--
+    <copyright file="_ViewData.cshtml" company="Ellucian">
+        Copyright 2020-2022 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+
+@using WebAdminUI.Resources.ElectronicCertificate
+@using WebAdminUI.Areas.ElectronicCertificate.Models.Generation
+@model WebAdminUI.Areas.ElectronicCertificate.Models.Generation.ElectronicCertificateInfoViewModel
+
+<div id="divModalViewData" class="esg-modal-dialog esg-modal-dialog--lg" style="display: none;">
+    <div class="esg-modal-dialog__header">
+        <button id="btnCloseModalViewData" class="esg-modal-dialog__close esg-icon__container" type="button" data-dismiss="modal" aria-hidden="true">
+            <svg class="esg-icon esg-icon--large esg-icon--neutral">
+                <use xlink:href="#icon-close"></use>
+            </svg>
+        </button>
+        <h3 class="esg-modal-dialog__title">@Generate.lblViewData</h3>
+    </div>
+    <div class="esg-modal-dialog__body">
+        <section id="viewDataControl">
+            <div class="esg-container">
+                <div class="esg-col-xs-12 esg-grid-overlay">
+                    <h4><strong>@Generate.lblControl</strong></h4>
+                </div>
+            </div>
+            <div class="esg-container">
+                <div class="esg-col-xs-12">
+                    <p class="datum">
+                        <span>@Generate.lblFolioPreview</span>
+                        <span>@Model.Folio</span>
+                    </p>
+                    <hr />
+                </div>
+            </div>
+        </section>
+        <section id="viewDataStudent">
+            <div class="esg-container">
+                <div class="esg-col-xs-12 esg-grid-overlay">
+                    <h4><strong>@Generate.lblStudent</strong></h4>
+                </div>
+            </div>
+            <div class="esg-container">
+                <div class="esg-col-xs-12">
+                    <p class="datum">
+                        <span>@Generate.lblPeopleIdPreview</span>
+                        <span>@Model.PeopleId</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblCurpPreview</span>
+                        <span>@Model.Curp</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblNamePreview</span>
+                        <span>@Model.Name</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblFirstSurnamePreview</span>
+                        <span>@Model.FirstSurname</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblSecondSurnamePreview</span>
+                        <span>@Model.SecondSurname</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblGenderIdentityPreview</span>
+                        <span>@Model.Gender</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblBirthDatePreview</span>
+                        <span>@Model.BirthDate</span>
+                    </p>
+                    <hr />
+                </div>
+            </div>
+        </section>
+        <section id="viewDataInstitution">
+            <div class="esg-container">
+                <div class="esg-col-xs-12 esg-grid-overlay">
+                    <h4><strong>@Generate.lblInstitution</strong></h4>
+                </div>
+            </div>
+            <div class="esg-container">
+                <div class="esg-col-xs-12">
+                    <p class="datum">
+                        <span>@Generate.lblNameIdPreview</span>
+                        <span>@Model.InstitutionSepId</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblSigningInstitutionId</span>
+                        <span>@Model.SigningInstitutionId</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblNamePreview</span>
+                        <span>@Model.InstitutionName</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblCampusIdPreview</span>
+                        <span>@Model.CampusSepCode</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblCampusPreview</span>
+                        <span>@Model.CampusName</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblFederalEntityIdPreview</span>
+                        <span>@Model.FederalEntityCode</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblFederalEntityPreview</span>
+                        <span>@Model.FederalEntity</span>
+                    </p>
+                    <hr />
+                </div>
+            </div>
+        </section>
+        <section id="viewDataResponsible">
+            <div class="esg-container">
+                <div class="esg-col-xs-12 esg-grid-overlay">
+                    <h4><strong>@Generate.lblResponsible</strong></h4>
+                </div>
+            </div>
+            <div class="esg-container">
+                <div class="esg-col-xs-12">
+                    <p class="datum">
+                        <span>@Generate.lblCurpPreview</span>
+                        <span>@Model.ResponsibleCurp</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblNamePreview</span>
+                        <span>@Model.ResponsibleName</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblFirstSurnamePreview</span>
+                        <span>@Model.ResponsibleFirstSurname</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblSecondSurnamePreview</span>
+                        <span>@Model.ResponsibleSecondSurname</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblJobTitleIdPreview</span>
+                        <span>@Model.ResponsibleJobTitleId</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblJobTitlePreview</span>
+                        <span>@Model.ResponsibleJobTitle</span>
+                    </p>
+                    <hr />
+                </div>
+            </div>
+        </section>
+        <section id="viewDataMajor">
+            <div class="esg-container">
+                <div class="esg-col-xs-12 esg-grid-overlay">
+                    <h4><strong>@Generate.lblMajor</strong></h4>
+                </div>
+            </div>
+            <div class="esg-container">
+                <div class="esg-col-xs-12">
+                    <p class="datum">
+                        <span>@Generate.lblIdPreview</span>
+                        <span>@Model.MajorId</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblNamePreview</span>
+                        <span>@Model.MajorName</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblPeriodTypeIdPreview</span>
+                        <span>@Model.PeriodTypeId</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblPeriodTypePreview</span>
+                        <span>@Model.PeriodType</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblPlanCodePreview</span>
+                        <span>@Model.PlanCode</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblStudyLevelIdPreview</span>
+                        <span>@Model.StudyLevelId</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblStudyLevelPreview</span>
+                        <span>@Model.StudyLevel</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblMinimumGradePreview</span>
+                        <span>@Model.MinimumGrade</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblMaximumGradePreview</span>
+                        <span>@Model.MaximumGrade</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblMinPassingGradePreview</span>
+                        <span>@Model.MinimumPassingGrade</span>
+                    </p>
+                    <hr />
+                </div>
+            </div>
+        </section>
+        <section id="viewDataRvoe">
+            <div class="esg-container">
+                <div class="esg-col-xs-12 esg-grid-overlay">
+                    <h4><strong>@Generate.lblRvoe</strong></h4>
+                </div>
+            </div>
+            <div class="esg-container">
+                <div class="esg-col-xs-12">
+                    <p class="datum">
+                        <span>@Generate.lblNumberPreview</span>
+                        <span>@Model.RvoeAgreementNumber</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblIssuingDatePreview</span>
+                        <span>@Model.ExpeditionDate</span>
+                    </p>
+                    <hr />
+                </div>
+            </div>
+        </section>
+        @if (Model.Courses != null && Model.Courses.Count > 0)
+        {
+            <section id="viewDataCourses">
+                <div class="esg-container">
+                    <div class="esg-col-xs-12 esg-grid-overlay">
+                        <h4><strong>@Generate.lblCourses</strong></h4>
+                    </div>
+                </div>
+                <div class="esg-container">
+                    <div class="esg-col-xs-12">
+                        <p class="datum">
+                            <span>@Generate.lblTotalPreview</span>
+                            <span>@Model.TotalCourse</span>
+                        </p>
+                        <p class="datum">
+                            <span>@Generate.lblAssignedPreview</span>
+                            <span>@Model.CourseAssigned</span>
+                        </p>
+                        <p class="datum">
+                            <span>@Generate.lblAveragePreview</span>
+                            <span>@Model.CourseAverage</span>
+                        </p>
+                        <p class="datum">
+                            <span>@Generate.lblTotalCreditsPreview</span>
+                            <span>@Model.TotalCredit</span>
+                        </p>
+                        <p class="datum">
+                            <span>@Generate.lblObtainedCreditsPreview</span>
+                            <span>@Model.CreditEarned</span>
+                        </p>
+                        <p class="datum">
+                            <span>@Generate.lblCyclesTotal</span>
+                            <span>@Model.TotalCycle</span>
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div class="esg-container">
+                        <div class="esg-col-xs-12 esg-grid-overlay">
+                            <div class="esg-table__container">
+                                <table id="courses_table" class="esg-table">
+                                    <thead class="esg-table-head">
+                                        <tr class="esg-table-head__row">
+                                            <th class="esg-table-head__th" style="width:10%">@Generate.lblCycle</th>
+                                            <th class="esg-table-head__th" style="width:10%">@Generate.lblId</th>
+                                            <th class="esg-table-head__th" style="width:25%">@Generate.lblName</th>
+                                            <th class="esg-table-head__th" style="width:10%">@Generate.lblGrade</th>
+                                            <th class="esg-table-head__th" style="width:20%">@Generate.lblObservations</th>
+                                            <th class="esg-table-head__th" style="width:15%">@Generate.lblType</th>
+                                            <th class="esg-table-head__th" style="width:10%">@Generate.lblCredits</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="esg-table-body">
+                                        @foreach (ElectronicCertificateCourseInfoViewModel item in Model.Courses)
+                                        {
+                                            <tr class="esg-table-body__row">
+                                                <td class="esg-table-body__td">
+                                                    @item.Cycle
+                                                </td>
+                                                <td class="esg-table-body__td">
+                                                    @item.SepId
+                                                </td>
+                                                <td class="esg-table-body__td">
+                                                    @item.Name
+                                                </td>
+                                                <td class="esg-table-body__td">
+                                                    @item.Grade
+                                                </td>
+                                                <td class="esg-table-body__td">
+                                                    @item.Observations
+                                                </td>
+                                                <td class="esg-table-body__td">
+                                                    @item.Type
+                                                </td>
+                                                <td class="esg-table-body__td">
+                                                    @item.Credits
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br />
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+            </section>
+        }
+        <section id="viewDataIssuingDegree">
+            <div class="esg-container">
+                <div class="esg-col-xs-12 esg-grid-overlay">
+                    <h4><strong>@Generate.lblIssuingDegree</strong></h4>
+                </div>
+            </div>
+            <div class="esg-container">
+                <div class="esg-col-xs-12">
+                    <p class="datum">
+                        <span>@Generate.lblCertificationTypeIdPreview</span>
+                        <span>@Model.CertificationTypeId</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblCertificationTypePreview</span>
+                        <span>@Model.CertificationType</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblIssuingDatePreview</span>
+                        <span>@Model.IssuingDate</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblIssuingPlaceIdPreview</span>
+                        <span>@Model.IssuingFederalEntityCode</span>
+                    </p>
+                    <p class="datum">
+                        <span>@Generate.lblIssuingPlacePreview</span>
+                        <span>@Model.IssuingFederalEntity</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

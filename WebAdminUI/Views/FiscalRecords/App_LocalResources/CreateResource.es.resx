@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="UnitCode" xml:space="preserve">
+    <value>Clave de unidad</value>
+  </data>
+  <data name="CreateFiscalRecord" xml:space="preserve">
+    <value>Crear comprobante fiscal</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="FiscalRecType" xml:space="preserve">
+    <value>Tipo de comprobante fiscal</value>
+  </data>
+  <data name="IssComments" xml:space="preserve">
+    <value>Comentarios</value>
+  </data>
+  <data name="IssCurrency" xml:space="preserve">
+    <value>Moneda</value>
+  </data>
+  <data name="IssExchangeRate" xml:space="preserve">
+    <value>Tipo de cambio</value>
+  </data>
+  <data name="IssExpeditionAddr" xml:space="preserve">
+    <value>Dirección de expedición</value>
+  </data>
+  <data name="IssNameCorp" xml:space="preserve">
+    <value>Nombre o razón social</value>
+  </data>
+  <data name="IssTaxPayerID" xml:space="preserve">
+    <value>RFC</value>
+  </data>
+  <data name="IssTaxRegimen" xml:space="preserve">
+    <value>Régimen fiscal</value>
+  </data>
+  <data name="Issuer" xml:space="preserve">
+    <value>Emisor</value>
+  </data>
+  <data name="PaymentAccNum" xml:space="preserve">
+    <value>Número de cuenta de pago</value>
+  </data>
+  <data name="PaymentCondition" xml:space="preserve">
+    <value>Condiciones de pago</value>
+  </data>
+  <data name="paymentMethodDescDefault" xml:space="preserve">
+    <value>Método de pago</value>
+  </data>
+  <data name="PaymentType" xml:space="preserve">
+    <value>Forma de pago</value>
+  </data>
+  <data name="preferredReceiverEmail" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Cantidad</value>
+  </data>
+  <data name="receiptNumber" xml:space="preserve">
+    <value>Número de recibo</value>
+  </data>
+  <data name="ReceiverCorpName" xml:space="preserve">
+    <value>Nombre o razón social</value>
+  </data>
+  <data name="ReceiverFiscalAddress" xml:space="preserve">
+    <value>Residencia fiscal</value>
+  </data>
+  <data name="ReceiverFiscalID" xml:space="preserve">
+    <value>Número de registro de identidad fiscal</value>
+  </data>
+  <data name="Receiver" xml:space="preserve">
+    <value>Receptor</value>
+  </data>
+  <data name="SubTotal" xml:space="preserve">
+    <value>Subtotal</value>
+  </data>
+  <data name="TaxpayerID" xml:space="preserve">
+    <value>RFC</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="TotalTransferredTaxes" xml:space="preserve">
+    <value>Total de impuestos trasladados</value>
+  </data>
+  <data name="UnitAmount" xml:space="preserve">
+    <value>Valor unitario</value>
+  </data>
+  <data name="EmptyTaxPayerId" xml:space="preserve">
+    <value>Seleccione un RFC</value>
+  </data>
+  <data name="IssPlaceIssue" xml:space="preserve">
+    <value>Lugar de expedición</value>
+  </data>
+  <data name="IssSerial" xml:space="preserve">
+    <value>Serie</value>
+  </data>
+  <data name="Process" xml:space="preserve">
+    <value>Procesar</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Crear comprobante fiscal</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>Requerido</value>
+  </data>
+  <data name="MaxLength" xml:space="preserve">
+    <value>La longitud máxima es 255.</value>
+  </data>
+  <data name="CFDI" xml:space="preserve">
+    <value>Uso del CFDI</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Monto</value>
+  </data>
+  <data name="CFDIRequired" xml:space="preserve">
+    <value>Ingrese un uso del CFDI</value>
+  </data>
+  <data name="IdNumber" xml:space="preserve">
+    <value>Número de ID</value>
+  </data>
+  <data name="IssAddRequired" xml:space="preserve">
+    <value>Seleccione una dirección de expedición</value>
+  </data>
+  <data name="IssPlaceRequired" xml:space="preserve">
+    <value>Ingrese un lugar de expedición</value>
+  </data>
+  <data name="IssTaxPIRequired" xml:space="preserve">
+    <value>Ingrese un RFC</value>
+  </data>
+  <data name="IssTaxRegRequired" xml:space="preserve">
+    <value>Ingrese un régimen fiscal</value>
+  </data>
+  <data name="ProductServiceCode" xml:space="preserve">
+    <value>Clave de producto/servicio</value>
+  </data>
+  <data name="TaxAmount" xml:space="preserve">
+    <value>Impuesto</value>
+  </data>
+  <data name="TaxPayerIdRequired" xml:space="preserve">
+    <value>Ingrese un RFC</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Unidad</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>Fecha de fin</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Fecha de inicio</value>
+  </data>
+  <data name="TitleGlobal" xml:space="preserve">
+    <value>Comprobante fiscal global</value>
+  </data>
+  <data name="ReceiverEmail" xml:space="preserve">
+    <value>Ingrese un correo electrónico</value>
+  </data>
+  <data name="YourEmail" xml:space="preserve">
+    <value>tu@correoelectronico.com</value>
+  </data>
+  <data name="ErrorEmail" xml:space="preserve">
+    <value>Ingrese un correo electrónico válido</value>
+  </data>
+  <data name="ReceiverEmailValidate" xml:space="preserve">
+    <value>Ingrese un correo electrónico válido</value>
+  </data>
+  <data name="SubHeaderFiscalRecord" xml:space="preserve">
+    <value>Comprobante fiscal</value>
+  </data>
+  <data name="EndDateRequired" xml:space="preserve">
+    <value>Ingrese una fecha de fin</value>
+  </data>
+  <data name="StartDateRequired" xml:space="preserve">
+    <value>Ingrese una fecha de inicio</value>
+  </data>
+  <data name="ReceiptsToInvoiceEmpty" xml:space="preserve">
+    <value>No existen recibos para incluir en el comprobante fiscal.</value>
+  </data>
+  <data name="ProductServiceCodeRequired" xml:space="preserve">
+    <value>No existe el mapeo del producto/servicio y clave de unidad.</value>
+  </data>
+  <data name="ChargeCreditDescRequired" xml:space="preserve">
+    <value>Ingrese una descripción del cargo</value>
+  </data>
+  <data name="InvalidCharacterMessage" xml:space="preserve">
+    <value>La información para el comprobante fiscal no puede contener el carácter |</value>
+  </data>
+  <data name="InvalidSubTotalAmount" xml:space="preserve">
+    <value>El monto subtotal no puede ser 0</value>
+  </data>
+  <data name="InvalidTotalAmount" xml:space="preserve">
+    <value>El monto total no puede ser 0</value>
+  </data>
+  <data name="RequiredFieldsMessage" xml:space="preserve">
+    <value>Verifique los campos requeridos</value>
+  </data>
+  <data name="ErrorMessageResult" xml:space="preserve">
+    <value>Ocurrió un error mientras se procesaba su solicitud</value>
+  </data>
+  <data name="ViewButton" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="lblLastFolioAssigned" xml:space="preserve">
+    <value>El último folio asignado para esta serie ha alcanzado su valor máximo</value>
+  </data>
+  <data name="SerialError" xml:space="preserve">
+    <value>Ingrese un número de serie válido</value>
+  </data>
+  <data name="lblTaxMapping" xml:space="preserve">
+    <value>No existe el mapeo de la clave de impuesto y tasa.</value>
+  </data>
+  <data name="NotePaymentType" xml:space="preserve">
+    <value>La forma de pago seleccionada es en la que se recibió el importe mayor.</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Monto</value>
+  </data>
+  <data name="PaymentTypeMissing" xml:space="preserve">
+    <value>Falta el mapeo de la forma de pago.</value>
+  </data>
+  <data name="lblDetail" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="lblInvoice" xml:space="preserve">
+    <value>Factura</value>
+  </data>
+  <data name="TitlePaymentReceipt" xml:space="preserve">
+    <value>Crear recibo de pago</value>
+  </data>
+  <data name="SubHeaderPaymentReceipt" xml:space="preserve">
+    <value>Complemento de pago</value>
+  </data>
+  <data name="ComplementPaymentType" xml:space="preserve">
+    <value>Forma de pago del complemento</value>
+  </data>
+  <data name="ComplementPaymentTypeRequired" xml:space="preserve">
+    <value>Seleccione una forma de pago del complemento</value>
+  </data>
+  <data name="PaymentDate" xml:space="preserve">
+    <value>Fecha de pago</value>
+  </data>
+  <data name="ComplementCurrency" xml:space="preserve">
+    <value>Moneda del complemento</value>
+  </data>
+  <data name="IssuerTaxPayerIdOriginAccount" xml:space="preserve">
+    <value>RFC emisor cta ordenante</value>
+  </data>
+  <data name="OriginAccount" xml:space="preserve">
+    <value>Cuenta ordenante</value>
+  </data>
+  <data name="OriginBankName" xml:space="preserve">
+    <value>Nombre del banco</value>
+  </data>
+  <data name="TransactionNumber" xml:space="preserve">
+    <value>Número de operación</value>
+  </data>
+  <data name="IssuerTaxPayerIdTargetAccount" xml:space="preserve">
+    <value>RFC emisor cta beneficiaria</value>
+  </data>
+  <data name="PaymentCertificate" xml:space="preserve">
+    <value>Certificado de pago</value>
+  </data>
+  <data name="PaymentChain" xml:space="preserve">
+    <value>Cadena de pago</value>
+  </data>
+  <data name="PaymentChainType" xml:space="preserve">
+    <value>Tipo de cadena de pago</value>
+  </data>
+  <data name="PaymentSignature" xml:space="preserve">
+    <value>Sello de pago</value>
+  </data>
+  <data name="TargetAccount" xml:space="preserve">
+    <value>Cuenta del beneficiario</value>
+  </data>
+  <data name="TaxAddress" xml:space="preserve">
+    <value>Domicilio fiscal</value>
+  </data>
+  <data name="RecTaxRegimen" xml:space="preserve">
+    <value>Régimen fiscal</value>
+  </data>
+  <data name="RecTaxRegimenRequired" xml:space="preserve">
+    <value>Ingrese un régimen fiscal</value>
+  </data>
+  <data name="Frequency" xml:space="preserve">
+    <value>Periodicidad</value>
+  </data>
+  <data name="FrequencyRequired" xml:space="preserve">
+    <value>Seleccione una periodicidad</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Mes</value>
+  </data>
+  <data name="MonthRequired" xml:space="preserve">
+    <value>Seleccione un mes</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Seleccione...</value>
+  </data>
+  <data name="SubjectToTax" xml:space="preserve">
+    <value>Objeto de impuesto</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>Domicilio fiscal</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Año</value>
+  </data>
+  <data name="ReceiverFiscalAddressRequired" xml:space="preserve">
+    <value>La residencia fiscal es requerida</value>
+  </data>
+  <data name="btnBack" xml:space="preserve">
+    <value>Regresar</value>
+  </data>
+  <data name="lblRelatedCFDI" xml:space="preserve">
+    <value>CFDI relacionado</value>
+  </data>
+  <data name="lblNewInvoice" xml:space="preserve">
+    <value>Nueva factura</value>
+  </data>
+  <data name="lblRelationType" xml:space="preserve">
+    <value>Tipo de relación</value>
+  </data>
+  <data name="lblSubstituteCancel" xml:space="preserve">
+    <value>Sustituir y cancelar comprobante fiscal</value>
+  </data>
+  <data name="lblRelatedUUID" xml:space="preserve">
+    <value>UUID relacionado</value>
+  </data>
+  <data name="btnProcessCancel" xml:space="preserve">
+    <value>Procesar y cancelar</value>
+  </data>
+  <data name="RecCfdiUsageIncorrect" xml:space="preserve">
+    <value>El uso del CFDI para facturas globales debe ser S01 - Sin efectos fiscales</value>
+  </data>
+  <data name="RecTaxAddressIncorrect" xml:space="preserve">
+    <value>El domicilio fiscal debe coincidir con el lugar de expedición</value>
+  </data>
+  <data name="CorporateNameIncorrect" xml:space="preserve">
+    <value>El nombre del receptor debe ser PUBLICO EN GENERAL</value>
+  </data>
+  <data name="RecTaxRegimenIncorrect" xml:space="preserve">
+    <value>El régimen fiscal para facturas globales debe ser 616 - Sin obligaciones fiscales</value>
+  </data>
+  <data name="TaxAddressRequired" xml:space="preserve">
+    <value>Ingrese un domicilio fiscal</value>
+  </data>
+  <data name="lblSelect" xml:space="preserve">
+    <value>Seleccione...</value>
+  </data>
+  <data name="IssSerialRequired" xml:space="preserve">
+    <value>Seleccione una serie</value>
+  </data>
+  <data name="RequiredPostalCode" xml:space="preserve">
+    <value>Ingrese un domicilio fiscal</value>
+  </data>
+  <data name="RequiredPreferredCFDIUsageCode" xml:space="preserve">
+    <value>Seleccione un uso del CFDI</value>
+  </data>
+  <data name="lblSubstituteCancelGlobal" xml:space="preserve">
+    <value>Sustituir y cancelar comprobante fiscal global</value>
+  </data>
+  <data name="btnClear" xml:space="preserve">
+    <value>Limpiar</value>
+  </data>
+  <data name="lblPaymentType" xml:space="preserve">
+    <value>Forma de pago</value>
+  </data>
+  <data name="lblSession" xml:space="preserve">
+    <value>Sesión</value>
+  </data>
+  <data name="lblTerm" xml:space="preserve">
+    <value>Período</value>
+  </data>
+  <data name="lblYear" xml:space="preserve">
+    <value>Año</value>
+  </data>
+  <data name="lblCalculateTotals" xml:space="preserve">
+    <value>Calcular totales</value>
+  </data>
+  <data name="lblErrorDatesRange" xml:space="preserve">
+    <value>La fecha de inicio es posterior a la fecha de fin.</value>
+  </data>
+  <data name="lblSearchReceipts" xml:space="preserve">
+    <value>Buscar recibos</value>
+  </data>
+  <data name="TaxPayerIdInvalid" xml:space="preserve">
+    <value>Ingrese un RFC válido</value>
+  </data>
+  <data name="UnitNameMaxLength" xml:space="preserve">
+    <value>Unidad es máximo de 20 caracteres</value>
+  </data>
+  <data name="IssueDate" xml:space="preserve">
+    <value>Fecha de emisión</value>
+  </data>
+  <data name="IssueDateRequired" xml:space="preserve">
+    <value>Fecha de emisión requerida</value>
+  </data>
+  <data name="IssueTime" xml:space="preserve">
+    <value>Hora de emisión</value>
+  </data>
+  <data name="IssueTimeRequired" xml:space="preserve">
+    <value>Hora de emisión requerida</value>
+  </data>
+</root>

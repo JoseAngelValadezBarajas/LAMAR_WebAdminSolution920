@@ -1,0 +1,119 @@
+﻿@model IEnumerable<WebAdminUI.Models.TaxProfiles.TaxProfileDetailViewModel>
+
+@using (Html.BeginForm())
+{
+@Html.AntiForgeryToken()
+
+<div class="esg-modal-dialog" style="width:750px">
+    <div class="esg-modal-dialog__header">
+        <button class="esg-modal-dialog__close esg-icon__container btnCancel" type="button" data-dismiss="modal" aria-hidden="true">
+            <svg class="esg-icon esg-icon--large esg-icon--neutral">
+                <use xlink:href="#icon-close"></use>
+            </svg>
+        </button>
+        <h3 class="esg-modal-dialog__title">@WebAdminUI.Views.TaxProfiles.App_LocalResources.ValidityDetailsViewResource.HeaderValidityDetails</h3>
+    </div>
+    <div class="esg-modal-dialog__body">
+        <table class="esg-table" id="ValidityDetailsTable">
+            <thead class="esg-table-head">
+                <tr class="esg-table-head__row">
+                    <th class="esg-table-head__button" style="word-wrap:break-word;">
+                        @Html.DisplayNameFor(model => model.Sequence)
+                    </th>
+                    <th class="esg-table-head__button" style="word-wrap:break-word;">
+                        @Html.DisplayNameFor(model => model.ChargeCreditDescription)
+                    </th>
+                    <th class="esg-table-head__button" style="word-wrap:break-word;">
+                        @Html.DisplayNameFor(model => model.Percentage)
+                    </th>
+                    <th class="esg-table-head__button" style="word-wrap:break-word;">
+                        @Html.DisplayNameFor(model => model.TaxesCatalog)
+                    </th>
+                    <th class="esg-table-head__button" style="word-wrap:break-word;">
+                        @Html.DisplayNameFor(model => model.TaxRatesCatalog)
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="esg-table-body">
+                @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                <tr class="esg-table-body__row">
+                    <td class="esg-table-body__td" style="word-wrap:break-word;">
+                        @Html.HiddenFor(modelItem => item.FiscalRecordTaxMappingId,
+                            new
+                            {
+                                id = string.Format("fiscalRecordTaxMappingId_{0}", item.TaxProfileDetailId),
+                                Value = item.FiscalRecordTaxMappingId
+                            })
+                        @Html.DisplayFor(modelItem => item.Sequence)
+                    </td>
+                    <td class="esg-table-body__td" style="word-wrap:break-word;">
+                        @Html.DisplayFor(modelItem => item.ChargeCreditDescription)
+                    </td>
+                    <td class="esg-table-body__td" style="word-wrap:break-word;">
+                        @Html.DisplayFor(modelItem => item.Percentage)
+                    </td>
+                    <td class="esg-table-body__td" style="word-wrap:break-word;">
+                        @Html.HiddenFor(modelItem => item.TaxProfileDetailId,
+                             new { id = "taxProfileDetailId", Value = item.TaxProfileDetailId })
+                        @Html.DropDownListFor(modelItem => item.TaxesCatalog,
+                            new SelectList(item.TaxesCatalog, "Code", "Description", item.TaxCode),
+                            new
+                            {
+                                @class = "esg-form__input",
+                                @id = string.Format("taxesDropdown_{0}", item.TaxProfileDetailId),
+                                onchange = "getTaxRate(this);"
+                            })
+                    </td>
+                    <td class="esg-table-body__td" style="word-wrap:break-word;">
+                        @Html.DropDownListFor(modelItem => item.TaxRatesCatalog,
+                            new SelectList(item.TaxRatesCatalog, "Description", "Description", item.TaxRate),
+                            new
+                            {
+                                @class = "esg-form__input",
+                                @id = string.Format("ratesDropdown_{0}", item.TaxProfileDetailId)
+                            })
+                    </td>
+                </tr>
+                        }
+                    }
+            </tbody>
+        </table>
+        <div class="esg-alert esg-alert--error errorMessageDiv" role="alert" style="display:none">
+            <span class="esg-alert__icon-wrapper">
+                <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                    <svg class="esg-icon esg-icon--error-dark">
+                        <use xlink:href="#icon-error"></use>
+                    </svg>
+                </span>
+            </span>
+            <div class="esg-alert__message errorMessageResult"></div>
+        </div>
+        <div class="esg-alert esg-alert--success successMessageDiv" role="alert" style="display:none">
+            <span class="esg-alert__icon-wrapper">
+                <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                    <svg class="esg-icon esg-icon--success-dark">
+                        <use xlink:href="#icon-check"></use>
+                    </svg>
+                </span>
+            </span>
+            <div class="esg-alert__message successMessageResult"></div>
+        </div>
+    </div>
+    <div class="esg-modal-dialog__action-section esg-button-group esg-button-group--fluid" role="group" aria-label="button group">
+        <div class="esg-button-group__item" role="group">
+            <button class="esg-button esg-button--secondary esg-modal-dialog__button btnCancel" type="button">
+                @WebAdminUI.Views.TaxProfiles.App_LocalResources.ValidityDetailsViewResource.ButtonCancel
+            </button>
+        </div>
+        <div class="esg-button-group__item" role="group">
+            <button class="esg-button esg-button--primary esg-modal-dialog__button btnSubmit" type="button">
+                @WebAdminUI.Views.TaxProfiles.App_LocalResources.ValidityDetailsViewResource.ButtonSubmit
+            </button>
+        </div>
+    </div>
+</div>
+<div class="esg-modal-overlay"></div>
+}

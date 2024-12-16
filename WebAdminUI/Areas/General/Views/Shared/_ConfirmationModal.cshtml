@@ -1,0 +1,42 @@
+<!--
+    <copyright file="_ConfirmationModal.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+
+<div id="@string.Format("div{0}ConfirmationModal",ViewBag.Id)" class="esg-modal-dialog" style="display: none;">
+    <div class="esg-modal-dialog__header">
+        <button id="@string.Format("btnClose{0}ConfirmationModal",ViewBag.Id)" class="esg-modal-dialog__close esg-icon__container" type="button" data-dismiss="modal" aria-hidden="true">
+            <svg class="esg-icon esg-icon--large esg-icon--neutral">
+                <use xlink:href="#icon-close"></use>
+            </svg>
+        </button>
+        <h3 class="esg-modal-dialog__title">@ViewBag.TitleText</h3>
+    </div>
+    <div class="esg-modal-dialog__body">
+        <div class="esg-container">
+            <div class="esg-col-xs-12">
+                <span class="esg-form__label">@ViewBag.InstructionsText</span>
+            </div>
+            <div class="esg-col-xs-12">
+                <div class="esg-checkbox">
+                    <input id="@string.Format("chk{0}Confirmation",ViewBag.Id)" type="checkbox" />
+                    <label for="@string.Format("chk{0}Confirmation",ViewBag.Id)">@ViewBag.ConfirmationText</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="esg-modal-dialog__action-section esg-button-group esg-button-group--fluid" role="group" aria-label="button group">
+        <div class="esg-button-group__item" role="group">
+            <button id="@string.Format("btnCancel{0}ConfirmationModal",ViewBag.Id)" class="esg-button esg-button--secondary esg-modal-dialog__button" type="button">
+                @ViewBag.CancelText
+            </button>
+        </div>
+        <div class="esg-button-group__item" role="group">
+            <button id="@string.Format("btnAccept{0}ConfirmationModal",ViewBag.Id)" class="esg-button esg-button--primary esg-modal-dialog__button" type="button" disabled="disabled">
+                @ViewBag.AcceptText
+            </button>
+        </div>
+    </div>
+</div>
+<input id="@string.Format("hdn{0}Id",ViewBag.Id)" type="hidden" value="" />

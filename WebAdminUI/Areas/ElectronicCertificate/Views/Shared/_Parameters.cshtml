@@ -1,0 +1,165 @@
+<!--
+    <copyright file="_Parameters.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+
+@using WebAdminUI.Resources.ElectronicCertificate
+@model WebAdminUI.Areas.ElectronicCertificate.Models.Generation.ElectronicCertificateParameters
+
+<div class="esg-container">
+    <div class="esg-col-xs-12">
+        <div class="esg-col-xs-12 esg-col-md-8 esg-col-lg-6">
+            <div class="esg-form__input-group">
+                @Html.TextBoxFor(m => m.Keywords, new
+                {
+                    @class = "esg-form__input",
+                    @id = "Keywords",
+                    @type = "search",
+                    @placeholder = Parameters.lblSearch
+                })
+                <button id="btnBasicSearch" class="esg-form__icon esg-icon__container esg-form__icon--submit" type="submit">
+                    <svg class="esg-icon esg-icon--small esg-icon">
+                        <use xlink:href="#icon-search"></use>
+                    </svg>
+                </button>
+                <button class="esg-form__icon esg-icon__container esg-form__icon--reset" type="reset">
+                    <svg class="esg-icon esg-icon--small esg-icon">
+                        <use xlink:href="#icon-clear"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="esg-col-xs-6">
+                <div style="padding-top:0.5rem">
+                    <a class="esg-breadcrumb__link" href="#AdvancedSearch" id="lnkAdvancedSearch">
+                        @Parameters.lblAdvancedSearch
+                    </a>
+                </div>
+            </div>
+            <div class="esg-col-xs-6" style="float: right">
+                <div style="padding-top: 0.5rem; text-align: right">
+                    <a class="esg-breadcrumb__link" href="#NewSearch" id="lnkNewSearch">
+                        @Parameters.lblNewSearch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="esg-col-xs-12">
+        <div class="esg-col-xs-12">
+            <hr />
+        </div>
+    </div>
+</div>
+<div id="divModalAdvancedSearch" class="esg-modal-dialog" style="display: none;">
+    <div class="esg-modal-dialog__header">
+        <button id="btnCloseModalAdvancedSearch" class="esg-modal-dialog__close esg-icon__container" type="button" data-dismiss="modal" aria-hidden="true">
+            <svg class="esg-icon esg-icon--large esg-icon--neutral">
+                <use xlink:href="#icon-close"></use>
+            </svg>
+        </button>
+        <h3 class="esg-modal-dialog__title">@Parameters.lblAdvancedSearch</h3>
+    </div>
+    <div class="esg-modal-dialog__body">
+        <div class="esg-container">
+            <div class="esg-col-xs-12">
+                <h5 class="esg-form__label">@Parameters.lblSearch</h5>
+            </div>
+            <div class="esg-col-xs-12">
+                <div class="esg-col-xs-12 esg-col-sm-6">
+                    <div class="esg-form__group esg-has-feedback">
+                        @Html.LabelFor(m => m.Folio, new { @class = "esg-form__label" })<br />
+                        <div class="esg-form__input-group">
+                            @Html.TextBoxFor(m => m.Folio, new { @class = "esg-form__input" })
+                        </div>
+                    </div>
+                </div>
+                <div class="esg-col-xs-12 esg-col-sm-6">
+                    <div class="esg-form__group esg-has-feedback">
+                        @Html.LabelFor(m => m.Student, new { @class = "esg-form__label" })<br />
+                        <div class="esg-form__input-group">
+                            @Html.TextBoxFor(m => m.Student, new { @class = "esg-form__input" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="esg-col-xs-12">
+                <h5 class="esg-form__label">@Parameters.lblFilter</h5>
+            </div>
+            <div class="esg-col-xs-12">
+                <div class="esg-col-xs-12 esg-col-sm-6">
+                    <div class="esg-form__group esg-has-feedback">
+                        @Html.LabelFor(m => m.Campus, new { @class = "esg-form__label" })<br />
+                        <div class="esg-form__input-group">
+                            @Html.DropDownListFor(m => m.Campus, new SelectList(Model.Campus, "CodeValueKey", "Description"),
+                                   @Parameters.lblSelect,
+                                   new { @class = "esg-form__input" })
+                        </div>
+                    </div>
+                </div>
+                <div class="esg-col-xs-12 esg-col-sm-6">
+                    <div class="esg-form__group esg-has-feedback">
+                        @Html.LabelFor(m => m.Program, new { @class = "esg-form__label" })<br />
+                        <div class="esg-form__input-group">
+                            @Html.DropDownListFor(m => m.Program, new SelectList(Model.Program, "Id", "Description"),
+                                   @Parameters.lblSelect,
+                                   new { @class = "esg-form__input" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="esg-col-xs-12">
+                <div class="esg-col-xs-12 esg-col-sm-6">
+                    <div class="esg-form__group esg-has-feedback">
+                        @Html.LabelFor(m => m.CertificationType, new { @class = "esg-form__label" })<br />
+                        <div class="esg-form__input-group">
+                            @Html.DropDownListFor(m => m.CertificationType, new SelectList(Model.CertificationType, "CodeValueKey", "Description"),
+                                 @Parameters.lblSelect,
+                                 new { @class = "esg-form__input" })
+                        </div>
+                    </div>
+                </div>
+                <div class="esg-col-xs-12 esg-col-sm-6">
+                    <div class="esg-form__group esg-has-feedback">
+                        @Html.LabelFor(m => m.IssuingDate, new { @class = "esg-form__label" })<br />
+                        <div class="esg-form__input-group">
+                            @Html.TextBoxFor(m => m.IssuingDate, new { @class = "esg-form__input" })
+                            <div class="esg-form__icon esg-icon__container">
+                                <svg class="esg-icon esg-icon--small esg-icon">
+                                    <use xlink:href="#icon-calendar"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @if (Model.ShowAllStatus)
+            {
+                <div class="esg-col-xs-12">
+                    <div class="esg-col-xs-12 esg-col-sm-6">
+                        <div class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(m => m.Status, new { @class = "esg-form__label" })<br />
+                            <div class="esg-form__input-group">
+                                @Html.DropDownListFor(m => m.Status, new SelectList(Model.Status, "CodeValueKey", "Description"),
+                                     @Parameters.lblSelect,
+                                     new { @class = "esg-form__input" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="esg-modal-dialog__action-section esg-button-group esg-button-group--fluid" role="group" aria-label="button group">
+        <div class="esg-button-group__item" role="group">
+            <button id="btnClearAdvancedSearch" class="esg-button esg-button--secondary esg-modal-dialog__button" type="button">
+                @Parameters.lblClear
+            </button>
+        </div>
+        <div class="esg-button-group__item" role="group">
+            <button id="btnAdvancedSearch" class="esg-button esg-button--primary esg-modal-dialog__button" type="button">
+                @Parameters.lblSearchFilter
+            </button>
+        </div>
+    </div>
+</div>

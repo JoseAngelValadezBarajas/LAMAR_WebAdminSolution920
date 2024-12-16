@@ -1,0 +1,52 @@
+﻿<!--
+    <copyright file="_Parameters.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model WebAdminUI.Areas.ElectronicDegree.Models.ElectronicDegreeParameters
+
+<div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+    <div class="esg-col-lg-2 esg-col-md-2 esg-col-sm-12 esg-col-xs-12">
+        <div class="esg-form__input-group">
+            @Html.LabelFor(m => m.Folio)<br />
+            @Html.TextBoxFor(m => m.Folio, new { @class = "esg-form__input", @id = "Folio" })
+        </div>
+    </div>
+    <div class="esg-col-lg-2 esg-col-md-2 esg-col-sm-12 esg-col-xs-12">
+        <div class="esg-form__input-group">
+            @Html.Label("lblErrorReason", @WebAdminUI.Resources.ElectronicDegree.Operations.lblStudentName, new { @class = "esg-form__label" })
+            @Html.TextBoxFor(m => m.Student, new { @class = "esg-form__input", @id = "Student" })
+        </div>
+    </div>
+    <div class="esg-col-lg-2 esg-col-md-2 esg-col-sm-12 esg-col-xs-12">
+        <div class="esg-form__input-group">
+            @Html.LabelFor(m => m.EducationType, new { @class = "esg-form__label" })<br />
+            @Html.DropDownListFor(m => m.EducationType, new SelectList(Model.EducationType, "Value", "Description"), "", new { @class = "esg-form__input", @id = "EducationLevel" })
+        </div>
+    </div>
+    <div class="esg-col-lg-2 esg-col-md-2 esg-col-sm-12 esg-col-xs-12">
+        <div class="esg-form__input-group">
+            @Html.LabelFor(m => m.Major, new { @class = "esg-form__label" })<br />
+            @Html.DropDownListFor(m => m.Major, new SelectList(Model.Major, "Value", "Description"), "", new { @class = "esg-form__input", @id = "Major" })
+        </div>
+    </div>
+    <div class="esg-col-lg-2 esg-col-md-2 esg-col-sm-12 esg-col-xs-12">
+        <div style="padding-top:1.5em">
+            <a class="esg-breadcrumb__link" href="#Clear">
+                @WebAdminUI.Resources.ElectronicDegree.Generate.lblClear
+            </a>
+        </div>
+    </div>
+    <div class="esg-col-lg-2 esg-col-md-2 esg-col-sm-12 esg-col-xs-12">
+        <div style="padding-top:1.5em; text-align:end">
+            <button class="eds-button eds-button--primary" type="button" id="btnSearch">
+                @WebAdminUI.Resources.ElectronicDegree.Generate.lblSearch
+            </button>
+        </div>
+    </div>
+</div>
+<div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+    <div class="esg-col-lg-12 esg-col-md-16 esg-col-sm-12 esg-col-xs-12">
+        <hr />
+    </div>
+</div>

@@ -1,0 +1,316 @@
+<!--
+    <copyright file="Index.cshtml" company="Ellucian">
+        Copyright 2020-2022 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model WebAdminUI.Areas.ElectronicCertificate.Models.InstitutionCampus.InstitutionCampusesViewModel
+@{
+    ViewBag.Title = WebAdminUI.Resources.ElectronicCertificate.Institution.lblInstitutionCampus;
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formCreate" }))
+{
+    <br />
+    <div class="esg-page-header">
+        <h1 class="esg-page-header__title">@WebAdminUI.Resources.ElectronicCertificate.Institution.lblInstitutionCampuses</h1>
+        <br />
+    </div>
+    <br />
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="esg-breadcrumb">
+            <ol class="esg-breadcrumb__list">
+                <li class="esg-breadcrumb__list-item"><a class="esg-breadcrumb__link" href="@Url.RouteUrl("MenuAcademicRecords")">@WebAdminUI.Resources.ElectronicCertificate.Institution.lblAcademicRecord</a></li>
+                <li class="esg-breadcrumb__list-item"><a class="esg-breadcrumb__link" href="@Url.Action("Index", "Menu")" )">@WebAdminUI.Resources.ElectronicCertificate.Institution.lblElectronicCertificate</a></li>
+                <li class="esg-breadcrumb__list-item"><a class="esg-breadcrumb__link" href="@Url.Action("Index", "Setup")" )">@WebAdminUI.Resources.ElectronicCertificate.Institution.lblSetup</a></li>
+                <li class="esg-breadcrumb__list-item esg-is-active"> @WebAdminUI.Resources.ElectronicCertificate.Institution.lblInstitutionCampus</li>
+            </ol>
+        </div>
+    </div>
+
+    <div id="form" class="esg-card--panel">
+        @if (Model.InstitutionCampuses.Count > 0)
+        {
+            int indexInstitution = 0;
+            <br />
+            <div class="esg-card--panel__body">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="esg-table__container">
+                        <table id="records_table" class="esg-table" style="width:98%">
+                            <thead class="esg-table-head">
+                                <tr class="esg-table-head__row">
+                                    <th class="esg-table-head__th" style="width:20%">@Html.DisplayNameFor(m => m.InstitutionCampuses[0].InstitutionName)</th>
+                                    <th class="esg-table-head__th" style="width:20%">@Html.DisplayNameFor(m => m.InstitutionCampuses[0].CampusName)</th>
+                                    <th class="esg-table-head__th" style="width:12%">@Html.DisplayNameFor(m => m.InstitutionCampuses[0].InstitutionSepId)</th>
+                                    <th class="esg-table-head__th" style="width:12%">@Html.DisplayNameFor(m => m.InstitutionCampuses[0].SigningInstitutionId)</th>
+                                    <th class="esg-table-head__th" style="width:12%">@Html.DisplayNameFor(m => m.InstitutionCampuses[0].CampusSepCode)</th>
+                                    <th class="esg-table-head__th" style="width:12%">@Html.DisplayNameFor(m => m.InstitutionCampuses[0].ResponsibleId)</th>
+                                    <th class="esg-table-head__th" style="width:12%">@Html.DisplayNameFor(m => m.InstitutionCampuses[0].FederalEntityId)</th>
+                                    <th class="esg-table-head__th" style="width:12%">@Html.DisplayNameFor(m => m.InstitutionCampuses[0].FolioFormat)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="esg-table-body" id="table_rows_tbody">
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model.InstitutionCampuses)
+                                    {
+                                        <tr class="esg-table-body__row" id="@indexInstitution">
+                                            <td class="esg-table-body__td">
+
+                                                @Html.Label(item.InstitutionName, new
+                                                {
+                                                    @id = string.Format("InsName_{0}", indexInstitution),
+                                                    data_id = item.InstitutionCodeId
+                                                })
+                                            </td>
+                                            <td class="esg-table-body__td">
+                                                @Html.Label(item.CampusName, new
+                                                {
+                                                    @id = string.Format("CampusCode_{0}", indexInstitution),
+                                                    data_id = item.CampusCodeId
+                                                })
+                                            </td>
+                                            <td class="esg-table-body__td">
+                                                @Html.TextBoxFor(modelItem => item.InstitutionSepId, "", new
+                                                {
+                                                    @class = "esg-form__input",
+                                                    @id = string.Format("InsSep_{0}", indexInstitution),
+                                                    data_id = item.InstitutionSepId ?? "",
+                                                    maxlength = 10
+                                                })
+                                                <label style="color:red; display:none;" id="@string.Format("ValidateCharacters_{0}", indexInstitution)">@WebAdminUI.Resources.ElectronicCertificate.Institution.lblValidateCharacters</label>
+                                            </td>
+                                            <td class="esg-table-body__td">
+                                                @Html.TextBoxFor(modelItem => item.SigningInstitutionId, "", new
+                                                {
+                                                    @class = "esg-form__input",
+                                                    @id = string.Format("SignInstId_{0}", indexInstitution),
+                                                    data_id = item.SigningInstitutionId ?? "",
+                                                    maxlength = 10
+                                                })
+                                                <label style="color:red; display:none;" id="@string.Format("ValidateCharacters_{0}", indexInstitution)">@WebAdminUI.Resources.ElectronicCertificate.Institution.lblValidateCharacters</label>
+                                            </td>
+                                            <td class="esg-table-body__td">
+                                                @Html.TextBoxFor(modelItem => item.CampusSepCode, "", new
+                                                {
+                                                    @class = "esg-form__input",
+                                                    @id = string.Format("CampusSepCode_{0}", indexInstitution),
+                                                    data_id = item.CampusSepCode ?? "",
+                                                    maxlength = 10
+                                                })
+                                            </td>
+                                            <td class="esg-table-body__td">
+                                                @Html.DropDownListFor(modelItem => item.ResponsibleId,
+                                                    new SelectList(Model.Responsibles, "Id", "Description", item.ResponsibleId),
+                                                    WebAdminUI.Resources.ElectronicCertificate.Institution.lblSelect,
+                                                    new
+                                                    {
+                                                        @class = "esg-form__input",
+                                                        @id = string.Format("ResponsibleId_{0}", indexInstitution),
+                                                        data_id = item.ResponsibleId ?? 0
+                                                    }
+                                                )
+                                            </td>
+                                            <td class="esg-table-body__td">
+                                                @Html.DropDownListFor(modelItem => item.FederalEntityId,
+                                                    new SelectList(Model.IssuingPlace, "Id", "Description", item.FederalEntityId),
+                                                    WebAdminUI.Resources.ElectronicCertificate.Institution.lblSelect,
+                                                    new
+                                                    {
+                                                        @class = "esg-form__input",
+                                                        @id = string.Format("FederalEntityId_{0}", indexInstitution),
+                                                        data_id = item.FederalEntityId ?? 0
+                                                    }
+                                                )
+                                            </td>
+                                            <td class="esg-table-body__td">
+                                                <a id="@string.Format("btnFolioFormat_{0}", indexInstitution)" data-index="@indexInstitution" style="text-decoration: none;">
+                                                    <span id="@string.Format("FolioFormat_{0}", indexInstitution)" style="line-break: anywhere">@item.FolioFormat</span>
+                                                    <span class="esg-icon__container">
+                                                        <svg class="esg-icon esg-icon--small">
+                                                            <use xlink:href="#icon-edit"></use>
+                                                        </svg>
+                                                    </span>
+                                                </a>
+                                                @Html.HiddenFor(modelItem => item.InstitutionCampusId,
+                                                        new
+                                                        {
+                                                            id = string.Format("InsCampusId_{0}", indexInstitution),
+                                                            Value = item.InstitutionCampusId
+                                                        })
+                                            </td>
+                                        </tr>
+                                        indexInstitution++;
+                                    }
+                                }
+                                <tr>
+                                    <td>
+                                        <input type="hidden" value="@indexInstitution" id="hdnIndexInstitution" />
+                                        @Html.HiddenFor(m => @indexInstitution,
+                                                         new
+                                                         {
+                                                             id = "hdnIndexInstitution",
+                                                             Value = @indexInstitution
+                                                         })
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="esg-card--panel__content" style="text-align:end">
+                <div class="eds-button-group" role="group" style="margin-top:1rem" aria-label="button group">
+                    <button class="eds-button eds-button--secondary" id="btnCancel" type="button">@WebAdminUI.Resources.ElectronicCertificate.Institution.lblCancel</button>
+                    <button class="eds-button eds-button--primary" id="btnSave" type="button">@WebAdminUI.Resources.ElectronicCertificate.Institution.lblSave</button>
+                </div>
+            </div>
+            <div id="Overlaydiv" class="esg-modal-overlay" style="display:none; position:fixed; top:0; bottom:0; left:0; right:0;"></div>
+            <div id="Processing" class="esg-modal-dialog" style="display:none;">
+                <div class="esg-spinner-wrapper" style="position:absolute;">
+                    <div class="esg-spinner"></div>
+                </div>
+            </div>
+            <div id="divModalFolioFormat" class="esg-modal-dialog" style="display:none;">
+                <div class="esg-modal-dialog__header">
+                    <button id="CloseModalFolioFormat" class="esg-modal-dialog__close esg-icon__container" type="button" data-dismiss="modal" aria-hidden="true">
+                        <svg class="esg-icon esg-icon--large esg-icon--neutral">
+                            <use xlink:href="#icon-close"></use>
+                        </svg>
+                    </button>
+                    <h3 class="esg-modal-dialog__title">@WebAdminUI.Resources.ElectronicCertificate.Institution.lblFolioFormat</h3>
+                </div>
+                <div class="esg-modal-dialog__body">
+                    <div class="esg-container">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            @WebAdminUI.Resources.ElectronicCertificate.Institution.lblFolioWarning
+                        </div>
+                        <div id="divCertificateFolio" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <br />
+                            <h4>@WebAdminUI.Resources.ElectronicCertificate.Institution.lblFolioFormatRequired</h4>
+                            @Html.TextBox("FolioFormat", null, new
+                            {
+                                @class = "esg-form__input",
+                                @id = "FolioFormat",
+                                @readonly = "readonly"
+                            })
+                            <div id="divCertificateFolioErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                <svg class="esg-icon esg-icon--error">
+                                    <use xlink:href="#icon-error"></use>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            @WebAdminUI.Resources.ElectronicCertificate.Institution.lblTokensWarning
+                        </div>
+                        <br />
+                        <div class="esg-collapsible-group__heading" role="tab">
+                            <span class="esg-collapsible-group__title">
+                                <a class="esg-collapsible-group__toggle esg-is-collapsed" id="groupHeadingOne" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseGroupOne" aria-expanded="true" aria-controls="collapseGroupOne">
+                                    @WebAdminUI.Resources.ElectronicCertificate.Institution.lblFolioTokens
+                                    <span class="esg-collapsible-group__icon esg-icon__container" aria-hidden="True">
+                                        <svg id="expandIcon" class="esg-icon esg-icon--down">
+                                            <use xlink:href="#icon-arrow"></use>
+                                        </svg>
+                                    </span>
+                                </a>
+                            </span>
+                        </div>
+                        <div class="esg-collapsible-group__body esg-is-collapsed" id="collapseGroupOne" role="tab" aria-labelledby="groupHeadingOne">
+                            <table style="width:98%">
+                                <tr>
+                                    <td style="width:33%">
+                                        <div class="esg-checkbox">
+                                            <input id="chkFolioNum" type="checkbox" />
+                                            <label for="chkFolioNum">@WebAdminUI.Resources.ElectronicCertificate.Institution.lblFolio</label>
+                                        </div>
+                                    </td>
+                                    <td style="width:33%">
+                                        <div class="esg-checkbox">
+                                            <input id="chkInstitutionName" type="checkbox" />
+                                            <label for="chkInstitutionName">@WebAdminUI.Resources.ElectronicCertificate.Institution.lblInstitutionName</label>
+                                        </div>
+                                    </td>
+                                    <td style="width:33%">
+                                        <div class="esg-checkbox">
+                                            <input id="chkFirstName" type="checkbox" />
+                                            <label for="chkFirstName">@WebAdminUI.Resources.ElectronicCertificate.Institution.lblStudentFirstName</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="esg-checkbox">
+                                            <input id="chkFirstSurname" type="checkbox" />
+                                            <label for="chkFirstSurname">@WebAdminUI.Resources.ElectronicCertificate.Institution.lblStudentFirstSurname</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="esg-checkbox">
+                                            <input id="chkSecondSurname" type="checkbox" />
+                                            <label for="chkSecondSurname">@WebAdminUI.Resources.ElectronicCertificate.Institution.lblStudentSecondSurname</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="esg-checkbox">
+                                            <input id="chkPeopleId" type="checkbox" />
+                                            <label for="chkPeopleId">@WebAdminUI.Resources.ElectronicCertificate.Institution.lblStudentPeopleId</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="esg-checkbox">
+                                            <input id="chkCurp" type="checkbox" />
+                                            <label for="chkCurp">@WebAdminUI.Resources.ElectronicCertificate.Institution.lblStudentCurp</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="esg-checkbox">
+                                            <input id="chkInstitutionCode" type="checkbox" />
+                                            <label for="chkInstitutionCode">@WebAdminUI.Resources.ElectronicCertificate.Institution.lblInstitutionCode</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="esg-checkbox">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="esg-modal-dialog__action-section esg-button-group esg-button-group--fluid" role="group" aria-label="button group">
+                            <div class="esg-button-group__item" role="group">
+                                <button id="btnCancelFolioFormat" class="esg-button esg-button--secondary esg-modal-dialog__button" type="button">
+                                    @WebAdminUI.Resources.ElectronicCertificate.Institution.lblCancel
+                                </button>
+                            </div>
+                            <div class="esg-button-group__item" role="group">
+                                <button id="btnApplyFolioFormat" class="esg-button esg-button--primary esg-modal-dialog__button" type="button">
+                                    @WebAdminUI.Resources.ElectronicCertificate.Institution.lblApply
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="esg-card--panel__body">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <span class="esg-h4">
+                        @WebAdminUI.Resources.ElectronicDegree.Institution.lblNoInstitutions
+                    </span><br /><br />
+                </div>
+            </div>
+        }
+    </div>
+
+    @section Scripts{
+        <script type="text/javascript">
+            var urlSaveInstitutionCampuses = '@Url.Action("Save","InstitutionCampuses")';
+            var urlInstitutionCampusesIndex = '@Url.Action("Index","InstitutionCampuses")';
+            var urlUnauthorized = '@Url.RouteUrl("ErrorUnauthorized")';
+        </script>
+        @Scripts.Render("~/bundles/EC/InstitutionCampuses")
+    }
+}

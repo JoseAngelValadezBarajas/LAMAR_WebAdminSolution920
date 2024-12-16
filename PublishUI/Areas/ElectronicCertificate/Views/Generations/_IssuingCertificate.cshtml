@@ -1,0 +1,130 @@
+<!--
+    <copyright file="_Student.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model WebAdminUI.Areas.ElectronicCertificate.Models.Generation.IssuingCertificateViewModel
+
+<div id="stpIssuingCertificate" style="display:none" class="esg-card--panel">
+    <div class="esg-card--panel__body">
+        <div class="esg-card--panel__content">
+            <div class="esg-container">
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <h4 class="esg-form__label">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblIssuingCertificate</h4> <br />
+                    <br />
+                </div>
+            </div>
+            <div class="esg-container">
+                <div class="esg-col-xs-12">
+                    <div class="esg-col-xs-12 esg-col-sm-6">
+                        <div id="divCertificationType" class="esg-form__group esg-has-feedback">
+                            <label class="esg-form__label esg-is-required">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCertificationType</label><br />
+                            <div class="esg-form__input-group">
+                                <select class="esg-form__input" id="CertificationType" name="CertificationType" required>
+                                    <option>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblSelect</option>
+                                </select>
+                                <div id="divCertificationTypeErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                                <div id="CertificationTypeError" class="esg-form__feedback-text" style="display: none">
+                                    @WebAdminUI.Resources.ElectronicCertificate.Generate.lblSelectCertificationType
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esg-col-xs-12 esg-col-sm-6">
+                        <div id="divIssuingDate" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(m => m.IssuingDate, new { @class = "esg-form__label esg-is-required" })<br />
+                            <div class="esg-form__input-group">
+                                @Html.TextBoxFor(m => m.IssuingDate, new { @class = "esg-form__input", @id = "IssuingDate", @required = "required" })
+                                <div id="divIssuingDateErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                                <div id="divIssuingDateErrorEmpty" class="esg-form__feedback-text" style="display: none">
+                                    @WebAdminUI.Resources.ElectronicCertificate.Generate.lblEnterIssuingDate
+                                </div>
+                                <div id="divIssuingDateErrorFormat" class="esg-form__feedback-text" style="display: none">
+                                    @WebAdminUI.Resources.ElectronicCertificate.Generate.lblEnterValidFormat
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="esg-col-xs-12">
+                    <div class="esg-col-xs-12 esg-col-sm-6">
+                        <div id="divIssuingPlace" class="esg-form__group esg-has-feedback">
+                            <label class="esg-form__label esg-is-required">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblIssuingPlace</label><br />
+                            <div class="esg-form__input-group">
+                                <select class="esg-form__input" id="IssuingPlace" name="IssuingPlace" required>
+                                    <option>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblSelect</option>
+                                </select>
+                                <div id="divIssuingPlaceErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                                <div id="IssuingPlaceError" class="esg-form__feedback-text" style="display: none">
+                                    @WebAdminUI.Resources.ElectronicCertificate.Generate.lblSelectIssuingPlace
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="esg-container" style="text-align:end">
+                <div class="eds-button-group" role="group" style="margin-top:1rem" aria-label="button group">
+                    <button class="eds-button eds-button--secondary" id="btnBackCourses" type="button">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblBack</button>
+                    <button class="eds-button eds-button--primary" id="btnValidateIssuingCertificate" type="button">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblValidate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="divIssuingCertificateWarning" style="display:none;">
+        <div id="OverlaydivIssuingCertificate" class="esg-modal-overlay" style="display:block; position:fixed; top:0; bottom:0; left:0; right:0;"></div>
+        <div id="divModalIssuingCertificateWarning" class="esg-modal-dialog">
+            <div class="esg-modal-dialog__header">
+                <button id="CloseModalFolioFormat" class="esg-modal-dialog__close esg-icon__container" type="button" data-dismiss="modal" aria-hidden="true">
+                    <svg class="esg-icon esg-icon--large esg-icon--neutral">
+                        <use xlink:href="#icon-close"></use>
+                    </svg>
+                </button>
+                <h3 class="esg-modal-dialog__title">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblIssuingCertificateModalTitle</h3>
+            </div>
+            <div class="esg-modal-dialog__body">
+                <p id="warningLessTotalCourses" style="display: none">
+                    <span class="esg-icon__container" style="margin-right:0.5rem;">
+                        <svg class="esg-icon--warning esg-icon--small" style="margin-top:0.4rem">
+                            <use xlink:href="#icon-info"></use>
+                        </svg>
+                    </span>
+                    <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblLessTotalCourses</span>
+                </p>
+                <p id="warningLessTotalCredits" style="display: none">
+                    <span class="esg-icon__container" style="margin-right:0.5rem;">
+                        <svg class="esg-icon--warning esg-icon--small" style="margin-top:0.4rem">
+                            <use xlink:href="#icon-info"></use>
+                        </svg>
+                    </span>
+                    <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblLessTotalCredits</span>
+                </p>
+            </div>
+            <div class="esg-modal-dialog__action-section esg-button-group esg-button-group--fluid" role="group" aria-label="button group">
+                <div class="esg-button-group__item" role="group">
+                    <button id="btnCancelWarningIssuingCertificate" class="esg-button esg-button--secondary esg-modal-dialog__button" type="button">
+                        @WebAdminUI.Resources.ElectronicCertificate.Generate.lblCancel
+                    </button>
+                </div>
+                <div class="esg-button-group__item" role="group">
+                    <button id="btnAcceptWarningIssuingCertificate" class="esg-button esg-button--primary esg-modal-dialog__button" type="button">
+                        @WebAdminUI.Resources.ElectronicCertificate.Generate.lblAcceptValidate
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

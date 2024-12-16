@@ -1,0 +1,487 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PC85Dev" Class="ElectronicCertificateDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">  
+  <Table Name="WebAdmin.[Transaction]" Member="Transactions">
+    <Type Name="Transaction">
+      <Column Name="TransactionId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Guid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="ProcessType" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Action" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Language" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="WebAdmin.CODE_RESPONSIBLEPOSITION" Member="CODE_RESPONSIBLEPOSITIONs">
+    <Type Name="CODE_RESPONSIBLEPOSITION">
+      <Column Name="ResponsiblePositionId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CODE_VALUE_KEY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CODE_VALUE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SHORT_DESC" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="MEDIUM_DESC" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="LONG_DESC" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="CREATE_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CREATE_TIME" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CREATE_OPID" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="CREATE_TERMINAL" Type="System.String" DbType="NVarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="REVISION_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="REVISION_TIME" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="REVISION_OPID" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="REVISION_TERMINAL" Type="System.String" DbType="NVarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="Version" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Association Name="CODE_RESPONSIBLEPOSITION_Responsible" Member="Responsibles" ThisKey="ResponsiblePositionId" OtherKey="ResponsiblePositionId" Type="Responsible" />
+    </Type>
+  </Table>
+  <Table Name="WebAdmin.Responsible" Member="Responsibles">
+    <Type Name="Responsible">
+      <Column Name="ResponsibleId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstSurname" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="SecondSurname" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="Curp" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ResponsiblePositionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Thumbprint" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreateOpId" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="RevisionDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RevisionOpId" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Association Name="Responsible_InstitutionCampus" Member="InstitutionCampus" ThisKey="ResponsibleId" OtherKey="ResponsibleId" Type="InstitutionCampus" />
+      <Association Name="CODE_RESPONSIBLEPOSITION_Responsible" Member="CODE_RESPONSIBLEPOSITION" ThisKey="ResponsiblePositionId" OtherKey="ResponsiblePositionId" Type="CODE_RESPONSIBLEPOSITION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="WebAdmin.CODE_PERIODTYPE" Member="CODE_PERIODTYPEs">
+    <Type Name="CODE_PERIODTYPE">
+      <Column Name="PeriodTypeId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CODE_VALUE_KEY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CODE_VALUE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SHORT_DESC" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="MEDIUM_DESC" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="LONG_DESC" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="CREATE_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CREATE_TIME" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CREATE_OPID" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="CREATE_TERMINAL" Type="System.String" DbType="NVarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="REVISION_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="REVISION_TIME" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="REVISION_OPID" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="REVISION_TERMINAL" Type="System.String" DbType="NVarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="Version" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="WebAdmin.ElectronicCertPermission" Member="ElectronicCertPermissions">
+    <Type Name="ElectronicCertPermission">
+      <Column Name="ElectronicCertPermissionId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OperatorId" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="GrantedOperatorId" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreateOpId" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="RevisionDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RevisionOpId" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="WebAdmin.ElectronicCertificateOperator" Member="ElectronicCertificateOperators">
+    <Type Name="ElectronicCertificateOperator">
+      <Column Name="ElectronicCertOperatorId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OperatorId" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="CampusCodeId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreateOpId" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="RevisionDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RevisionOpId" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="WebAdmin.ElectronicCertificateCourse" Member="ElectronicCertificateCourses">
+    <Type Name="ElectronicCertificateCourse">
+      <Column Name="ElectronicCertificateCourseId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ElectronicCertificateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TranscriptDetailId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SepId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CourseCode" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="EventName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="EventCycle" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FinalGrade" Type="System.String" DbType="NVarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeRemarkId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeRemark" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="SubjectTypeId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="SubjectType" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="Credits" Type="System.Decimal" DbType="Decimal(6,2) NOT NULL" CanBeNull="false" />
+      <Association Name="ElectronicCertificate_ElectronicCertificateCourse" Member="ElectronicCertificate" ThisKey="ElectronicCertificateId" OtherKey="ElectronicCertificateId" Type="ElectronicCertificate" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+    <InsertFunction FunctionId="FunctionId1">
+      <Argument Parameter="electronicCertificateId" Member="ElectronicCertificateId" />
+      <Argument Parameter="transcriptDetailId" Member="TranscriptDetailId" />
+      <Argument Parameter="sepId" Member="SepId" />
+      <Argument Parameter="courseCode" Member="CourseCode" />
+      <Argument Parameter="eventName" Member="EventName" />
+      <Argument Parameter="eventCycle" Member="EventCycle" />
+      <Argument Parameter="finalGrade" Member="FinalGrade" />
+      <Argument Parameter="gradeRemarkId" Member="GradeRemarkId" />
+      <Argument Parameter="gradeRemark" Member="GradeRemark" />
+      <Argument Parameter="subjectTypeId" Member="SubjectTypeId" />
+      <Argument Parameter="subjectType" Member="SubjectType" />
+      <Argument Parameter="credits" Member="Credits" />
+      <Argument Parameter="electronicCertificateCourseId" Member="ElectronicCertificateCourseId" />
+    </InsertFunction>
+  </Table>
+  <Table Name="WebAdmin.ElectronicCertificateFile" Member="ElectronicCertificateFiles">
+    <Type Name="ElectronicCertificateFile">
+      <Column Name="ElectronicCertificateFileId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ElectronicCertificateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CertificateXml" Type="System.Xml.Linq.XElement" DbType="Xml NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CertificatePdf" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CreateDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreateOpId" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="RevisionDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RevisionOpId" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Association Name="ElectronicCertificate_ElectronicCertificateFile" Member="ElectronicCertificate" ThisKey="ElectronicCertificateId" OtherKey="ElectronicCertificateId" Type="ElectronicCertificate" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+    <InsertFunction FunctionId="FunctionId2">
+      <Argument Parameter="electronicCertificateId" Member="ElectronicCertificateId" />
+      <Argument Parameter="certificateXml" Member="CertificateXml" />
+      <Argument Parameter="certificatePdf" Member="CertificatePdf" />
+      <Argument Parameter="electronicCertificateFileId" Member="ElectronicCertificateFileId" />
+    </InsertFunction>
+  </Table>
+  <Table Name="WebAdmin.CODE_CERTIFICATETYPE" Member="CODE_CERTIFICATETYPEs">
+    <Type Name="CODE_CERTIFICATETYPE">
+      <Column Name="CertificateTypeId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CODE_VALUE_KEY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CODE_VALUE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SHORT_DESC" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="MEDIUM_DESC" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="LONG_DESC" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="CREATE_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CREATE_TIME" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CREATE_OPID" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="CREATE_TERMINAL" Type="System.String" DbType="NVarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="REVISION_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="REVISION_TIME" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="REVISION_OPID" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="REVISION_TERMINAL" Type="System.String" DbType="NVarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="Version" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="WebAdmin.AcademicPlanCourseCatalog" Member="AcademicPlanCourseCatalogs">
+    <Type Name="AcademicPlanCourseCatalog">
+      <Column Name="AcademicPlanCourseCatalogId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RvoeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Discipline" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Classification" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="EventId" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="EventSubType" Type="System.String" DbType="NVarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="Credits" Type="System.Decimal" DbType="Decimal(6,2) NOT NULL" CanBeNull="false" />
+      <Column Name="SepId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="SubjectTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreateOpId" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="RevisionDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RevisionOpId" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="WebAdmin.ElectronicCertificate" Member="ElectronicCertificates">
+    <Type Name="ElectronicCertificate">
+      <Column Name="ElectronicCertificateId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Version" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="CertificateType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Folio" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="InstitutionSepId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="InstitutionName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CampusSepCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CampusName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CampusFederalEntityCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CampusFederalEntity" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="ResponsibleCurp" Type="System.String" DbType="NVarChar(18) NOT NULL" CanBeNull="false" />
+      <Column Name="ResponsibleName" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="ResponsibleFirstSurname" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="ResponsibleSecondSurname" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="ResponsiblePositionId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ResponsiblePosition" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="RvoeAgreementNumber" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ExpeditionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="MajorId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MajorCode" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="MajorName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PeriodTypeId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="PeriodType" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="PlanCode" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="StudyLevelId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="StudyLevel" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="MinimumGrade" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="MaximumGrade" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="MinimumPassingGrade" Type="System.Decimal" DbType="Decimal(4,2) NOT NULL" CanBeNull="false" />
+      <Column Name="PeopleCodeId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Curp" Type="System.String" DbType="NVarChar(18) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstSurname" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="SecondSurname" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="GenderId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Gender" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="BirthDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TotalCourse" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CourseAssigned" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Average" Type="System.Decimal" DbType="Decimal(4,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalCredit" Type="System.Decimal" DbType="Decimal(8,3) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditEarned" Type="System.Decimal" DbType="Decimal(8,3) NOT NULL" CanBeNull="false" />
+      <Column Name="CertificationTypeId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CertificationType" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="IssuingDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IssuingFederalEntityCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="IssuingFederalEntity" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PaymentFolio" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="CreateDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreateOpId" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="RevisionDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RevisionOpId" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="SigningInstitutionId" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalCycle" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ElectronicCertificate_ElectronicCertificateCourse" Member="ElectronicCertificateCourses" ThisKey="ElectronicCertificateId" OtherKey="ElectronicCertificateId" Type="ElectronicCertificateCourse" />
+      <Association Name="ElectronicCertificate_ElectronicCertificateFile" Member="ElectronicCertificateFiles" ThisKey="ElectronicCertificateId" OtherKey="ElectronicCertificateId" Type="ElectronicCertificateFile" />
+    </Type>
+  </Table>
+  <Table Name="WebAdmin.InstitutionCampus" Member="InstitutionCampus">
+    <Type Name="InstitutionCampus">
+      <Column Name="InstitutionCampusId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InstitutionCodeId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="InstitutionSepId" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CampusCodeId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CampusSepCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ResponsibleId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Folio" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="FolioFormat" Type="System.String" DbType="NVarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="FederalEntityId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreateOpId" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="RevisionDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RevisionOpId" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="SigningInstitutionId" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Association Name="Responsible_InstitutionCampus" Member="Responsible" ThisKey="ResponsibleId" OtherKey="ResponsibleId" Type="Responsible" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="WebAdmin.spSelInstitutionCampus" Method="spSelInstitutionCampus">
+    <ElementType Name="spSelInstitutionCampusResult">
+      <Column Name="OrgCodeId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="InstitutionName" Type="System.String" DbType="NVarChar(54)" CanBeNull="true" />
+      <Column Name="CampusCodeId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CampusName" Type="System.String" DbType="NVarChar(54)" CanBeNull="true" />
+      <Column Name="InstitutionSepId" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CampusSepCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ResponsibleId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FolioFormat" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="InstitutionCampusId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="WebAdmin.spSelCampusFromInstitutionCampus" Method="spSelCampusFromInstitutionCampus">
+    <ElementType Name="spSelCampusFromInstitutionCampusResult">
+      <Column Name="InstitutionCampusId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InstitutionCodeId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CampusCodeId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CampusName" Type="System.String" DbType="NVarChar(93) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="WebAdmin.spSelMatriculationYearByCampus" Method="spSelMatriculationYearByCampus">
+    <Parameter Name="CampusCodeId" Parameter="campusCodeId" Type="System.String" DbType="NVarChar(10)" />
+    <ElementType Name="spSelMatriculationYearByCampusResult">
+      <Column Name="MatricYear" Type="System.String" DbType="NVarChar(4) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="WebAdmin.spSelMatriculationTermByCampusYear" Method="spSelMatriculationTermByCampusYear">
+    <Parameter Name="CampusCodeId" Parameter="campusCodeId" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="MatricYear" Parameter="matricYear" Type="System.String" DbType="NVarChar(4)" />
+    <ElementType Name="spSelMatriculationTermByCampusYearResult">
+      <Column Name="MatricTerm" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="MatricTermDesc" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="MatricTermSort" Type="System.String" DbType="NVarChar(3) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="WebAdmin.spSelInstitutionCampusOperator" Method="spSelInstitutionCampusOperator">
+    <ElementType Name="spSelInstitutionCampusOperatorResult">
+      <Column Name="InstitutionCodeId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CampusCodeId" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CampusName" Type="System.String" DbType="NVarChar(93) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="WebAdmin.spUpdTranscriptDetailCertificate" Method="spUpdTranscriptDetailCertificate">
+    <Parameter Name="TranscriptDetailCertificateId" Parameter="transcriptDetailCertificateId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="GradeRemarkId" Parameter="gradeRemarkId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SubjectTypeId" Parameter="subjectTypeId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IncludedInCertificate" Parameter="includedInCertificate" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="OperatorId" Parameter="operatorId" Type="System.String" DbType="NVarChar(8)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="WebAdmin.spInsTranscriptDetailCertificate" Method="spInsTranscriptDetailCertificate">
+    <Parameter Name="TranscriptDetailId" Parameter="transcriptDetailId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="GradeRemarkId" Parameter="gradeRemarkId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SubjectTypeId" Parameter="subjectTypeId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IncludedInCertificate" Parameter="includedInCertificate" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="OperatorId" Parameter="operatorId" Type="System.String" DbType="NVarChar(8)" />
+    <Parameter Name="TranscriptDetailCertificateId" Parameter="transcriptDetailCertificateId" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="WebAdmin.spSelAcademicPlanCourseByStudent" Method="spSelAcademicPlanCourseByStudent">
+    <Parameter Name="PeopleId" Parameter="peopleId" Type="System.String" DbType="NVarChar(9)" />
+    <Parameter Name="RvoeId" Parameter="rvoeId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="spSelAcademicPlanCourseByStudentResult">
+      <Column Name="TotalCourses" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotalCredits" Type="System.Decimal" DbType="Decimal(38,3)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="WebAdmin.spSelInstitutionCampusFolio" Method="spSelInstitutionCampusFolio">
+    <Parameter Name="PeopleId" Parameter="peopleId" Type="System.String" DbType="NVarChar(9)" />
+    <Parameter Name="InstitutionCampusId" Parameter="institutionCampusId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="spSelInstitutionCampusFolioResult">
+      <Column Name="Folio" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Id="FunctionId1" Name="WebAdmin.spInsElectronicCertificateCourse" Method="spInsElectronicCertificateCourse">
+    <Parameter Name="ElectronicCertificateId" Parameter="electronicCertificateId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TranscriptDetailId" Parameter="transcriptDetailId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SepId" Parameter="sepId" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="CourseCode" Parameter="courseCode" Type="System.String" DbType="NVarChar(25)" />
+    <Parameter Name="EventName" Parameter="eventName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="EventCycle" Parameter="eventCycle" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="FinalGrade" Parameter="finalGrade" Type="System.String" DbType="NVarChar(4)" />
+    <Parameter Name="GradeRemarkId" Parameter="gradeRemarkId" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="GradeRemark" Parameter="gradeRemark" Type="System.String" DbType="NVarChar(40)" />
+    <Parameter Name="SubjectTypeId" Parameter="subjectTypeId" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="SubjectType" Parameter="subjectType" Type="System.String" DbType="NVarChar(40)" />
+    <Parameter Name="Credits" Parameter="credits" Type="System.Decimal" DbType="Decimal(6,2)" />
+    <Parameter Name="ElectronicCertificateCourseId" Parameter="electronicCertificateCourseId" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Id="FunctionId2" Name="WebAdmin.spInsElectronicCertificateFile" Method="spInsElectronicCertificateFile">
+    <Parameter Name="ElectronicCertificateId" Parameter="electronicCertificateId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CertificateXml" Parameter="certificateXml" Type="System.Xml.Linq.XElement" DbType="Xml" />
+    <Parameter Name="CertificatePdf" Parameter="certificatePdf" Type="System.Data.Linq.Binary" DbType="VarBinary(1)" />
+    <Parameter Name="OperatorId" Parameter="operatorId" Type="System.String" DbType="NVarChar(8)" />
+    <Parameter Name="ElectronicCertificateFileId" Parameter="electronicCertificateFileId" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="WebAdmin.spSelStudentCourseOutsideAcademicPlan" Method="spSelStudentCourseOutsideAcademicPlan">
+    <Parameter Name="PeopleId" Parameter="peopleId" Type="System.String" DbType="NVarChar(9)" />
+    <Parameter Name="RvoeId" Parameter="rvoeId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="spSelStudentCourseOutsideAcademicPlanResult">
+      <Column Name="TranscriptDetailId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CourseCycle" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CourseCode" Type="System.String" DbType="NVarChar(22) NOT NULL" CanBeNull="false" />
+      <Column Name="CourseName" Type="System.String" DbType="NVarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="FinalGrade" Type="System.Decimal" DbType="Decimal(8,4) NOT NULL" CanBeNull="false" />
+      <Column Name="Credit" Type="System.Decimal" DbType="Decimal(6,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Section" Type="System.String" DbType="NVarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="EventType" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="CreditType" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="GradeRemarkId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubjectTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="WebAdmin.spSelAcademicPlanDetailByRvoe" Method="spSelAcademicPlanDetailByRvoe">
+    <Parameter Name="RvoeId" Parameter="rvoeId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="spSelAcademicPlanDetailByRvoeResult">
+      <Column Name="InstitutionName" Type="System.String" DbType="NVarChar(45) NOT NULL" CanBeNull="false" />
+      <Column Name="InstitutionSepId" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CampusName" Type="System.String" DbType="NVarChar(45) NOT NULL" CanBeNull="false" />
+      <Column Name="CampusSepId" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="FederalEntityCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FederalEntityShort" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="FederalEntityLong" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="InstitutionCampusId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SigningInstitutionId" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="Curp" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstSurname" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="SecondSurname" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="JobTitleShort" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="JobTitleLong" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="MajorName" Type="System.String" DbType="NVarChar(62) NOT NULL" CanBeNull="false" />
+      <Column Name="MajorId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MajorCode" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="PlanCode" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="PeriodTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PeriodTypeShort" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="PeriodTypeLong" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="StudyLevelShort" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="StudyLevelLong" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="RvoeNumber" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="RvoeIssuingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MinimumGrade" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="MaximumGrade" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="MinimumPassingGrade" Type="System.Decimal" DbType="Decimal(4,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="WebAdmin.spInsElectronicCertificate" Method="spInsElectronicCertificate">
+    <Parameter Name="Version" Parameter="version" Type="System.String" DbType="NVarChar(5)" />
+    <Parameter Name="CertificateType" Parameter="certificateType" Type="System.String" DbType="NVarChar(40)" />
+    <Parameter Name="Folio" Parameter="folio" Type="System.String" DbType="NVarChar(40)" />
+    <Parameter Name="InstitutionSepId" Parameter="institutionSepId" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="InstitutionName" Parameter="institutionName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="CampusSepCode" Parameter="campusSepCode" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="CampusName" Parameter="campusName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="CampusFederalEntityCode" Parameter="campusFederalEntityCode" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="CampusFederalEntity" Parameter="campusFederalEntity" Type="System.String" DbType="NVarChar(40)" />
+    <Parameter Name="ResponsibleCurp" Parameter="responsibleCurp" Type="System.String" DbType="NVarChar(18)" />
+    <Parameter Name="ResponsibleName" Parameter="responsibleName" Type="System.String" DbType="NVarChar(60)" />
+    <Parameter Name="ResponsibleFirstSurname" Parameter="responsibleFirstSurname" Type="System.String" DbType="NVarChar(60)" />
+    <Parameter Name="ResponsibleSecondSurname" Parameter="responsibleSecondSurname" Type="System.String" DbType="NVarChar(60)" />
+    <Parameter Name="ResponsiblePositionId" Parameter="responsiblePositionId" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="ResponsiblePosition" Parameter="responsiblePosition" Type="System.String" DbType="NVarChar(40)" />
+    <Parameter Name="RvoeAgreementNumber" Parameter="rvoeAgreementNumber" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="ExpeditionDate" Parameter="expeditionDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="MajorId" Parameter="majorId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MajorCode" Parameter="majorCode" Type="System.String" DbType="NVarChar(25)" />
+    <Parameter Name="MajorName" Parameter="majorName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="PeriodTypeId" Parameter="periodTypeId" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="PeriodType" Parameter="periodType" Type="System.String" DbType="NVarChar(40)" />
+    <Parameter Name="PlanCode" Parameter="planCode" Type="System.String" DbType="NVarChar(25)" />
+    <Parameter Name="StudyLevelId" Parameter="studyLevelId" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="StudyLevel" Parameter="studyLevel" Type="System.String" DbType="NVarChar(40)" />
+    <Parameter Name="MinimumGrade" Parameter="minimumGrade" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="MaximumGrade" Parameter="maximumGrade" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="MinimumPassingGrade" Parameter="minimumPassingGrade" Type="System.Decimal" DbType="Decimal(4,2)" />
+    <Parameter Name="PeopleCodeId" Parameter="peopleCodeId" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="Curp" Parameter="curp" Type="System.String" DbType="NVarChar(18)" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(60)" />
+    <Parameter Name="FirstSurname" Parameter="firstSurname" Type="System.String" DbType="NVarChar(60)" />
+    <Parameter Name="SecondSurname" Parameter="secondSurname" Type="System.String" DbType="NVarChar(60)" />
+    <Parameter Name="GenderId" Parameter="genderId" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="Gender" Parameter="gender" Type="System.String" DbType="NVarChar(40)" />
+    <Parameter Name="BirthDate" Parameter="birthDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="TotalCourse" Parameter="totalCourse" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CourseAssigned" Parameter="courseAssigned" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Average" Parameter="average" Type="System.Decimal" DbType="Decimal(4,2)" />
+    <Parameter Name="TotalCredit" Parameter="totalCredit" Type="System.Decimal" DbType="Decimal(8,3)" />
+    <Parameter Name="CreditEarned" Parameter="creditEarned" Type="System.Decimal" DbType="Decimal(8,3)" />
+    <Parameter Name="CertificationTypeId" Parameter="certificationTypeId" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="CertificationType" Parameter="certificationType" Type="System.String" DbType="NVarChar(40)" />
+    <Parameter Name="IssuingDate" Parameter="issuingDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="IssuingFederalEntityCode" Parameter="issuingFederalEntityCode" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="IssuingFederalEntity" Parameter="issuingFederalEntity" Type="System.String" DbType="NVarChar(40)" />
+    <Parameter Name="Status" Parameter="status" Type="System.String" DbType="NVarChar(1)" />
+    <Parameter Name="Note" Parameter="note" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="PaymentFolio" Parameter="paymentFolio" Type="System.String" DbType="NVarChar(25)" />
+    <Parameter Name="OperatorId" Parameter="operatorId" Type="System.String" DbType="NVarChar(8)" />
+    <Parameter Name="SigningInstitutionId" Parameter="signingInstitutionId" Type="System.String" DbType="NVarChar(5)" />
+    <Parameter Name="TotalCycle" Parameter="totalCycle" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ElectronicCertificateId" Parameter="electronicCertificateId" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="WebAdmin.spSelAcademicPlanByStudent" Method="spSelAcademicPlanByStudent">
+    <Parameter Name="PeopleId" Parameter="peopleId" Type="System.String" DbType="NVarChar(9)" />
+    <Parameter Name="OperatorId" Parameter="operatorId" Type="System.String" DbType="NVarChar(8)" />
+    <ElementType Name="spSelAcademicPlanByStudentResult">
+      <Column Name="PDC" Type="System.String" DbType="NVarChar(62) NOT NULL" CanBeNull="false" />
+      <Column Name="MatricYearTerm" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="CampusName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="RvoeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IncompleteRvoe" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MissingInstitutionSepId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MissingCampusSepCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MissingCampusResponsible" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CampusNotAssignedToOperator" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IncompleteMapping" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MissingSigningInstitutionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

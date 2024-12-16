@@ -1,0 +1,405 @@
+<!--
+    <copyright file="_NewGlobalInvoiceCreation.cshtml" company="Ellucian">
+        Copyright 2022 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+
+@model WebAdminUI.Models.FiscalRecords.CashReceiptViewModel
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formCreate" }))
+{
+<div class="esg-card--panel">
+    <div class="esg-card--panel__body">
+
+        @*Receiver*@
+        <div class="row">
+            <div class="esg-card--panel__body" style="margin-left:20px">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <fieldset>
+                        <legend>@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.Receiver</legend>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div id="RecTaxPayerGroup" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.TaxPayerId, new { @class = "esg-form__label esg-is-required" })<br />
+                                    <div class="esg-form__input-group">
+                                        @Html.TextBox("RecTaxPayerId", PowerCampus.Entities.Constants.GlobalReceiverTaxPayerId, new { @class = "esg-form__input", @id = "RecTaxPayerId", @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(m => m.TaxPayerId, "", new { @class = "text-danger validation-label" })
+                                        <div id="RecTaxPayerIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                            <svg class="esg-icon esg-icon--error">
+                                                <use xlink:href="#icon-error"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="RecNameGroup" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.CorporateName, new { @class = "esg-form__label esg-is-required" })<br />
+                                    <div class="esg-form__input-group">
+                                        @Html.TextBoxFor(m => m.CorporateName, new { @class = "esg-form__input", @id = "RecName", @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(m => m.CorporateName, "", new { @class = "text-danger validation-label" })
+                                        <label class="text-danger" id="RecNameIncorrect" style="display:none; ">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.CorporateNameIncorrect</label>
+                                        <div id="RecNameIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                            <svg class="esg-icon esg-icon--error">
+                                                <use xlink:href="#icon-error"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="EmailGroup" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.preferredReceiverEmail, new { @class = "esg-form__label esg-is-required" })<br />
+                                    <div class="esg-form__input-group">
+                                        @Html.TextBoxFor(m => m.preferredReceiverEmail, new { @class = "esg-form__input", @id = "PreferredEmail", placeholder = @WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.YourEmail })
+                                        @Html.ValidationMessageFor(m => m.preferredReceiverEmail, "", new { @class = "text-danger validation-label" })
+                                        <div id="EmailIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                            <svg class="esg-icon esg-icon--error">
+                                                <use xlink:href="#icon-error"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div id="RecTaxAddressGroup" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.RecTaxAddress, new { @class = "esg-form__label esg-is-required" })<br />
+                                    <div class="esg-form__input-group">
+                                        @Html.TextBoxFor(m => m.RecTaxAddress, new { @class = "esg-form__input", @id = "RecTaxAddress", @readonly = "readonly" })
+                                        <label class="text-danger" id="RecTaxAddressIncorrect" style="display:none; ">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.RecTaxAddressIncorrect</label>
+                                        <div id="FiscalResidencyIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                            <svg class="esg-icon esg-icon--error">
+                                                <use xlink:href="#icon-error"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="RecTaxRegimenGroup" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.RecTaxRegimen, new { @class = "esg-form__label esg-is-required" })<br />
+                                    <div class="esg-form__input-group">
+                                        @Html.TextBoxFor(m => m.RecTaxRegimen, new { @class = "esg-form__input", @id = "RecTaxRegimen", @readonly = "readonly" })
+                                        <label class="text-danger" id="RecTaxRegimenIncorrect" style="display:none; ">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.RecTaxRegimenIncorrect</label>
+                                        <div id="RecTaxRegimenIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                            <svg class="esg-icon esg-icon--error">
+                                                <use xlink:href="#icon-error"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="RecCfdiUsageGroup" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.CfdiUsage, new { @class = "esg-form__label esg-is-required" })<br />
+                                    <div class="esg-form__input-group">
+                                        @Html.TextBox("CfdiUsage", "S01 - Sin efectos fiscales", new { @class = "esg-form__input", @id = "RecCfdiUsage", @readonly = "readonly" })
+                                        <label class="text-danger" id="RecCfdiUsageIncorrect" style="display:none; ">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.RecCfdiUsageIncorrect</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+
+        @*Issuer*@
+        <div class="row">
+            <div class="esg-card--panel__body" style="margin-left:20px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <fieldset>
+                        <legend>@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.Issuer</legend>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div id="IssTaxPayerGroup" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.IssTaxpayerId, new { @class = "esg-form__label esg-is-required" })<br />
+                                    <div class="esg-form__input-group">
+                                        @Html.TextBox("IssTaxPayerId", null, new { @class = "esg-form__input", @id = "IssTaxPayerId" })
+                                        <div id="IssTaxPayerDivLookup" class="esg-form__icon esg-icon__container esg-form__icon--submit">
+                                            <svg class="esg-icon esg-icon--small">
+                                                <use xlink:href="#icon-lookup"></use>
+                                            </svg>
+                                        </div>
+                                        @Html.ValidationMessage("IssTaxPayerId", "", new { @class = "text-danger validation-label" })
+                                        <div id="IssTaxPayerIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                            <svg class="esg-icon esg-icon--error">
+                                                <use xlink:href="#icon-error"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                @Html.LabelFor(m => m.IssCorporateName, new { @class = "esg-form__label" })<br />
+                                @Html.TextBox("IssNameCorpName", null, new { @class = "esg-form__input", @id = "IssNameCorpName", @readonly = "readonly" })
+                                <br />
+                                <div id="IssTaxRegimenGroup" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.IssTaxRegimen, new { @class = "esg-form__label esg-is-required" })<br />
+                                    <div class="esg-form__input-group">
+                                        @Html.TextBox("IssTaxRegimen", null, new { @class = "esg-form__input", @id = "IssTaxRegimen", @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(m => m.IssTaxRegimen, "", new { @class = "text-danger validation-label" })
+                                        <div id="IssTaxRegimenIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                            <svg class="esg-icon esg-icon--error">
+                                                <use xlink:href="#icon-error"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div id="IssIssuingAddressGroup" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.IssIssuingAddress, new { @class = "esg-form__label esg-is-required" })<br />
+                                    <div class="esg-form__input-group">
+                                        @Html.DropDownListFor(m => m.IssIssuingAddress, new SelectList("", "", ""), "", new { @class = "esg-form__input", @id = "IssIssuingAddress" })
+                                        @Html.ValidationMessageFor(m => m.IssIssuingAddress, "", new { @class = "text-danger validation-label" })
+                                        <div id="IssIssuingAddressIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                            <svg class="esg-icon esg-icon--error">
+                                                <use xlink:href="#icon-error"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="IssPlaceIssueGroup" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.IssPlaceIssue, new { @class = "esg-form__label esg-is-required" })
+                                    <div class="esg-form__input-group">
+                                        @Html.TextBox("IssPlaceIssue", null, new { @class = "esg-form__input", @id = "IssPlaceIssue", @readonly = "readonly" })
+                                        @Html.ValidationMessage("IssPlaceIssue", "", new { @class = "text-danger validation-label" })
+                                        <div id="IssPlaceIssueIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                            <svg class="esg-icon esg-icon--error">
+                                                <use xlink:href="#icon-error"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                @Html.LabelFor(m => m.IssSerial, new { @class = "esg-form__label" })
+                                @Html.DropDownListFor(m => m.IssIssuingAddress, new SelectList("", "", ""), "", new { @class = "esg-form__input", @id = "IssSerial" })
+                                <label id="lblWarnSerial" style="display:none" class="text-danger">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.lblLastFolioAssigned</label>
+                                <br />
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+
+        @*Fiscal Records*@
+        <div class="row">
+            <div class="esg-card--panel__body" style="margin-left:20px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <fieldset>
+                        <legend>@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.SubHeaderFiscalRecord</legend>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div id="PaymentTypeGroup" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.PaymentType, new { @class = "esg-form__label" })<br />
+                                    <div class="esg-form__input-group">
+                                        <select class="esg-form__input" id="PaymentType" name="PaymentType">
+                                            @{
+                                                    var selectedValue = false;
+                                            }
+                                            @foreach (var paymentType in Model.PaymentTypeList)
+                                                {
+                                                    if (paymentType.Status == "1")
+                                                    {
+                                                        if (selectedValue == false)
+                                                        {
+                                            <option selected style="font-weight: bold" value="@paymentType.Code">@paymentType.Description</option>
+                                                            selectedValue = true;
+                                                        }
+                                                        else
+                                                        {
+                                            <option style="font-weight: bold" value="@paymentType.Code">@paymentType.Description</option>
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                            <option value="@paymentType.Code">@paymentType.Description</option>
+                                                    }
+                                                }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div id="PaymentMethodGroup" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.ReceiverPaymentMethodDefault, new { @class = "esg-form__label" })<br />
+                                    <div class="esg-form__input-group">
+                                        @Html.TextBoxFor(m => m.ReceiverPaymentMethodDefault, new { @class = "esg-form__input", @id = "PaymentMethod", @readonly = "readonly" })
+                                    </div>
+                                </div>
+                                <div id="CurrencyGroup" class="esg-form__group esg-has-feedback">
+                                    <label class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.IssCurrency</label><br />
+                                    <div class="esg-form__input-group">
+                                        @Html.TextBox("IssCurrency", PowerCampus.Entities.Constants.DefaultCurrency, new { @class = "esg-form__input", @id = "IssCurrency", @readonly = "readonly" })
+                                    </div>
+                                </div>
+                                <div id="CommentsGroup" class="esg-form__group esg-has-feedback">
+                                    <label class="esg-form__label" for="defaultTextarea">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.IssComments</label><br />
+                                    <div class="esg-form__input-group">
+                                        @Html.TextAreaFor(m => m.Comments, new { @class = "esg-form__input", @id = "IssComments", @rows = "3", maxlength = 500 })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div id="FrequencyGroup" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.FrequencyList, new { @class = "esg-form__label esg-is-required" })<br />
+                                    <div class="esg-form__input-group">
+                                        @Html.DropDownListFor(m => m.Frequency.Code, new SelectList(Model.FrequencyList, "Code", "Description"), @WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.lblSelect, new { @class = "esg-form__input", @id = "Frequency" })
+                                        <label class="text-danger" id="FrequencyRequired" style="display:none; ">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.FrequencyRequired</label>
+                                        <div id="FrequencyIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                            <svg class="esg-icon esg-icon--error">
+                                                <use xlink:href="#icon-error"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="MonthGroup" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.MonthList, new { @class = "esg-form__label esg-is-required" })<br />
+                                    <div class="esg-form__input-group">
+                                        @Html.DropDownListFor(m => m.Month.Code, new SelectList(Model.MonthList, "Code", "Description"), @WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.lblSelect, new { @class = "esg-form__input", @id = "Month" })
+                                        <label class="text-danger field-validation-error" id="MonthRequired" style="display:none; ">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.MonthRequired</label>
+                                        <div id="MonthIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                            <svg class="esg-icon esg-icon--error">
+                                                <use xlink:href="#icon-error"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="YearGroup" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.YearList, new { @class = "esg-form__label esg-is-required" })<br />
+                                    <div class="esg-form__input-group">
+                                        @Html.DropDownListFor(m => m.Year.Id, new SelectList(Model.YearList, "Code", "Description"), new { @class = "esg-form__input", @id = "Year" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+
+        @*Details*@
+        <div class="row">
+            <div class="esg-card--panel__body" style="margin-left:20px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <fieldset>
+                        <legend>@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.lblDetail</legend>
+                        <div class="row">
+                            <div class="esg-card--panel__body">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                                            @Html.LabelFor(m => m.StartDate, new { @class = "esg-form__label" })
+                                            <div class="esg-form__input-group">
+                                                @Html.TextBox("StartDate", null, new { @class = "esg-form__input", @id = "StartDate", @readonly = "readonly" })
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                                            <div class="esg-form__group">
+                                                @Html.LabelFor(m => m.EndDate, new { @class = "esg-form__label" })
+                                                <div class="esg-form__input-group ">
+                                                    @Html.TextBox("EndDate", null, new { @class = "esg-form__input", @id = "EndDate", @readonly = "readonly" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="records_table">
+                @Html.Partial("GlobalDetailsView", Model)
+            </div>
+        </div>
+
+        <div class="esg-alert esg-alert--error errorMessageStartDate" role="alert" style="display:none; margin-left:20px;">
+            <span class="esg-alert__icon-wrapper">
+                <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                    <svg class="esg-icon esg-icon--error-dark">
+                        <use xlink:href="#icon-error"></use>
+                    </svg>
+                </span>
+            </span>
+            <div class="esg-alert__message">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.StartDateRequired</div>
+        </div>
+        <div class="esg-alert esg-alert--error errorMessageEndDate" role="alert" style="display:none; margin-left:20px;">
+            <span class="esg-alert__icon-wrapper">
+                <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                    <svg class="esg-icon esg-icon--error-dark">
+                        <use xlink:href="#icon-error"></use>
+                    </svg>
+                </span>
+            </span>
+            <div class="esg-alert__message">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.EndDateRequired</div>
+        </div>
+
+        @*Messages*@
+        <div class="row">
+            <div class="esg-card--panel__body" style="margin-left:20px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="esg-alert esg-alert--error errorMessageSerialError" role="alert" style="display:none">
+                        <span class="esg-alert__icon-wrapper">
+                            <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                                <svg class="esg-icon esg-icon--error-dark">
+                                    <use xlink:href="#icon-error"></use>
+                                </svg>
+                            </span>
+                        </span>
+                        <div class="esg-alert__message">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.SerialError</div>
+                    </div>
+                    <div class="esg-alert esg-alert--error errorMessageRequiredDiv" role="alert" style="display:none">
+                        <span class="esg-alert__icon-wrapper">
+                            <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                                <svg class="esg-icon esg-icon--error-dark">
+                                    <use xlink:href="#icon-error"></use>
+                                </svg>
+                            </span>
+                        </span>
+                        <div class="esg-alert__message">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.RequiredFieldsMessage</div>
+                    </div>
+                    <div class="esg-alert esg-alert--error errorMessageDiv" role="alert" style="display:none">
+                        <span class="esg-alert__icon-wrapper">
+                            <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                                <svg class="esg-icon esg-icon--error-dark">
+                                    <use xlink:href="#icon-error"></use>
+                                </svg>
+                            </span>
+                        </span>
+                        <div class="esg-alert__message errorMessageResult">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.ErrorMessageResult</div>
+                    </div>
+                    <div class="esg-alert esg-alert--success successMessageDiv" role="alert" style="display:none">
+                        <span class="esg-alert__icon-wrapper">
+                            <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                                <svg class="esg-icon esg-icon--success-dark">
+                                    <use xlink:href="#icon-check"></use>
+                                </svg>
+                            </span>
+                        </span>
+                        <div class="esg-alert__message successMessageResult"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="newGlobalInvoiceFooter" class="esg-container" style="text-align:end">
+        <div class="eds-button-group" role="group" style="margin-top:1rem" aria-label="button group">
+            <button class="eds-button eds-button--secondary" id="btnBackNewInvoice" type="button">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.btnBack</button>
+            <button class="eds-button eds-button--primary" id="btnProcessGlobal" type="button">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.btnProcessAndFinish</button>
+        </div>
+    </div>
+</div>
+}
+
+<input id="hdnSubsInvoiceExpeditionId" type="hidden" value="@Model.InvoiceExpeditionId" />
+<input id="hdnSusbsSerialNumber" type="hidden" value="@Model.IssSerial" />
+<input id="hdnCFDIRelated" type="hidden" value="@Model.CFDIRelated" />
+<input id="hdnCFDIRelatedId" type="hidden" value="@Model.CFDIRelatedId" />
+<input id="hdnCancelReasonName" type="hidden" value="@Model.CancelReasonName" />
+
+@section Scripts{
+    <script>
+        var urlSelectIssuerSetUp = '@Url.Action("SelectIssuerSetUp", "Issuers")';
+        var urlGetTaxRegimen = '@Url.Action("GetTaxRegimen", "Issuers")';
+        var urlGetSerialNumber = '@Url.Action("GetSerialNumber", "Issuers")';
+        var urlGetIssuers = '@Url.Action("Get", "Issuers")';
+        var urlGetGlobalCashReceipts = '@Url.Action("GetGlobalCashReceipts", "FiscalRecords")';
+        var urlGetGlobalPaymentType = '@Url.Action("GetGlobalPaymentType", "FiscalRecords")';
+        var urlProcessGlobal = '@Url.Action("ProcessGlobal", "FiscalRecords")';
+        var urlViewAll = '@Url.Action("ViewAll", "FiscalRecords")';
+    </script>
+    @Scripts.Render("~/bundles/FR/GlobalFiscalRecords")
+}

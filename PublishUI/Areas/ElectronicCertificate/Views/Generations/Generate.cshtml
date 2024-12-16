@@ -1,0 +1,89 @@
+<!--
+    <copyright file="Generate.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model WebAdminUI.Areas.ElectronicCertificate.Models.Generation.GenerationViewModel
+
+@{
+    ViewBag.Title = WebAdminUI.Resources.ElectronicCertificate.Generate.lblGenerateElectronicCertificates;
+}
+
+@section Styles{
+    @Styles.Render("~/Content/cssED")
+    @Styles.Render("~/Content/datetime")
+}
+
+@Html.Partial("~/Areas/General/Views/Shared/_PageTitle.cshtml", WebAdminUI.Resources.ElectronicCertificate.Generate.lblGenerateElectronicCertificates)
+@Html.Partial("_GenerationBreadcrumbs")
+<div id="formGenerateED" class="esg-card--panel">
+    <div class="esg-card--panel__body">
+        <div class="esg-card--panel__content">
+            <ol class="esg-step-progress">
+                <li id="liStudent" class="esg-step-progress__item esg-is-active">
+                    <a id="btnStpStudent" class="esg-step-progress__link" style="text-decoration: none!important;">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblStudent</a>
+                </li>
+                <li id="liStudiesPrograms" class="esg-step-progress__item">
+                    <a id="btnStpStudiesPrograms" class="esg-step-progress__link" style="cursor:not-allowed; color: currentColor; text-decoration:none!important;">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblStudiesPrograms</a>
+                </li>
+                <li id="liCourses" class="esg-step-progress__item">
+                    <a id="btnStpCourses" class="esg-step-progress__link" style="cursor:not-allowed; color: currentColor; text-decoration: none!important;">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCourses</a>
+                </li>
+                <li id="liIssuingCertificate" class="esg-step-progress__item">
+                    <a id="btnStpIssuingCertificate" class="esg-step-progress__link" style="cursor:not-allowed; color: currentColor; text-decoration: none!important;">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblIssuingCertificate</a>
+                </li>
+                <li id="liPreviewGenerate" class="esg-step-progress__item">
+                    <a id="btnStpPreviewGenerate" class="esg-step-progress__link" style="cursor:not-allowed; color: currentColor; text-decoration: none!important;">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblPreviewGenerate</a>
+                </li>
+            </ol>
+        </div>
+
+        <input id="hdnSelectText" type="hidden" value="@WebAdminUI.Resources.ElectronicCertificate.Generate.lblSelect" />
+
+        @* Student *@
+        @Html.Partial("_Student", Model)
+
+        @* StudiesPrograms *@
+        @Html.Partial("_StudiesPrograms", Model.StudiesProgramDetailViewModel)
+
+        @* Courses *@
+        @Html.Partial("_Courses", Model.CoursesViewModel)
+
+        @* IssuingCertificate *@
+        @Html.Partial("_IssuingCertificate", Model.IssuingCertificateViewModel)
+
+        @* PreviewGenerate *@
+        @Html.Partial("_PreviewGenerate", Model)
+    </div>
+</div>
+@Html.Partial("~/Areas/General/Views/Shared/_Loader.cshtml")
+
+@section Scripts{
+    <script type="text/javascript">
+        var urlPeople = '@Url.Action("People","Generate")';
+        const urlIndex = '@Url.Action("Index", "Generations")';
+        const urlStudiesPrograms = '@Url.Action("StudiesPrograms", "Generations")';
+        const urlStudiesProgramDetail = '@Url.Action("StudiesProgramDetail", "Generations")';
+        const urlCourses = '@Url.Action("Courses", "Generations")';
+        const urlSaveCourses = '@Url.Action("CreateTranscriptDetailCertificate", "Generations")';
+        let urlAddCourse = '@Html.Raw(@Url.Action("_AddCourse","Generations", new
+                       {
+                           peopleId="param-peopleId",
+                           rvoeId="param-rvoeId"
+                       }))';
+        const urlIssuingCertificate = '@Url.Action("IssuingCertificate", "Generations")';
+        const urlPreviewGenerate = '@Url.Action("PreviewGenerate", "Generations")';
+        const urlGetFolio = '@Url.Action("Folio", "Generations")';
+        const urlUnauthorized = '@Url.RouteUrl("ErrorUnauthorized")';
+        const urlGenerateCertificate = '@Url.Action("Create", "Generations")';
+        const urlGetIssuingCertificate = '@Url.Action("IssuingCertificate", "Generations")';
+        const resources = {
+            lblSelect: '@WebAdminUI.Resources.ElectronicCertificate.Generate.lblSelect',
+            lblSection: '@WebAdminUI.Resources.ElectronicCertificate.Generate.lblSection',
+            lblType1: '@WebAdminUI.Resources.ElectronicCertificate.Generate.lblType1',
+            lblCreditType: '@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCreditType',
+        };
+    </script>
+    @Scripts.Render("~/bundles/datetime")
+    @Scripts.Render("~/bundles/EC/Generations")
+}

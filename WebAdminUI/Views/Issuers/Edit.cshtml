@@ -1,0 +1,534 @@
+@model WebAdminUI.Models.Issuers.IssuerViewModel
+
+@{
+    ViewBag.Title = WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.EditIssuer;
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formCreate" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.InvoiceOrganization.InvoiceOrganizationId)
+    @Html.HiddenFor(model => model.InvoiceOrganization.InvoiceOrgTaxRegimenId)
+    @Html.HiddenFor(model => model.InvoiceExpedition.InvoiceExpeditionId)
+
+    <div class="esg-page-header">
+        <a class="esg-page-header__button" role="button" title=@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.ButtonBack
+           href="@Url.Action("Menu", "FiscalRecords")">
+            <span class="esg-page-header__icon esg-icon__container">
+                <svg class="esg-icon esg-icon--left">
+                    <use xlink:href="#icon-arrow"></use>
+                </svg>
+            </span>
+        </a>
+        <h1 class="esg-page-header__title">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.IssuerFiscalInformation</h1>
+    </div>
+
+    <div class="esg-card--panel">
+
+        <div class="esg-card--panel__body">
+            <div class="esg-card--panel__sub-heading">
+                <p class="esg-small">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.EditRecord</p>
+            </div>
+            <div class="esg-card--panel__content">
+                <div class="row">
+                    <div class="form-group col-md-5" style="margin-left:10px;">
+                        <div>
+                            <div id="divDescription" class="esg-form__group esg-has-feedback col-sm-10 col-12">
+                                @Html.LabelFor(model => model.InvoiceOrganization.TaxpayerId, htmlAttributes: new { @class = "esg-form__label esg-is-required" })
+                                <div class="esg-form__input-group">
+                                    @Html.EditorFor(model => model.InvoiceOrganization.TaxpayerId, new { htmlAttributes = new { @class = "esg-form__input", maxlength = 13, @ReadOnly = "ReadOnly" } })
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div id="divCorporateName" class="esg-form__group esg-has-feedback col-sm-10 col-12">
+                                @Html.LabelFor(model => model.InvoiceOrganization.CorporateName, htmlAttributes: new { @class = "esg-form__label esg-is-required" })
+                                <div class="esg-form__input-group">
+                                    @Html.EditorFor(model => model.InvoiceOrganization.CorporateName, new { htmlAttributes = new { @class = "esg-form__input", maxlength = 254, @id = "CorporateName" } })
+                                    <div id="divCorporateNameIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                                        <svg class="esg-icon esg-icon--error">
+                                            <use xlink:href="#icon-error"></use>
+                                        </svg>
+                                    </div>
+                                    <label class="text-danger" id="CorporateNameValidation" style="display:none;">@WebAdminUI.Models.Resources.IssuerModelResource.CorporateNameValidation</label>
+                                </div>
+                                <div>
+                                    <p style="margin-bottom: 0; text-align: justify;">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.CorporateNameMessage</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div id="divTaxRegimenId" class="esg-form__group esg-has-feedback col-sm-10 col-12">
+                                @Html.LabelFor(model => model.InvoiceOrganization.TaxRegimenId, htmlAttributes: new { @class = "esg-form__label esg-is-required" })
+                                <div class="esg-form__input-group">
+                                    @Html.DropDownListFor(model => model.InvoiceOrganization.TaxRegimenId,
+                                                         new SelectList(Model.InvoiceOrganization.ListTaxRegimenCatalogs, "Id", "Description", Model.InvoiceOrganization.TaxRegimenId),
+                                                         @WebAdminUI.Models.Resources.IssuerModelResource.lblSelect,
+                                                         new { @class = "esg-form__input validityDropDown", @id = "TaxRegimenId" })
+                                    <div id="divTaxRegimenIdIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                                        <svg class="esg-icon esg-icon--error">
+                                            <use xlink:href="#icon-error"></use>
+                                        </svg>
+                                    </div>
+                                    <label class="text-danger" id="TaxRegimenValidation" style="display:none;">@WebAdminUI.Models.Resources.IssuerModelResource.TaxRegimenValidation</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12" style="margin-left:10px">
+                        <div style="margin-left:87%">
+                            <button id="AddNewIssuerAddress" type="button" class="esg-button esg-button--secondary esg-button--medium ">
+                                <span class="esg-button__icon esg-icon__container  esg-button-icon--align-left" aria-hidden="true">
+                                    <svg class="esg-icon esg-icon--left">
+                                        <use xlink:href="#icon-add"></use>
+                                    </svg>
+                                </span>
+                                <span class="button-label">
+                                    @Html.Label(@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.AddIssuerAddress,
+                                                             new { id = Model.InvoiceOrganization.InvoiceOrganizationId, @class = "buttonLabel" })
+                                </span>
+                            </button>
+                        </div><br />
+                        <table id="records_table" class="esg-table" style="width:100%">
+
+                            @if (Model.InvoiceExpeditions.Count != 0)
+                            {
+                                <thead class="esg-table-head">
+                                    <tr class="esg-table-head__row">
+                                        <th class="esg-table-head__th">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Description</th>
+                                        <th class="esg-table-head__th">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.ZipCode</th>
+                                        <th class="esg-table-head__th">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.State</th>
+                                        <th class="esg-table-head__th"></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="esg-table-body">
+
+                                    @if (Model.InvoiceExpeditions != null)
+                                    {
+                                        foreach (var item in Model.InvoiceExpeditions)
+                                        {
+                                            <tr class="esg-table-body__row">
+                                                <td style="word-wrap:break-word;" class="esg-table-body__td">@Html.DisplayFor(modelItem => item.Description)</td>
+                                                <td style="word-wrap:break-word;" class="esg-table-body__td">@Html.DisplayFor(modelItem => item.PostalCode)</td>
+                                                <td style="word-wrap:break-word;" class="esg-table-body__td">@Html.DisplayFor(modelItem => item.State)</td>
+                                                <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                                    @Html.Label(@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Edit,
+                                                                             new
+                                                                             {
+                                                                                 id = Model.InvoiceOrganization.InvoiceOrganizationId,
+                                                                                 pkid = item.InvoiceExpeditionId,
+                                                                                 desc = item.Description,
+                                                                                 postalCode = item.PostalCode,
+                                                                                 state = item.State,
+                                                                                 @class = "btn-link btnEdit"
+                                                                             })
+                                                    @if (!@item.CanDelete.Equals(0))
+                                                    {
+                                                        @Html.Label("|") @Html.Label(@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Delete,
+														new
+														{
+														id = Model.InvoiceOrganization.InvoiceOrganizationId,
+														pkid = item.InvoiceExpeditionId,
+														desc = item.Description,
+														postalCode = item.PostalCode,
+														state = item.State,
+														@class = "btn-link btnDelete"
+														})
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            }
+                        </table><br />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="esg-card--panel__body" style="margin-left:10px;">
+                        <div class="esg-table__container">
+
+                            @if (Model.ReceiptType == WebAdminUI.Models.Issuers.DoucumnetSetpType.ByExpedition || Model.ReceiptType == WebAdminUI.Models.Issuers.DoucumnetSetpType.ByTaxPayerId)
+                            {
+                                <div style="margin-left:87%">
+                                    <button id="AddNewIssuerDocument" type="button" class="esg-button esg-button--secondary esg-button--medium ">
+                                        <span class="esg-button__icon esg-icon__container  esg-button-icon--align-left" aria-hidden="true">
+                                            <svg class="esg-icon esg-icon--left">
+                                                <use xlink:href="#icon-add"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="button-label">
+                                            @Html.Label(@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.AddIssuerDocument,
+                                                                     new { id = Model.InvoiceOrganization.InvoiceOrganizationId, @class = "buttonIssuerDocument", option = Model.ReceiptType })
+                                        </span>
+                                    </button>
+                                </div>
+
+                            }
+
+                            @if (Model.ReceiptType == WebAdminUI.Models.Issuers.DoucumnetSetpType.None)
+                            {
+                                @Html.Label(@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.AddIssuerDocumentByAddress,
+                                                                     new { id = Model.InvoiceOrganization.InvoiceOrganizationId, @class = "btn-link btnAddIssuerDocByAdd", option = WebAdminUI.Models.Issuers.DoucumnetSetpType.ByExpedition })<br /><br />
+
+                                @Html.Label(@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.AddIssuerDocumentByTaxpayer,
+                                                                     new { id = Model.InvoiceOrganization.InvoiceOrganizationId, @class = "btn-link btnAddIssuerDocByTaxPay", option = WebAdminUI.Models.Issuers.DoucumnetSetpType.ByTaxPayerId })
+
+                            }
+                            <br />
+                            <table id="records_table" class="esg-table" style="width:100%">
+                                @if (Model.InvoiceReceipts != null)
+                                {
+
+                                    <thead class="esg-table-head">
+                                        <tr class="esg-table-head__row">
+                                            @if (Model.ReceiptType == WebAdminUI.Models.Issuers.DoucumnetSetpType.ByExpedition)
+                                            {
+                                                <th class="esg-table-head__th">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.IssuerAddress</th>
+                                            }
+                                            <th class="esg-table-head__th">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Serial</th>
+                                            <th class="esg-table-head__th">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.InitialFolio</th>
+                                            <th class="esg-table-head__th">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.LastFolio</th>
+                                            <th class="esg-table-head__th">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.StartDate</th>
+                                            <th class="esg-table-head__th">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.EndDate</th>
+                                            <th class="esg-table-head__th">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Version</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="esg-table-body">
+                                        @if (Model.InvoiceReceipts != null)
+                                        {
+
+                                            foreach (var item in Model.InvoiceReceipts)
+                                            {
+                                                <tr class="esg-table-body__row">
+
+                                                    @Html.HiddenFor(modelItem => item.InvoiceReceiptId)
+
+                                                    @if (Model.ReceiptType == WebAdminUI.Models.Issuers.DoucumnetSetpType.ByExpedition)
+                                                    {
+                                                        <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                                            @Html.HiddenFor(modelItem => item.InvoiceExpeditionId)
+                                                            @Html.DisplayFor(modelItem => item.InvoiceExpeditionDescription)
+                                                        </td>
+                                                    }
+                                                    <td style="word-wrap:break-word;" class="esg-table-body__td">@Html.DisplayFor(modelItem => item.SerialNumber)</td>
+                                                    <td style="word-wrap:break-word;" class="esg-table-body__td">@Html.DisplayFor(modelItem => item.Folio)</td>
+                                                    <td style="word-wrap:break-word;" class="esg-table-body__td">@Html.DisplayFor(modelItem => item.LastFolioAssigned)</td>
+                                                    <td style="word-wrap:break-word;" class="esg-table-body__td">@Html.DisplayFor(modelItem => item.StartDate)</td>
+                                                    <td style="word-wrap:break-word;" class="esg-table-body__td">@Html.DisplayFor(modelItem => item.EndDate)</td>
+                                                    <td style="word-wrap:break-word;" class="esg-table-body__td">@Html.DisplayFor(modelItem => item.Version)</td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                }
+                            </table><br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="DeleteIssuerAddress" class="form-group" style="display:none">
+            <div class="esg-modal-dialog">
+                <div class="esg-modal-dialog__header">
+                    <button class="esg-modal-dialog__close esg-icon__container btnCancel" type="button" data-dismiss="modal" aria-hidden="true">
+                        <svg class="esg-icon esg-icon--large esg-icon--neutral">
+                            <use xlink:href="#icon-close"></use>
+                        </svg>
+                    </button>
+                    <h3 class="esg-card--panel__title">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Confirm</h3>
+                </div>
+                <div class="esg-modal-dialog__body">
+                    <div class="form-group col-md-12">
+                        <dl class="dl-horizontal">
+                            @Html.HiddenFor(model => model.InvoiceExpedition.InvoiceOrganizationId)
+                            <dt>@Html.DisplayNameFor(model => model.InvoiceExpedition.Description)</dt>
+                            <dd id="IdDescriptionDD"></dd>
+                            <dt>@Html.DisplayNameFor(model => model.InvoiceExpedition.PostalCode)</dt>
+                            <dd id="IdPostalCodeDD"></dd>
+                            <dt>@Html.DisplayNameFor(model => model.InvoiceExpedition.State)</dt>
+                            <dd id="IdStateDD"></dd>
+                        </dl>
+                    </div>
+                </div><br />
+                <div class="esg-modal-dialog__action-section esg-button-group esg-button-group--fluid" role="group" aria-label="button group">
+                    <div class="esg-button-group__item" role="group" aria-label="button group">
+                        <button id="btnCancelDel" class="esg-button esg-button--secondary esg-modal-dialog__button" type="button">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Cancel</button>
+                    </div>
+                    <div class="esg-button-group__item" role="group" aria-label="button group">
+                        <button id="btnDelete" class="esg-button esg-button--primary esg-modal-dialog__button" type="button">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="EditIssuerAddress" class="form-group" style="display:none">
+            <div class="esg-modal-dialog">
+                <div class="esg-modal-dialog__header">
+                    <button class="esg-modal-dialog__close esg-icon__container btnCancel" type="button" data-dismiss="modal" aria-hidden="true">
+                        <svg class="esg-icon esg-icon--large esg-icon--neutral">
+                            <use xlink:href="#icon-close"></use>
+                        </svg>
+                    </button>
+                    <h3 class="esg-card--panel__title">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.IssuerFiscalInformation</h3>
+                </div>
+                <div class="esg-modal-dialog__body">
+                    <div class="row form-group col-md-7">
+                        <div id="divDescriptionEdit" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(model => model.InvoiceExpedition.Description, htmlAttributes: new { @class = "esg-form__label esg-is-required" })
+                            <div class="esg-form__input-group">
+                                @Html.EditorFor(model => model.InvoiceExpedition.Description, new { htmlAttributes = new { @class = "esg-form__input", maxlength = 254, @id = "EditDescription" } })
+                                <div id="divDescriptionIconEdit" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                                <label class="text-danger" id="DescriptionValidationEdit" style="display:none; ">@WebAdminUI.Models.Resources.IssuerModelResource.DescriptionValidation</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group col-md-7">
+                        <div id="divPostalCodeEdit" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(model => model.InvoiceExpedition.PostalCode, htmlAttributes: new { @class = "esg-form__label esg-is-required" })
+                            <div class="esg-form__input-group">
+                                @Html.EditorFor(model => model.InvoiceExpedition.PostalCode, new { htmlAttributes = new { @class = "esg-form__input", maxlength = 5, @id = "EditPostalCode" } })
+                                <div id="divPostalCodeIconEdit" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                                <label class="text-danger" id="PostalCodeValidationEdit" style="display:none; ">@WebAdminUI.Models.Resources.IssuerModelResource.ZipCodeValidation</label>
+                                <label class="text-danger" id="PostalCodeCatalogValidationEdit" style="display:none; ">@WebAdminUI.Models.Resources.IssuerModelResource.ZipCodeNotInCatalog</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group col-md-7">
+                        <div class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "esg-form__label", @id = "lblState" })
+                            <div class="esg-form__input-group">
+                                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "esg-form__input", @ReadOnly = "ReadOnly", @id = "State" } })
+                            </div>
+                        </div>
+                    </div>
+                </div><br />
+                <div class="esg-modal-dialog__action-section esg-button-group esg-button-group--fluid" role="group" aria-label="button group">
+                    <div class="esg-button-group__item" role="group" aria-label="button group">
+                        <button id="btnCancelUpd" class="esg-button esg-button--secondary esg-modal-dialog__button" type="button">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Cancel</button>
+                    </div>
+                    <div class="esg-button-group__item" role="group" aria-label="button group">
+                        <button id="btnClearAllUpd" class="esg-button esg-button--secondary esg-modal-dialog__button" type="button">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.ClearAll</button>
+                    </div>
+                    <div class="esg-button-group__item" role="group" aria-label="button group">
+                        <button id="btnUpdate" class="esg-button esg-button--primary esg-modal-dialog__button" type="button">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="AddIssuerAddress" style="display:none">
+            <div class="esg-modal-dialog">
+                <div class="esg-modal-dialog__header">
+                    <button class="esg-modal-dialog__close esg-icon__container btnCancel" type="button" data-dismiss="modal" aria-hidden="true">
+                        <svg class="esg-icon esg-icon--large esg-icon--neutral">
+                            <use xlink:href="#icon-close"></use>
+                        </svg>
+                    </button>
+                    <h3 class="esg-card--panel__title">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.AddNewIssuerAddress</h3>
+                </div>
+                <div class="esg-modal-dialog__body">
+                    <div class="row form-group col-md-7">
+                        <div id="divDescriptionAdd" class="esg-form__group esg-has-feedback">
+                            <label class="esg-form__label esg-is-required">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Description</label><br />
+                            <div class="esg-form__input-group">
+                                @Html.EditorFor(model => model.InvoiceExpedition.Description, new { htmlAttributes = new { @class = "esg-form__input", maxlength = 254, @id = "AddDescription" } })
+                                <div id="divDescriptionIconAdd" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                                <label class="text-danger" id="DescriptionValidationAdd" style="display:none; ">@WebAdminUI.Models.Resources.IssuerModelResource.DescriptionValidation</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group col-md-7">
+                        <div id="divPostalCodeAdd" class="esg-form__group esg-has-feedback">
+                            <label class="esg-form__label esg-is-required">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.ZipCode</label><br />
+                            <div class="esg-form__input-group">
+                                @Html.EditorFor(model => model.InvoiceExpedition.PostalCode, new { htmlAttributes = new { @class = "esg-form__input", maxlength = 5, @id = "AddPostalCode" } })
+                                <div id="divPostalCodeIconAdd" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                                <label class="text-danger" id="PostalCodeValidationAdd" style="display:none; ">@WebAdminUI.Models.Resources.IssuerModelResource.ZipCodeValidation</label>
+                                <label class="text-danger" id="PostalCodeCatalogValidationAdd" style="display:none; ">@WebAdminUI.Models.Resources.IssuerModelResource.ZipCodeNotInCatalog</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group col-md-7">
+                        <div class="esg-form__group esg-has-feedback">
+                            <label class="esg-form__label esg-is-required">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.State</label><br />
+                            <div class="esg-form__input-group">
+                                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "esg-form__input", @ReadOnly = "ReadOnly", @id = "AddState" } })
+                            </div>
+                        </div>
+                    </div>
+                </div><br />
+                <div class="esg-modal-dialog__action-section esg-button-group esg-button-group--fluid" role="group" aria-label="button group">
+                    <div class="esg-button-group__item" role="group" aria-label="button group">
+                        <button id="btnCancelAdd" class="esg-button esg-button--secondary esg-modal-dialog__button" type="button">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Cancel</button>
+                    </div>
+                    <div class="esg-button-group__item" role="group" aria-label="button group">
+                        <button id="btnClearAllAddress" class="esg-button esg-button--secondary esg-modal-dialog__button" type="button">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.ClearAll</button>
+                    </div>
+                    <div class="esg-button-group__item" role="group" aria-label="button group">
+                        <button id="btnCreateIssuerAddress" class="esg-button esg-button--primary esg-modal-dialog__button" type="button">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Create</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="AddIssuerDocument" style="display:none">
+            <div class="esg-modal-dialog">
+                <div class="esg-modal-dialog__header">
+                    <button class="esg-modal-dialog__close esg-icon__container btnCancel" type="button" data-dismiss="modal" aria-hidden="true">
+                        <svg class="esg-icon esg-icon--large esg-icon--neutral">
+                            <use xlink:href="#icon-close"></use>
+                        </svg>
+                    </button>
+                    <h3 class="esg-card--panel__title">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.AddNewIssuerDocument</h3>
+                </div>
+                <div class="esg-modal-dialog__body">
+
+                    <div id="divByExpedition" class="row form-group col-md-7" style="display:none">
+                        <div id="divInvoiceExpeditionIdAddDocu" class="esg-form__group esg-has-feedback">
+                            <label class="esg-form__label esg-is-required">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.AddIssuerAddress</label><br />
+                            <div class="esg-form__input-group">
+                                @Html.DropDownListFor(model => model.InvoiceReceipts[0].InvoiceExpeditionId, new SelectList("", "InvoiceExpeditionId", "Description"), new { @class = "esg-form__input validityDropDown", @id = "AddInvoiceExpeditionId" })
+                                <div id="divInvoiceExpeditionIdIconAddDoc" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group col-md-7">
+                        <div id="divSerialNumberAddDoc" class="esg-form__group esg-has-feedback">
+                            <label class="esg-form__label esg-is-required">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Serial</label><br />
+                            <div class="esg-form__input-group">
+                                @Html.EditorFor(model => model.InvoiceReceipts[0].SerialNumber, new { htmlAttributes = new { @class = "esg-form__input", @id = "AddDocSerial", maxlength = 25 } })
+                                <div id="divSerialNumberIconAddDoc" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                                <label class="text-danger" id="SerialNumberValidationAddDoc" style="display:none; ">@WebAdminUI.Models.Resources.IssuerModelResource.SerialNumberValidation</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group col-md-7">
+                        <div id="divFolioAddDoc" class="esg-form__group esg-has-feedback">
+                            <label class="esg-form__label esg-is-required">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.InitialFolio</label><br />
+                            <div class="esg-form__input-group">
+                                @Html.TextBoxFor(model => model.InvoiceReceipts[0].Folio, new { @class = "esg-form__input", @id = "AddDocFolio", maxlength = 10 })
+                                <div id="divFolioIconAddDoc" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                                <label class="text-danger" id="FolioValidationAddDoc" style="display:none; ">@WebAdminUI.Models.Resources.IssuerModelResource.InitialFolioValidation</label>
+                                <label class="text-danger" id="InvalidFolioValidationAddDoc" style="display:none; ">@WebAdminUI.Models.Resources.IssuerModelResource.InvalidFolio</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group col-md-7">
+                        <div class="esg-alert esg-alert--error errorMessageDivFolio" role="alert" style="display:none">
+                            <span class="esg-alert__icon-wrapper">
+                                <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                                    <svg class="esg-icon esg-icon--error-dark">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="esg-alert__message errorMessageResultFolio">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.ErrorMessageFolio</div>
+                        </div>
+                    </div>
+                    <div class="row form-group col-md-7">
+                        <div class="esg-alert esg-alert--error errorMessageDivSerial" role="alert" style="display:none">
+                            <span class="esg-alert__icon-wrapper">
+                                <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                                    <svg class="esg-icon esg-icon--error-dark">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="esg-alert__message errorMessageResultSerial">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.ErrorMessageSerial</div>
+                        </div>
+                    </div>
+                    <div class="row form-group col-md-7">
+                        <div class="esg-alert esg-alert--error errorMessageDivFolioBig" role="alert" style="display:none">
+                            <span class="esg-alert__icon-wrapper">
+                                <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                                    <svg class="esg-icon esg-icon--error-dark">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="esg-alert__message errorMessageResultFolioBig">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.ErrorMessageFolioBig</div>
+                        </div>
+                    </div>
+                </div><br />
+                <div class="esg-modal-dialog__action-section esg-button-group esg-button-group--fluid" role="group" aria-label="button group">
+                    <div class="esg-button-group__item" role="group" aria-label="button group">
+                        <button id="btnCancelAddDoc" class="esg-button esg-button--secondary esg-modal-dialog__button" type="button">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Cancel</button>
+                    </div>
+                    <div class="esg-button-group__item" role="group" aria-label="button group">
+                        <button id="btnClearAddDoc" class="esg-button esg-button--secondary esg-modal-dialog__button" type="button">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.ClearAll</button>
+                    </div>
+                    <div class="esg-button-group__item" role="group" aria-label="button group">
+                        <button id="btnCreateAddDoc" class="esg-button esg-button--primary esg-modal-dialog__button" type="button">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Create</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ModalAdd" class="esg-modal-overlay" style="display:none; position:fixed; top:0px; bottom:0px; left:0px; right:0px;"></div>
+    <div id="Overlaydiv" class="esg-modal-overlay" style="display:none; position:fixed; top:0; bottom:0; left:0; right:0;"></div>
+
+    <div id="Processing" class="esg-modal-dialog" style="display:none;">
+        <div class="esg-spinner-wrapper" style="position:absolute;">
+            <div class="esg-spinner"></div>
+        </div>
+    </div>
+
+    <div class="esg-card--panel__footer">
+        <div>
+            <div class="esg-button-group" role="group" aria-label="button group">
+                <input type="button" class="esg-button esg-button--secondary" value="@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.ViewList" id="btnViewList" onclick="location.href='@Url.Action("List", "Issuers")'" />
+                <input type="button" class="esg-button esg-button--primary" value="@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Update" id="btnUpdateIssuer" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts{
+    <script type="text/javascript">
+        var urlGetTaxpayer = '@Url.Action("GetTaxpayer", "Issuers")';
+        var urlGetTaxRegimenCatalog = '@Url.Action("GetTaxRegimenCatalog", "Issuers")';
+        var urlGetPostalCode = '@Url.Action("GetPostalCode", "Issuers")';
+        var urlListIssuer = '@Url.Action("List", "Issuers")';
+        var urlCreateIssuer = '@Url.Action("Create", "Issuers")';
+        var urlEditIssuer = '@Url.Action("Edit", "Issuers")';
+        var urlAddIssuerAddress = '@Url.Action("AddIssuerAddress", "Issuers")';
+        var urlEditIssuerAddress = '@Url.Action("EditIssuerAddress", "Issuers")';
+        var urlDeleteIssuerAddress = '@Url.Action("DeleteIssuerAddressId", "Issuers")';
+        var urlAddIssuerDocument = '@Url.Action("AddIssuerDocument", "Issuers")';
+        var urlHome ='@Url.Action("Index", "Home")';
+    </script>
+    @Scripts.Render("~/bundles/FR/Issuer")
+}

@@ -1,0 +1,125 @@
+<!--
+    <copyright file="_Student.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model WebAdminUI.Areas.ElectronicDegree.Models.GenerateViewModel
+
+<div id="stpStudent" style="display:block" class="esg-card--panel">
+    <div class="esg-card--panel__body">
+        <div class="esg-card--panel__content">
+            <div class="esg-container">
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <h4 class="esg-form__label">@WebAdminUI.Resources.ElectronicDegree.Generate.lblStudent</h4> <br />
+                    <hr /><br />
+                </div>
+            </div>
+            <div class="esg-container">
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <div id="divPeopleId" class="esg-form__group">
+                            @Html.LabelFor(m => m.PeopleId, new { @class = "esg-form__label" })<br />
+                            <div class="esg-form__input-group">
+                                @Html.TextBoxFor(m => m.PeopleId, new { @class = "esg-form__input", @id = "PeopleId" })
+                                <button id="btnSearchPeopleId" class="esg-form__icon esg-icon__container esg-form__icon--submit" type="submit">
+                                    <svg class="esg-icon esg-icon--small esg-icon">
+                                        <use xlink:href="#icon-search"></use>
+                                    </svg>
+                                </button>
+                                <button id="btnCleanOperator" class="esg-form__icon esg-icon__container esg-form__icon--reset" type="reset">
+                                    <svg class="esg-icon esg-icon--small esg-icon">
+                                        <use xlink:href="#icon-clear"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <div id="divCurp" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(m => m.Curp, new { @class = "esg-form__label esg-is-required" })<br />
+                            <div class="esg-form__input-group">
+                                @Html.TextBoxFor(m => m.Curp, new { @class = "esg-form__input", @id = "Curp", @required = "required", @readonly = "readonly", @disabled = "disabled" })
+                                @Html.LabelFor(m => m.CurpError, new { @class = "esg-form__label", @id = "CurpError", @style = "color:#d64555; display:none" })
+                                <div id="divCurpErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <div id="divName" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(m => m.Name, new { @class = "esg-form__label esg-is-required" })<br />
+                            <div class="esg-form__input-group">
+                                @Html.TextBoxFor(m => m.Name, new { @class = "esg-form__input", @id = "Name", @required = "required", @readonly = "readonly", @disabled = "disabled" })
+                                @Html.LabelFor(m => m.NameError, new { @class = "esg-form__label", @id = "NameError", @style = "color:#d64555; display:none" })
+                                <div id="divNameErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <div id="divFirstSurname" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(m => m.FirstSurname, new { @class = "esg-form__label esg-is-required" })<br />
+                            <div class="esg-form__input-group">
+                                @Html.TextBoxFor(m => m.FirstSurname, new { @class = "esg-form__input", @id = "FirstSurname", @required = "required", @readonly = "readonly", @disabled = "disabled" })
+                                @Html.LabelFor(m => m.FirstSurnameError, new { @class = "esg-form__label", @id = "FirstSurnameError", @style = "color:#d64555; display:none" })
+                                <div id="divFirstSurnameErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <div id="divSecondSurname" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(m => m.SecondSurname, new { @class = "esg-form__label" })<br />
+                            <div class="esg-form__input-group">
+                                @Html.TextBoxFor(m => m.SecondSurname, new { @class = "esg-form__input", @id = "SecondSurname", @readonly = "readonly", @disabled = "disabled" })
+                                @Html.LabelFor(m => m.SecondSurnameError, new { @class = "esg-form__label", @id = "SecondSurnameError", @style = "color:#d64555; display:none" })
+                                <div id="divSecondSurnameErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <div id="divEmail" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(m => m.Email, new { @class = "esg-form__label esg-is-required" })<br />
+                            <div class="esg-form__input-group">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "esg-form__input", @id = "Email", @required = "required", @readonly = "readonly", @disabled = "disabled" })
+                                @Html.LabelFor(m => m.EmailError, new { @class = "esg-form__label", @id = "EmailError", @style = "color:#d64555; display:none" })
+                                <div id="divEmailErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="esg-container" style="text-align:end">
+                <div class="eds-button-group" role="group" style="margin-top:1rem" aria-label="button group">
+                    <button class="eds-button eds-button--secondary" id="btnCancelStudent" type="button">@WebAdminUI.Resources.ElectronicDegree.Generate.lblCancel</button>
+                    <button class="eds-button eds-button--primary" id="btnValidateStudent" type="button">@WebAdminUI.Resources.ElectronicDegree.Generate.lblValidate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/ED/Generate")
+}

@@ -1,0 +1,140 @@
+﻿@model WebAdminUI.Models.People.PeopleViewModel
+
+@{
+    ViewBag.Title = WebAdminUI.Views.FiscalRecords.App_LocalResources.MenuResource.Title;
+    var permissions = ViewBag.Account as PowerCampus.Entities.Account;
+}
+
+<div class="row" id="MenuPage">
+    <div class="esg-page-header">
+        <a class="esg-page-header__button" role="button" title="Back">
+            <span class="esg-page-header__icon esg-icon__container">
+                <svg class="esg-icon esg-icon--left">
+                    <use xlink:href="#icon-arrow"></use>
+                </svg>
+            </span>
+        </a>
+        <div class="row col-md-12">
+            <div class="col-md-3">
+                <h1 class="esg-page-header__title">@WebAdminUI.Views.FiscalRecords.App_LocalResources.MenuResource.Title</h1>
+            </div>
+            <div class="col-md-9">
+                <span class="esg-page-header__input">
+                    @Html.TextBoxFor(m => m.TaxpayerId, new { @class = "esg-form__input", @id = "SearchPeople", placeholder = WebAdminUI.Views.FiscalRecords.App_LocalResources.MenuResource.Search, maxlength = 60 })
+                    <button id="SearchBtn" class="esg-form__icon esg-icon__container esg-form__icon" role="button">
+                        <svg class="esg-icon esg-icon--small">
+                            <use xlink:href="#icon-search"></use>
+                        </svg>
+                    </button>
+                    <br />
+                </span>
+                <div id="Noresults" style="margin-left:75%; margin-top:3.2%; position:relative; height:1.5rem; display:none">
+                    <label>@WebAdminUI.Views.FiscalRecords.App_LocalResources.MenuResource.NoResultsFound <a href="../Search/Advanced">@WebAdminUI.Views.FiscalRecords.App_LocalResources.MenuResource.lblAdvancedSearch</a></label>
+                </div>
+                <div id="lblAdvanced" style="margin-left:88%; margin-top:3.2%; position:relative; height:1.5rem; display:none">
+                    <div class="esg-tooltip esg-tooltip--bottom" style="z-index:9999; position:relative" role="tooltip">
+                        <div class="esg-tooltip__arrow"></div>
+                        <div class="esg-tooltip__content">@WebAdminUI.Views.FiscalRecords.App_LocalResources.MenuResource.MenuOptionAdvancedSearch</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="esg-card--panel">
+        <div class="esg-card--panel__body">
+            <div class="row col-md-12">
+                @if (permissions.permissions.Where(m => m.Description.Trim() == "ReceiverFiscalInformation").Select(m => m.Value).FirstOrDefault())
+                {
+                    <div class="row col-md-6" style="margin-left:10px;">
+                        <div class="form-group row">
+                            <div class="esg-card--panel">
+                                <a href="@Url.Action("List", "Receivers")">
+                                    <div class="esg-card" style="float:left;width: 95%">
+                                        <div class="col-sm-1">
+                                            <svg class="esg-icon esg-icon--large esg-icon--light"><use xlink:href="#icon-edit"></use></svg>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h3><span>@WebAdminUI.Views.FiscalRecords.App_LocalResources.MenuResource.MenuOptionReceivers</span></h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                @if (permissions.permissions.Where(m => m.Description.Trim() == "IssuerFiscalInformation").Select(m => m.Value).FirstOrDefault())
+                {
+                    <div class="row col-md-6" style="margin-left:10px;">
+                        <div class="form-group row">
+                            <div style="clear:both"></div>
+                            <div class="esg-card--panel">
+                                <a href="@Url.Action("List", "Issuers")">
+                                    <div class="esg-card" style="float:left;width: 95%">
+                                        <div class="col-sm-1">
+                                            <svg class="esg-icon esg-icon--large esg-icon--light"><use xlink:href="#icon-edit"></use></svg>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h3><span>@WebAdminUI.Views.FiscalRecords.App_LocalResources.MenuResource.MenuOptionIssuers</span></h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                @if (permissions.permissions.Where(m => m.Description.Trim() == "FiscalRecords").Select(m => m.Value).FirstOrDefault())
+                {
+                    <div class="row col-md-6" style="margin-left:10px;">
+                        <div class="form-group row">
+                            <div class="esg-card--panel">
+                                <a href="@Url.Action("ViewAll", "FiscalRecords")">
+                                    <div class="esg-card" style="float:left;width: 95%">
+                                        <div class="col-sm-1">
+                                            <svg class="esg-icon esg-icon--large esg-icon--light"><use xlink:href="#icon-document"></use></svg>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h3><span>@WebAdminUI.Views.FiscalRecords.App_LocalResources.MenuResource.MenuOptionViewAll</span></h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                @if (permissions.permissions.Where(m => m.Description.Trim() == "GlobalFiscalRecord").Select(m => m.Value).FirstOrDefault())
+                {
+                    <div class="row col-md-6" style="margin-left:10px;">
+                        <div class="form-group row">
+                            <div style="clear:both"></div>
+                            <div class="esg-card--panel">
+                                <a href="@Url.Action("CreateGlobal", "FiscalRecords")">
+                                    <div class="esg-card" style="float:left;width: 95%">
+                                        <div class="col-sm-1">
+                                            <svg class="esg-icon esg-icon--large esg-icon--light"><use xlink:href="#icon-document"></use></svg>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h3><span>@WebAdminUI.Views.FiscalRecords.App_LocalResources.MenuResource.MenuCreateGlobalFiscalRecord</span></h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        var urlPeopleMenu = '@Url.Action("Menu", "People")';
+        var urlPeopleTaxpayerId = '@Url.Action("TaxpayerId", "People")';
+        var urlSearchResults = '@Url.Action("Results", "Search")';
+        var urlSearchAdvanced = '@Url.Action("Advanced", "Search")';
+    </script>
+    @Scripts.Render("~/bundles/FR/Menu")
+}

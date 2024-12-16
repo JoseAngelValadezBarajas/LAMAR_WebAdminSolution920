@@ -1,0 +1,75 @@
+@model WebAdminUI.Models.Issuers.InvoiceExpeditionViewModel
+
+@{
+    ViewBag.Title = WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.EditIssuerAddress;
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formCreate" }))
+{
+@Html.AntiForgeryToken()
+@Html.HiddenFor(model => model.InvoiceExpeditionId)
+@Html.HiddenFor(model => model.InvoiceOrganizationId)
+<div class="esg-card--panel">
+    <div class="esg-card--panel__heading">
+        <h3 class="esg-card--panel__title">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.IssuerFiscalInformation</h3>
+    </div>
+    <div class="esg-card--panel__body">
+        <div class="esg-card--panel__sub-heading">
+            <p class="esg-small">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.NewRecord</p>
+        </div>
+        <div class="esg-card--panel__content">
+            <div>
+                <div id="divDescription" class="esg-form__group esg-has-feedback">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "esg-form__label esg-is-required" })
+                    <div class="esg-form__input-group" style="width:550px;">
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "esg-form__input", @style = "width:550px", maxlength = 254 } })
+                        <div id="divDescriptionIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                            <svg class="esg-icon esg-icon--error">
+                                <use xlink:href="#icon-error"></use>
+                            </svg>
+                        </div>
+                        <label class="text-danger" id="DescriptionValidation" style="display:none; ">@WebAdminUI.Models.Resources.IssuerModelResource.DescriptionRequired</label>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div id="divPostalCode" class="esg-form__group esg-has-feedback">
+                    @Html.LabelFor(model => model.PostalCode, htmlAttributes: new { @class = "esg-form__label" })
+                    <div class="esg-form__input-group" style="width:150px;">
+                        @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "esg-form__input", @style = "width:150px", maxlength = 5 } })
+                        <div id="divPostalCodeIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                            <svg class="esg-icon esg-icon--error">
+                                <use xlink:href="#icon-error"></use>
+                            </svg>
+                        </div>
+                        <label class="text-danger" id="PostalCodeValidation" style="display:none; ">@WebAdminUI.Models.Resources.IssuerModelResource.ZipCodeRequired</label>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="esg-form__group esg-has-feedback">
+                    @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "esg-form__label", @id = "lblState" })
+                    <div class="esg-form__input-group">
+                        @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "esg-form__input", @style = "width:150px", @ReadOnly = "ReadOnly" } })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="esg-card--panel__footer">
+        <div>
+            <div class="esg-button-group" role="group" aria-label="button group">
+                <input type="button" class="esg-button esg-button--secondary" value="@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.ClearAll" id="btnClearAllAddress" />
+                <input type="button" class="esg-button esg-button--primary" value="@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Update" id="btnUpdateIssuerAddress" />
+                <input type="button" class="esg-button esg-button--secondary" value="@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.BackIssuer" id="btnBackIssuer" onclick="location.href='@Url.Action("Edit", "Issuers", new { id = Request.QueryString["id"] })'" />
+            </div>
+        </div>
+    </div>
+</div>
+<div id="Overlaydiv" class="esg-modal-overlay" style="display:none; position:fixed; top:0; bottom:0; left:0; right:0;"></div>
+<div id="Processing" class="esg-modal-dialog" style="display:none;">
+    <div class="esg-spinner-wrapper" style="position:absolute;">
+        <div class="esg-spinner"></div>
+    </div>
+</div>
+}

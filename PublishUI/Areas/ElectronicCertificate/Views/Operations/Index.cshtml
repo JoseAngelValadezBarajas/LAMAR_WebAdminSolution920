@@ -1,0 +1,53 @@
+<!--
+    <copyright file="Index.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@using WebAdminUI.Resources.ElectronicCertificate
+@model WebAdminUI.Areas.ElectronicCertificate.Models.Generation.ElectronicCertificateHeaderList
+
+@section Styles{
+    @Styles.Render("~/Content/datetime")
+}
+
+@Html.Partial("~/Areas/General/Views/Shared/_PageTitle.cshtml", Operations.lblElectronicCertificatesOperations)
+@Html.Partial("_OperationBreadcrumbs")
+<div id="formGenerateED" class="esg-card--panel">
+    <div class="esg-card">
+        <div class="esg-card--panel__body">
+            <div class="esg-card--panel__content">
+                @Html.Partial("_Parameters", Model.ElectronicCertificateParameters)
+            </div>
+        </div>
+        <div class="esg-card--panel__body">
+            <div id="ajaxpanel_ViewData"></div>
+            <div id="ajaxpanel_GeneratedTable"></div>
+        </div>
+    </div>
+</div>
+@Html.Partial("~/Areas/General/Views/Shared/_Loader.cshtml")
+
+@section Scripts{
+    <script type="text/javascript">
+        const urlTable = '@Html.Raw(@Url.Action("_GeneratedTable", "Operations"))';
+        const urlViewData = '@Url.Action("_ViewData", "Operations")';
+        const urlDelete = '@Url.Action("Delete", "Operations")';
+        const urlUpdateStatus = '@Url.Action("UpdateStatus", "Operations")';
+        const urlStamp = '@Url.Action("Stamp", "Operations")';
+        const urlDownloadXML = '@Url.Action("XMLDownload", "Operations")';
+        const urlDownloadFiles = '@Url.Action("DownloadFiles", "Operations")';
+
+        const resources = {
+            lblCanceled: '@GeneratedTable.lblCanceled',
+            lblError: '@GeneratedTable.lblError',
+            lblFilesSelected: '@GeneratedTable.lblFilesSelected',
+            lblGenerated: '@GeneratedTable.lblGenerated',
+            lblProcessedCorrectly: '@GeneratedTable.lblProcessedCorrectly',
+            lblStamped: '@GeneratedTable.lblStamped'
+        };
+    </script>
+    @Scripts.Render("~/bundles/datetime")
+    @Scripts.Render("~/bundles/General/Pagination")
+    @Scripts.Render("~/bundles/EC/Operations")
+    @Scripts.Render("~/bundles/EC/CommonOperations")
+}

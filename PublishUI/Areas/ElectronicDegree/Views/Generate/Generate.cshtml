@@ -1,0 +1,99 @@
+﻿<!--
+    <copyright file="Generate.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model WebAdminUI.Areas.ElectronicDegree.Models.GenerateViewModel
+
+@{
+    ViewBag.Title = WebAdminUI.Resources.ElectronicDegree.Generate.lblGenerateElectronicDegree;
+    var operatorId = ViewBag.Account as PowerCampus.Entities.Account;
+}
+
+@section Styles{
+    @Styles.Render("~/Content/cssED")
+    @Styles.Render("~/Content/datetime")
+}
+
+<br />
+<div class="esg-page-header">
+    <h1 class="esg-page-header__title">@WebAdminUI.Resources.ElectronicDegree.Generate.lblGenerateElectronicDegree</h1>
+    <br />
+</div>
+<br />
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="esg-breadcrumb">
+        <ol class="esg-breadcrumb__list">
+            <li class="esg-breadcrumb__list-item"><a class="esg-breadcrumb__link" href="#">@WebAdminUI.Resources.ElectronicDegree.Generate.lblAcademicRecords</a></li>
+            <li class="esg-breadcrumb__list-item"> <a class="esg-breadcrumb__link" href="@Url.Action("Menu", "Menu")" )">@WebAdminUI.Resources.ElectronicDegree.Generate.lblElectronicDegree</a></li>
+            <li class="esg-breadcrumb__list-item esg-is-active"> @WebAdminUI.Resources.ElectronicDegree.Generate.lblGenerateElectronicDegree</li>
+        </ol>
+    </div>
+</div>
+<div id="formGenerateED" class="esg-card--panel">
+    <div class="esg-card--panel__body">
+        <div class="esg-card--panel__content">
+            <ol class="esg-step-progress">
+                <li id="liStudent" class="esg-step-progress__item esg-is-active">
+                    <a id="btnStpStudent" class="esg-step-progress__link">@WebAdminUI.Resources.ElectronicDegree.Generate.lblStudent</a>
+                </li>
+                <li id="liInstitutionMajor" class="esg-step-progress__item">
+                    <a id="btnStpInstMajor" class="esg-step-progress__link" style="cursor:not-allowed; color: currentColor; text-decoration:none;">@WebAdminUI.Resources.ElectronicDegree.Generate.lblInstitutionMajor</a>
+                </li>
+                <li id="liIssuingDegree" class="esg-step-progress__item">
+                    <a id="btnStpIssuingDegree" class="esg-step-progress__link" style="cursor:not-allowed; color: currentColor; text-decoration: none;">@WebAdminUI.Resources.ElectronicDegree.Generate.lblIssuingDegree</a>
+                </li>
+                <li id="liBackgroundStudies" class="esg-step-progress__item">
+                    <a id="btnStpBackgroundStu" class="esg-step-progress__link" style="cursor:not-allowed; color: currentColor; text-decoration: none;">@WebAdminUI.Resources.ElectronicDegree.Generate.lblBackgroundStudies</a>
+                </li>
+                <li id="liPreview" class="esg-step-progress__item">
+                    <a id="btnStpPreview" class="esg-step-progress__link" style="cursor:not-allowed; color: currentColor; text-decoration: none;">@WebAdminUI.Resources.ElectronicDegree.Generate.lblPreviewGenerate</a>
+                </li>
+            </ol>
+        </div>
+        @*Student*@
+        @Html.Partial("_Student", Model)
+
+        @*InstitutionMajor*@
+        @Html.Partial("_InstitutionMajor", Model)
+
+        @*IssuingDegree*@
+        @Html.Partial("_IssuingDegree", Model)
+
+        @*BackgroundStudies*@
+        @Html.Partial("_BackgroundStudies", Model)
+
+        @*PreviewGenerate*@
+        @Html.Partial("_PreviewGenerate", Model)
+    </div>
+</div>
+
+<div id="Overlaydiv" class="esg-modal-overlay" style="display:none; position:fixed; top:0; bottom:0; left:0; right:0;"></div>
+<div id="Processing" class="esg-modal-dialog" style="display:none;">
+    <div class="esg-spinner-wrapper" style="position:absolute;">
+        <div class="esg-spinner"></div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        var urlGetAcademicYears = '@Url.Action("AcademicYears", "People")';
+        var urlGetAcademicYearsG = '@Url.Action("AcademicYearsG", "Generate")';
+        var urlPeople = '@Url.Action("People","Generate")';
+        var urlInstitutionMajor = '@Url.Action("InstitutionMajor","Generate")';
+        var urlInstitutionSigner = '@Url.Action("InstitutionSigner","Generate")';
+        var urlIssuingDegree = '@Url.Action("IssuingDegree","Generate")';
+        var urlBackgroundStudies = '@Url.Action("BackgroundStudies","Generate")';
+        var urlCreate = '@Url.Action("Create","Generate")';
+        var urlIndex = '@Url.Action("Index","Generate")';
+        var operatorId = '@operatorId.UserName';
+        var noInstitutionMapped = '@WebAdminUI.Resources.ElectronicDegree.Generate.lblNoInstitutionMapped';
+        var noInstitutionAssigned = '@WebAdminUI.Resources.ElectronicDegree.Generate.lblNoInstitutionAssigned';
+        var noInstitutionSigner = '@WebAdminUI.Resources.ElectronicDegree.Generate.lblNoInstitutionSigner';
+        var noMajorProgram = '@WebAdminUI.Resources.ElectronicDegree.Generate.lblNoMajorProgram';
+        var lblYes = '@WebAdminUI.Resources.ElectronicDegree.Generate.lblYes';
+        var lblNo = '@WebAdminUI.Resources.ElectronicDegree.Generate.lblNo';
+    </script>
+    @Scripts.Render("~/bundles/ED/Generate")
+    @Scripts.Render("~/bundles/datetime")
+}

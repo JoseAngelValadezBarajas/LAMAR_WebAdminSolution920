@@ -1,0 +1,177 @@
+﻿@model  WebAdminUI.Models.SearchResult.SearchResultViewModel
+
+@{
+    ViewBag.Title = @WebAdminUI.Views.Search.App_LocalResources.Advanced_cshtml.lblPageTitle;
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formCreateAdvanced" }))
+{
+
+<div class="esg-page-header">
+    <a class="esg-page-header__button" role="button" title="Back">
+        <span class="esg-page-header__icon esg-icon__container">
+            <svg class="esg-icon esg-icon--left">
+                <use xlink:href="#icon-arrow"></use>
+            </svg>
+        </span>
+    </a>
+    <div class="row col-md-12">
+        <h1 class="esg-page-header__title">@WebAdminUI.Views.Search.App_LocalResources.Advanced_cshtml.lblPageTitle</h1>
+    </div>
+</div>
+
+<div class="row esg-card--panel">
+    <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="row col-lg-3 col-md-3 col-sm-3 col-xs-3" style="margin-left:1%">
+            <fieldset>
+                <div class="esg-radio">
+                    <input id="rdoPerson" type="radio" name="radio" value="RadioPerson" checked="checked" />
+                    <label for="rdoPerson" class="esg-form__label">@WebAdminUI.Views.Search.App_LocalResources.Advanced_cshtml.lblPerson</label>
+                </div>
+                <div class="esg-radio">
+                    <input id="rdoOrganization" type="radio" name="radio" value="RadioOrganization" />
+                    <label for="rdoOrganization" class="esg-form__label">@WebAdminUI.Views.Search.App_LocalResources.Advanced_cshtml.lblOrganization</label>
+                </div>
+            </fieldset><br />
+        </div>
+    </div><br /><br />
+    <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div id="PeopleOrgInf" class="row col-lg-4 col-md-4 col-sm-4 col-xs-4" style="margin-left:1%">
+            <div id="forPerson" style="display:block">
+                <div class="row">
+                    <div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        @Html.LabelFor(m => m.PeopleOrgCodeId, new { @class = "esg-form__label" })
+                        <div class="esg-form__input-group">
+                            @Html.TextBox("PeopleId", "", new { id = "PeopleId", @class = "esg-form__input", maxlength = 10 })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        <label class="esg-form__label">@WebAdminUI.Views.Search.App_LocalResources.Advanced_cshtml.lblFirstName</label>
+                        <div class="esg-form__input-group">
+                            @Html.TextBox("FirstName", "", new { id = "FirstName", @class = "esg-form__input", maxlength = 120 })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        <label class="esg-form__label">@WebAdminUI.Views.Search.App_LocalResources.Advanced_cshtml.lblMiddleName</label>
+                        <div class="esg-form__input-group">
+                            @Html.TextBox("MiddleName", "", new { id = "MiddleName", @class = "esg-form__input", maxlength = 120 })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        <label class="esg-form__label">@WebAdminUI.Views.Search.App_LocalResources.Advanced_cshtml.lblLastName</label>
+                        <div class="esg-form__input-group">
+                            @Html.TextBox("LastName", "", new { id = "LastName", @class = "esg-form__input", maxlength = 120 })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        @Html.LabelFor(m => m.PrimaryEmail, new { @class = "esg-form__label" })
+                        <div class="esg-form__input-group">
+                            @Html.TextBox("Email", "", new { id = "Email", @class = "esg-form__input", placeholder = @WebAdminUI.Views.People.App_localResources.People_cshtml.lblPlaceHolderEmail })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        @Html.LabelFor(m => m.RecordTypeList, new { @class = "esg-form__label" })
+                        <div class="esg-form__input-group">
+                            @Html.DropDownListFor(m => Model.RecordTypeListFull, new SelectList(Model.RecordTypeListFull.Where(m => m.IsPeopleType.Equals(true)), "CodeValue", "Description"), "",
+                                          new { id = "RecordType", @class = "esg-form__input" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="forOrganization" style="display:none">
+                <div class="row">
+                    <div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        <label class="esg-form__label">@WebAdminUI.Views.Search.App_LocalResources.Advanced_cshtml.lblOrganizationId</label>
+                        <div class="esg-form__input-group">
+                            @Html.TextBox("OrganizationId", "", new { id = "OrganizationId", @class = "esg-form__input", maxlength = 20 })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        <label class="esg-form__label">@WebAdminUI.Views.Search.App_LocalResources.Advanced_cshtml.lblOrganizationName</label>
+                        <div class="esg-form__input-group">
+                            @Html.TextBox("OrganizationName", "", new { id = "OrganizationName", @class = "esg-form__input", maxlength = 90 })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        @Html.LabelFor(m => m.PrimaryEmail, new { @class = "esg-form__label" })
+                        <div class="esg-form__input-group">
+                            @Html.TextBox("OrganizationEmail", "", new { id = "OrganizationEmail", @class = "esg-form__input", placeholder = @WebAdminUI.Views.People.App_localResources.People_cshtml.lblPlaceHolderEmail })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        @Html.LabelFor(m => m.RecordTypeList, new { @class = "esg-form__label" })
+                        <div class="esg-form__input-group">
+                            @Html.DropDownListFor(m => m.RecordTypeListFull, new SelectList(Model.RecordTypeListFull.Where(m => m.IsOrgType.Equals(true)), "CodeValue", "Description"), "",
+                                          new { id = "RecordTypeOrg", @class = "esg-form__input" })
+                        </div>
+                    </div>
+                </div>
+            </div><br />
+            <div id="divAlertNoResults" class="esg-alert esg-alert--info" role="alert" style="display:none;">
+                <span class="esg-alert__icon-wrapper">
+                    <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                        <svg class="esg-icon esg-icon--info-dark">
+                            <use xlink:href="#icon-info"></use>
+                        </svg>
+                    </span>
+                </span>
+                <div class="esg-alert__message">@WebAdminUI.Views.Search.App_LocalResources.Advanced_cshtml.lblNoResults</div>
+            </div>
+            <div id="divAlertNoCriteria" class="esg-alert esg-alert--info" role="alert" style="display:none;">
+                <span class="esg-alert__icon-wrapper">
+                    <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                        <svg class="esg-icon esg-icon--info-dark">
+                            <use xlink:href="#icon-info"></use>
+                        </svg>
+                    </span>
+                </span>
+                <div class="esg-alert__message">@WebAdminUI.Views.Search.App_LocalResources.Advanced_cshtml.lblEnterSearch</div>
+            </div>
+            <div class="esg-button-group" role="group" aria-label="button group">
+                <input type="button" class="esg-button esg-button--secondary" id="btnCancel" value="@WebAdminUI.Views.Search.App_LocalResources.Advanced_cshtml.btnCancel" />
+                <input type="button" class="esg-button esg-button--secondary" id="btnClearAll" value="@WebAdminUI.Views.Search.App_LocalResources.Advanced_cshtml.btnClearAll" />
+                <input type="button" class="esg-button esg-button--primary" id="btnSearch" value="@WebAdminUI.Views.Search.App_LocalResources.Advanced_cshtml.btnSearch" />
+            </div><br /><br />
+        </div>
+
+        <div class="row col-lg-7 col-md-7 col-sm-7 col-xs-7" style="margin-left:5%">
+            <div id="getRecords"></div>
+        </div>
+    </div><br />
+</div>
+<div id="Overlaydiv" class="esg-modal-overlay" style="display:none; position:fixed; top:0; bottom:0; left:0; right:0;"></div>
+<div id="Processing" class="esg-modal-dialog" style="display:none;">
+    <div class="esg-spinner-wrapper" style="position:absolute;">
+        <div class="esg-spinner"></div>
+    </div>
+</div>
+
+}
+
+@section Scripts{
+    <script>
+        var urlPeopleMenu = '@Url.Action("Menu", "People")';
+        var urlPeopleList = '@Url.Action("List", "People")';
+        var urlOrganizationMenu = '@Url.Action("Menu", "Organization")';
+        var urlOrganizationList = '@Url.Action("List", "Organization")';
+        var urlPeopleTaxpayerId = '@Url.Action("TaxpayerId", "People")';
+        var urlOrganizationTaxpayerId = '@Url.Action("TaxpayerId", "Organization")';
+    </script>
+    @Scripts.Render("~/bundles/FR/Search")
+}

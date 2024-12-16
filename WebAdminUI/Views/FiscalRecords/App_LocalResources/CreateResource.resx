@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="UnitCode" xml:space="preserve">
+    <value>Unit Code</value>
+  </data>
+  <data name="CreateFiscalRecord" xml:space="preserve">
+    <value>Create Fiscal Record</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="FiscalRecType" xml:space="preserve">
+    <value>Fiscal Record Type</value>
+  </data>
+  <data name="IssComments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="IssCurrency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="IssExchangeRate" xml:space="preserve">
+    <value>Exchange Rate</value>
+  </data>
+  <data name="IssExpeditionAddr" xml:space="preserve">
+    <value>Issuing Address</value>
+  </data>
+  <data name="IssNameCorp" xml:space="preserve">
+    <value>Name or Corporate Name</value>
+  </data>
+  <data name="IssTaxPayerID" xml:space="preserve">
+    <value>Taxpayer ID</value>
+  </data>
+  <data name="IssTaxRegimen" xml:space="preserve">
+    <value>Tax Regimen</value>
+  </data>
+  <data name="Issuer" xml:space="preserve">
+    <value>Issuer</value>
+  </data>
+  <data name="PaymentAccNum" xml:space="preserve">
+    <value>Payment Account Number</value>
+  </data>
+  <data name="PaymentCondition" xml:space="preserve">
+    <value>Payment Condition</value>
+  </data>
+  <data name="paymentMethodDescDefault" xml:space="preserve">
+    <value>Payment Method</value>
+  </data>
+  <data name="PaymentType" xml:space="preserve">
+    <value>Payment Type</value>
+  </data>
+  <data name="preferredReceiverEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="receiptNumber" xml:space="preserve">
+    <value>Receipt Number</value>
+  </data>
+  <data name="ReceiverCorpName" xml:space="preserve">
+    <value>Name or Corporate Name</value>
+  </data>
+  <data name="ReceiverFiscalAddress" xml:space="preserve">
+    <value>Fiscal Residency</value>
+  </data>
+  <data name="ReceiverFiscalID" xml:space="preserve">
+    <value>Fiscal Identity Number</value>
+  </data>
+  <data name="Receiver" xml:space="preserve">
+    <value>Receiver</value>
+  </data>
+  <data name="SubTotal" xml:space="preserve">
+    <value>Sub Total</value>
+  </data>
+  <data name="TaxpayerID" xml:space="preserve">
+    <value>Taxpayer ID</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>Total Amount</value>
+  </data>
+  <data name="TotalTransferredTaxes" xml:space="preserve">
+    <value>Total Transferred Taxes</value>
+  </data>
+  <data name="UnitAmount" xml:space="preserve">
+    <value>Unit Amount</value>
+  </data>
+  <data name="EmptyTaxPayerId" xml:space="preserve">
+    <value>Please Select...</value>
+  </data>
+  <data name="IssPlaceIssue" xml:space="preserve">
+    <value>Place of Issue</value>
+  </data>
+  <data name="IssSerial" xml:space="preserve">
+    <value>Serial</value>
+  </data>
+  <data name="Process" xml:space="preserve">
+    <value>Process</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Create Fiscal Record</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>Required</value>
+  </data>
+  <data name="MaxLength" xml:space="preserve">
+    <value>Max Length is 255.</value>
+  </data>
+  <data name="CFDI" xml:space="preserve">
+    <value>CFDI Use</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="CFDIRequired" xml:space="preserve">
+    <value>Enter a CFDI use.</value>
+  </data>
+  <data name="IdNumber" xml:space="preserve">
+    <value>Id Number</value>
+  </data>
+  <data name="IssAddRequired" xml:space="preserve">
+    <value>Select an issuing address</value>
+  </data>
+  <data name="IssPlaceRequired" xml:space="preserve">
+    <value>Enter a place of issue</value>
+  </data>
+  <data name="IssTaxPIRequired" xml:space="preserve">
+    <value>Enter a taxpayer ID</value>
+  </data>
+  <data name="IssTaxRegRequired" xml:space="preserve">
+    <value>Enter a tax regimen</value>
+  </data>
+  <data name="ProductServiceCode" xml:space="preserve">
+    <value>Product/Service Code</value>
+  </data>
+  <data name="TaxAmount" xml:space="preserve">
+    <value>Tax Amount</value>
+  </data>
+  <data name="TaxPayerIdRequired" xml:space="preserve">
+    <value>Enter a taxpayer ID</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="TitleGlobal" xml:space="preserve">
+    <value>Global Fiscal Record</value>
+  </data>
+  <data name="ReceiverEmail" xml:space="preserve">
+    <value>Enter an email</value>
+  </data>
+  <data name="YourEmail" xml:space="preserve">
+    <value>you@email.com</value>
+  </data>
+  <data name="ErrorEmail" xml:space="preserve">
+    <value>Enter a valid email address</value>
+  </data>
+  <data name="ReceiverEmailValidate" xml:space="preserve">
+    <value>Enter a valid email</value>
+  </data>
+  <data name="SubHeaderFiscalRecord" xml:space="preserve">
+    <value>Fiscal Record</value>
+  </data>
+  <data name="EndDateRequired" xml:space="preserve">
+    <value>Enter an end date</value>
+  </data>
+  <data name="StartDateRequired" xml:space="preserve">
+    <value>Enter a start date</value>
+  </data>
+  <data name="ReceiptsToInvoiceEmpty" xml:space="preserve">
+    <value>There are no receipts to include in the Fiscal Record.</value>
+  </data>
+  <data name="ProductServiceCodeRequired" xml:space="preserve">
+    <value>Product/Service and Unit Code mapping is missing.</value>
+  </data>
+  <data name="ChargeCreditDescRequired" xml:space="preserve">
+    <value>Enter a charge description</value>
+  </data>
+  <data name="InvalidCharacterMessage" xml:space="preserve">
+    <value>Information for the Fiscal Record cannot contain | character.</value>
+  </data>
+  <data name="InvalidSubTotalAmount" xml:space="preserve">
+    <value>Sub Total amount cannot be 0</value>
+  </data>
+  <data name="InvalidTotalAmount" xml:space="preserve">
+    <value>Total Amount cannot be 0</value>
+  </data>
+  <data name="RequiredFieldsMessage" xml:space="preserve">
+    <value>Verify required Fields</value>
+  </data>
+  <data name="ErrorMessageResult" xml:space="preserve">
+    <value>An error occurred while processing your request</value>
+  </data>
+  <data name="ViewButton" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="lblLastFolioAssigned" xml:space="preserve">
+    <value>Last folio assigned for this serial has reached its maximum value</value>
+  </data>
+  <data name="SerialError" xml:space="preserve">
+    <value>Enter a valid Serial Number</value>
+  </data>
+  <data name="lblTaxMapping" xml:space="preserve">
+    <value>Rate or Fee mapping is missing.</value>
+  </data>
+  <data name="NotePaymentType" xml:space="preserve">
+    <value>The selected Payment Type is the one in which the higher amount was received.</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Monto</value>
+  </data>
+  <data name="PaymentTypeMissing" xml:space="preserve">
+    <value>Payment type mapping is missing.</value>
+  </data>
+  <data name="lblDetail" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="lblInvoice" xml:space="preserve">
+    <value>Invoice</value>
+  </data>
+  <data name="TitlePaymentReceipt" xml:space="preserve">
+    <value>Create Payment Receipt</value>
+  </data>
+  <data name="SubHeaderPaymentReceipt" xml:space="preserve">
+    <value>Payment Receipt complement</value>
+  </data>
+  <data name="ComplementPaymentType" xml:space="preserve">
+    <value>Complement Payment Type</value>
+  </data>
+  <data name="ComplementPaymentTypeRequired" xml:space="preserve">
+    <value>Select a complement payment type</value>
+  </data>
+  <data name="PaymentDate" xml:space="preserve">
+    <value>Payment Date</value>
+  </data>
+  <data name="ComplementCurrency" xml:space="preserve">
+    <value>Complement Currency</value>
+  </data>
+  <data name="IssuerTaxPayerIdOriginAccount" xml:space="preserve">
+    <value>Issuer Taxpayer ID Origin Account</value>
+  </data>
+  <data name="OriginAccount" xml:space="preserve">
+    <value>Origin Account</value>
+  </data>
+  <data name="OriginBankName" xml:space="preserve">
+    <value>Bank Name</value>
+  </data>
+  <data name="TransactionNumber" xml:space="preserve">
+    <value>Transaction Number</value>
+  </data>
+  <data name="IssuerTaxPayerIdTargetAccount" xml:space="preserve">
+    <value>Issuer Tax Payer Id Target Account</value>
+  </data>
+  <data name="PaymentCertificate" xml:space="preserve">
+    <value>Payment Certificate</value>
+  </data>
+  <data name="PaymentChain" xml:space="preserve">
+    <value>Payment Chain</value>
+  </data>
+  <data name="PaymentChainType" xml:space="preserve">
+    <value>Payment Chain Type</value>
+  </data>
+  <data name="PaymentSignature" xml:space="preserve">
+    <value>Payment Signature</value>
+  </data>
+  <data name="TargetAccount" xml:space="preserve">
+    <value>Target Account</value>
+  </data>
+  <data name="TaxAddress" xml:space="preserve">
+    <value>Tax Address</value>
+  </data>
+  <data name="SubjectToTax" xml:space="preserve">
+    <value>Subject to Tax</value>
+  </data>
+  <data name="RecTaxRegimen" xml:space="preserve">
+    <value>Tax Regimen</value>
+  </data>
+  <data name="RecTaxRegimenRequired" xml:space="preserve">
+    <value>Enter a tax regimen</value>
+  </data>
+  <data name="Frequency" xml:space="preserve">
+    <value>Frequency</value>
+  </data>
+  <data name="FrequencyRequired" xml:space="preserve">
+    <value>Select a frequency</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="MonthRequired" xml:space="preserve">
+    <value>Select a month</value>
+  </data>
+  <data name="lblSelect" xml:space="preserve">
+    <value>Select...</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>Tax Address</value>
+  </data>
+  <data name="btnBack" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="lblNewInvoice" xml:space="preserve">
+    <value>New Invoice</value>
+  </data>
+  <data name="lblRelatedCFDI" xml:space="preserve">
+    <value>Related CFDI</value>
+  </data>
+  <data name="lblRelationType" xml:space="preserve">
+    <value>Relationship type</value>
+  </data>
+  <data name="lblSubstituteCancel" xml:space="preserve">
+    <value>Substitute and Cancel Fiscal Record</value>
+  </data>
+  <data name="lblRelatedUUID" xml:space="preserve">
+    <value>Related UUID</value>
+  </data>
+  <data name="btnProcessCancel" xml:space="preserve">
+    <value>Process and Cancel</value>
+  </data>
+  <data name="ReceiverFiscalAddressRequired" xml:space="preserve">
+    <value>Tax Address is required</value>
+  </data>
+  <data name="RecCfdiUsageIncorrect" xml:space="preserve">
+    <value>The use of CFDI for global invoices must be "S01 - Sin efectos fiscales"</value>
+  </data>
+  <data name="RecTaxAddressIncorrect" xml:space="preserve">
+    <value>Tax address must match the fiscal address of the issuer</value>
+  </data>
+  <data name="CorporateNameIncorrect" xml:space="preserve">
+    <value>The name of the receiver must be "PUBLICO EN GENERAL"</value>
+  </data>
+  <data name="RecTaxRegimenIncorrect" xml:space="preserve">
+    <value>The tax regimen for global invoices must be "616 - Sin obligaciones fiscales"</value>
+  </data>
+  <data name="TaxAddressRequired" xml:space="preserve">
+    <value>Enter a tax address</value>
+  </data>
+  <data name="IssSerialRequired" xml:space="preserve">
+    <value>Select a serial</value>
+  </data>
+  <data name="RequiredPostalCode" xml:space="preserve">
+    <value>Enter a tax address</value>
+  </data>
+  <data name="RequiredPreferredCFDIUsageCode" xml:space="preserve">
+    <value>Select a CFDI use</value>
+  </data>
+  <data name="lblSubstituteCancelGlobal" xml:space="preserve">
+    <value>Substitute and Cancel Global Fiscal Record</value>
+  </data>
+  <data name="btnClear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="lblPaymentType" xml:space="preserve">
+    <value>Payment type</value>
+  </data>
+  <data name="lblSession" xml:space="preserve">
+    <value>Session</value>
+  </data>
+  <data name="lblTerm" xml:space="preserve">
+    <value>Term</value>
+  </data>
+  <data name="lblYear" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="lblCalculateTotals" xml:space="preserve">
+    <value>Calculate totals</value>
+  </data>
+  <data name="lblErrorDatesRange" xml:space="preserve">
+    <value>Start date is after end date.</value>
+  </data>
+  <data name="lblSearchReceipts" xml:space="preserve">
+    <value>Search Receipts</value>
+  </data>
+  <data name="TaxPayerIdInvalid" xml:space="preserve">
+    <value>Enter a valid taxpayer ID</value>
+  </data>
+  <data name="UnitNameMaxLength" xml:space="preserve">
+    <value>Unit is maximum 20 characters</value>
+  </data>
+  <data name="IssueDate" xml:space="preserve">
+    <value>Issue Date</value>
+  </data>
+  <data name="IssueDateRequired" xml:space="preserve">
+    <value>Issue Date is required</value>
+  </data>
+  <data name="IssueTime" xml:space="preserve">
+    <value>Issue Time</value>
+  </data>
+  <data name="IssueTimeRequired" xml:space="preserve">
+    <value>Issue Time is required</value>
+  </data>
+</root>

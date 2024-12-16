@@ -1,0 +1,164 @@
+<!--
+    <copyright file="_Student.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model WebAdminUI.Areas.ElectronicCertificate.Models.Generation.CoursesViewModel
+
+<div id="stpCourses" style="display:none" class="esg-card--panel">
+    <div class="esg-card--panel__body">
+        <div class="esg-card--panel__content">
+            <div class="esg-container">
+                <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                    <h4 class="esg-form__label">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCourses</h4> <br />
+                </div>
+                <div id="divBtnEditCourses" class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12"
+                     style="display: block; text-align: end">
+                    <a id="btnEditCourses" style="text-decoration: none;">
+                        <span class="esg-icon__container">
+                            <svg class="esg-icon esg-icon--small">
+                                <use xlink:href="#icon-edit"></use>
+                            </svg>
+                        </span>
+                        <div class="esg-icon__label">
+                            <h4>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblEdit</h4>
+                        </div>
+                    </a>
+                    <br />
+                </div>
+                <div id="divEditCourses" class="esg-col-xs-12" style="display: none; text-align: end">
+                    <div style="display:inline-flex">
+                        <div style="margin-right: 1rem">
+                            <a id="btnCancelCourses" style="text-decoration: none;">
+                                <div class="esg-icon__label">
+                                    <h4>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCancel</h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a id="btnSaveCourses" style="text-decoration: none;">
+                                <span class="esg-icon__container--fill">
+                                    <svg class="esg-icon esg-icon--small">
+                                        <use xlink:href="#icon-save"></use>
+                                    </svg>
+                                </span>
+                                <div class="esg-icon__label">
+                                    <h4>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblSave</h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <input id="hdnPeopleId" type="hidden" value="0" />
+                <input id="hdnRvoeId" type="hidden" value="0" />
+                <div class="esg-card--panel__body">
+                    <div id="ajaxpanel_AddCourse"></div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-3 esg-col-md-3 esg-col-sm-12 esg-col-xs-12">
+                        <div class="esg-form__input-group">
+                            @Html.LabelFor(m => m.TotalCourses, new { @class = "esg-form__label esg-is-required" })<br />
+                            @Html.TextBoxFor(m => m.TotalCourses, new { @class = "esg-form__input", @id = "TotalCourses", @disabled = "disabled" })
+                        </div>
+                    </div>
+                    <div class="esg-col-lg-2 esg-col-md-2 esg-col-sm-12 esg-col-xs-12">
+                        <div class="esg-form__input-group">
+                            @Html.LabelFor(m => m.AsignedCourses, new { @class = "esg-form__label esg-is-required" })<br />
+                            @Html.TextBoxFor(m => m.AsignedCourses, new { @class = "esg-form__input", @id = "AsignedCourses", @disabled = "disabled" })
+                        </div>
+                    </div>
+                    <div class="esg-col-lg-2 esg-col-md-2 esg-col-sm-12 esg-col-xs-12">
+                        <div class="esg-form__input-group">
+                            @Html.LabelFor(m => m.Average, new { @class = "esg-form__label esg-is-required" })<br />
+                            @Html.TextBoxFor(m => m.Average, new { @class = "esg-form__input", @id = "Average", @disabled = "disabled" })
+                        </div>
+                    </div>
+                    <div class="esg-col-lg-2 esg-col-md-2 esg-col-sm-12 esg-col-xs-12">
+                        <div class="esg-form__input-group">
+                            @Html.LabelFor(m => m.TotalCredits, new { @class = "esg-form__label esg-is-required" })<br />
+                            @Html.TextBoxFor(m => m.TotalCredits, new { @class = "esg-form__input", @id = "TotalCredits", @disabled = "disabled" })
+                        </div>
+                    </div>
+                    <div class="esg-col-lg-3 esg-col-md-3 esg-col-sm-12 esg-col-xs-12">
+                        <div class="esg-form__input-group">
+                            @Html.LabelFor(m => m.ObtainedCredits, new { @class = "esg-form__label esg-is-required" })<br />
+                            @Html.TextBoxFor(m => m.ObtainedCredits, new { @class = "esg-form__input", @id = "ObtainedCredits", @disabled = "disabled" })
+                        </div>
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12" style="text-align:end">
+                    <br />
+                    <button id="btnAddCourse" value="@WebAdminUI.Resources.ElectronicCertificate.Generate.lblAdd" type="button" class="esg-button esg-button esg-button--medium ">
+                        <span class="esg-button__icon esg-icon__container" aria-hidden="true">
+                            <svg class="esg-icon esg-icon--left">
+                                <use xlink:href="#icon-add"></use>
+                            </svg>
+                        </span>
+                    </button><br />
+                </div>
+                <div class="esg-col-xs-12">
+                    <div id="divTable" class="esg-table__container">
+                        <br />
+                        <table id="table" class="esg-table">
+                            <thead class="esg-table-head">
+                                <tr class="esg-table-head__row">
+                                    <th class="esg-table-head__th" style="width:5%">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblInclude</th>
+                                    <th class="esg-table-head__th" style="width:10%">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCycleRequired</th>
+                                    <th class="esg-table-head__th" style="width:10%">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblIdRequired</th>
+                                    <th class="esg-table-head__th" style="width:20%">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblName</th>
+                                    <th class="esg-table-head__th" style="width:5%">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblGradeRequired</th>
+                                    <th class="esg-table-head__th" style="width:20%">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblObservations</th>
+                                    <th class="esg-table-head__th" style="width:20%">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblTypeRequired</th>
+                                    <th class="esg-table-head__th" style="width:10%">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCreditsRequired</th>
+                                </tr>
+                            </thead>
+                            <tbody class="esg-table-body" id="courses_table_rows_tbody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="divCoursesFooter" class="esg-container" style="text-align:end">
+                <div class="eds-button-group" role="group" style="margin-top:1rem" aria-label="button group">
+                    <button class="eds-button eds-button--secondary" id="btnBackStudyPrograms" type="button">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblBack</button>
+                    <button class="eds-button eds-button--primary" id="btnContinueCourses" type="button">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblContinue</button>
+                </div>
+            </div>
+            <div id="divError" class="esg-card--panel__content" style="display:none">
+                <div class="esg-container">
+                    <div class="esg-alert esg-alert--error" role="alert">
+                        <span class="esg-alert__icon-wrapper">
+                            <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                                <svg class="esg-icon esg-icon--error-dark">
+                                    <use xlink:href="#icon-error"></use>
+                                </svg>
+                            </span>
+                        </span>
+                        <div class="esg-alert__message">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblError</div>
+                    </div>
+                </div>
+            </div>
+            <div id="divErrorCycle" class="esg-card--panel__content" style="display:none">
+                <div class="esg-container">
+                    <div class="esg-alert esg-alert--error" role="alert">
+                        <span class="esg-alert__icon-wrapper">
+                            <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                                <svg class="esg-icon esg-icon--error-dark">
+                                    <use xlink:href="#icon-error"></use>
+                                </svg>
+                            </span>
+                        </span>
+                        <div class="esg-alert__message">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblErrorCycle</div>
+                    </div>
+                </div>
+            </div>
+            <div id="Overlaydiv" class="esg-modal-overlay" style="display:none; position:fixed; top:0; bottom:0; left:0; right:0;"></div>
+            <div id="Processing" class="esg-modal-dialog" style="display:none;">
+                <div class="esg-spinner-wrapper" style="position:absolute;">
+                    <div class="esg-spinner"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

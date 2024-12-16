@@ -1,0 +1,118 @@
+<!--
+    <copyright file="Index.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model WebAdminUI.Areas.ElectronicCertificate.Models.AcademicPlanViewModel
+
+@{
+    ViewBag.Title = WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblAcademicPlan;
+}
+
+<header>
+    <h3>@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblAcademicPlan</h3>
+    <div class="esg-breadcrumb">
+        <ol class="esg-breadcrumb__list">
+            <li class="esg-breadcrumb__list-item"><a class="esg-breadcrumb__link" href="@Url.RouteUrl("MenuAcademicRecords")">@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblAcademicRecord</a></li>
+            <li class="esg-breadcrumb__list-item"><a class="esg-breadcrumb__link" href="@Url.Action("Index", "Menu")" )">@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblElectronicCertificate</a></li>
+            <li class="esg-breadcrumb__list-item"><a class="esg-breadcrumb__link" href="@Url.Action("Index", "Setup")" )">@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblSetup</a></li>
+            <li class="esg-breadcrumb__list-item esg-is-active">@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblAcademicPlan</li>
+        </ol>
+    </div>
+</header>
+
+<div>
+    <div class="esg-card">
+        <section>
+            <div class="esg-container-fluid">
+                <div class="esg-row">
+                    <div class="esg-col-xs-4 esg-grid-overlay">
+                        <div class="esg-form__group">
+                            @Html.LabelFor(m => m.Campus, new { @class = "esg-form__label" })
+                            <br />
+                            @Html.DropDownListFor(m => m.CampusList,
+                                new SelectList(Model.CampusList, "CodeValueKey", "Description"),
+                                @WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblSelect,
+                                new { @class = "esg-form__input", @id = "ddlCampus" })
+                        </div>
+                    </div>
+                    <div class="esg-col-xs-4 esg-grid-overlay">
+                        <div class="esg-form__group">
+                            <label class="esg-form__label">@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblMatricYear</label><br />
+                            <select class="esg-form__input" id="ddlMatricYear" name="MatricYear">
+                                <option>@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblSelect</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="esg-col-xs-4 esg-grid-overlay">
+                        <div class="esg-form__group">
+                            <label class="esg-form__label">@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblMatricTerm</label><br />
+                            <select class="esg-form__input" id="ddlMatricTerm" name="MatricTerm">
+                                <option>@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblSelect</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="esg-row">
+                    <div class="esg-col-xs-12 esg-grid-overlay">
+                        <a href="#" id="btnClearFilters">
+                            <div class="esg-icon__label">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblClearFilters</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br />
+        <div id="programsSection" style="display:none;">
+            <hr />
+            <section>
+                <h4><strong>@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblPrograms</strong></h4>
+                <p id="prgResults"></p>
+                <div class="esg-container">
+                    <div class="esg-table__container">
+                        <table id="programs_table" class="esg-table">
+                            <thead class="esg-table-head">
+                                <tr class="esg-table-head__row">
+                                    <th class="esg-table-head__th" style="width:35%">@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblProgram</th>
+                                    <th class="esg-table-head__th" style="width:25%">@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblMajorId</th>
+                                    <th class="esg-table-head__th" style="width:20%">@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblRvoe</th>
+                                    <th class="esg-table-head__th" style="width:20%">@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblCourseMapping</th>
+                                </tr>
+                            </thead>
+                            <tbody class="esg-table-body" id="programs_table_rows_tbody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br />
+            </section>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("~/Areas/General/Views/Shared/_Loader.cshtml")
+
+@section Scripts{
+    <script type="text/javascript">
+        //Urls
+        var urlGetMatricYearList = '@Url.Action("MatricYears", "AcademicPlans")';
+        var urlGetMatricTermList = '@Url.Action("MatricTerms", "AcademicPlans")';
+        var urlGetPrograms = '@Url.Action("Programs", "AcademicPlans")';
+        var urlUnauthorized = '@Url.RouteUrl("ErrorUnauthorized")';
+        var urlEdit = '@Url.Action("Courses", "AcademicPlans")';
+
+        //Resources
+        var resources = {
+            lblSelect: '@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblSelect',
+            lblEdit: '@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblEdit',
+            lblIssuingDate: '@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblIssuingDate',
+            lblMinimumGrade: '@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblMinimumGrade',
+            lblMaximumGrade: '@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblMaximumGrade',
+            lblMinPassingGrade: '@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblMinPassingGrade',
+            lblResults: '@WebAdminUI.Resources.ElectronicCertificate.AcademicPlan.lblResults'
+        };
+    </script>
+    @Scripts.Render("~/bundles/EC/AcademicPlan")
+}

@@ -1,0 +1,24 @@
+﻿<!--
+    <copyright file="Unauthorized.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+
+@{
+    ViewBag.Title = Resources.CustomMessages.TitleUnauthorized;
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="esg-instruction" role="alert">
+
+            <span class="esg-instruction__icon-wrap">
+                <span class="esg-instruction__icon esg-icon__container" aria-hidden="True">
+                    <svg class="esg-icon esg-icon--info-dark">
+                        <use xlink:href="#icon-info"></use>
+                    </svg>
+                </span>
+            </span><div class="esg-instruction__message">@WebAdminUI.Views.Shared.Resources.LayoutResources.lblAccessInstructionText</div>
+        </div>
+    </div>
+</div>

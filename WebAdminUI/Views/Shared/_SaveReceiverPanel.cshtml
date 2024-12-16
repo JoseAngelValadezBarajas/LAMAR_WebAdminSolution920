@@ -1,0 +1,192 @@
+<!--
+    <copyright file="_SaveReceiverPanel.cshtml" company="Ellucian">
+        Copyright 2022 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+
+@model WebAdminUI.Models.Receivers.ReceiverViewModel
+@{
+    var isInModal = ViewBag.InModal;
+    var responsiveCols = isInModal ? "" : "col-md-4 col-sm-6";
+}
+
+<div id="ReceiverPanel" class="esg-card--panel__body">
+    <div class="esg-card--panel__sub-heading">
+        <p id="CreateReceiverTitle" class="esg-small" style="display:none;">@WebAdminUI.Views.Receivers.App_LocalResources.CreateResource.NewRecord</p>
+        <p id="EditReceiverTitle" class="esg-small" style="display:none;">@WebAdminUI.Views.Receivers.App_LocalResources.CreateResource.EditRecord</p>
+    </div>
+    <div class="esg-card--panel__content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-12 @responsiveCols">
+                        <div id="divTaxpayerId" class="esg-form__group esg-has-feedback">
+                            @Html.TextBoxFor(model => model.InvoiceTaxpayerId, new { style = "display:none", @id = "InvoiceTaxpayerId" })
+                            @Html.TextBoxFor(model => model.InvoiceForeignTaxpayerId, new { style = "display:none", @id = "InvoiceForeignTaxpayerId" })
+                            @Html.LabelFor(model => model.TaxPayerId, htmlAttributes: new { @class = "esg-form__label esg-is-required" })
+                            <div class="esg-form__input-group">
+                                @Html.EditorFor(model => model.TaxPayerId, new { htmlAttributes = new { @class = "esg-form__input", maxlength = 13, @id = "TaxPayerId" } })
+                                <div id="divTaxpayerIdIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                                <label class="text-danger" id="labelExist" style="display:none;">@WebAdminUI.Views.Receivers.App_LocalResources.CreateResource.TaxpayerExists</label>
+                                <label class="text-danger" id="TaxPayerIdValidation" style="display:none;">@WebAdminUI.Models.Resources.ReceiverModelResource.TaxPayerIdValidation</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 @responsiveCols">
+                        <div id="divCorporateName" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(model => model.CorporateName, htmlAttributes: new { @class = "esg-form__label esg-is-required" })
+                            <div class="esg-form__input-group">
+                                @Html.EditorFor(model => model.CorporateName, new { htmlAttributes = new { @class = "esg-form__input", maxlength = 254, @id = "CorporateName" } })
+                                <div id="divCorporateNameIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                                <label class="text-danger" id="CorporateNameValidation" style="display:none;">@WebAdminUI.Models.Resources.ReceiverModelResource.CorporateNameValidation</label>
+                            </div>
+                            <div id="divCorporateNameMessage">
+                                <p>@WebAdminUI.Views.Receivers.App_LocalResources.CreateResource.CorporateNameMessage</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 @responsiveCols">
+                        <div id="divPostalCode" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(model => model.PostalCode, htmlAttributes: new { @class = "esg-form__label esg-is-required" })
+                            <div class="esg-form__input-group">
+                                @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "esg-form__input", @id = "PostalCode" } })
+                                <div id="divPostalCodeIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                                <label class="text-danger" id="PostalCodeInCatalogValidation" style="display:none;">@WebAdminUI.Models.Resources.ReceiverModelResource.PostalCodeInCatalogValidation</label>
+                                <label class="text-danger" id="PostalCodeValidation" style="display:none;">@WebAdminUI.Models.Resources.ReceiverModelResource.PostalCodeValidation</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 @responsiveCols">
+                        <div id="divTaxRegimen" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(model => model.TaxRegimenId, htmlAttributes: new { @class = "esg-form__label esg-is-required" })
+                            <div class="esg-form__input-group">
+                                @Html.DropDownListFor(model => model.TaxRegimenId, new SelectList(Model.InvoiceOrganization.ListTaxRegimenCatalogs, "Id", "Description", Model.TaxRegimenId),
+                                    @WebAdminUI.Models.Resources.ReceiverModelResource.lblSelect,
+                                    new { @class = "esg-form__input validityDropDown", @id = "TaxRegimenId" })
+                                <div id="divTaxRegimenIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                                <label class="text-danger" id="TaxRegimenValidation" style="display:none;">@WebAdminUI.Models.Resources.ReceiverModelResource.TaxRegimenValidation</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 @responsiveCols">
+                        <div id="divStreetName" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(model => model.StreetName, htmlAttributes: new { @class = "esg-form__label" })
+                            <div class="esg-form__input-group">
+                                @Html.EditorFor(model => model.StreetName, new { htmlAttributes = new { @class = "esg-form__input", @style = "width:500px", maxlength = 255, @id = "StreetName" } })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 @responsiveCols">
+                        <div id="divStreetNumber" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(model => model.StreetNumber, htmlAttributes: new { @class = "esg-form__label" })
+                            <div class="esg-form__input-group">
+                                @Html.EditorFor(model => model.StreetNumber, new { htmlAttributes = new { @class = "esg-form__input", @style = "width:100px", maxlength = 10, @id = "StreetNumber" } })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 @responsiveCols">
+                        <div id="divApartmentNumber" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(model => model.ApartmentNumber, htmlAttributes: new { @class = "esg-form__label" })
+                            <div class="esg-form__input-group">
+                                @Html.EditorFor(model => model.ApartmentNumber, new { htmlAttributes = new { @class = "esg-form__input", @style = "width:100px", maxlength = 10, @id = "ApartmentNumber" } })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 @responsiveCols">
+                        <div id="divNeighborhood" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(model => model.Neighborhood, htmlAttributes: new { @class = "esg-form__label" })
+                            <div class="esg-form__input-group">
+                                @Html.EditorFor(model => model.Neighborhood, new { htmlAttributes = new { @class = "esg-form__input", @style = "width:500px", maxlength = 100, @id = "Neighborhood" } })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 @responsiveCols">
+                        <div id="divLocation" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "esg-form__label" })
+                            <div class="esg-form__input-group">
+                                @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "esg-form__input", @style = "width:500px", maxlength = 100, @id = "Location" } })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 @responsiveCols">
+                        <div id="divState" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(model => model.StateProvinceId, htmlAttributes: new { @class = "esg-form__label" })
+                            <div class="esg-form__input-group" style="width:550px;">
+                                @Html.DropDownListFor(model => model.StateProvinceId,
+                                                     new SelectList(Model.ListStates, "Code", "Description", Model.StateProvinceId)
+                                                    , new { @class = "esg-form__input validityDropDown", @id = "StateProvinceId" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 @responsiveCols">
+                        <div id="divFiscalResidency" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(model => model.FiscalResidency, htmlAttributes: new { @class = "esg-form__label" })
+                            <div class="esg-form__input-group">
+                                @Html.EditorFor(model => model.FiscalResidency, new { htmlAttributes = new { @class = "esg-form__input", @ReadOnly = "ReadOnly", maxlength = 3 } })
+                                <div id="divFiscalResidencyIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                                <label class="text-danger" id="FiscalResidencyValidation" style="display:none;">@WebAdminUI.Models.Resources.ReceiverModelResource.Required</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 @responsiveCols">
+                        <div id="divFiscalIdentityNumber" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(model => model.FiscalIdentityNumber, htmlAttributes: new { @class = "esg-form__label", @id = "lblFiscalIdentityNumber" })
+                            <div class="esg-form__input-group">
+                                @Html.EditorFor(model => model.FiscalIdentityNumber, new { htmlAttributes = new { @class = "esg-form__input", @ReadOnly = "ReadOnly", maxlength = 40 } })
+                                <div id="divFiscalIdentityNumberIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                                <label class="text-danger" id="FiscalIdentityNumberValidation" style="display:none;">@WebAdminUI.Models.Resources.ReceiverModelResource.Required</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input id="hdnIsReceiverInModal" type="hidden" value="@isInModal.ToString()" />
+</div>

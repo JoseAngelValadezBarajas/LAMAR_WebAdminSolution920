@@ -1,0 +1,87 @@
+<!--
+    <copyright file="_ChargeCreditsTable.cshtml" company="Ellucian">
+        Copyright 2022 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+
+@model List<WebAdminUI.Models.ChargeCreditMappings.ChargeCreditWithTaxesViewModel>
+
+<div class="row" style="margin-bottom: 30px">
+    <div class="col-xs-12">
+        @if (Model == null || Model.Count == 0)
+        {
+            <div class="esg-alert esg-alert--warning" role="alert">
+                <span class="esg-alert__icon-wrapper">
+                    <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                        <svg class="esg-icon esg-icon--warning-dark">
+                            <use xlink:href="#icon-warning"></use>
+                        </svg>
+                    </span>
+                </span>
+                <div class="esg-alert__message">
+                    @WebAdminUI.Models.Resources.ChargeCreditMappingModelResource.NoResults
+                </div>
+            </div>
+            <input type="hidden" id="hdnChargeCreditResultsCount" value="0" />
+        }
+        else
+        {
+            <div style="text-align: right; width: 100%; margin-bottom: 10px;">
+                <label>
+                    <strong>@string.Format(WebAdminUI.Models.Resources.ChargeCreditMappingModelResource.FormatTotal, Model.Count)</strong>
+                </label>
+            </div>
+            <div class="esg-table__container" style="max-height: 25vh; min-height: 150px; overflow-y: auto">
+                <table class="esg-table">
+                    <thead class="esg-table-head">
+                        <tr class="esg-table-head__row">
+                            <th class="esg-table-head__button" style="width: 50px;">
+                                <div class="esg-checkbox" style="margin: 0;">
+                                    <input id="chkSelectAllTaxProfile" type="checkbox" onchange="onSelectAllTaxProfiles()" checked="checked" />
+                                    <label for="chkSelectAllTaxProfile" class="checkbox-label-table"></label>
+                                </div>
+                            </th>
+                            <th class="esg-table-head__button">
+                                @Html.DisplayNameFor(model => model[0].Code)
+                            </th>
+                            <th class="esg-table-head__button">
+                                @Html.DisplayNameFor(model => model[0].TaxProfiles)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="records_charge_credit_rows_tbody" class="esg-table-body">
+                        @for (var i = 0; i < Model.Count; i++)
+                        {
+                            var item = Model[i];
+
+                            <tr class="esg-table-body__row" id="@i">
+                                <td class="esg-table-body__td">
+                                    <div class="esg-checkbox" style="margin: 0;">
+                                        <input id="chkSelectTaxProfile_@i" type="checkbox" onchange="onSelectTaxProfile()" checked="checked" />
+                                        <label for="chkSelectTaxProfile_@i" class="checkbox-label-table"></label>
+                                    </div>
+                                </td>
+                                <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                    <input id="hdnChargeCreditCodeId_@i" type="hidden" value="@item.Id" />
+                                    @item.Code
+                                </td>
+                                <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                    @if (item.TaxProfiles != null && item.TaxProfiles.Count > 0)
+                                    {
+                                        for (int j = 0; j < item.TaxProfiles.Count; j++)
+                                        {
+                                            <input id="hdnTaxProfile_@i" type="hidden" value="@item.Taxes[j]" />
+                                            @item.TaxProfiles[j]
+                                            <br />
+                                        }
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <input type="hidden" id="hdnChargeCreditResultsCount" value="@Model.Count" />
+        }
+    </div>
+</div>

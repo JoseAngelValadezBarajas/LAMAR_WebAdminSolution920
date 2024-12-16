@@ -1,0 +1,185 @@
+<!--
+    <copyright file="Operators.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model List<WebAdminUI.Areas.ElectronicCertificate.Models.Operators.OperatorsViewModel>
+
+@{
+    ViewBag.Title = WebAdminUI.Resources.ElectronicCertificate.Operator.lblOperators;
+}
+
+<br />
+<div class="esg-page-header">
+    <h1 class="esg-page-header__title">@WebAdminUI.Resources.ElectronicCertificate.Operator.lblOperators</h1>
+    <br />
+</div>
+<br />
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="esg-breadcrumb">
+        <ol class="esg-breadcrumb__list">
+            <li class="esg-breadcrumb__list-item"><a class="esg-breadcrumb__link" href="@Url.RouteUrl("MenuAcademicRecords")">@WebAdminUI.Resources.ElectronicCertificate.Responsible.lblAcademicRecord</a></li>
+            <li class="esg-breadcrumb__list-item"><a class="esg-breadcrumb__link" href="@Url.Action("Index", "Menu")" )">@WebAdminUI.Resources.ElectronicCertificate.Responsible.lblElectronicCertificate</a></li>
+            <li class="esg-breadcrumb__list-item"><a class="esg-breadcrumb__link" href="@Url.Action("Index", "Setup")" )">@WebAdminUI.Resources.ElectronicCertificate.Responsible.lblSetup</a></li>
+            <li class="esg-breadcrumb__list-item esg-is-active"> @WebAdminUI.Resources.ElectronicCertificate.Operator.lblOperators</li>
+        </ol>
+    </div>
+</div>
+<div id="formOperators" class="esg-card--panel">
+
+    @if (Model != null && Model.Count > 0)
+    {
+        <br />
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align:end; margin-right:1rem">
+            <button id="btnAddOperator" type="button" class="esg-button esg-button esg-button--medium ">
+                <span class="esg-button__icon esg-icon__container" aria-hidden="true">
+                    <svg class="esg-icon esg-icon--left">
+                        <use xlink:href="#icon-add"></use>
+                    </svg>
+                </span>
+            </button>
+        </div><br />
+        <div class="esg-card--panel__body">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="esg-table__container">
+                    <table id="operators_table" class="esg-table">
+                        <thead class="esg-table-head">
+                            <tr class="esg-table-head__row">
+                                <th class="esg-table-head__th" style="width:15%">@Html.DisplayNameFor(m => m[0].OperatorID)</th>
+                                <th class="esg-table-head__th" style="width:15%">@Html.DisplayNameFor(m => m[0].NumberID)</th>
+                                <th class="esg-table-head__th" style="width:20%">@Html.DisplayNameFor(m => m[0].Name)</th>
+                                <th class="esg-table-head__th" style="width:15%" align="center">@Html.DisplayNameFor(m => m[0].NumberCampuses)</th>
+                                <th class="esg-table-head__th" style="width:15%" align="center">@Html.DisplayNameFor(m => m[0].NumberPermissions)</th>
+                                <th class="esg-table-head__th" align="center">@WebAdminUI.Resources.ElectronicCertificate.Operator.lblEdit</th>
+                                <th class="esg-table-head__th" align="center">@WebAdminUI.Resources.ElectronicCertificate.Operator.lblDelete</th>
+                            </tr>
+                        </thead>
+                        <tbody class="esg-table-body" id="signers_table_rows_tbody">
+                            @for (var i = 0; i < Model.Count; i++)
+                            {
+                                <tr class="esg-table-body__row" id="@i">
+                                    <td class="esg-table-body__td">
+                                        @Html.Label("lblOperatorId", Model[i].OperatorID.ToString(), new { @id = Model[i].OperatorID })
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        @Html.Label("lblNumberId", Model[i].NumberID)
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        @Html.Label("lblName", Model[i].Name)
+                                    </td>
+                                    <td class="esg-table-body__td" align="center">
+                                        @Html.Label("lblNumberCampus", Model[i].NumberCampuses.ToString())
+                                    </td>
+                                    <td class="esg-table-body__td" align="center">
+                                        @Html.Label("lblNumberVisualizationPer", Model[i].NumberPermissions.ToString())
+                                    </td>
+                                    <td class="esg-table-body__td" align="center">
+                                        @Html.HiddenFor(m => Model[i].OperatorID, new { @id = "operatorEdit" })
+                                        <button id="@string.Format("btnEdit_{0}_{1}_{2}", Model[i].OperatorID, Model[i].Name, Model[i].NumberID)" name="btnEdit">
+                                            <span class="esg-icon__container">
+                                                <svg class="esg-icon">
+                                                    <use xlink:href="#icon-edit"></use>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </td>
+                                    <td class="esg-table-body__td" align="center">
+                                        @Html.HiddenFor(m => Model[i].OperatorID, new { @id = "operatorDelete" })
+                                        <button id="@string.Format("btnDelete_{0}", Model[i].OperatorID)" name="btnDelete">
+                                            <span class="esg-icon__container">
+                                                <svg class="esg-icon">
+                                                    <use xlink:href="#icon-trash"></use>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="esg-card--panel__body">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align:end; margin-right:1rem">
+                <button id="btnAddOperator" value="@WebAdminUI.Resources.ElectronicCertificate.Operator.lblAdd" type="button" class="esg-button esg-button esg-button--medium ">
+                    <span class="esg-button__icon esg-icon__container" aria-hidden="true">
+                        <svg class="esg-icon esg-icon--left">
+                            <use xlink:href="#icon-add"></use>
+                        </svg>
+                    </span>
+                </button>
+            </div><br />
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <span class="esg-h4">
+                    @WebAdminUI.Resources.ElectronicCertificate.Operator.lblNoOperators
+                </span><br /><br />
+            </div>
+        </div>
+    }
+    <div id="divError" class="esg-card--panel__content" style="display:none">
+        <div class="esg-container">
+            <div class="esg-alert esg-alert--error" role="alert">
+                <span class="esg-alert__icon-wrapper">
+                    <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                        <svg class="esg-icon esg-icon--error-dark">
+                            <use xlink:href="#icon-error"></use>
+                        </svg>
+                    </span>
+                </span>
+                <div class="esg-alert__message">@WebAdminUI.Resources.ElectronicCertificate.Responsible.lblError</div>
+            </div>
+        </div>
+    </div>
+    <div id="Overlaydiv" class="esg-modal-overlay" style="display:none; position:fixed; top:0; bottom:0; left:0; right:0;"></div>
+    <div id="Processing" class="esg-modal-dialog" style="display:none;">
+        <div class="esg-spinner-wrapper" style="position:absolute;">
+            <div class="esg-spinner"></div>
+        </div>
+    </div>
+    <div id="divDeleteModal" class="esg-modal-dialog" style="display:none;">
+        <div class="esg-modal-dialog__header">
+            <button id="btnDeleteModal" class="esg-modal-dialog__close esg-icon__container" type="button" data-dismiss="modal" aria-hidden="true">
+                <svg class="esg-icon esg-icon--large esg-icon--neutral">
+                    <use xlink:href="#icon-close"></use>
+                </svg>
+            </button>
+        </div><br />
+        <div class="esg-modal-dialog__body">
+            <div class="esg-container">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    @WebAdminUI.Resources.ElectronicCertificate.Operator.lblDeleteLegend
+                </div><br />
+            </div>
+            <div class="esg-modal-dialog__action-section esg-button-group esg-button-group--fluid" role="group" aria-label="button group">
+                <div class="esg-button-group__item" role="group">
+                    <button id="btnCloseDeleteModal" class="esg-button esg-button--secondary esg-modal-dialog__button" type="button">
+                        @WebAdminUI.Resources.ElectronicCertificate.Operator.lblCancel
+                    </button>
+                </div>
+                <div class="esg-button-group__item" role="group">
+                    <button id="btnDeleteOperator" class="esg-button esg-button--primary esg-modal-dialog__button" type="button">
+                        @WebAdminUI.Resources.ElectronicCertificate.Operator.lblDelete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        var urlAddOperator = '@Url.Action("Add","Operators")';
+        var urlEditOperator = '@Url.Action("Edit", "Operators")';
+        var urlCreateOperator = '@Url.Action("Create","Operators")';
+        var urlSetOperator = '@Url.Action("Set","Operators")';
+        var urlDeleteOperator = '@Url.Action("Delete","Operators")';
+        var urlUpdateOperator = '@Url.Action("Update","Operators")';
+        var urlOperatorIndex = '@Url.Action("Index","Operators")';
+        var urlUnauthorized = '@Url.RouteUrl("ErrorUnauthorized")';
+    </script>
+    @Scripts.Render("~/bundles/EC/Operators")
+}

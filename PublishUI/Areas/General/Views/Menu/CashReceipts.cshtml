@@ -1,0 +1,42 @@
+﻿<!--
+    <copyright file="Index.cshtml" company="Ellucian">
+        Copyright 2017 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+
+@{
+    ViewBag.Title = WebAdminUI.Resources.General.MenuCashReceipts.Title;
+    var permissions = ViewBag.Account as PowerCampus.Entities.Account;
+}
+
+<div class="esg-page-header">
+    <div class="esg-page-header__core-wrapper">
+        <div class="esg-page-header__text-wrapper">
+            <h1 class="esg-page-header__title">    @WebAdminUI.Resources.General.MenuCashReceipts.Title</h1>
+        </div>
+    </div>
+</div>
+<div class="esg-row">
+    <div class="esg-col-md-6">
+        <div class="esg-pattern-wrap">
+            @if (permissions.permissions.Where(m => m.Description.Trim() == "FiscalRecords").Select(m => m.Value).FirstOrDefault() ||
+                permissions.permissions.Where(m => m.Description.Trim() == "FiscalRecordSetup").Select(m => m.Value).FirstOrDefault() ||
+                permissions.permissions.Where(m => m.Description.Trim() == "FiscalRecordsProccesses").Select(m => m.Value).FirstOrDefault() ||
+                permissions.permissions.Where(m => m.Description.Trim() == "GlobalFiscalRecord").Select(m => m.Value).FirstOrDefault() ||
+                permissions.permissions.Where(m => m.Description.Trim() == "IssuerFiscalInformation").Select(m => m.Value).FirstOrDefault() ||
+                permissions.permissions.Where(m => m.Description.Trim() == "ReceiverFiscalInformation").Select(m => m.Value).FirstOrDefault())
+            {
+                <div class="esg-card">
+                    <span class="esg-icon__container">
+                        <svg class="esg-icon">
+                            <use xlink:href="#icon-info"></use>
+                        </svg>
+                    </span>
+                    <div class="esg-icon__label">
+                        <h3>@WebAdminUI.Resources.General.MenuCashReceipts.FiscalRecords</h3>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

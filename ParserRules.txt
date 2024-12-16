@@ -1,0 +1,6 @@
+# Divide into sections based on project compile start
+start /^------/
+# Compiler Error
+error /(?i)error [A-Z]+[0-9]+:/
+# Compiler Warning
+warning /(?i)warning [A-Z]+[0-9]+:/

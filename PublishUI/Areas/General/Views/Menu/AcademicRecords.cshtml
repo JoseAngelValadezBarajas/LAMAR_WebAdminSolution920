@@ -1,0 +1,64 @@
+<!--
+    <copyright file="Index.cshtml" company="Ellucian">
+        Copyright 2017 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+
+@{
+    ViewBag.Title = WebAdminUI.Resources.General.MenuAcademicRecords.Title;
+    var permissions = ViewBag.Account as PowerCampus.Entities.Account;
+}
+
+<div class="esg-page-header">
+    <div class="esg-page-header__core-wrapper">
+        <div class="esg-page-header__text-wrapper">
+            <h1 class="esg-page-header__title">   @WebAdminUI.Resources.General.MenuAcademicRecords.Title</h1>
+        </div>
+    </div>
+</div>
+<div class="esg-row">
+    @if (permissions.permissions.Where(m => m.Description.Trim() == "ElectronicDegree").Select(m => m.Value).FirstOrDefault() ||
+    permissions.permissions.Where(m => m.Description.Trim() == "ElectronicDegreeSetup").Select(m => m.Value).FirstOrDefault() ||
+    permissions.permissions.Where(m => m.Description.Trim() == "ElectronicDegreesOperations").Select(m => m.Value).FirstOrDefault() ||
+    permissions.permissions.Where(m => m.Description.Trim() == "GenerateElectronicDegrees").Select(m => m.Value).FirstOrDefault())
+    {
+        <div class="esg-col-md-6">
+            <div class="esg-pattern-wrap">
+                <div class="esg-card">
+                    <span class="esg-icon__container">
+                        <svg class="esg-icon">
+                            <use xlink:href="#icon-info"></use>
+                        </svg>
+                    </span>
+                    <div class="esg-icon__label">
+                        <a href="@Url.RouteUrl("MenuElectronicDegree")">
+                            <h3>@WebAdminUI.Resources.General.MenuAcademicRecords.ElectronicDegree</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    @if (permissions.permissions.Where(m => m.Description.Trim() == "ElectronicCertificate").Select(m => m.Value).FirstOrDefault() ||
+    permissions.permissions.Where(m => m.Description.Trim() == "ElectronicCertificateOperations").Select(m => m.Value).FirstOrDefault() ||
+    permissions.permissions.Where(m => m.Description.Trim() == "ElectronicCertificateSetup").Select(m => m.Value).FirstOrDefault() ||
+    permissions.permissions.Where(m => m.Description.Trim() == "GenerateElectronicCertificate").Select(m => m.Value).FirstOrDefault())
+    {
+        <div class="esg-col-md-6">
+            <div class="esg-pattern-wrap">
+                <div class="esg-card">
+                    <span class="esg-icon__container">
+                        <svg class="esg-icon">
+                            <use xlink:href="#icon-info"></use>
+                        </svg>
+                    </span>
+                    <div class="esg-icon__label">
+                        <a href="@Url.RouteUrl("MenuElectronicCertificate")">
+                            <h3>@WebAdminUI.Resources.General.MenuAcademicRecords.ElectronicCertificate</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

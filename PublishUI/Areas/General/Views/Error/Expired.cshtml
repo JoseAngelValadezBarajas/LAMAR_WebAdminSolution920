@@ -1,0 +1,25 @@
+﻿<!--
+    <copyright file="Expired.cshtml" company="Ellucian">
+        Copyright 2017 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+
+﻿@{
+    ViewBag.Title = Resources.CustomMessages.TitleSessionExpired;
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="esg-alert esg-alert--warning" role="alert">
+
+            <span class="esg-alert__icon-wrapper">
+                <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                    <svg class="esg-icon esg-icon--warning-dark">
+                        <use xlink:href="#icon-warning"></use>
+                    </svg>
+                </span>
+            </span>
+
+            <div class="esg-alert__message">@WebAdminUI.Views.Shared.Resources.LayoutResources.lblSessionExpired</div>
+        </div>
+    </div>
+</div>

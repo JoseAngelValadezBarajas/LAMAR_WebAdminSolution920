@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebAdminUI.Models.SearchResult.SearchResultViewModel>
+
+<div id="PeopleRecords" data-pagination="true" style="display:block;">
+    <div class="esg-card--panel__body">
+        <div class="esg-table__container">
+            <table class="esg-table">
+                <thead class="esg-table-head">
+                    <tr class="esg-table-head__row">
+                        <th class="esg-table-head__th">@WebAdminUI.Views.Search.App_LocalResources.Advanced_cshtml.lblPeopleId</th>
+                        <th class="esg-table-head__th">@WebAdminUI.Views.Search.App_LocalResources.Advanced_cshtml.lblName</th>
+                        <th class="esg-table-head__th">@WebAdminUI.Views.Search.App_LocalResources.Advanced_cshtml.lblEmail</th>
+                        <th class="esg-table-head__th">@WebAdminUI.Views.Search.App_LocalResources.Advanced_cshtml.lblRecordType</th>
+                    </tr>
+                </thead>
+                <tbody id="records_table_rows_tbody" class="esg-table-body">
+                    @if (Model != null)
+                    {
+                        var count = 0;
+
+                        foreach (var people in Model)
+                        {
+
+                    <tr class="esg-table-body__row" id="@count">
+                        <td id="peopleCodeId" class="esg-table-body__td" style="cursor:pointer"><u>@people.PeopleOrgCodeId</u></td>
+                        <td class="esg-table-body__td">@people.FullName</td>
+                        <td class="esg-table-body__td">@people.PrimaryEmail</td>
+                        <td class="esg-table-body__td">@people.RecordTypeList</td>
+                    </tr>
+
+                            count++;
+                        }
+
+                    }
+                </tbody>
+            </table>
+            <br />
+            @Html.Partial("_Pagination", new ViewDataDictionary() { { "Count", (Model == null ? 0 : Model.Count()) }, { "MinRows", 5 }, { "DefaultSelected", 10 } })
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/FR/Pagination")

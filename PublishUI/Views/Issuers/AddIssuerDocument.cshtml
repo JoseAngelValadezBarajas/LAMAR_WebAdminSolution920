@@ -1,0 +1,113 @@
+@model WebAdminUI.Models.Issuers.InvoiceReceiptViewModel
+
+@{
+    ViewBag.Title = WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.AddIssuerDocument;
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formCreate" }))
+{
+@Html.AntiForgeryToken()
+@Html.HiddenFor(model => model.InvoiceExpeditionId)
+@Html.HiddenFor(model => model.InvoiceOrganizationId)
+<div class="esg-card--panel">
+    <div class="esg-card--panel__heading">
+        <h3 class="esg-card--panel__title">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.IssuerFiscalInformation</h3>
+    </div>
+    <div class="esg-card--panel__body">
+        <div class="esg-card--panel__sub-heading">
+            <p class="esg-small">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.NewRecord</p>
+        </div>
+        <div class="esg-card--panel__content">
+            @if (Request.QueryString["option"] == WebAdminUI.Models.Issuers.DoucumnetSetpType.ByExpedition.ToString())
+                {
+            <div id="divInvoiceExpeditionId" class="esg-form__group esg-has-feedback">
+                <label class="esg-form__label esg-is-required">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.AddIssuerAddress</label><br />
+                <div class="esg-form__input-group" style="width:350px;">
+                    @Html.DropDownListFor(model => model.InvoiceExpeditionId, new SelectList(Model.ListInvoiceExpedition, "InvoiceExpeditionId", "Description"), new { @class = "esg-form__input validityDropDown", @id = "AddInvoiceExpeditionId" })
+                    <div id="divInvoiceExpeditionIdIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                        <svg class="esg-icon esg-icon--error">
+                            <use xlink:href="#icon-error"></use>
+                        </svg>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.InvoiceExpeditionId, "", new { @class = "text-danger validation-label" })
+                </div>
+            </div>
+                }
+            <div>
+                <div id="divSerialNumber" class="esg-form__group esg-has-feedback">
+                    <label class="esg-form__label esg-is-required">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Serial</label><br />
+                    <div class="esg-form__input-group" style="width:350px;">
+                        @Html.EditorFor(model => model.SerialNumber, new { htmlAttributes = new { @class = "esg-form__input", @style = "width:350px", maxlength = 25 } })
+                        <div id="divSerialNumberIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                            <svg class="esg-icon esg-icon--error">
+                                <use xlink:href="#icon-error"></use>
+                            </svg>
+                        </div>
+                        <label class="text-danger" id="SerialNumberValidation" style="display:none; ">@WebAdminUI.Models.Resources.IssuerModelResource.SerialNumberRequired</label>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div id="divFolio" class="esg-form__group esg-has-feedback">
+                    <label class="esg-form__label esg-is-required">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.InitialFolio</label><br />
+                    <div class="esg-form__input-group" style="width:350px;">
+                        @Html.TextBoxFor(model => model.Folio, new { @class = "esg-form__input", maxlength = 10 })
+                        <div id="divFolioIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none;">
+                            <svg class="esg-icon esg-icon--error">
+                                <use xlink:href="#icon-error"></use>
+                            </svg>
+                        </div>
+                        <label class="text-danger" id="FolioValidation" style="display:none; ">@WebAdminUI.Models.Resources.IssuerModelResource.InitialFolioRequired</label>
+                        <label class="text-danger" id="InvalidFolioValidation" style="display:none; ">@WebAdminUI.Models.Resources.IssuerModelResource.InvalidFolio</label>
+                    </div>
+                </div>
+            </div>
+            <div class="esg-alert esg-alert--error errorMessageDivFolio" role="alert" style="display:none">
+                <span class="esg-alert__icon-wrapper">
+                    <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                        <svg class="esg-icon esg-icon--error-dark">
+                            <use xlink:href="#icon-error"></use>
+                        </svg>
+                    </span>
+                </span>
+                <div class="esg-alert__message errorMessageResultFolio">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.ErrorMessageFolio</div>
+            </div>
+            <div class="esg-alert esg-alert--error errorMessageDivSerial" role="alert" style="display:none">
+                <span class="esg-alert__icon-wrapper">
+                    <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                        <svg class="esg-icon esg-icon--error-dark">
+                            <use xlink:href="#icon-error"></use>
+                        </svg>
+                    </span>
+                </span>
+                <div class="esg-alert__message errorMessageResultSerial">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.ErrorMessageSerial</div>
+            </div>
+            <div class="esg-alert esg-alert--error errorMessageDivFolioBig" role="alert" style="display:none">
+                <span class="esg-alert__icon-wrapper">
+                    <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                        <svg class="esg-icon esg-icon--error-dark">
+                            <use xlink:href="#icon-error"></use>
+                        </svg>
+                    </span>
+                </span>
+                <div class="esg-alert__message errorMessageResultFolioBig">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.ErrorMessageFolioBig</div>
+            </div>
+        </div>
+    </div>
+    <div class="esg-card--panel__footer">
+        <div>
+            <div class="esg-button-group" role="group" aria-label="button group">
+                <input type="button" class="esg-button esg-button--secondary" value="@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.BackIssuer" id="btnBackIssuer" onclick="location.href='@Url.Action("Edit", "Issuers", new { id = Request.QueryString["id"] })'" />
+                <input type="button" class="esg-button esg-button--secondary" value="@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.ClearAll" id="btnClearAllDocument" />
+                <input type="button" class="esg-button esg-button--primary" value="@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Create" id="btnIssuerDocument" />
+            </div>
+        </div>
+    </div>
+</div>
+<div id="Overlaydiv" class="esg-modal-overlay" style="display:none; position:fixed; top:0; bottom:0; left:0; right:0;"></div>
+<div id="Processing" class="esg-modal-dialog" style="display:none;">
+    <div class="esg-spinner-wrapper" style="position:absolute;">
+        <div class="esg-spinner"></div>
+    </div>
+</div>
+}

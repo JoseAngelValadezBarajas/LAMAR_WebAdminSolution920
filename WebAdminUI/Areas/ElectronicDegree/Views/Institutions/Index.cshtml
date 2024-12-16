@@ -1,0 +1,129 @@
+﻿<!--
+    <copyright file="Index.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model List<WebAdminUI.Areas.ElectronicDegree.Models.Institution.InstitutionViewModel>
+@{
+    ViewBag.Title = WebAdminUI.Resources.ElectronicDegree.Institution.lblInstitutions;
+}
+
+<br />
+<div class="esg-page-header">
+    <h1 class="esg-page-header__title">@WebAdminUI.Resources.ElectronicDegree.Institution.lblInstitutions</h1>
+    <br />
+</div>
+<br />
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="esg-breadcrumb">
+        <ol class="esg-breadcrumb__list">
+            <li class="esg-breadcrumb__list-item"><a class="esg-breadcrumb__link" href="#">@WebAdminUI.Resources.ElectronicDegree.Institution.lblAcademicRecord</a></li>
+            <li class="esg-breadcrumb__list-item"><a class="esg-breadcrumb__link" href="@Url.Action("Menu", "Menu")" )">@WebAdminUI.Resources.ElectronicDegree.Institution.lblElectronicDegree</a></li>
+            <li class="esg-breadcrumb__list-item"><a class="esg-breadcrumb__link" href="@Url.Action("Index", "Setup")" )">@WebAdminUI.Resources.ElectronicDegree.Institution.lblSetup</a></li>
+            <li class="esg-breadcrumb__list-item esg-is-active"> @WebAdminUI.Resources.ElectronicDegree.Institution.lblInstitutions</li>
+        </ol>
+    </div>
+</div>
+<div id="form" class="esg-card--panel">
+    @if (Model.Count > 0)
+    {
+        <br />
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align:end; margin-right:1rem">
+            <button id="btnAddInstitution" type="button" class="esg-button esg-button esg-button--medium ">
+                <span class="esg-button__icon esg-icon__container" aria-hidden="true">
+                    <svg class="esg-icon esg-icon--left">
+                        <use xlink:href="#icon-add"></use>
+                    </svg>
+                </span>
+            </button>
+        </div>
+        <br />
+        <div class="esg-card--panel__body">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="esg-table__container">
+                    <table id="table" class="esg-table">
+                        <thead class="esg-table-head">
+                            <tr class="esg-table-head__row">
+                                <th class="esg-table-head__th" style="width:20%">@Html.DisplayNameFor(m => m[0].Code)</th>
+                                <th class="esg-table-head__th" style="width:20%">@Html.DisplayNameFor(m => m[0].Name)</th>
+                                <th class="esg-table-head__th" style="width:20%">@Html.DisplayNameFor(m => m[0].Equivalent)</th>
+                                <th class="esg-table-head__th" style="width:10%">@WebAdminUI.Resources.ElectronicDegree.Institution.lblInstitutionsNumber</th>
+                                <th class="esg-table-head__th" style="width:10%">@WebAdminUI.Resources.ElectronicDegree.Institution.lblMajorsNumber</th>
+                                <th class="esg-table-head__th" style="width:10%">@Html.DisplayNameFor(m => m[0].Edit)</th>
+                                @*<th class="esg-table-head__th" style="width:10%">@Html.DisplayNameFor(m => m[0].Delete)</th>*@
+                            </tr>
+                        </thead>
+                        <tbody class="esg-table-body" id="table_rows_tbody">
+                            @for (var i = 0; i < Model.Count; i++)
+                            {
+                                var institution = Model[i];
+                                <tr class="esg-table-body__row" id="@i">
+                                    <td class="esg-table-body__td">
+                                        @Html.Label("lblCode", Model[i].Code)
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        @Html.Label("lblName", Model[i].Name)
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        @Html.Label("", Model[i].Equivalent)
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        @Html.Label("", Model[i].Signers.ToString())
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        @Html.Label("", Model[i].Majors.ToString())
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        <button id="@string.Format("btnEdit_{0}", Model[i].Id)" name="btnEdit">
+                                            <span class="esg-icon__container">
+                                                <svg class="esg-icon">
+                                                    <use xlink:href="#icon-edit"></use>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </td>
+                                    @*<td class="esg-table-body__td">
+                                            <button id="@string.Format("btnEdit_{0}", Model[i].Id)" name="btnEdit">
+                                                <span class="esg-icon__container">
+                                                    <svg class="esg-icon">
+                                                        <use xlink:href="#icon-trash"></use>
+                                                    </svg>
+                                                </span>
+                                            </button>
+                                        </td>*@
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="esg-card--panel__body">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align:end">
+                <button id="btnAddInstitution" type="button" class="esg-button esg-button esg-button--medium ">
+                    <span class="esg-button__icon esg-icon__container" aria-hidden="true">
+                        <svg class="esg-icon esg-icon--left">
+                            <use xlink:href="#icon-add"></use>
+                        </svg>
+                    </span>
+                </button>
+            </div><br />
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <span class="esg-h4">
+                    @WebAdminUI.Resources.ElectronicDegree.Institution.lblNoInstitutions
+                </span><br /><br />
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        var urlAddInstitution = '@Url.Action("Add","Institutions")';
+        var urlEditInstitution = '@Url.Action("Edit","Institutions", new { institutionId="param-id" })';
+    </script>
+    @Scripts.Render("~/bundles/ED/Institutions")
+}

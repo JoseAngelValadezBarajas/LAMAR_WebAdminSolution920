@@ -1,0 +1,142 @@
+﻿<!--
+    <copyright file="Index.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+
+@{
+    ViewBag.Title = WebAdminUI.Resources.ElectronicDegree.Setup.lblSetupElectronicDegree;
+}
+
+<div class="esg-card-header">
+    <div class="esg-page-header__core-wrapper">
+        <h1 class="esg-page-header__title">@WebAdminUI.Resources.ElectronicDegree.Setup.lblSetupElectronicDegree</h1>
+        <div>
+            <span class="esg-icon__container">
+                <svg class="esg-icon esg-icon--left">
+                    <use xlink:href="#icon-arrow"></use>
+                </svg>
+            </span>
+            <a href="@Url.Action("Menu", "Menu")">
+                <div class="esg-icon__label">
+                    <span>@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.ButtonBack</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<br />
+<div class="esg-row">
+    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+        <div class="esg-pattern-wrap">
+            <div class="esg-card">
+                <span class="esg-icon__container">
+                    <svg class="esg-icon">
+                        <use xlink:href="#icon-settings"></use>
+                    </svg>
+                </span>
+                <a href="@Url.Action("Index", "Operators")">
+                    <div class="esg-icon__label">
+                        <h3>@WebAdminUI.Resources.ElectronicDegree.Setup.lblOperators</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+        <div class="esg-pattern-wrap">
+            <div class="esg-card">
+                <span class="esg-icon__container">
+                    <svg class="esg-icon">
+                        <use xlink:href="#icon-settings"></use>
+                    </svg>
+                </span>
+                <a href="@Url.Action("Index", "Institutions")">
+                    <div class="esg-icon__label">
+                        <h3>@WebAdminUI.Resources.ElectronicDegree.Setup.lblInstitutions</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+        <div class="esg-pattern-wrap">
+            <div class="esg-card">
+                <span class="esg-icon__container">
+                    <svg class="esg-icon">
+                        <use xlink:href="#icon-settings"></use>
+                    </svg>
+                </span>
+                <a href="@Url.Action("Index", "Signers")">
+                    <div class="esg-icon__label">
+                        <h3>@WebAdminUI.Resources.ElectronicDegree.Setup.lblSigners</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+        <div class="esg-pattern-wrap">
+            <div class="esg-card">
+                <span class="esg-icon__container">
+                    <svg class="esg-icon">
+                        <use xlink:href="#icon-settings"></use>
+                    </svg>
+                </span>
+                <a href="@Url.Action("Index", "SignerInstitution")">
+                    <div class="esg-icon__label">
+                        <h3>@WebAdminUI.Resources.ElectronicDegree.Setup.lblMapInstitutionsSigners</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+        <div class="esg-pattern-wrap">
+            <div class="esg-card">
+                <span class="esg-icon__container">
+                    <svg class="esg-icon">
+                        <use xlink:href="#icon-settings"></use>
+                    </svg>
+                </span>
+                <a href="@Url.Action("Index", "Majors")">
+                    <div class="esg-icon__label">
+                        <h3>@WebAdminUI.Resources.ElectronicDegree.Setup.lblMajors</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+        <div class="esg-pattern-wrap">
+            <div class="esg-card">
+                <span class="esg-icon__container">
+                    <svg class="esg-icon">
+                        <use xlink:href="#icon-settings"></use>
+                    </svg>
+                </span>
+                <a href="@Url.Action("MajorsMapping", "Institutions")">
+                    <div class="esg-icon__label">
+                        <h3>@WebAdminUI.Resources.ElectronicDegree.Setup.lblMapInstitutionsMajors</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+        <div class="esg-pattern-wrap">
+            <div class="esg-card">
+                <span class="esg-icon__container">
+                    <svg class="esg-icon">
+                        <use xlink:href="#icon-settings"></use>
+                    </svg>
+                </span>
+                <a href="@Url.Action("FederalEntity", "Catalogs")">
+                    <div class="esg-icon__label">
+                        <h3>@WebAdminUI.Resources.ElectronicDegree.Setup.lblCatalogs</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

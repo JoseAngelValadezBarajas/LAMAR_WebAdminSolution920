@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddIssuerAddress" xml:space="preserve">
+    <value>Dirección de expedición</value>
+  </data>
+  <data name="AddIssuerDocument" xml:space="preserve">
+    <value>Agregar configuración del comprobante fiscal</value>
+  </data>
+  <data name="AddIssuerDocumentByAddress" xml:space="preserve">
+    <value>Por dirección de expedición</value>
+  </data>
+  <data name="AddIssuerDocumentByTaxpayer" xml:space="preserve">
+    <value>Por RFC</value>
+  </data>
+  <data name="AddNewIssuerAddress" xml:space="preserve">
+    <value>Agregar dirección de expedición</value>
+  </data>
+  <data name="AddNewIssuerDocument" xml:space="preserve">
+    <value>Agregar configuración del comprobante fiscal</value>
+  </data>
+  <data name="AddNewMapping" xml:space="preserve">
+    <value>Agregar nuevo mapeo</value>
+  </data>
+  <data name="BackIssuer" xml:space="preserve">
+    <value>Regresar al emisor</value>
+  </data>
+  <data name="btnAddIssuer" xml:space="preserve">
+    <value>Agregar</value>
+  </data>
+  <data name="ButtonBack" xml:space="preserve">
+    <value>Regresar</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="ClearAll" xml:space="preserve">
+    <value>Limpiar todo</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>¿Está seguro de eliminar el registro?</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="DeleteIssuerAddress" xml:space="preserve">
+    <value>Eliminar dirección del emisor</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="EditIssuer" xml:space="preserve">
+    <value>Editar emisor</value>
+  </data>
+  <data name="EditIssuerAddress" xml:space="preserve">
+    <value>Editar dirección del emisor</value>
+  </data>
+  <data name="EditRecord" xml:space="preserve">
+    <value>Editar registro</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>Fecha de fin</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ocurrió un error inesperado al procesar su solicitud.</value>
+  </data>
+  <data name="ErrorMessageFolio" xml:space="preserve">
+    <value>El folio inicial no puede ser menor que el último folio generado.</value>
+  </data>
+  <data name="ErrorMessageFolioBig" xml:space="preserve">
+    <value>El número de folio es incorrecto, por favor ingresa un número menor</value>
+  </data>
+  <data name="ErrorMessageSerial" xml:space="preserve">
+    <value>La misma serie y folio inicial no puede ser ingresado más de una vez.</value>
+  </data>
+  <data name="InitialFolio" xml:space="preserve">
+    <value>Folio inicial</value>
+  </data>
+  <data name="IssuerAddress" xml:space="preserve">
+    <value>Lugar de expedición:</value>
+  </data>
+  <data name="IssuerFiscalInformation" xml:space="preserve">
+    <value>Información fiscal del emisor</value>
+  </data>
+  <data name="IssuerTaxPayerID" xml:space="preserve">
+    <value>RFC del emisor</value>
+  </data>
+  <data name="IssuerTaxPayerIDRequired" xml:space="preserve">
+    <value>Ingrese un RFC</value>
+  </data>
+  <data name="IssuingAddress" xml:space="preserve">
+    <value>Dirección de expedición</value>
+  </data>
+  <data name="IssuingAddressRequired" xml:space="preserve">
+    <value>Ingrese una dirección de expedición</value>
+  </data>
+  <data name="LastFolio" xml:space="preserve">
+    <value>Último folio</value>
+  </data>
+  <data name="List" xml:space="preserve">
+    <value>Listado</value>
+  </data>
+  <data name="NewRecord" xml:space="preserve">
+    <value>Nuevo registro</value>
+  </data>
+  <data name="PaymentConditionsRequired" xml:space="preserve">
+    <value>Las condiciones de pago son requeridas</value>
+  </data>
+  <data name="PaymentContditions" xml:space="preserve">
+    <value>Condiciones de pago</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="Serial" xml:space="preserve">
+    <value>Serie</value>
+  </data>
+  <data name="SerialNumberRequired" xml:space="preserve">
+    <value>Serie es requerida</value>
+  </data>
+  <data name="SerialRequired" xml:space="preserve">
+    <value>La serie es requerida</value>
+  </data>
+  <data name="SetupTitle" xml:space="preserve">
+    <value>Configuración de comprobantes fiscales</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Fecha de inicio</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="TaxpayerExists" xml:space="preserve">
+    <value>El RFC existe.</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Actualizar</value>
+  </data>
+  <data name="ViewList" xml:space="preserve">
+    <value>Ver listado</value>
+  </data>
+  <data name="ZipCode" xml:space="preserve">
+    <value>Código postal</value>
+  </data>
+  <data name="SerialCreditNote" xml:space="preserve">
+    <value>Serie para notas de crédito</value>
+  </data>
+  <data name="ChargeCreditCode" xml:space="preserve">
+    <value>Código de abono para devolución de importe</value>
+  </data>
+  <data name="ChargeCreditCodeTax" xml:space="preserve">
+    <value>Código de abono para devolución de impuesto</value>
+  </data>
+  <data name="CreditNotes" xml:space="preserve">
+    <value>Notas de crédito</value>
+  </data>
+  <data name="Invoices" xml:space="preserve">
+    <value>Facturas</value>
+  </data>
+  <data name="GeneralData" xml:space="preserve">
+    <value>Datos generales</value>
+  </data>
+  <data name="SerialInovice" xml:space="preserve">
+    <value>Serie para facturas</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Guardado exitoso</value>
+  </data>
+  <data name="CorporateNameMessage" xml:space="preserve">
+    <value>La razón social debe registrarse tal y como se encuentra en la Cédula de Identificación Fiscal y Constancia de Situación Fiscal</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Versión</value>
+  </data>
+</root>

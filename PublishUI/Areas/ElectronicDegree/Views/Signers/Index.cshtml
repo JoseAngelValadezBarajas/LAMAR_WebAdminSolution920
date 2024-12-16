@@ -1,0 +1,126 @@
+<!--
+    <copyright file="Index.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model List<WebAdminUI.Areas.ElectronicDegree.Models.Signers.SignersIndexList>
+
+@{
+    ViewBag.Title = WebAdminUI.Resources.ElectronicDegree.Signer.lblSigners;
+}
+
+<br />
+<div class="esg-page-header">
+    <h1 class="esg-page-header__title">@WebAdminUI.Resources.ElectronicDegree.Signer.lblSigners</h1>
+    <br />
+</div>
+<br />
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="esg-breadcrumb">
+        <ol class="esg-breadcrumb__list">
+            <li class="esg-breadcrumb__list-item"><a class="esg-breadcrumb__link" href="#">@WebAdminUI.Resources.ElectronicDegree.Signer.lblAcademicRecord</a></li>
+            <li class="esg-breadcrumb__list-item"><a class="esg-breadcrumb__link" href="@Url.Action("Menu", "Menu")" )">@WebAdminUI.Resources.ElectronicDegree.Signer.lblElectronicDegree</a></li>
+            <li class="esg-breadcrumb__list-item"><a class="esg-breadcrumb__link" href="@Url.Action("Index", "Setup")" )">@WebAdminUI.Resources.ElectronicDegree.Signer.lblSetup</a></li>
+            <li class="esg-breadcrumb__list-item esg-is-active"> @WebAdminUI.Resources.ElectronicDegree.Signer.lblSigners</li>
+        </ol>
+    </div>
+</div>
+<div id="formSigners" class="esg-card--panel">
+
+    @if (Model.Count > 0)
+    {
+        <br />
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align:end; margin-right:1rem">
+            <button id="btnAddSigner" type="button" class="esg-button esg-button esg-button--medium ">
+                <span class="esg-button__icon esg-icon__container" aria-hidden="true">
+                    <svg class="esg-icon esg-icon--left">
+                        <use xlink:href="#icon-add"></use>
+                    </svg>
+                </span>
+            </button>
+        </div><br />
+        <div class="esg-card--panel__body">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="esg-table__container">
+                    <table id="signers_table" class="esg-table">
+                        <thead class="esg-table-head">
+                            <tr class="esg-table-head__row">
+                                <th class="esg-table-head__th" style="width:35%">@Html.DisplayNameFor(m => m[0].Signer)</th>
+                                <th class="esg-table-head__th" style="width:15%">@Html.DisplayNameFor(m => m[0].LaborPosition)</th>
+                                <th class="esg-table-head__th" style="width:25%">@Html.DisplayNameFor(m => m[0].Institutions)</th>
+                                <th class="esg-table-head__th">@Html.DisplayNameFor(m => m[0].Status)</th>
+                                <th class="esg-table-head__th">@Html.DisplayNameFor(m => m[0].Edit)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="esg-table-body" id="signers_table_rows_tbody">
+                            @for (var i = 0; i < Model.Count; i++)
+                            {
+                                var Signers = Model[i];
+                                <tr class="esg-table-body__row" id="@i">
+                                    <td class="esg-table-body__td">
+                                        @Html.Label("lblSigner", Model[i].Signer, new { @id = Model[i].SignerId })
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        @Html.Label("lblLaborPosition", Model[i].LaborPosition)
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        @Html.Label("lblLaborPosition", Model[i].Institutions.ToString())
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        @if (Model[i].IsActive)
+                                        {
+                                            <span class="esg-label esg-label--pending">@WebAdminUI.Resources.ElectronicDegree.Signer.lblActive</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="esg-label esg-label--error">@WebAdminUI.Resources.ElectronicDegree.Signer.lblInactive </span>
+                                        }
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        @Html.HiddenFor(m => Model[i].SignerId, new { @id = "signerEdit" })
+                                        <button id="@string.Format("btnEditSigner_{0}", Model[i].SignerId)" name="btnEdit">
+                                            <span class="esg-icon__container">
+                                                <svg class="esg-icon">
+                                                    <use xlink:href="#icon-edit"></use>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="esg-card--panel__body">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align:end; margin-right:1rem">
+                <button id="btnAddSigner" value="@WebAdminUI.Resources.ElectronicDegree.Signer.lblAdd" type="button" class="esg-button esg-button esg-button--medium ">
+                    <span class="esg-button__icon esg-icon__container" aria-hidden="true">
+                        <svg class="esg-icon esg-icon--left">
+                            <use xlink:href="#icon-add"></use>
+                        </svg>
+                    </span>
+                </button>
+            </div><br />
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <span class="esg-h4">
+                    @WebAdminUI.Resources.ElectronicDegree.Signer.lblNoSigners
+                </span><br /><br />
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        var urlAddSigner = '@Url.Action("Add","Signers")';
+        var urlEditSigner = '@Url.Action("Edit", "Signers")';
+        var urlCreateSigner = '@Url.Action("Create","Signers")';
+        var urlGetEditSigner = '@Url.Action("Set","Signers")';
+    </script>
+    @Scripts.Render("~/bundles/ED/Signers")
+}

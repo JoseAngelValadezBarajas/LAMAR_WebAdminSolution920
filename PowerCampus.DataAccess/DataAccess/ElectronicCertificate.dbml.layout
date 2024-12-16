@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ElectronicCertificate">
+  <DataContextMoniker Name="/ElectronicCertificateDataContext" />
+  <nestedChildShapes>
+    <classShape Id="07ca4b1d-3b43-4778-b5e3-3526ebe6e0e4" isExpanded="false" absoluteBounds="2.375, 0.75, 2, 0.45">
+      <DataClassMoniker Name="/ElectronicCertificateDataContext/Transaction" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9beb9dbe-d065-4831-8390-b6bd9b011279" absoluteBounds="2.39, 1.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="37269219-24fb-4704-b2df-5262210ecdf3" isExpanded="false" absoluteBounds="5.125, 1.375, 2, 0.45">
+      <DataClassMoniker Name="/ElectronicCertificateDataContext/CODE_RESPONSIBLEPOSITION" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ded8a548-a5a5-450a-bb22-e7d2e9df33fe" absoluteBounds="5.14, 1.835, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="eafce159-0a12-4fdb-9930-99f59bf72fbf" isExpanded="false" absoluteBounds="6.125, 3, 2, 0.45">
+      <DataClassMoniker Name="/ElectronicCertificateDataContext/Responsible" />
+      <nestedChildShapes>
+        <elementListCompartment Id="36e7118a-7dff-409b-9a34-1525d59d0400" absoluteBounds="6.14, 3.46, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.625 : 1.825); (6.625 : 3)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ElectronicCertificateDataContext/CODE_RESPONSIBLEPOSITION/CODE_RESPONSIBLEPOSITION_Responsible" />
+      <nodes>
+        <classShapeMoniker Id="37269219-24fb-4704-b2df-5262210ecdf3" />
+        <classShapeMoniker Id="eafce159-0a12-4fdb-9930-99f59bf72fbf" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="42c54146-ddfd-4f06-a8cc-e349688a0b8c" isExpanded="false" absoluteBounds="3.125, 2.625, 2, 0.45">
+      <DataClassMoniker Name="/ElectronicCertificateDataContext/ElectronicCertificateOperator" />
+      <nestedChildShapes>
+        <elementListCompartment Id="95a6b06d-26d5-40bf-bb4f-6d7518240f23" absoluteBounds="3.1399999999999997, 3.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e31953a1-97d9-4a21-a037-0de0c966acd6" isExpanded="false" absoluteBounds="6.125, 4, 2, 0.45">
+      <DataClassMoniker Name="/ElectronicCertificateDataContext/CODE_PERIODTYPE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e56f0bb1-47ca-46b3-9357-15131825ff3d" absoluteBounds="6.14, 4.46, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="10571c28-d019-4bf7-8d77-cb9bba5080eb" isExpanded="false" absoluteBounds="3.125, 5.125, 2, 0.45">
+      <DataClassMoniker Name="/ElectronicCertificateDataContext/ElectronicCertPermission" />
+      <nestedChildShapes>
+        <elementListCompartment Id="11fdfb6d-32dd-476e-9e35-2bf601316279" absoluteBounds="3.1399999999999997, 5.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8becafc9-c2f1-40bb-b74b-e9d9c0ed0afc" isExpanded="false" absoluteBounds="6.5, 5.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/ElectronicCertificateDataContext/ElectronicCertificateOperator" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5188b230-29e3-467d-ae10-f88a14a90dc0" absoluteBounds="6.515, 5.96, 1.6644444477558138, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e4586660-2e59-489d-a45d-b4c928f43728" isExpanded="false" absoluteBounds="2.875, 6.625, 2, 0.45">
+      <DataClassMoniker Name="/ElectronicCertificateDataContext/ElectronicCertificateCourse" />
+      <nestedChildShapes>
+        <elementListCompartment Id="934c619d-afe0-4c40-814c-aeacd1f7a62c" absoluteBounds="2.8899999999999997, 7.085, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c40aaa12-0336-4605-a251-45f271c08154" isExpanded="false" absoluteBounds="0.5, 7.5, 2, 0.45">
+      <DataClassMoniker Name="/ElectronicCertificateDataContext/ElectronicCertificateFile" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c165d8f2-3785-45cc-8036-7505490c8134" absoluteBounds="0.51500000000000012, 7.9600000000000009, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4e749e32-c12f-4702-bd73-823f3e3a3da8" isExpanded="false" absoluteBounds="8.375, 4, 2, 0.45">
+      <DataClassMoniker Name="/ElectronicCertificateDataContext/CODE_CERTIFICATETYPE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b36fb780-9f1e-448e-9184-a2bd4ab2a916" absoluteBounds="8.39, 4.46, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5bd886b6-8ae9-46e6-af04-3cf9343682b1" isExpanded="false" absoluteBounds="0.75, 2.75, 2, 0.45">
+      <DataClassMoniker Name="/ElectronicCertificateDataContext/AcademicPlanCourseCatalog" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ace74a65-ea94-48ed-b6b5-8e30fb858d5a" absoluteBounds="0.76500000000000012, 3.21, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="019fa55d-0db3-4abf-a46e-493f029255e0" isExpanded="false" absoluteBounds="0.5, 5.125, 2, 0.45">
+      <DataClassMoniker Name="/ElectronicCertificateDataContext/ElectronicCertificate" />
+      <nestedChildShapes>
+        <elementListCompartment Id="accf29d4-9bfc-40f4-97bb-1e629ec5d0b5" absoluteBounds="0.51500000000000012, 5.585, 1.9700000000000002, 11.018269856770832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.5 : 5.575); (1.5 : 6.85); (2.875 : 6.85)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ElectronicCertificateDataContext/ElectronicCertificate/ElectronicCertificate_ElectronicCertificateCourse" />
+      <nodes>
+        <classShapeMoniker Id="019fa55d-0db3-4abf-a46e-493f029255e0" />
+        <classShapeMoniker Id="e4586660-2e59-489d-a45d-b4c928f43728" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.0625 : 5.575); (2.0625 : 7.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ElectronicCertificateDataContext/ElectronicCertificate/ElectronicCertificate_ElectronicCertificateFile" />
+      <nodes>
+        <classShapeMoniker Id="019fa55d-0db3-4abf-a46e-493f029255e0" />
+        <classShapeMoniker Id="c40aaa12-0336-4605-a251-45f271c08154" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="227be047-a779-4522-a472-453aea9017df" isExpanded="false" absoluteBounds="4, 3.875, 2, 0.45">
+      <DataClassMoniker Name="/ElectronicCertificateDataContext/InstitutionCampus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0514432f-5d74-4c3c-9db1-ed3d5d9b90b2" absoluteBounds="4.015, 4.335, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.125 : 3.45); (6 : 3.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ElectronicCertificateDataContext/Responsible/Responsible_InstitutionCampus" />
+      <nodes>
+        <classShapeMoniker Id="eafce159-0a12-4fdb-9930-99f59bf72fbf" />
+        <classShapeMoniker Id="227be047-a779-4522-a472-453aea9017df" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

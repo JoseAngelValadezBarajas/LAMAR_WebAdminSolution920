@@ -1,0 +1,143 @@
+@model WebAdminUI.Models.CashReceipts.ChargeCreditApplicationViewModel
+@using WebAdminUI.HtmlHelpers
+
+@{
+    ViewBag.Title = WebAdminUI.Views.CashReceipts.App_LocalResources.CashReceiptsResources.lblTitleCashReceipt;
+}
+
+<div class="esg-page-header">
+    <a class="esg-page-header__button" role="button" title="@WebAdminUI.Views.Shared.Resources.LayoutResources.btnBack" href="@Url.Action("Menu", "FiscalRecords")">
+        <span class="esg-page-header__icon esg-icon__container">
+            <svg class="esg-icon esg-icon--left">
+                <use xlink:href="#icon-arrow"></use>
+            </svg>
+        </span>
+    </a>
+    <h1 class="esg-page-header__title">@WebAdminUI.Views.CashReceipts.App_LocalResources.CashReceiptsResources.lblTitleCashReceipt</h1>
+</div>
+
+<div class="esg-card--panel">
+    <div class="esg-card--panel__body">
+        <div class="esg-card--panel__content">
+            <div class="content-margin">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="esg-card">
+                            <h4>@Html.DisplayFor(m => m.PeopleOrgFullName, new { @class = "esg-form__input", @id = "PeopleName", @readonly = "readonly" })</h4>
+                            <p>
+                                @Html.DisplayFor(m => m.PeopleOrgId, new { @class = "esg-form__input", @id = "PeopleCodeId", @readonly = "readonly" })
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                @*Headers*@
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="esg-form__group esg-has-feedback">
+                                        @Html.LabelFor(m => m.ReceiptNumber, new { @class = "esg-form__label" })
+                                        @Html.EditorFor(m => m.ReceiptNumber, new { htmlAttributes = new { @class = "esg-form__input", @readonly = "readonly" } })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="esg-form__group esg-has-feedback">
+                                        @Html.LabelFor(m => m.TotalAmount, new { @class = "esg-form__label" })
+                                        @Html.CurrencyFor(m => m.TotalAmount, "report", "text", new { @class = "esg-form__input text-right", @readonly = "readonly" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="esg-form__group esg-has-feedback">
+                                        @Html.LabelFor(m => m.EntryDate, new { @class = "esg-form__label" })
+                                        @Html.DateFor(m => m.EntryDate, "report", "text", new { @class = "esg-form__input", @readonly = "readonly" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="esg-form__group esg-has-feedback">
+                                        @Html.LabelFor(m => m.BalanceAmount, new { @class = "esg-form__label" })
+                                        @Html.CurrencyFor(m => m.BalanceAmount, "report", "text", new { @class = "esg-form__input text-right", @readonly = "readonly" })
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                @if (((Model.Charges == null || Model.Charges.Count() == 0) && (Model.ChargesWithPPD == null || Model.ChargesWithPPD.Count() == 0)) || Model.IsVoid || Model.IsReversed)
+                {
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="esg-instruction" role="alert">
+                                <span class="esg-instruction__icon-wrap">
+                                    <span class="esg-instruction__icon esg-icon__container" aria-hidden="True">
+                                        <svg class="esg-icon esg-icon--info-dark">
+                                            <use xlink:href="#icon-info"></use>
+                                        </svg>
+                                    </span>
+                                </span>
+                                <div class="esg-instruction__message">
+                                    @Html.Raw(WebAdminUI.Views.CashReceipts.App_LocalResources.CashReceiptsResources.lblNoInformation)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    if (Model.Charges != null && Model.Charges.Count() > 0)
+                    {
+                        @*Charges Credit*@
+                        <div id="divCharges" data-pagination="true">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <fieldset>
+                                        <legend>@WebAdminUI.Views.CashReceipts.App_LocalResources.CashReceiptsResources.lblChargesSection</legend>
+                                        <div class="esg-table__container">
+                                            @Html.Partial("_ChargesList", Model.Charges, new ViewDataDictionary() { { "ChargesWithPPD", false }, { "CanCreateInvoice", Model.CanCreateInvoice } })
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    @Html.Partial("_Pagination", new ViewDataDictionary() { { "Count", (Model.Charges == null ? 0 : Model.Charges.Count()) }, { "MinRows", 5 }, { "DefaultSelected", 10 } })
+                                </div>
+                            </div>
+                        </div>
+
+                        <br />
+                    }
+
+                    if (Model.ChargesWithPPD != null && Model.ChargesWithPPD.Count() > 0)
+                    {
+                        <div id="divChargesWithPPD" data-pagination="true">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <fieldset>
+                                        <legend>@WebAdminUI.Views.CashReceipts.App_LocalResources.CashReceiptsResources.lblChargesWithPPDSection</legend>
+                                        <div class="esg-table__container">
+                                            @Html.Partial("_ChargesList", Model.ChargesWithPPD, new ViewDataDictionary() { { "ChargesWithPPD", true } })
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    @Html.Partial("_Pagination", new ViewDataDictionary() { { "Count", (Model.ChargesWithPPD == null ? 0 : Model.ChargesWithPPD.Count()) }, { "MinRows", 5 }, { "DefaultSelected", 10 } })
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @Scripts.Render("~/bundles/FR/Pagination")
+}

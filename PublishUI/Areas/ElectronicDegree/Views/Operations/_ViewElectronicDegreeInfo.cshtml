@@ -1,0 +1,202 @@
+<!--
+    <copyright file="_ViewElectronicDegreeInfo.cshtml" company="Ellucian">
+        Copyright 2020 - 2022 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+
+@model PowerCampus.Entities.ElectronicDegree.ElectronicDegreeInfo
+@if (Model != null)
+{
+    <div id="divEditModal" class="esg-modal-dialog">
+        <div class="esg-modal-dialog__header">
+            <button class="esg-modal-dialog__close esg-icon__container"
+                    type="button"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                    id="btnClose">
+                <svg class="esg-icon esg-icon--large esg-icon--neutral">
+                    <use xlink:href="#icon-close"></use>
+                </svg>
+            </button>
+            <h3 class="esg-modal-dialog__title">
+                @WebAdminUI.Resources.ElectronicDegree.Operations.lblView
+            </h3>
+        </div>
+        <div class="esg-modal-dialog__body">
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                    <h4 class="esg-form__label">@WebAdminUI.Resources.ElectronicDegree.Generate.lblStudent</h4> <br />
+                </div>
+            </div>
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblFolio + ":")
+                    @Html.Label("", Model.Folio)
+                </div>
+                <br />
+            </div>
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblCurp + ":")
+                    @Html.Label("", Model.Student.Curp)
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblEmail + ":")
+                    @Html.Label("", Model.Student.Email)
+                </div>
+                <br />
+            </div>
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblName + ":")
+                    @Html.Label("", Model.Student.Name)
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblFirstSurname + ":")
+                    @Html.Label("", Model.Student.FirstSurname)
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblSecondSurname + ":")
+                    @Html.Label("", Model.Student.SecondSurname)
+                </div>
+            </div>
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <hr />
+            </div>
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                    <h4 class="esg-form__label">@WebAdminUI.Resources.ElectronicDegree.Generate.lblInstitution</h4> <br />
+                </div>
+            </div>
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblInstitutionsCode + ":")
+                    @Html.Label("", Model.InstitutionCode)
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblInstitutionsName + ":")
+                    @Html.Label("", Model.InstitutionName)
+                </div>
+                <br />
+            </div>
+            @foreach (var signer in Model.Signer)
+            {
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                        @Html.Label("", WebAdminUI.Resources.ElectronicDegree.Generate.lblSignerPreview)
+                        @Html.Label("", string.Format("{0} {1} {2}", signer.EdName, signer.EdSignerFirstSurname, signer.EdSignerSecondSurname))
+                    </div>
+                </div>
+            }
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <hr />
+            </div>
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <h4 class="esg-form__label">@WebAdminUI.Resources.ElectronicDegree.Generate.lblMajor</h4> <br />
+                </div>
+            </div>
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblMajorID + ":")
+                    @Html.Label("", Model.MajorCode)
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblMajorName + ":")
+                    @Html.Label("", Model.Major)
+                </div>
+            </div>
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblStartDate + ":")
+                    @Html.Label("", Model.MajorStartDate)
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblEndDate + ":")
+                    @Html.Label("", Model.MajorEndDate)
+                </div>
+            </div>
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblAuthorizationType + ":")
+                    @Html.Label("", Model.AuthorizationType)
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblRvoe + ":")
+                    @Html.Label("", Model.RvoeAgreementNumber)
+                </div>
+            </div>
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <hr />
+            </div>
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                    <h4 class="esg-form__label">@WebAdminUI.Resources.ElectronicDegree.Generate.lblIssuingDegree</h4> <br />
+                </div>
+            </div>
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblIssuingDate + ":")
+                    @Html.Label("", Model.ExpeditionDate)
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblGraduationReqType + ":")
+                    @Html.Label("", Model.GraduationRequirement)
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblProfessionalExaminationDate + ":")
+                    @Html.Label("", Model.ExaminationDate)
+                </div>
+            </div>
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblCompletedSocialService + ":")
+                    @if (Model.FulfilledSocialService)
+                    {
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Operations.lblYes)
+                    }
+                    else
+                    {
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Operations.lblNo)
+                    }
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblSocialService + ":")
+                    @Html.Label("", Model.LegalBase)
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblState + ":")
+                    @Html.Label("", Model.FederalEntity)
+                </div>
+            </div>
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <hr />
+            </div>
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                    <h4 class="esg-form__label">@WebAdminUI.Resources.ElectronicDegree.Generate.lblBackgroundStudies</h4> <br />
+                </div>
+            </div>
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblInstitutionOrigin + ":")
+                    @Html.Label("", Model.OriginInstitution)
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblTypeOfBackground + ":")
+                    @Html.Label("", Model.BackgroundStudyType)
+                </div>
+            </div>
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblState + ":")
+                    @Html.Label("", Model.OriginInstFederalEntity)
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblLicenceNumber + ":")
+                    @Html.Label("", Model.LicenseNumber)
+                </div>
+            </div>
+        </div>
+    </div>
+}

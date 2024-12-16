@@ -1,0 +1,171 @@
+<!--
+    <copyright file="_IssuingDegree.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model WebAdminUI.Areas.ElectronicDegree.Models.GenerateViewModel
+<div id="stpIssuingDegree" style="display:none" class="esg-card--panel">
+    <div class="esg-card--panel__body">
+        <div class="esg-card--panel__content">
+            <div class="esg-container">
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <h4 class="esg-form__label">@WebAdminUI.Resources.ElectronicDegree.Generate.lblIssuingDegree</h4> <br />
+                    </div>
+                    <div id="divEditID" class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12" style="display:block; text-align:end">
+                        <span class="esg-icon__container">
+                            <svg class="esg-icon esg-icon__container">
+                                <use xlink:href="#icon-edit"></use>
+                            </svg>
+                        </span>
+                        <a id="btnEditIssuingDegree">
+                            <div class="esg-icon__label">
+                                <h4>@WebAdminUI.Resources.ElectronicDegree.Generate.lblEdit</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="divCancelSaveID" class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12" style="display:none; text-align:end">
+                        <div style="display:inline-flex">
+                            <div style="margin-right:1rem">
+                                <a id="btnCancelIssuingDegree">
+                                    <div class="esg-icon__label">
+                                        <h4>@WebAdminUI.Resources.ElectronicDegree.Generate.lblCancel</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div>
+                                <span class="esg-icon__container">
+                                    <svg class="esg-icon esg-icon__container">
+                                        <use xlink:href="#icon-save"></use>
+                                    </svg>
+                                </span>
+                                <a id="btnSaveIssuingDegree">
+                                    <div class="esg-icon__label">
+                                        <h4>@WebAdminUI.Resources.ElectronicDegree.Generate.lblSave</h4>
+                                    </div>
+                                </a>
+                            </div>
+                        </div><br />
+                    </div>
+                    <hr /><br />
+                </div>
+            </div>
+            <div class="esg-container">
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <div id="divIssuingDate" class="esg-form__group esg-has-feedback">
+                            <label for="datepicker" class="esg-form__label esg-is-required">@WebAdminUI.Resources.ElectronicDegree.Generate.lblIssuingDate</label>
+                            <div class="esg-form__input-group">
+                              
+                                @Html.TextBox("datepicker", null, new { @class = "esg-form__input", @id = "IssuingDate" })
+                                @Html.LabelFor(m => m.IssuingDateError, new { @class = "esg-form__label", @id = "IssuingDateError", @style = "color:#d64555; display:none" })
+                                <div class="esg-form__icon esg-icon__container iconCalendarIssuingDate">
+                                    <svg class="esg-icon esg-icon--small esg-icon">
+                                        <use xlink:href="#icon-calendar"></use>
+                                    </svg>
+                                </div>
+                                <div id="divIssuingDateErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <div id="divGraduationReqTypeCatalog" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(m => m.GraduationRequirementType, new { @class = "esg-form__label esg-is-required" })<br />
+                            <div class="esg-form__input-group">
+                                @Html.DropDownListFor(m => m.GraduationRequirementTypeCatalog, new SelectList("", "", ""), new { @class = "esg-form__input", @id = "GraduationReqTypeCatalog", @readonly = "readonly", @disabled = "disabled" })
+                                @Html.LabelFor(m => m.GraduationReqTypeCatalogError, new { @class = "esg-form__label", @id = "GraduationReqTypeCatalogError", @style = "color:#d64555; display:none" })
+                                <div id="divGraduationReqTypeCatalogErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <div id="divIssuingDate" class="esg-form__group esg-has-feedback">
+                            <label id="lblProfessionalDate" style="display:none" for="datepicker" class="esg-form__label">@WebAdminUI.Resources.ElectronicDegree.Generate.lblProfessionalExaminationDate</label>
+                            <label id="lblExemptionDate" style="display:none" for="datepicker" class="esg-form__label">@WebAdminUI.Resources.ElectronicDegree.Generate.lblExemptionProfessionalExamDate</label>
+                            <div class="esg-form__input-group">
+                                @Html.TextBox("datepicker", null, new { @class = "esg-form__input", @id = "ExaminationDate", @readonly = "readonly", @disabled = "disabled" })
+                                <div class="esg-form__icon esg-icon__container">
+                                    <svg class="esg-icon esg-icon--small esg-icon">
+                                        <use xlink:href="#icon-calendar"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <div id="divState" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(m => m.State, new { @class = "esg-form__label esg-is-required" })<br />
+                            <div class="esg-form__input-group">
+                                @Html.TextBoxFor(m => m.State, new { @class = "esg-form__input", @id = "State", @readonly = "readonly", @disabled = "disabled" })
+                                @Html.LabelFor(m => m.StateError, new { @class = "esg-form__label", @id = "StateError", @style = "color:#d64555; display:none" })
+                                <div id="divStateErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <div id="divStateCatalog" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(m => m.StateCatalog, new { @class = "esg-form__label esg-is-required" })<br />
+                            <div id="graduationCatalogText" class="esg-form__input-group">
+                                @Html.DropDownListFor(m => m.StateCatalog, new SelectList("", "", ""), new { @class = "esg-form__input", @id = "StateCatalog", @readonly = "readonly", @disabled = "disabled" })
+                                @Html.LabelFor(m => m.StateCatalogError, new { @class = "esg-form__label", @id = "StateCatalogError", @style = "color:#d64555; display:none" })
+                                <div id="divStateCatalogErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="divChkSocialService" class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12" style="display:none">
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <div class="esg-form__group">
+                            <div class="esg-checkbox">
+                                <input id="chkSocialService" type="checkbox" value="chkSocialService" />
+                                <label for="chkSocialService">@WebAdminUI.Resources.ElectronicDegree.Generate.lblCompletedSocialService</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <div id="divSocialService" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(m => m.SocialService, new { @class = "esg-form__label esg-is-required" })<br />
+                            <div class="esg-form__input-group">
+                                @Html.DropDownListFor(m => m.SocialService, new SelectList("", "", ""), new { @class = "esg-form__input", @id = "SocialServiceLegal", @readonly = "readonly", @disabled = "disabled" })
+                                @Html.LabelFor(m => m.SocialServiceError, new { @class = "esg-form__label", @id = "SocialServiceError", @style = "color:#d64555; display:none" })
+                                <div id="divSocialServiceErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="esg-container" style="text-align:end">
+                <div class="eds-button-group" role="group" style="margin-top:1rem" aria-label="button group">
+                    <button class="eds-button eds-button--secondary" id="btnCancelID" type="button">@WebAdminUI.Resources.ElectronicDegree.Generate.lblBack</button>
+                    <button class="eds-button eds-button--primary" id="btnValidateID" type="button">@WebAdminUI.Resources.ElectronicDegree.Generate.lblValidate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,159 @@
+<!--
+    <copyright file="MajorsMapping.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model WebAdminUI.Areas.ElectronicDegree.Models.Institution.EditMajorInsMappingViewModel
+@{
+    ViewBag.Title = WebAdminUI.Resources.ElectronicDegree.Institution.lblInstitutionMajorsMapping;
+}
+
+<br />
+<div class="esg-page-header">
+    <h1 class="esg-page-header__title">@WebAdminUI.Resources.ElectronicDegree.Institution.lblInstitutionsMajorsMapping</h1>
+</div>
+<br />
+<div class="esg-card">
+    <h1 class="esg-page-header__title">@Html.Label("lblInstitutionName", Model.InstitututionName)</h1>
+    <hr />
+    <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+        <span class="esg-h4">
+            @WebAdminUI.Resources.ElectronicDegree.Institution.lblInstitutionCodeMapping
+            @Html.Label("lblInstitutionCodeMapping", Model.InstitutionCode)
+        </span><br />
+    </div>
+    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+        <span class="esg-h4">
+            @WebAdminUI.Resources.ElectronicDegree.Institution.lblInstitutionMajorsMapping
+            @Html.Label("lblInstitutionMajorsMapping", Model.Majors.ToString())
+        </span><br /><br />
+    </div>
+    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+        <div align="right">
+            <button id="@string.Format("btnAddMapping_{0}", Model.Id)" type="button" class="esg-button esg-button esg-button--medium ">
+                <span class="esg-button__icon esg-icon__container" aria-hidden="true">
+                    <svg class="esg-icon esg-icon--left">
+                        <use xlink:href="#icon-add"></use>
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </div>
+    @if (Model.MajorsViewModelList.Count > 0)
+    {
+        <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+            <div class="esg-table__container">
+                <table id="table" class="esg-table">
+                    <thead class="esg-table-head">
+                        <tr class="esg-table-head__row">
+                            <th class="esg-table-head__th" style="width:30%">@Html.DisplayNameFor(m => m.MajorsViewModelList[0].MajorName)</th>
+                            <th class="esg-table-head__th" style="width:10%">@Html.DisplayNameFor(m => m.MajorsViewModelList[0].Cve)</th>
+                            <th class="esg-table-head__th" style="width:20%">@Html.DisplayNameFor(m => m.MajorsViewModelList[0].EducationLevel)</th>
+                            <th class="esg-table-head__th" style="width:30%">@Html.DisplayNameFor(m => m.MajorsViewModelList[0].Rvoe)</th>
+                            <th class="esg-table-head__th" style="width:10%">@Html.DisplayNameFor(m => m.MajorsViewModelList[0].Delete)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="esg-table-body" id="table_rows_tbody">
+                        @foreach (var item in Model.MajorsViewModelList)
+                        {
+                            <tr class="esg-table-body__row" id="@item.ElectronicDegreeInstMajorId">
+                                <td class="esg-table-body__td">
+                                    @Html.Label("", item.MajorName)
+                                </td>
+                                <td class="esg-table-body__td">
+                                    @Html.Label("", item.Cve)
+                                </td>
+                                <td class="esg-table-body__td">
+                                    @Html.Label("", item.EducationLevel)
+                                </td>
+                                <td class="esg-table-body__td">
+                                    <div class="esg-dropdown">
+                                        <button class="esg-button esg-button--secondary esg-dropdown__toggle"
+                                                data-placeholder="false" type="button" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="true" style="text-align:left; min-width:75%"
+                                                onclick="openDropDownOptions('@item.ElectronicDegreeInstMajorId'); return false;">
+                                            @WebAdminUI.Resources.ElectronicDegree.FederalEntity.LblSelect
+                                            <span class="esg-dropdown__icon esg-dropdown__icon--right esg-icon__container" aria-hidden="True"
+                                                  style="position:relative; top:33%;">
+                                                <svg class="esg-icon esg-icon--small esg-icon esg-icon--down">
+                                                    <use xlink:href="#icon-arrow"></use>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                        <ul id=@string.Format("ul_{0}", item.ElectronicDegreeInstMajorId) class="esg-dropdown__menu"
+                                            aria-labelledby="dropdownMenuCheckbox" style="min-width:75%; overflow-y:scroll; max-height:200px;">
+                                            @foreach (var option in item.Rvoe)
+                                            {
+                                                <li class="esg-dropdown__menu-item">
+                                                    <input id=@string.Format("ddlRvoe_{0}_{1}", item.ElectronicDegreeInstMajorId, option.Value)
+                                                           class="statesFor"
+                                                           type="checkbox"
+                                                           value="@item.ElectronicDegreeInstMajorId"
+                                                           @(item.SelectedRvoes.Any(ms => ms.Rvoe == option.Value) ? "checked" : "") />
+                                                    <label for=@string.Format("ddlRvoe_{0}_{1}", item.ElectronicDegreeInstMajorId, option.Value)>@option.Description</label>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                    <br /><br />
+                                    <ul class="esg-list-group">
+                                        @foreach (var option in item.SelectedRvoes)
+                                        {
+                                            <li>
+                                                <label id=@string.Format("lblRvoe_{0}", option.Rvoe)>@option.Description</label>
+                                            </li>
+                                        }
+                                    </ul>
+                                </td>
+                                <td class="esg-table-body__td">
+                                    <div align="right">
+                                        <button id="@string.Format("btnDelete_{0}_{1}", Model.Id, item.ElectronicDegreeInstMajorId)" name="btnEdit">
+                                            <span class="esg-icon__container">
+                                                <svg class="esg-icon">
+                                                    <use xlink:href="#icon-trash"></use>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+            <div align="left">
+                @WebAdminUI.Resources.ElectronicDegree.Major.lblNoMajors
+                <br /><br />
+            </div>
+        </div>
+    }
+    <div class="esg-card--panel__content" style="text-align:end">
+        <div class="eds-button-group" role="group" style="margin-top:1rem" aria-label="button group">
+            <button class="eds-button eds-button--secondary" id="btnCancelSave" type="button">@WebAdminUI.Resources.ElectronicDegree.Institution.lblCancel</button>
+            <button class="eds-button eds-button--primary" id="btnSave" type="button">@WebAdminUI.Resources.ElectronicDegree.Institution.lblSave</button>
+        </div>
+    </div>
+    <div id="Overlaydiv" class="esg-modal-overlay" style="display:none; position:fixed; top:0; bottom:0; left:0; right:0;"></div>
+    <div id="Processing" class="esg-modal-dialog" style="display:none;">
+        <div class="esg-spinner-wrapper" style="position:absolute;">
+            <div class="esg-spinner"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        var urlEditInstitution = '@Url.Action("EditMapping","Institutions", new { institutionId="param-id" })';
+        var urlMajorsMapping = '@Url.Action("MajorsMapping","Institutions")';
+        var urlMapInstitutionMajorRvoe = '@Url.Action("MapInstitutionMajorRvoe","Institutions")';
+        var urlEditMapping = '@Url.Action("EditMapping","Institutions", new { institutionId="param-id" })';
+        var urlDeleteInstMajorMap = '@Url.Action("DeleteMapping","Institutions")';
+        var urlMajorsMappingList = '@Url.Action("MajorsMappingList","Institutions", new { institutionId="param-id" })';
+    </script>
+    @Scripts.Render("~/bundles/ED/InstitutionsMapping")
+}

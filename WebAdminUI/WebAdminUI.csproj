@@ -1,0 +1,1878 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E2C97914-63E7-4462-A432-DB6DA6235A40}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebAdminUI</RootNamespace>
+    <AssemblyName>WebAdminUI</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\WebAdminUI.xml</DocumentationFile>
+    <PublishDatabases>false</PublishDatabases>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
+    <CodeAnalysisRuleSet>..\CodingStandards.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Azure.Core, Version=1.6.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Core.1.6.0\lib\net461\Azure.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Identity, Version=1.3.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Identity.1.3.0\lib\netstandard2.0\Azure.Identity.dll</HintPath>
+    </Reference>
+    <Reference Include="FoolproofValidation, Version=0.9.5851.39121, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Foolproof.0.9.4518\lib\net45\FoolproofValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hedtech.PowerCampus.Logger, Version=1.0.1.7, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hedtech.PowerCampus.Logger.1.0.1.7\lib\netstandard2.0\Hedtech.PowerCampus.Logger.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Hosting.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Hosting.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Hosting.Server.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Hosting.Server.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Features, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Features.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Features.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.SqlClient, Version=4.0.0.0, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.SqlClient.4.0.5\lib\net461\Microsoft.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DotNet.InternalAbstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.DotNet.InternalAbstractions.1.0.0\lib\net451\Microsoft.DotNet.InternalAbstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.5.0.0\lib\net461\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=3.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.3.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.EnvironmentVariables, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.EnvironmentVariables.5.0.0\lib\net461\Microsoft.Extensions.Configuration.EnvironmentVariables.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.FileExtensions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.FileExtensions.5.0.0\lib\net461\Microsoft.Extensions.Configuration.FileExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Json, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Json.5.0.0\lib\net461\Microsoft.Extensions.Configuration.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.2.1.1\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyModel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyModel.3.0.0\lib\net451\Microsoft.Extensions.DependencyModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Physical, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Physical.5.0.0\lib\net461\Microsoft.Extensions.FileProviders.Physical.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileSystemGlobbing, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileSystemGlobbing.5.0.0\lib\net461\Microsoft.Extensions.FileSystemGlobbing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Hosting.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Hosting.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Hosting.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=3.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.3.0.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options.ConfigurationExtensions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.ConfigurationExtensions.3.0.0\lib\netstandard2.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.5.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client, Version=4.22.0.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.4.22.0\lib\net461\Microsoft.Identity.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client.Extensions.Msal, Version=2.16.5.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.Extensions.Msal.2.16.5\lib\net45\Microsoft.Identity.Client.Extensions.Msal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.6.8.0\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.8.0\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.6.8.0\lib\net461\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.6.8.0\lib\net461\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.8.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.9.0\lib\net46\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.AspNetCore, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.AspNetCore.3.4.0\lib\netstandard2.0\Serilog.AspNetCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Extensions.Hosting, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Extensions.Hosting.3.1.0\lib\netstandard2.0\Serilog.Extensions.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Extensions.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Extensions.Logging.3.0.1\lib\netstandard2.0\Serilog.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Formatting.Compact, Version=1.1.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Formatting.Compact.1.1.0\lib\net452\Serilog.Formatting.Compact.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Settings.AppSettings, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Settings.AppSettings.2.2.2\lib\net45\Serilog.Settings.AppSettings.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Settings.Configuration, Version=3.1.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Settings.Configuration.3.1.0\lib\net461\Serilog.Settings.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.Console, Version=3.1.1.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.Console.3.1.1\lib\net45\Serilog.Sinks.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.Debug, Version=1.0.1.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.Debug.1.0.1\lib\net46\Serilog.Sinks.Debug.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.File.4.1.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.PeriodicBatching, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.PeriodicBatching.2.2.0\lib\net45\Serilog.Sinks.PeriodicBatching.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.Seq, Version=4.1.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.Seq.4.1.0-dev-00166\lib\net45\Serilog.Sinks.Seq.dll</HintPath>
+    </Reference>
+    <Reference Include="SerilogWeb.Classic, Version=5.0.0.0, Culture=neutral, PublicKeyToken=9462ddd55fbc0e7f, processorArchitecture=MSIL">
+      <HintPath>..\packages\SerilogWeb.Classic.5.0.52\lib\net45\SerilogWeb.Classic.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.6.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.5.0.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.6.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.8.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.ProtectedData, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.ProtectedData.4.5.0\lib\net461\System.Security.Cryptography.ProtectedData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.5.0.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Text.Encodings.Web, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.5.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.5.0.0\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiRoute.cs" />
+    <Compile Include="App_GlobalResources\CustomMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\CustomMessages.es.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomMessages.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Controllers\CatalogsController.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Controllers\GenerationsController.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Controllers\InstitutionCampusesController.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Controllers\MenuController.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Controllers\OperatorsController.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Controllers\ResponsiblesController.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Controllers\OperationsController.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Controllers\AcademicPlansController.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Controllers\SetupController.cs" />
+    <Compile Include="Areas\ElectronicCertificate\ElectronicCertificateAreaRegistration.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Mappers\CertificatesMapper.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Mappers\OperatorsMappers.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Mappers\GenerationsMapper.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Mappers\AcademicPlansMapper.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Mappers\SharedMapper.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Mappers\InstitutionCampusMapper.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Mappers\ResponsiblesMapper.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Models\AcademicInfo\AcademicInfo.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Models\AcademicPlan\ProgramViewModel.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Models\Catalogs\SaveFederalEntityMapping.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Models\AcademicPlan\AcademicPlanViewModel.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Models\Generation\IssuingCertificateViewModel.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Models\Generation\CoursesViewModel.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Models\Generation\ElectronicCertificateViewModel.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Models\Generation\GenerationViewModel.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Models\Operators\AddOperatorsViewModel.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Models\Operators\OperatorsViewModel.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Models\Generation\StudiesProgramViewModel.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Models\InstitutionCampus\InstitutionCampusViewModel.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Models\Responsibles\AddResponsiblesViewModel.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Models\Responsibles\ResponsiblesViewModel.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Models\Generation\StudiesProgramDetailViewModel.cs" />
+    <Compile Include="Areas\ElectronicCertificate\Models\Shared\DropdownListViewModel.cs" />
+    <Compile Include="Areas\ElectronicDegree\Models\AcademicInfo\AcademicInfoViewModelDegree.cs" />
+    <Compile Include="Areas\General\Controllers\SharedController.cs" />
+    <Compile Include="Areas\General\Models\Shared\AboutViewModel.cs" />
+    <Compile Include="Config\EmailSettings.cs" />
+    <Compile Include="Helpers\PowerCampusSerializer.cs" />
+    <Compile Include="Mappers\CatalogsMapper.cs" />
+    <Compile Include="Models\AcademicInfo\AcademicInfo.cs" />
+    <Compile Include="Models\ChargeCreditMappings\ChargeCreditWithTaxesViewModel.cs" />
+    <Compile Include="Models\FiscalRecords\InvoiceCashReceiptViewModel.cs" />
+    <Compile Include="Models\FiscalRecords\NewInvoiceViewModel.cs" />
+    <Compile Include="Models\PaymentReceipt\PaymentReceiptTotalsViewModel.cs" />
+    <Compile Include="Models\Shared\ListOptionViewModel.cs" />
+    <Compile Include="Resources\ElectronicCertificate\Catalogs.Designer.cs">
+      <DependentUpon>Catalogs.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ElectronicCertificate\Catalogs.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Catalogs.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\ElectronicDegree\Controllers\CatalogsController.cs" />
+    <Compile Include="Areas\ElectronicDegree\Controllers\GenerateController.cs" />
+    <Compile Include="Areas\ElectronicDegree\Controllers\InstitutionsController.cs" />
+    <Compile Include="Areas\ElectronicDegree\Controllers\MajorsController.cs" />
+    <Compile Include="Areas\ElectronicDegree\Controllers\MenuController.cs" />
+    <Compile Include="Areas\ElectronicDegree\Controllers\OperationsController.cs" />
+    <Compile Include="Areas\ElectronicDegree\Controllers\OperatorsController.cs" />
+    <Compile Include="Areas\ElectronicDegree\Controllers\SetupController.cs" />
+    <Compile Include="Areas\ElectronicDegree\Controllers\SignerInstitutionController.cs" />
+    <Compile Include="Areas\ElectronicDegree\Controllers\SignersController.cs" />
+    <Compile Include="Areas\ElectronicDegree\ElectronicDegreeAreaRegistration.cs" />
+    <Compile Include="Areas\ElectronicDegree\Mappers\ElectronicDegreeInformationMapper.cs" />
+    <Compile Include="Areas\ElectronicDegree\Mappers\InstitutionMapper.cs" />
+    <Compile Include="Areas\ElectronicDegree\Mappers\MajorsMappers.cs" />
+    <Compile Include="Areas\ElectronicDegree\Mappers\OperatorsMappers.cs" />
+    <Compile Include="Areas\ElectronicDegree\Mappers\SignerInstitutionsMappers.cs" />
+    <Compile Include="Areas\ElectronicDegree\Mappers\SignersMappers.cs" />
+    <Compile Include="Areas\ElectronicDegree\Models\Catalogs\SaveAuthorizationTypeMapping.cs" />
+    <Compile Include="Areas\ElectronicDegree\Models\Catalogs\SaveBackgroundStudyTypeMapping.cs" />
+    <Compile Include="Areas\ElectronicDegree\Models\Catalogs\SaveFederalEntityMapping.cs" />
+    <Compile Include="Areas\ElectronicDegree\Models\Generate\GenerateViewModel.cs" />
+    <Compile Include="Areas\ElectronicDegree\Models\Institution\AddInstitutionViewModel.cs" />
+    <Compile Include="Areas\ElectronicDegree\Models\Institution\EditInsMappingViewModel.cs" />
+    <Compile Include="Areas\ElectronicDegree\Models\Institution\InstitutionViewModel.cs" />
+    <Compile Include="Areas\ElectronicDegree\Models\Majors\AddMajorsViewModel.cs" />
+    <Compile Include="Areas\ElectronicDegree\Models\Majors\MajorsViewModel.cs" />
+    <Compile Include="Areas\ElectronicDegree\Models\Operators\AddOperatorsViewModel.cs" />
+    <Compile Include="Areas\ElectronicDegree\Models\Operators\OperatorsViewModel.cs" />
+    <Compile Include="Areas\ElectronicDegree\Models\SignerInstitution\SignerInstitutionViewModel.cs" />
+    <Compile Include="Areas\ElectronicDegree\Models\Signers\AddSignersViewModel.cs" />
+    <Compile Include="Areas\ElectronicDegree\Models\Signers\SignersViewModel.cs" />
+    <Compile Include="Areas\General\Controllers\ErrorController.cs" />
+    <Compile Include="Areas\General\Controllers\MenuController.cs" />
+    <Compile Include="Areas\General\GeneralAreaRegistration.cs" />
+    <Compile Include="Resources\ElectronicCertificate\Generate.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Generate.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicCertificate\GeneratedTable.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratedTable.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicCertificate\Operations.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Operations.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicCertificate\Operations.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Operations.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicCertificate\Operator.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Operator.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicCertificate\Operator.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Operator.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\General\Mappers\PeopleMapper.cs" />
+    <Compile Include="Areas\General\Models\PeopleViewModel.cs" />
+    <Compile Include="Resources\ElectronicCertificate\Parameters.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Parameters.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicCertificate\PdcCourse.es.Designer.cs">
+      <DependentUpon>PdcCourse.es.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ElectronicCertificate\PdcCourse.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PdcCourse.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\General\About.es.Designer.cs">
+      <DependentUpon>About.es.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\General\About.Designer.cs">
+      <DependentUpon>About.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\General\Pagination.cs">
+      <DependentUpon>Pagination.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CashReceiptsController.cs" />
+    <Compile Include="Controllers\ChargeCreditsController.cs" />
+    <Compile Include="Controllers\CreditNotesController.cs" />
+    <Compile Include="Controllers\OrganizationController.cs" />
+    <Compile Include="Controllers\PaymentReceiptsController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
+    <Compile Include="Controllers\ReceiptPaymentMappingsController.cs" />
+    <Compile Include="Controllers\ChargeCreditMappingsController.cs" />
+    <Compile Include="Controllers\FiscalRecordsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IssuersController.cs" />
+    <Compile Include="Controllers\ReceiversController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
+    <Compile Include="Controllers\TaxProfilesController.cs" />
+    <Compile Include="Filter\PermissionRequiredAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\CustomFormatAttribute.cs" />
+    <Compile Include="Helpers\PowerCampusHttpClient.cs" />
+    <Compile Include="Helpers\PowerCampusAccess.cs" />
+    <Compile Include="Helpers\PowerCampusMessageHandler.cs" />
+    <Compile Include="Helpers\PowerCampusSystemFormat.cs" />
+    <Compile Include="Mappers\ChargeCreditsMapper.cs" />
+    <Compile Include="Mappers\OrganizationMapper.cs" />
+    <Compile Include="Mappers\PeopleMapper.cs" />
+    <Compile Include="Mappers\ReceiversMapper.cs" />
+    <Compile Include="Mappers\SearchMapper.cs" />
+    <Compile Include="Mappers\TaxProfilesMapper.cs" />
+    <Compile Include="Models\FiscalRecords\PaymentReceiptViewModel.cs" />
+    <Compile Include="Models\FiscalRecords\PPDCreateViewModel.cs" />
+    <Compile Include="HtmlHelpers\FormatHelpers.cs" />
+    <Compile Include="Mappers\CashReceiptsMapper.cs" />
+    <Compile Include="Mappers\FiscalRecordsMapper.cs" />
+    <Compile Include="Models\CashReceipts\ChargeCreditApplicationViewModel.cs" />
+    <Compile Include="Models\CashReceipts\ChargeCreditApplicationDetailsViewModel.cs" />
+    <Compile Include="Models\Home\AboutViewModel.cs" />
+    <Compile Include="Models\Organization\OrganizationViewModel.cs" />
+    <Compile Include="Models\People\PeopleViewModel.cs" />
+    <Compile Include="Models\ReceiptPaymentMapping\ReceiptPaymentMethodMappingViewModel.cs" />
+    <Compile Include="Models\ChargeCreditMappings\ChargeCreditMappingViewModel.cs" />
+    <Compile Include="Models\FiscalRecords\CashReceiptViewModel.cs" />
+    <Compile Include="Models\FiscalRecords\ChargeCreditViewModel.cs" />
+    <Compile Include="Models\FiscalRecords\FiscalRecordViewModel.cs" />
+    <Compile Include="Models\Issuers\InvoiceExpeditionViewModel.cs" />
+    <Compile Include="Models\Issuers\InvoiceOrganizationViewModel.cs" />
+    <Compile Include="Models\Issuers\InvoiceReceiptViewModel.cs" />
+    <Compile Include="Models\Issuers\IssuerViewModel.cs" />
+    <Compile Include="Models\Receivers\ReceiverViewModel.cs" />
+    <Compile Include="Models\Resources\AboutViewModelResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AboutViewModelResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resources\AboutViewModelResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AboutViewModelResource.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resources\CashReceiptMappingModelResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CashReceiptMappingModelResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resources\CashReceiptMappingModelResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CashReceiptMappingModelResource.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resources\CashReceiptsResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CashReceiptsResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resources\CashReceiptsResources.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CashReceiptsResources.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resources\ChargeCreditMappingModelResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChargeCreditMappingModelResource.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Models\Resources\ChargeCreditMappingModelResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChargeCreditMappingModelResource.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resources\FiscalRecordModelResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FiscalRecordModelResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resources\FiscalRecordModelResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FiscalRecordModelResource.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resources\IssuerModelResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IssuerModelResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resources\IssuerModelResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IssuerModelResource.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resources\OrganizationViewModelResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrganizationViewModelResource.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Models\Resources\OrganizationViewModelResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrganizationViewModelResource.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resources\PeopleViewModelResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PeopleViewModelResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resources\PeopleViewModelResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PeopleViewModelResource.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resources\ReceiverModelResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReceiverModelResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resources\ReceiverModelResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReceiverModelResource.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resources\TaxProfileListViewModelResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaxProfileListViewModelResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resources\TaxProfileListViewModelResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaxProfileListViewModelResource.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SearchResult\RecordTypeViewModel.cs" />
+    <Compile Include="Models\SearchResult\SearchResultViewModel.cs" />
+    <Compile Include="Models\TaxProfiles\TaxProfileDetailViewModel.cs" />
+    <Compile Include="Models\TaxProfiles\TaxProfileListViewModel.cs" />
+    <Compile Include="Models\TaxProfiles\TaxProfileValidityViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ElectronicCertificate\FederalEntity.Designer.cs">
+      <DependentUpon>FederalEntity.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ElectronicCertificate\FederalEntity.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FederalEntity.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicCertificate\Generate.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Generate.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicCertificate\GeneratedTable.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratedTable.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicCertificate\Institution.es.Designer.cs">
+      <DependentUpon>Institution.es.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ElectronicCertificate\Menu.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicCertificate\Institution.Designer.cs">
+      <DependentUpon>Institution.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ElectronicCertificate\Parameters.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Parameters.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicCertificate\Responsible.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Responsible.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicCertificate\Responsible.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Responsible.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicCertificate\AcademicPlan.Designer.cs">
+      <DependentUpon>AcademicPlan.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ElectronicCertificate\Setup.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Setup.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicDegree\AuthorizationType.Designer.cs">
+      <DependentUpon>AuthorizationType.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ElectronicDegree\Catalogs.Designer.cs">
+      <DependentUpon>Catalogs.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ElectronicDegree\BackgroundStudyType.Designer.cs">
+      <DependentUpon>BackgroundStudyType.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ElectronicDegree\FederalEntity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FederalEntity.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicDegree\Generate.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Generate.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicDegree\Institution.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Institution.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicDegree\InstitutionSigner.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InstitutionSigner.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicDegree\Major.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Major.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicDegree\Menu.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicDegree\Generate.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Generate.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicDegree\Operations.es.Designer.cs">
+      <DependentUpon>Operations.es.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ElectronicDegree\Operations.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Operations.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicDegree\Operator.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Operator.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicDegree\Operator.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Operator.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicDegree\Setup.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Setup.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicDegree\Signer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Signer.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicDegree\Signer.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Signer.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ElectronicDegree\InstitutionSigner.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InstitutionSigner.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\General\Layout.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Layout.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\General\MenuAcademicRecords.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuAcademicRecords.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\General\MenuCashReceipts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuCashReceipts.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\General\MenuMain.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuMain.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UIConstants.cs" />
+    <Compile Include="Views\CashReceipts\App_LocalResources\CashReceiptsResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CashReceiptsResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CashReceipts\App_LocalResources\CashReceiptsResources.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CashReceiptsResources.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChargeCreditMappings\App_LocalResources\ChargeCreditResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChargeCreditResource.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Views\ChargeCreditMappings\App_LocalResources\ChargeCreditResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChargeCreditResource.es.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Views\ChargeCredits\App_localResources\PPD.cshtml.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PPD.cshtml.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChargeCredits\App_localResources\PPD.cshtml.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PPD.cshtml.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreditNotes\App_localResources\CreditNotes.cshtml.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreditNotes.cshtml.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Views\CreditNotes\App_localResources\CreditNotes.cshtml.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreditNotes.cshtml.es.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Views\FiscalRecords\App_LocalResources\CancelGlobalResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CancelGlobalResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FiscalRecords\App_LocalResources\CancelGlobalResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CancelGlobalResource.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FiscalRecords\App_LocalResources\CreateResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FiscalRecords\App_LocalResources\CreateResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateResource.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FiscalRecords\App_LocalResources\CreateResource.es1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateResource.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FiscalRecords\App_LocalResources\EditResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FiscalRecords\App_LocalResources\EditResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditResource.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FiscalRecords\App_LocalResources\MenuResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FiscalRecords\App_LocalResources\MenuResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuResource.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FiscalRecords\App_LocalResources\Related.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Related.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FiscalRecords\App_LocalResources\Related.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Related.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FiscalRecords\App_LocalResources\SettingsResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SettingsResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FiscalRecords\App_LocalResources\SettingsResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SettingsResource.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FiscalRecords\App_LocalResources\ViewAllResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewAllResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FiscalRecords\App_LocalResources\ViewAllResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewAllResource.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Issuers\App_LocalResources\IssuerResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IssuerResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Issuers\App_LocalResources\IssuerResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IssuerResource.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Organization\App_localResources\Organization.cshtml.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Organization.cshtml.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Views\Organization\App_localResources\Organization.cshtml.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Organization.cshtml.es.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Views\PaymentReceipts\App_LocalResources\CreateResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\People\App_localResources\People.cshtml.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>People.cshtml.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Views\People\App_localResources\People.cshtml.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>People.cshtml.es.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Views\ReceiptPaymentMappings\App_LocalResources\ReceiptPayment.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReceiptPayment.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReceiptPaymentMappings\App_LocalResources\ReceiptPayment.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReceiptPayment.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Receivers\App_LocalResources\CreateResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Receivers\App_LocalResources\CreateResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateResource.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\App_LocalResources\Advanced.cshtml.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Advanced.cshtml.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Views\Search\App_LocalResources\Advanced.cshtml.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Advanced.cshtml.es.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Views\Shared\Resources\LayoutResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LayoutResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Resources\LayoutResources.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LayoutResources.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Resources\PaginationResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaginationResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Resources\PaginationResources.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaginationResources.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TaxProfiles\App_LocalResources\ListResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TaxProfiles\App_LocalResources\ListResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListResource.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TaxProfiles\App_LocalResources\ValidityDetailsViewResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidityDetailsViewResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TaxProfiles\App_LocalResources\ValidityDetailsViewResource.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidityDetailsViewResource.es.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\buildInfo.json" />
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\doc-style.min.css" />
+    <Content Include="Content\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\eds-customization.css" />
+    <Content Include="Content\SiteED.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\_bootstrap-datetimepicker.less" />
+    <Content Include="Content\bootstrap-datetimepicker-build.less" />
+    <EmbeddedResource Include="Resources\ElectronicCertificate\Catalogs.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Catalogs.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\Catalogs.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Catalogs.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\Operations.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Operations.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\Operations.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Operations.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\Operator.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Operator.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\PdcCourse.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PdcCourse.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\PdcCourse.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PdcCourse.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\General\About.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>About.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\General\About.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>About.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\General\Pagination.es.resx">
+      <LastGenOutput>PaginationResources.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\General\Pagination.resx">
+      <LastGenOutput>Pagination.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Resources\AboutViewModelResource.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AboutViewModelResource.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Resources\AboutViewModelResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AboutViewModelResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Resources\CashReceiptMappingModelResource.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CashReceiptMappingModelResource.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Resources\CashReceiptMappingModelResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CashReceiptMappingModelResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Resources\CashReceiptsResources.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CashReceiptsResources.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Resources\CashReceiptsResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CashReceiptsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Resources\OrganizationViewModelResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OrganizationViewModelResource.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Resources\TaxProfileListViewModelResource.es.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TaxProfileListViewModelResource.es.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\FederalEntity.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FederalEntity.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\FederalEntity.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FederalEntity.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\Generate.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Generate.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\Generate.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Generate.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\Institution.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Institution.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\GeneratedTable.es.resx">
+      <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GeneratedTable.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\GeneratedTable.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GeneratedTable.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\Menu.es.resx" />
+    <EmbeddedResource Include="Resources\ElectronicCertificate\Menu.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Menu.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\Responsible.es.resx">
+      <LastGenOutput>Responsible.es.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\Parameters.es.resx">
+      <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Parameters.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\Parameters.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Parameters.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\Responsible.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Responsible.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\Institution.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Institution.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\AcademicPlan.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AcademicPlan.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicCertificate\AcademicPlan.es.resx" />
+    <EmbeddedResource Include="Resources\ElectronicCertificate\Setup.es.resx" />
+    <EmbeddedResource Include="Resources\ElectronicCertificate\Setup.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Setup.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicDegree\AuthorizationType.es.resx" />
+    <EmbeddedResource Include="Resources\ElectronicDegree\AuthorizationType.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AuthorizationType.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicDegree\BackgroundStudyType.es.resx" />
+    <EmbeddedResource Include="Resources\ElectronicDegree\Catalogs.es.resx" />
+    <EmbeddedResource Include="Resources\ElectronicDegree\Catalogs.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Catalogs.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicDegree\BackgroundStudyType.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BackgroundStudyType.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicDegree\FederalEntity.es.resx" />
+    <EmbeddedResource Include="Resources\ElectronicDegree\FederalEntity.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FederalEntity.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicDegree\Institution.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicDegree\Institution.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Institution.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicDegree\InstitutionSigner.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>InstitutionSigner.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicDegree\Major.es.resx" />
+    <EmbeddedResource Include="Resources\ElectronicDegree\Major.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Major.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicDegree\Menu.es.resx" />
+    <EmbeddedResource Include="Resources\ElectronicDegree\Menu.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Menu.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicDegree\Generate.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Generate.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicDegree\Generate.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Generate.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicDegree\Operations.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Operations.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicDegree\Operations.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Operations.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicDegree\Operator.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Operator.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicDegree\Operator.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Operator.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicDegree\Setup.es.resx" />
+    <EmbeddedResource Include="Resources\ElectronicDegree\Setup.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Setup.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicDegree\Signer.es.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Signer.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicDegree\Signer.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Signer.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElectronicDegree\InstitutionSigner.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>InstitutionSigner.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\General\Layout.es.resx" />
+    <EmbeddedResource Include="Resources\General\Layout.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Layout.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\General\MenuAcademicRecords.es.resx" />
+    <EmbeddedResource Include="Resources\General\MenuAcademicRecords.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MenuAcademicRecords.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\General\MenuCashReceipt.es.resx" />
+    <EmbeddedResource Include="Resources\General\MenuCashReceipts.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MenuCashReceipts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\General\MenuMain.es.resx" />
+    <EmbeddedResource Include="Resources\General\MenuMain.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MenuMain.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ChargeCredits\App_localResources\PPD.cshtml.resx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PPD.cshtml.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ChargeCredits\App_localResources\PPD.cshtml.es.resx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PPD.cshtml.es.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CashReceipts\App_LocalResources\CashReceiptsResources.resx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CashReceiptsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CashReceipts\App_LocalResources\CashReceiptsResources.es.resx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CashReceiptsResources.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="Scripts\FiscalRecords\ReceiverModal.js" />
+    <Content Include="Scripts\FiscalRecords\ReceiversList.js" />
+    <Content Include="Scripts\FiscalRecords\CancelGlobal.js" />
+    <EmbeddedResource Include="Views\FiscalRecords\App_LocalResources\CancelGlobalResource.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CancelGlobalResource.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FiscalRecords\App_LocalResources\CancelGlobalResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CancelGlobalResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FiscalRecords\App_LocalResources\EditResource.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditResource.es.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FiscalRecords\App_LocalResources\EditResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FiscalRecords\App_LocalResources\Related.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Related.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FiscalRecords\App_LocalResources\Related.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Related.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Issuers\App_LocalResources\IssuerResource.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>IssuerResource.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Issuers\App_LocalResources\IssuerResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>IssuerResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="Scripts\ElectronicCertificate\EditOperators.js" />
+    <Content Include="Scripts\ElectronicCertificate\FederalEntity.js" />
+    <Content Include="Scripts\ElectronicCertificate\Courses.js" />
+    <Content Include="Scripts\ElectronicCertificate\CommonOperations.js" />
+    <Content Include="Scripts\ElectronicCertificate\Operators.js" />
+    <Content Include="Scripts\ElectronicCertificate\Responsibles.js" />
+    <Content Include="Scripts\ElectronicCertificate\InstitutionCampuses.js" />
+    <Content Include="Scripts\ElectronicCertificate\Generations.js" />
+    <Content Include="Scripts\ElectronicCertificate\AcademicPlan.js" />
+    <Content Include="Scripts\ElectronicCertificate\Operations.js" />
+    <Content Include="Scripts\ElectronicDegree\EditOperators.js" />
+    <Content Include="Scripts\ElectronicDegree\AuthorizationType.js" />
+    <Content Include="Scripts\ElectronicDegree\BackgroundStudyType.js" />
+    <Content Include="Scripts\ElectronicDegree\Generate.js" />
+    <Content Include="Scripts\ElectronicDegree\Institutions.js" />
+    <Content Include="Scripts\ElectronicDegree\InstitutionsMapping.js" />
+    <Content Include="Scripts\ElectronicDegree\Majors.js" />
+    <Content Include="Scripts\ElectronicDegree\Operations.js" />
+    <Content Include="Scripts\ElectronicDegree\Operators.js" />
+    <Content Include="Scripts\ElectronicDegree\FederalEntity.js" />
+    <Content Include="Scripts\ElectronicDegree\SignerInstitution.js" />
+    <Content Include="Scripts\ElectronicDegree\Signers.js" />
+    <Content Include="Scripts\FiscalRecords\ChargeCredits.js" />
+    <Content Include="Scripts\FiscalRecords\CreditNotes.js" />
+    <Content Include="Scripts\FiscalRecords\PaymentReceipts.js" />
+    <Content Include="Scripts\FiscalRecords\Layout.js" />
+    <Content Include="Scripts\FiscalRecords\Organization.js" />
+    <Content Include="Scripts\FiscalRecords\Pagination.js" />
+    <Content Include="Scripts\FiscalRecords\Search.js" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\_bootstrap-datetimepicker.less" />
+    <Content Include="Content\bootstrap-datetimepicker-build.less" />
+    <EmbeddedResource Include="Models\Resources\IssuerModelResource.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>IssuerModelResource.es.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Resources\IssuerModelResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>IssuerModelResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Resources\OrganizationViewModelResource.es.resx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OrganizationViewModelResource.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Resources\PeopleViewModelResource.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PeopleViewModelResource.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Resources\PeopleViewModelResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PeopleViewModelResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="Scripts\General\Layout.js" />
+    <Content Include="Scripts\General\Pagination.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <EmbeddedResource Include="Views\CreditNotes\App_localResources\CreditNotes.cshtml.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreditNotes.cshtml.es.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CreditNotes\App_localResources\CreditNotes.cshtml.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreditNotes.cshtml.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FiscalRecords\App_LocalResources\MenuResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MenuResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FiscalRecords\App_LocalResources\MenuResource.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MenuResource.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="Areas\ElectronicDegree\Views\web.config" />
+    <Content Include="Areas\General\Views\web.config" />
+    <Content Include="Areas\ElectronicDegree\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\General\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\General\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\General\Views\Menu\Main.cshtml" />
+    <Content Include="Areas\General\Views\Menu\AcademicRecords.cshtml" />
+    <Content Include="Areas\General\Views\Menu\CashReceipts.cshtml" />
+    <Content Include="LoggerSettings.json" />
+    <Content Include="Areas\ElectronicDegree\Views\Generate\Generate.cshtml" />
+    <Content Include="App_Data\allevents.log.config" />
+    <Content Include="Areas\ElectronicDegree\Views\Generate\_Student.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Generate\_InstitutionMajor.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Signers\Index.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Signers\Add.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Setup\Index.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Signers\Edit.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Majors\Index.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Majors\Add.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Majors\Edit.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Institutions\Add.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Catalogs\FederalEntity.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Operators\Index.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Operators\Add.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Operators\Edit.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\SignerInstitution\Index.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Institutions\Edit.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Institutions\Index.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Catalogs\BackgroundStudyType.cshtml" />
+    <Content Include="Areas\General\Views\Error\Exception.cshtml" />
+    <Content Include="Areas\General\Views\Error\Unauthorized.cshtml" />
+    <Content Include="Areas\General\Views\Error\Expired.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Institutions\MajorsMapping.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Catalogs\AuthorizationType.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Generate\_IssuingDegree.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Generate\_BackgroundStudies.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Generate\_PreviewGenerate.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Institutions\EditMapping.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Institutions\MajorsMappingList.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Operations\Index.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Operations\_GeneratedTable.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Operations\_Parameters.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Generate\Index.cshtml" />
+    <Content Include="Areas\ElectronicDegree\Views\Operations\_ViewElectronicDegreeInfo.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Generations\Index.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\web.config" />
+    <Content Include="Areas\ElectronicCertificate\Views\_ViewStart.cshtml" />
+    <Content Include=".editorconfig" />
+    <Content Include="Areas\ElectronicCertificate\Views\Setup\Index.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\InstitutionCampuses\Index.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Operations\_GeneratedTable.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Shared\_Parameters.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Responsibles\Add.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Responsibles\Edit.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Responsibles\Index.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Catalogs\FederalEntity.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Generations\_Student.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Generations\Generate.cshtml" />
+    <Content Include="Areas\General\Views\Shared\_Loader.cshtml" />
+    <Content Include="Areas\General\Views\Shared\_PageTitle.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Generations\_GenerationBreadcrumbs.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Generations\_StudiesPrograms.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Generations\_IssuingCertificate.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Generations\_Courses.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Generations\_PreviewGenerate.cshtml" />
+    <Content Include="Areas\General\Views\Shared\_Pagination.cshtml" />
+    <Content Include="Areas\General\Views\Shared\_About.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Operators\Add.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Operators\Edit.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Operators\Index.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\AcademicPlans\Index.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\AcademicPlans\Courses.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Operations\Index.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Operations\_OperationBreadcrumbs.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Shared\_ViewData.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Generations\_GeneratedTable.cshtml" />
+    <Content Include="Areas\General\Views\Shared\_ConfirmationModal.cshtml" />
+    <Content Include="Areas\ElectronicCertificate\Views\Generations\_AddCourse.cshtml" />
+    <Content Include="Config\SmtpSettings.config" />
+    <Content Include="Config\EmailSettings.config" />
+    <EmbeddedResource Include="Resources\ElectronicCertificate\Operator.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Operator.es.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\PublishProfiles\Services.pubxml" />
+    <None Include="Properties\PublishProfiles\UI.pubxml" />
+    <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.2.1.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <EmbeddedResource Include="Views\PaymentReceipts\App_LocalResources\CreateResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PaymentReceipts\App_LocalResources\CreateResource.es.resx" />
+    <EmbeddedResource Include="Views\People\App_localResources\People.cshtml.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>People.cshtml.es.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Organization\App_localResources\Organization.cshtml.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Organization.cshtml.es.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Organization\App_localResources\Organization.cshtml.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Organization.cshtml.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\People\App_localResources\People.cshtml.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>People.cshtml.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ReceiptPaymentMappings\App_LocalResources\ReceiptPayment.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReceiptPayment.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ReceiptPaymentMappings\App_LocalResources\ReceiptPayment.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReceiptPayment.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Search\App_LocalResources\Advanced.cshtml.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Advanced.cshtml.es.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Search\App_LocalResources\Advanced.cshtml.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Advanced.cshtml.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shared\Resources\LayoutResources.es.resx" />
+    <EmbeddedResource Include="Views\Shared\Resources\LayoutResources.resx" />
+    <EmbeddedResource Include="Views\Shared\Resources\PaginationResources.es.resx" />
+    <EmbeddedResource Include="Views\Shared\Resources\PaginationResources.resx" />
+    <EmbeddedResource Include="Views\TaxProfiles\App_LocalResources\ListResource.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ListResource.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TaxProfiles\App_LocalResources\ValidityDetailsViewResource.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidityDetailsViewResource.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TaxProfiles\App_LocalResources\ValidityDetailsViewResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidityDetailsViewResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\FiscalRecords\Edit.js" />
+    <Content Include="Scripts\FiscalRecords\FiscalRecords.js" />
+    <Content Include="Scripts\FiscalRecords\GlobalFiscalRecords.js" />
+    <Content Include="Scripts\FiscalRecords\ChargeCredit.js" />
+    <Content Include="Scripts\FiscalRecords\Issuer.js" />
+    <Content Include="Scripts\FiscalRecords\IssuerSetup.js" />
+    <Content Include="Scripts\FiscalRecords\Menu.js" />
+    <Content Include="Scripts\FiscalRecords\People.js" />
+    <Content Include="Scripts\FiscalRecords\ReceiptPayment.js" />
+    <Content Include="Scripts\FiscalRecords\Receiver.js" />
+    <Content Include="Scripts\FiscalRecords\TaxProfiles.js" />
+    <Content Include="Scripts\FiscalRecords\ViewAll.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\FiscalRecords\Create.cshtml" />
+    <Content Include="Views\FiscalRecords\Edit.cshtml" />
+    <Content Include="Views\FiscalRecords\CreateGlobal.cshtml" />
+    <Content Include="Views\FiscalRecords\ViewAll.cshtml" />
+    <Content Include="Views\FiscalRecords\Index.cshtml" />
+    <Content Include="Views\Receivers\Create.cshtml" />
+    <Content Include="Views\FiscalRecords\Menu.cshtml" />
+    <Content Include="Views\FiscalRecords\Settings.cshtml" />
+    <Content Include="Views\Receivers\List.cshtml" />
+    <Content Include="Views\Receivers\Edit.cshtml" />
+    <Content Include="Views\TaxProfiles\List.cshtml" />
+    <Content Include="Views\Issuers\List.cshtml" />
+    <Content Include="Views\FiscalRecords\ViewByPeopleOrgId.cshtml" />
+    <Content Include="Views\ChargeCreditMappings\Index.cshtml" />
+    <Content Include="Views\Issuers\AddIssuerAddress.cshtml" />
+    <Content Include="Views\Issuers\Create.cshtml" />
+    <Content Include="Views\Issuers\Edit.cshtml" />
+    <Content Include="Views\Issuers\EditIssuerAddress.cshtml" />
+    <Content Include="Views\Issuers\AddIssuerDocument.cshtml" />
+    <Content Include="Views\Issuers\EditIssuerDocument.cshtml" />
+    <Content Include="Views\Issuers\DeleteIssuerAddress.cshtml" />
+    <Content Include="Views\TaxProfiles\ValidityDetailsView.cshtml" />
+    <Content Include="Views\FiscalRecords\GlobalDetailsView.cshtml" />
+    <Content Include="Views\Issuers\IssuerSetup.cshtml" />
+    <Content Include="Views\ReceiptPaymentMappings\List.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\People\People.cshtml" />
+    <Content Include="Views\Search\Advanced.cshtml" />
+    <Content Include="Views\Organization\Organization.cshtml" />
+    <Content Include="Views\People\ListView.cshtml" />
+    <Content Include="Views\Organization\ListView.cshtml" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.2.1.min.map" />
+    <Content Include="Views\CreditNotes\CreditNotes.cshtml" />
+    <Content Include="Views\Shared\_Pagination.cshtml" />
+    <Content Include="Views\People\YTSCharges.cshtml" />
+    <Content Include="Views\Organization\YTSCharges.cshtml" />
+    <Content Include="Views\PaymentReceipts\Create.cshtml" />
+    <Content Include="Views\ChargeCredits\PPDView.cshtml" />
+    <Content Include="Views\CashReceipts\Application.cshtml" />
+    <Content Include="Views\CashReceipts\_ChargesList.cshtml" />
+    <Content Include="Views\FiscalRecords\Related.cshtml" />
+    <Content Include="Views\FiscalRecords\_RelatedList.cshtml" />
+    <Content Include="Views\FiscalRecords\EditPaymentReceipt.cshtml" />
+    <Content Include="Views\FiscalRecords\CancelGlobal.cshtml" />
+    <Content Include="Views\FiscalRecords\_CancelGlobalInvoice.cshtml" />
+    <Content Include="Views\FiscalRecords\_NewInvoiceTables.cshtml" />
+    <Content Include="Views\FiscalRecords\_NewInvoiceCreation.cshtml" />
+    <Content Include="Views\FiscalRecords\_NewGlobalInvoiceCreation.cshtml" />
+    <Content Include="Views\ChargeCreditMappings\_ChargeCreditsTable.cshtml" />
+    <Content Include="Views\Shared\_SaveReceiverPanel.cshtml" />
+    <Content Include="Views\Shared\_SaveReceiverModal.cshtml" />
+    <Content Include="Views\Receivers\_ReceiversTable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\ElectronicCertificate\Models\Certificates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\CustomMessages.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>CustomMessages.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\CustomMessages.es.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>CustomMessages.es.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Models\Resources\ChargeCreditMappingModelResource.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ChargeCreditMappingModelResource.es.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Resources\ChargeCreditMappingModelResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ChargeCreditMappingModelResource.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Resources\FiscalRecordModelResource.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FiscalRecordModelResource.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Resources\FiscalRecordModelResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FiscalRecordModelResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Resources\ReceiverModelResource.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReceiverModelResource.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Resources\ReceiverModelResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReceiverModelResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ChargeCreditMappings\App_LocalResources\ChargeCreditResource.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ChargeCreditResource.es.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ChargeCreditMappings\App_LocalResources\ChargeCreditResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ChargeCreditResource.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Resources\TaxProfileListViewModelResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TaxProfileListViewModelResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FiscalRecords\App_LocalResources\CreateResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FiscalRecords\App_LocalResources\SettingsResource.es.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SettingsResource.es.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FiscalRecords\App_LocalResources\SettingsResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SettingsResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FiscalRecords\App_LocalResources\ViewAllResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ViewAllResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FiscalRecords\App_LocalResources\ViewAllResource.es.resx">
+      <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ViewAllResource.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Receivers\App_LocalResources\CreateResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Receivers\App_LocalResources\CreateResource.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateResource.es.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TaxProfiles\App_LocalResources\ListResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ListResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FiscalRecords\App_LocalResources\CreateResource.es.resx">
+      <SubType>Designer</SubType>
+      <LastGenOutput>CreateResource.es1.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PowerCampus.Entities\PowerCampus.Entities.csproj">
+      <Project>{32b846bd-c8f6-4216-9f39-91e5a37f0253}</Project>
+      <Name>PowerCampus.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.4.0.1\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.4.0.1\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Data.SqlClient.SNI.4.0.1\build\net46\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Data.SqlClient.SNI.4.0.1\build\net46\Microsoft.Data.SqlClient.SNI.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

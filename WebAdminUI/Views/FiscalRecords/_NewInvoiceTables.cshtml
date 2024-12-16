@@ -1,0 +1,252 @@
+<!--
+    <copyright file="_NewInvoiceTables.cshtml" company="Ellucian">
+        Copyright 2022 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model WebAdminUI.Models.FiscalRecords.GlobalInvoiceDetailViewModel
+
+@{
+    bool disableNext = Model.NewInvoices == null || Model.NewInvoices.Count == 0;
+    bool cancellationIsComplete = Model.CashReceipts == null || Model.CashReceipts.Count == 0;
+}
+
+<div class="esg-card--panel__body">
+    <div class="esg-card--panel__content">
+
+        @if (Model.CashReceipts != null && Model.CashReceipts.Count > 0)
+        {
+            <div class="esg-container">
+                <div class="esg-col-xs-12">
+                    <h4 class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblGlobalInvoiceCashReceipts</h4>
+                </div>
+                <hr />
+                <div class="esg-col-xs-12">
+                    <p>@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblInstructionsCashReceipts</p>
+                </div>
+                <div class="esg-col-xs-12">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="esg-form__group esg-has-feedback">
+                                <div class="row esg-has-feedback">
+                                    <fieldset>
+                                        <input id="rdoForPerson" type="radio" name="radio" value="RadioPerson" checked="checked" style="position:relative" />
+                                        <label for="rdoForPerson" class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblPeople</label>
+                                        <input id="rdoForOrg" type="radio" name="radio" value="RadioOrg" style="position:relative; margin:0 10px 0 10px" />
+                                        <label for="rdoForOrg" class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblOrganization</label>
+                                    </fieldset>
+                                </div>
+                                <input type="text" id="peopleOrgIdFilter" class="esg-form__input" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="esg-form__group esg-has-feedback">
+                                <label for="nameFilter" class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblName</label>
+                                <input type="text" id="nameFilter" class="esg-form__input" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="esg-form__group esg-has-feedback">
+                                <label for="receiptNumberFilter" class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblReceiptNumber</label>
+                                <input type="text" id="receiptNumberFilter" class="esg-form__input" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 margin-top-button">
+                            <button class="esg-button esg-button--primary esg-button--fluid" id="search" type="button" onclick="search()">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.btnSearch</button>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="esg-table__container">
+                        <table class="esg-table">
+                            <thead class="esg-table-head">
+                                <tr class="esg-table-head__row">
+                                    <th class="esg-table-head__th">@Html.DisplayNameFor(m => m.CashReceipts[0].PeopleOrgId)</th>
+                                    <th class="esg-table-head__th">@Html.DisplayNameFor(m => m.CashReceipts[0].PeopleOrgFullName)</th>
+                                    <th class="esg-table-head__th">@Html.DisplayNameFor(m => m.CashReceipts[0].ReceiptNumber)</th>
+                                    <th class="esg-table-head__th">@Html.DisplayNameFor(m => m.CashReceipts[0].EntryDate)</th>
+                                    <th class="esg-table-head__th">@Html.DisplayNameFor(m => m.CashReceipts[0].Amount)</th>
+                                    <th class="esg-table-head__th">@Html.DisplayNameFor(m => m.CashReceipts[0].TaxAmount)</th>
+                                    <th class="esg-table-head__th">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblDetail</th>
+                                    <th class="esg-table-head__th">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblFiscalRecord</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-cash-receipts-body" class="esg-table-body">
+                                @if (Model.CashReceipts != null)
+                                {
+                                    for (var i = 0; i < Model.CashReceipts.Count; i++)
+                                    {
+                                        var cashReceipt = Model.CashReceipts[i];
+
+                                        <tr class="esg-table-body__row cashReceiptRow" data-receipt-number="@cashReceipt.ReceiptNumber">
+                                            <td style="word-wrap:break-word;" class="esg-table-body__td" data-people-org-id="@cashReceipt.PeopleOrgId">
+                                                @Html.DisplayFor(model => cashReceipt.PeopleOrgId)
+                                            </td>
+                                            <td style="word-wrap:break-word;" class="esg-table-body__td" data-name="@cashReceipt.PeopleOrgFullName">
+                                                @Html.DisplayFor(model => cashReceipt.PeopleOrgFullName)
+                                            </td>
+                                            <td style="word-wrap:break-word;" class="esg-table-body__td" data-receipt-number="@cashReceipt.ReceiptNumber">
+                                                @Html.DisplayFor(model => cashReceipt.ReceiptNumber)
+                                            </td>
+                                            <td style="word-wrap:break-word;" class="esg-table-body__td" data-entry-date="@cashReceipt.EntryDate">
+                                                @Html.DisplayFor(model => cashReceipt.EntryDate)
+                                            </td>
+                                            <td style="word-wrap:break-word;" class="esg-table-body__td" data-amount="@cashReceipt.Amount">
+                                                @Html.DisplayFor(model => cashReceipt.Amount)
+                                            </td>
+                                            <td style="word-wrap:break-word;" class="esg-table-body__td" data-tax-amount="@cashReceipt.TaxAmount">
+                                                @Html.DisplayFor(model => cashReceipt.TaxAmount)
+                                            </td>
+                                            <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                                <a class="btnViewDetail" onclick="onClickBtnViewDetail(@cashReceipt.ReceiptNumber)" data-receipt-number="@cashReceipt.ReceiptNumber">
+                                                    @WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.btnView
+                                                </a>
+                                            </td>
+                                            <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                                <a class="btnCreateInvoice" onclick="onClickBtnCreateInvoice(@cashReceipt.ReceiptNumber)" data-receipt-number="@cashReceipt.ReceiptNumber">
+                                                    @WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.btnCreate
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+        }
+
+        @if (Model.NewInvoices != null && Model.NewInvoices.Count > 0)
+        {
+            <div class="esg-container">
+                <div class="esg-col-xs-12">
+                    <h4 class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblNewInvoices</h4>
+                </div>
+                <hr />
+                <div class="esg-col-xs-12">
+                    <div class="esg-table__container">
+                        <table class="esg-table">
+                            <thead class="esg-table-head">
+                                <tr class="esg-table-head__row">
+                                    <th class="esg-table-head__th">@Html.DisplayNameFor(m => m.NewInvoices[0].PeopleOrgCodeId)</th>
+                                    <th class="esg-table-head__th">@Html.DisplayNameFor(m => m.NewInvoices[0].expeditionDateTime)</th>
+                                    <th class="esg-table-head__th">@Html.DisplayNameFor(m => m.NewInvoices[0].serialNumber)</th>
+                                    <th class="esg-table-head__th">@Html.DisplayNameFor(m => m.NewInvoices[0].folio)</th>
+                                    <th class="esg-table-head__th">@Html.DisplayNameFor(m => m.NewInvoices[0].receiverTaxPayerId)</th>
+                                    <th class="esg-table-head__th">@Html.DisplayNameFor(m => m.NewInvoices[0].fiscalRecordType)</th>
+                                    <th class="esg-table-head__th">@Html.DisplayNameFor(m => m.NewInvoices[0].requestState)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="" class="esg-table-body">
+                                @if (Model.NewInvoices != null)
+                                {
+                                    for (var i = 0; i < Model.NewInvoices.Count; i++)
+                                    {
+                                        var invoice = Model.NewInvoices[i];
+
+                                        <tr class="esg-table-body__row" id="@i">
+                                            <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                                @Html.DisplayFor(model => invoice.PeopleOrgCodeId)
+                                            </td>
+                                            <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                                @Html.DisplayFor(model => invoice.expeditionDateTime)
+                                            </td>
+                                            <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                                @Html.DisplayFor(model => invoice.serialNumber)
+                                            </td>
+                                            <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                                @Html.DisplayFor(model => invoice.folio)
+                                            </td>
+                                            <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                                @Html.DisplayFor(model => invoice.receiverTaxPayerId)
+                                            </td>
+                                            <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                                @Html.DisplayFor(model => invoice.fiscalRecordType)
+                                            </td>
+                                            <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                                @Html.DisplayFor(model => invoice.requestState)
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div id="receiptDetailsModalOverlay" class="esg-modal-overlay" style="display:none; position:fixed; top:60px; bottom:0px; left:70px; right:0px;"></div>
+        <div id="receiptDetailsModal" style="display:none;">
+            <div class="esg-modal-dialog" style="min-width: 85%">
+                <div class="esg-modal-dialog__header">
+                    <button class="esg-modal-dialog__close esg-icon__container" type="button" data-dismiss="modal" aria-hidden="true" onclick="onCloseModal()">
+                        <svg class="esg-icon esg-icon--large esg-icon--neutral">
+                            <use xlink:href="#icon-close"></use>
+                        </svg>
+                    </button>
+                    <h3 class="esg-modal-dialog__title">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblReceipt</h3>
+                </div>
+                <div class="esg-modal-dialog__body">
+                    @if (Model.CashReceipts != null && Model.CashReceipts.Count > 0)
+                    {
+                        <div class="esg-table__container">
+                            <table id="receiptInfoTable" class="esg-table">
+                                <thead class="esg-table-head">
+                                    <tr class="esg-table-head__row">
+                                        <th scope="col" class="esg-table-head__th esg-is-active">@Html.DisplayNameFor(m => Model.CashReceipts[0].PeopleOrgId)</th>
+                                        <th scope="col" class="esg-table-head__th esg-is-active">@Html.DisplayNameFor(m => Model.CashReceipts[0].PeopleOrgFullName)</th>
+                                        <th scope="col" class="esg-table-head__th esg-is-active">@Html.DisplayNameFor(m => Model.CashReceipts[0].ReceiptNumber)</th>
+                                        <th scope="col" class="esg-table-head__th esg-is-active">@Html.DisplayNameFor(m => Model.CashReceipts[0].EntryDate)</th>
+                                        <th scope="col" class="esg-table-head__th esg-is-active">@Html.DisplayNameFor(m => Model.CashReceipts[0].Amount)</th>
+                                        <th scope="col" class="esg-table-head__th esg-is-active">@Html.DisplayNameFor(m => Model.CashReceipts[0].TaxAmount)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="esg-table-body">
+                                    <tr class="esg-table-body__row">
+                                        <td class="esg-table-body__td text-left" id="peopleOrgIdField"></td>
+                                        <td class="esg-table-body__td text-left" id="nameField"></td>
+                                        <td class="esg-table-body__td text-left" id="receiptNumberField"></td>
+                                        <td class="esg-table-body__td text-left" id="entryDateField"></td>
+                                        <td class="esg-table-body__td text-left" id="taxAmountField"></td>
+                                        <td class="esg-table-body__td text-left" id="amountField"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br />
+                        <h4 class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblDetail</h4>
+                        <div class="esg-table__container">
+                            <table id="receiptDetailsTable" class="esg-table">
+                                <thead class="esg-table-head">
+                                    <tr class="esg-table-head__row">
+                                        <th scope="col" class="esg-table-head__th esg-is-active">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblProductServiceCode</th>
+                                        <th scope="col" class="esg-table-head__th esg-is-active">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblIdNumber</th>
+                                        <th scope="col" class="esg-table-head__th esg-is-active">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblQuantity</th>
+                                        <th scope="col" class="esg-table-head__th esg-is-active">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblUnitCode</th>
+                                        <th scope="col" class="esg-table-head__th esg-is-active">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblUnit</th>
+                                        <th scope="col" class="esg-table-head__th esg-is-active">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblDescription</th>
+                                        <th scope="col" class="esg-table-head__th esg-is-active">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblUnitAmount</th>
+                                        <th scope="col" class="esg-table-head__th esg-is-active">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblTaxAmount</th>
+                                        <th scope="col" class="esg-table-head__th esg-is-active">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblAmount</th>
+                                        <th scope="col" class="esg-table-head__th esg-is-active">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblSubjectToTax</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="receiptDetails_tbody" class="esg-table-body">
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div id="newInvoiceFooter" class="esg-container" style="text-align:end">
+            <div class="eds-button-group" role="group" style="margin-top:1rem" aria-label="button group">
+                <button class="eds-button eds-button--secondary" id="btnBackCancelGlobalInvoice" type="button" onclick="onClickBtnBackCancelGlobalInvoice()">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.btnBack</button>
+                <button class="eds-button eds-button--primary" id="btnNextNewGlobalInvoice" type="button" onclick="moveToStpNewGlobalInvoice(@cancellationIsComplete)" @(disableNext ? "disabled" : "")>@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.btnNext</button>
+            </div>
+        </div>
+    </div>
+</div>

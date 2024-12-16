@@ -1,0 +1,306 @@
+@model List<WebAdminUI.Models.FiscalRecords.FiscalRecordViewModel>
+@using PowerCampus.Entities;
+
+@{
+    ViewBag.Title = WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.Title;
+    var hasResults = Model != null && Model.Count > 0;
+}
+
+@section Styles{
+    @Styles.Render("~/Content/datetime")
+}
+
+<div class="esg-page-header">
+    <a class="esg-page-header__button" role="button" title="@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.ButtonBack" href="@Url.Action("Menu", "FiscalRecords")">
+        <span class="esg-page-header__icon esg-icon__container">
+            <svg class="esg-icon esg-icon--left">
+                <use xlink:href="#icon-arrow"></use>
+            </svg>
+        </span>
+    </a>
+    <h1 class="esg-page-header__title">@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.Title</h1>
+</div>
+
+<div class="esg-card--panel">
+    <div class="esg-card--panel__body">
+        <div class="esg-card--panel__content">
+            <div class="content-margin">
+                <div class="esg-collapsible-group esg-collapsible-group--default" role="tablist" aria-multiselectable="true">
+                    <div class="esg-collapsible-group__heading" role="tab">
+                        <span class="esg-collapsible-group__title">
+                            <a class="esg-collapsible-group__toggle esg-is-open" id="filtersPanel" role="button" data-toggle="collapse"
+                               data-parent="#accordion" href="#filtersSection" aria-expanded="true" aria-controls="filtersSection">
+                                @WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.lblSearchFilters
+                                <span class="esg-collapsible-group__icon esg-icon__container" aria-hidden="True">
+                                    <svg class="esg-icon esg-icon--up">
+                                        <use xlink:href="#icon-arrow"></use>
+                                    </svg>
+                                </span>
+                            </a>
+                        </span>
+                    </div>
+                    <div class="esg-collapsible-group__body collapse in" id="filtersSection" role="tab" aria-expanded="true" aria-labelledby="filtersPanel">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
+                                        <div id="StartDateGroup" class="esg-form__group esg-has-feedback">
+                                            <label for="StartDatePicker" class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.StartDateIssue</label>
+                                            <div class="esg-form__input-group">
+                                                @Html.TextBox("StartDatePicker", null, new { @class = "esg-form__input", @id = "StartDatePicker" })
+                                                <a id="clearStartDate" class="esg-form__icon esg-icon__container esg-form__icon--submit" role="button" title="@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.ClearLabel ">
+                                                    <svg class="esg-icon esg-icon--small">
+                                                        <use xlink:href="#icon-clear"></use>
+                                                    </svg>
+                                                </a>
+                                                <label class="text-danger" id="StartDateError" style="display:none;">@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.lblErrorDatesRange</label>
+                                                <label class="text-danger" id="StartDateMissing" style="display:none;">@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.lblStartDateMissing</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
+                                        <div id="EndDateGroup" class="esg-form__group esg-has-feedback">
+                                            <label for="EndDatePicker" class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.EndDateIssue</label>
+                                            <div class="esg-form__input-group">
+                                                @Html.TextBox("EndDatePicker", null, new { @class = "esg-form__input", @id = "EndDatePicker" })
+                                                <a id="clearEndDate" class="clearButton esg-form__icon esg-icon__container esg-form__icon--submit" role="button" title="@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.ClearLabel ">
+                                                    <svg class="esg-icon esg-icon--small">
+                                                        <use xlink:href="#icon-clear"></use>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <label class="text-danger" id="EndDateMissing" style="display:none;">@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.lblEndDateMissing</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="esg-form__group esg-has-feedback">
+                                            <div class="row esg-has-feedback">
+                                                <fieldset>
+                                                    <input id="rdoForPerson" type="radio" name="radio" value="RadioPerson" checked="checked" style="position:relative" />
+                                                    <label for="rdoForPerson" class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.lblPeopleID</label>
+                                                    <input id="rdoForOrg" type="radio" name="radio" value="RadioOrg" style="position:relative; margin:0 10px 0 10px" />
+                                                    <label for="rdoForOrg" class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.lblOrganizationID</label>
+                                                </fieldset>
+                                            </div>
+                                            <input type="text" id="PeopleOrgIdFilter" class="esg-form__input" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="esg-form__group esg-has-feedback">
+                                            <label for="FolioFilter" class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.Folio</label>
+                                            <input type="text" id="FolioFilter" class="esg-form__input" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="esg-form__group">
+                                            <label class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.Status</label><br />
+                                            <select class="esg-form__input" id="ddlStatus" name="Status"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                                <div class="esg-form__group esg-has-feedback">
+                                    <label for="ReceiverFilter" class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.ReceiverDesc</label>
+                                    <input type="text" id="ReceiverFilter" class="esg-form__input" />
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="esg-form__group">
+                                    <label class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.RecordType</label><br />
+                                    <select class="esg-form__input" id="ddlRecordType" name="RecordType"></select>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 margin-top-button">
+                                <input type="button" id="search" value=@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.SearchLabel class="esg-button esg-button--primary esg-button--fluid" />
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 margin-top-button">
+                                <input type="button" id="btnClear" value=@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.btnClear class="esg-button esg-button--secondary esg-button--fluid" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="divAlertNoCriteria" class="esg-alert esg-alert--info no-margin no-display" role="alert">
+                            <span class="esg-alert__icon-wrapper">
+                                <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                                    <svg class="esg-icon esg-icon--info-dark">
+                                        <use xlink:href="#icon-info"></use>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="esg-alert__message">@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.lblEnterSearch</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="noResultsAlert" class="row" style="display: none;">
+                    <div class="col-xs-12">
+                        <div class="esg-alert esg-alert--warning" role="alert">
+                            <span class="esg-alert__icon-wrapper">
+                                <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                                    <svg class="esg-icon esg-icon--warning-dark">
+                                        <use xlink:href="#icon-warning"></use>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="esg-alert__message">
+                                @WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.lblNoResults
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div id="divDetails" data-pagination="true" style="display: @(hasResults ? "block" : "none");">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <table id="records_table_rows" class="esg-table" border="1">
+                                <thead class="esg-table-head">
+                                    <tr class="esg-table-head__row">
+                                        <th scope="col" class="esg-table-head__th esg-dropdown esg-is-active">
+                                            <button class="esg-table-head__button esg-dropdown__toggle" id="dataTableFilter1" data-placeholder="false"
+                                                    type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                @WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.PeopleOrganizationID
+                                            </button>
+                                        </th>
+                                        <th scope="col" class="esg-table-head__th esg-dropdown esg-is-active">
+                                            <button class="esg-table-head__button esg-dropdown__toggle" id="dataTableFilter1" data-placeholder="false"
+                                                    type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                @WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.DateOfIssue
+                                            </button>
+                                        </th>
+                                        <th scope="col" class="esg-table-head__th esg-dropdown esg-is-active">
+                                            <button class="esg-table-head__button esg-dropdown__toggle" id="dataTableFilter1" data-placeholder="false"
+                                                    type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                @WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.Serial
+                                            </button>
+                                        </th>
+                                        <th scope="col" class="esg-table-head__th esg-dropdown esg-is-active">
+                                            <button class="esg-table-head__button esg-dropdown__toggle" id="dataTableFilter1" data-placeholder="false"
+                                                    type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                @WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.Folio
+                                            </button>
+                                        </th>
+                                        <th scope="col" class="esg-table-head__th esg-dropdown esg-is-active">
+                                            <button class="esg-table-head__button esg-dropdown__toggle" id="dataTableFilter1" data-placeholder="false"
+                                                    type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                @WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.ReceiverTaxpayerID
+                                            </button>
+                                        </th>
+                                        <th scope="col" class="esg-table-head__th esg-dropdown esg-is-active">
+                                            <button class="esg-table-head__button esg-dropdown__toggle" id="dataTableFilter1" data-placeholder="false"
+                                                    type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                @WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.FiscalRecordType
+                                            </button>
+                                        </th>
+                                        <th scope="col" class="esg-table-head__th esg-dropdown esg-is-active">
+                                            <button class="esg-table-head__button esg-dropdown__toggle" id="dataTableFilter1" data-placeholder="false"
+                                                    type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                @WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.Status
+                                            </button>
+                                        </th>
+                                        <th scope="col" class="esg-table-head__th esg-dropdown esg-is-active">
+                                            <input type="hidden" id="viewLabel" value="@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.View" />
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="records_table_rows_tbody" class="esg-table-body">
+                                    @if (Model != null)
+                                    {
+                                        for (var i = 0; i < Model.Count; i++)
+                                        {
+                                            var FiscalRecord = Model[i];
+                                            <tr class="esg-table-body__row" id="@i">
+                                                <td class="esg-table-body__td" style="word-wrap:break-word;">@FiscalRecord.PeopleOrgCodeId</td>
+                                                <td class="esg-table-body__td" style="word-wrap:break-word;">@Html.DisplayFor(model => FiscalRecord.expeditionDateTime)</td>
+                                                <td class="esg-table-body__td" style="word-wrap:break-word;">@FiscalRecord.serialNumber</td>
+                                                <td class="esg-table-body__td" style="word-wrap:break-word;">@FiscalRecord.folio</td>
+                                                <td class="esg-table-body__td" style="word-wrap:break-word;">@FiscalRecord.receiverTaxPayerId</td>
+                                                <td class="esg-table-body__td" style="word-wrap:break-word;">@FiscalRecord.fiscalRecordType</td>
+                                                <td class="esg-table-body__td" style="word-wrap:break-word;">
+                                                    @if (FiscalRecord.CancelReasonName == PowerCampus.Entities.Enum.CancelReasonName.ErrorRelacion
+                                                        && FiscalRecord.FiscalRecordStatusEnum != enumFiscalRecordStatus.Canceled)
+                                                    {
+                                                        <div style="display: flex; align-items: center;">
+                                                            <span class="esg-icon__container" style="cursor:pointer; margin-right: 5px;"
+                                                                  title="@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.lblCancellationInProgress">
+                                                                <svg class="esg-icon esg-icon--warning esg-icon--small">
+                                                                    <use xlink: href="#icon-warning"></use>
+                                                                </svg>
+                                                            </span>
+                                                            <span>@FiscalRecord.requestState</span>
+                                                        </div>
+                                                    }
+                                                    else if ((FiscalRecord.IsCancellationInProgress
+                                                        || FiscalRecord.FiscalRecordStatusEnum == enumFiscalRecordStatus.ProviderCannotCancel
+                                                        || FiscalRecord.FiscalRecordStatusEnum == enumFiscalRecordStatus.ProviderIsCanceling
+                                                        || FiscalRecord.FiscalRecordStatusEnum == enumFiscalRecordStatus.RequestedCancellation) && FiscalRecord.CancelReasonName == PowerCampus.Entities.Enum.CancelReasonName.OperacionNominativa)
+                                                    {
+                                                        <div style="display: flex; align-items: center;">
+                                                            <span class="esg-icon__container" style="cursor:pointer; margin-right: 5px;"
+                                                                  title="@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.lblCancellationInProgress">
+                                                                <svg class="esg-icon esg-icon--warning esg-icon--small">
+                                                                    <use xlink: href="#icon-warning"></use>
+                                                                </svg>
+                                                            </span>
+                                                            <div>
+                                                                <span>@FiscalRecord.requestState</span><br />
+                                                                <span>@Html.ActionLink(@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.ContinueCancellation, "CancelGlobal", new { id = FiscalRecord.InvoiceHeaderId })</span>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        @FiscalRecord.requestState
+                                                    }
+                                                </td>
+                                                <td class="esg-table-body__td" style="word-wrap:break-word;">
+                                                    @Html.ActionLink(@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.View, "Edit", new { id = FiscalRecord.InvoiceHeaderId })
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            @Html.Partial("_Pagination", new ViewDataDictionary() { { "Count", (Model == null ? 0 : Model.Count()) }, { "MinRows", 5 }, { "DefaultSelected", 10 } })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="Overlaydiv" class="esg-modal-overlay no-display"></div>
+<div id="Processing" class="esg-modal-dialog no-display">
+    <div class="esg-spinner-wrapper">
+        <div class="esg-spinner"></div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        var urlFilteredFiscalRecords = '@Url.Action("ViewFilteredFiscalRecords", "FiscalRecords")';
+        var urlGetInvoiceFilters = '@Url.Action("GetInvoiceFilters", "FiscalRecords")';
+        var SubstitutionReasonName = @Html.Raw(Json.Encode(PowerCampus.Entities.Enum.CancelReasonName.ErrorRelacion));
+        var CanceledFiscalRecordStatus = @Html.Raw(Json.Encode(enumFiscalRecordStatus.Canceled));
+        var ProviderCannotCancelStatus = @Html.Raw(Json.Encode(enumFiscalRecordStatus.ProviderCannotCancel));
+        var ProviderIsCancelingStatus = @Html.Raw(Json.Encode(enumFiscalRecordStatus.ProviderIsCanceling));
+        var RequestedCancellationStatus = @Html.Raw(Json.Encode(enumFiscalRecordStatus.RequestedCancellation));
+        var NullStatus = @Html.Raw(Json.Encode(enumFiscalRecordStatus.Null));
+        var NominativeOperationReasonName = @Html.Raw(Json.Encode(PowerCampus.Entities.Enum.CancelReasonName.OperacionNominativa));
+        var CancelProgressTitle = @Html.Raw(Json.Encode(WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.lblCancellationInProgress));
+        var lblContinueCancellation = @Html.Raw(Json.Encode(WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.ContinueCancellation));
+        var lblAll = @Html.Raw(Json.Encode(WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.lblAll));
+    </script>
+    @Scripts.Render("~/bundles/datetime")
+    @Scripts.Render("~/bundles/FR/ViewAll")
+    @Scripts.Render("~/bundles/FR/Pagination")
+}

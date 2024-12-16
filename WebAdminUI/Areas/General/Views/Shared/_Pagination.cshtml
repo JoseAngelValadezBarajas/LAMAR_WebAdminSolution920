@@ -1,0 +1,64 @@
+<div class="esg-pagination">
+    <div class="esg-pagination__paginator">
+        <div class="esg-pagination__controls--back esg-button-group" role="group" aria-label="button group">
+            <button class="esg-button esg-button--secondary" role="button" title="first" id="firstButton">
+                <div class="esg-button__icon esg-icon__container" aria-hidden="True">
+                    <svg class="esg-icon esg-icon--left">
+                        <use xlink:href="#icon-skip"></use>
+                    </svg>
+                </div>
+            </button>
+            <button class="esg-button esg-button--secondary" role="button" title="previous" id="previousButton">
+                <div class="esg-button__icon esg-icon__container" aria-hidden="True">
+                    <svg class="esg-icon esg-icon--left">
+                        <use xlink:href="#icon-arrow"></use>
+                    </svg>
+                </div>
+            </button>
+        </div>
+        <div class="esg-form__group">
+            <label>@WebAdminUI.Resources.General.PaginationResources.lblPage</label>
+            <input class="esg-form__input" id="paginationInput" type="text" placeholder="" size="1" max-length="3" value="1" aria-label="Page number" />
+            <label>@WebAdminUI.Resources.General.PaginationResources.lblOf</label>
+            <label id="totalOfPages"></label>
+        </div>
+        <div class="esg-pagination__controls--forward esg-button-group" role="group" aria-label="button group">
+            <button class="esg-button esg-button--secondary" role="button" title="next" id="nextButton">
+                <div class="esg-button__icon esg-icon__container" aria-hidden="True">
+                    <svg class="esg-icon esg-icon--right">
+                        <use xlink:href="#icon-arrow"></use>
+                    </svg>
+                </div>
+            </button>
+            <button class="esg-button esg-button--secondary" role="button" title="last" id="lastButton">
+                <div class="esg-button__icon esg-icon__container" aria-hidden="True">
+                    <svg class="esg-icon esg-icon--right">
+                        <use xlink:href="#icon-skip"></use>
+                    </svg>
+                </div>
+            </button>
+        </div>
+    </div>
+    <div class="esg-pagination__result-container">
+        <div class="esg-form__group esg-pagination__result-counter">
+            <label>@WebAdminUI.Resources.General.PaginationResources.lblPerPage</label>
+            <div class="esg-dropdown">
+
+                <select name="pageOptions" class="esg-form__input" id="pageOptions">
+                    <option value="5">5</option>
+                    <option selected="selected" value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+        </div>
+        <div class="esg-pagination__result">
+            <label>@WebAdminUI.Resources.General.PaginationResources.lblTotal</label>
+            <label id="labelModelCount"></label>
+        </div>
+    </div>
+</div>
+<input id="hdnModelCount" type="hidden" value="@ViewBag.Count" />
+<input id="hdnMinRows" type="hidden" value="@ViewBag.MinRows" />
+<input id="hdnDefaultSelected" type="hidden" value="@ViewBag.DefaultSelected" />

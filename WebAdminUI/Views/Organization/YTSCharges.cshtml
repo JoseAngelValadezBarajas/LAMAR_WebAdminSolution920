@@ -1,0 +1,57 @@
+﻿@model WebAdminUI.Models.Organization.OrganizationViewModel
+@if (Model != null && Model.OrganizationChargeCredit.Count > 0)
+{
+<div id="dvCharges" data-pagination="true" class="esg-table__container">
+    <table class="esg-table">
+        <thead class="esg-table-head">
+            <tr class="esg-table-head__row">
+                <th class="esg-table-head__th">@WebAdminUI.Views.Organization.App_localResources.Organization_cshtml.lblEntryDate</th>
+                <th class="esg-table-head__th">@WebAdminUI.Views.Organization.App_localResources.Organization_cshtml.lblCode</th>
+                <th class="esg-table-head__th">@WebAdminUI.Views.Organization.App_localResources.Organization_cshtml.lblDescription</th>
+                <th class="esg-table-head__th">@WebAdminUI.Views.Organization.App_localResources.Organization_cshtml.lblAmount</th>
+                <th class="esg-table-head__th">@WebAdminUI.Views.Organization.App_localResources.Organization_cshtml.lblTaxes</th>
+                <th class="esg-table-head__th">@WebAdminUI.Views.Organization.App_localResources.Organization_cshtml.lblTotal</th>
+                <th class="esg-table-head__th"></th>
+            </tr>
+        </thead>
+        <tbody id="records_table_rows_tbody" class="esg-table-body">
+            @if (Model != null && Model.OrganizationChargeCredit.Count > 0)
+                {
+                    var count = 0;
+
+                    foreach (var OrganizationCharges in Model.OrganizationChargeCredit)
+                    {
+
+            <tr class="esg-table-body__row" id="@count">
+                <td class="esg-table-body__td">@OrganizationCharges.EntryDate </td>
+                <td class="esg-table-body__td">
+                    @OrganizationCharges.ChargeCreditCode
+                    @Html.HiddenFor(m => OrganizationCharges.ChargeNumberSource,
+                              new { @id = string.Format("ChargeCreditNumber_{0}", count), Value = OrganizationCharges.ChargeNumberSource })
+                </td>
+                <td class="esg-table-body__td">@OrganizationCharges.ChargeCreditDesc</td>
+                <td class="esg-table-body__td text-right">@OrganizationCharges.UnitAmount</td>
+                <td class="esg-table-body__td text-right">@OrganizationCharges.TotalTaxes</td>
+                <td class="esg-table-body__td text-right">@OrganizationCharges.TotalUnit</td>
+                @if (OrganizationCharges.CanCreatePPD.Equals(true))
+                            {
+                <td class="esg-table-body__td text-center"><button id="CreatePPD" type="button" data-code-organization="@OrganizationCharges.ChargeNumberSource" class="esg-button esg-button--primary esg-button-fluid esg-button--small credit-note-by-people-org">@WebAdminUI.Views.Organization.App_localResources.Organization_cshtml.btnPPD</button></td>
+                            }
+            </tr>
+
+                        count++;
+
+                    }
+
+                }
+        </tbody>
+    </table>
+    <br />
+    @if (Model != null && Model.OrganizationChargeCredit.Count > 0)
+        {
+    @Html.Partial("_Pagination", new ViewDataDictionary() { { "Count", (Model.OrganizationChargeCredit == null ? 0 : Model.OrganizationChargeCredit.Count()) }, { "MinRows", 5 }, { "DefaultSelected", 10 } })
+        }
+</div>
+
+@Scripts.Render("~/bundles/FR/Pagination")
+}

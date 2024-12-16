@@ -1,0 +1,244 @@
+﻿<!--
+    <copyright file="_PreviewGenerate.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+
+@model WebAdminUI.Areas.ElectronicDegree.Models.GenerateViewModel
+<div id="stpPreviewGenerate" style="display:none" class="esg-card--panel">
+    <div class="esg-card--panel__body">
+        <div class="esg-card--panel__content">
+            <div class="esg-container">
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <h3 class="esg-form__label">@WebAdminUI.Resources.ElectronicDegree.Generate.lblDegreeFolio</h3> <br />
+                    </div>
+                    <div id="divEditPG" class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12" style="display:block; text-align:end">
+                        <span class="esg-icon__container">
+                            <svg class="esg-icon esg-icon__container">
+                                <use xlink:href="#icon-edit"></use>
+                            </svg>
+                        </span>
+                        <a id="btnEditPG">
+                            <div class="esg-icon__label">
+                                <h4>@WebAdminUI.Resources.ElectronicDegree.Generate.lblEdit</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <div id="divDegreeFolio" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(m => m.DegreeFolio, new { @class = "esg-form__label esg-is-required" })<br />
+                            <div class="esg-form__input-group">
+                                @Html.TextBoxFor(m => m.DegreeFolio, new { @class = "esg-form__input", @id = "PGDegreeFolio", maxlength = 40, @readonly = "readonly", @disabled = "disabled" })
+                                @Html.LabelFor(m => m.DegreeFolioError, new { @class = "esg-form__label", @id = "PGDegreeFolioError", @style = "color:#d64555; display:none" })
+                                <div id="divDegreeFolioErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="esg-container">
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <h3 class="esg-form__label">@WebAdminUI.Resources.ElectronicDegree.Generate.lblPreviewData</h3> <br />
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <h4 class="esg-form__label">@WebAdminUI.Resources.ElectronicDegree.Generate.lblStudent</h4> <br />
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblCurp + ":")
+                        @Html.LabelFor(m => m.Curp, new { @class = "esg-form__label", @id = "PGSCurp" })
+                    </div>
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblEmail + ":")
+                        @Html.LabelFor(m => m.Email, new { @class = "esg-form__label", @id = "PGSEmail" })
+                    </div>
+                    <br />
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblName + ":")
+                        @Html.LabelFor(m => m.Name, new { @class = "esg-form__label", @id = "PGSName" })
+                    </div>
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblFirstSurname + ":")
+                        @Html.LabelFor(m => m.FirstSurname, new { @class = "esg-form__label", @id = "PGSFirstSurname" })
+                    </div>
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblSecondSurname + ":")
+                        @Html.LabelFor(m => m.SecondSurname, new { @class = "esg-form__label", @id = "PGSSecondSurname" })
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <hr />
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <h4 class="esg-form__label">@WebAdminUI.Resources.ElectronicDegree.Generate.lblInstitution</h4> <br />
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblInstitutionsCode + ":")
+                        @Html.LabelFor(m => m.InstitutionsCode, new { @class = "esg-form__label", @id = "PGInstitutionCode" })
+                    </div>
+                    <div class="esg-col-lg-8 esg-col-md-8 esg-col-sm-12 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblInstitutionsName + ":")
+                        @Html.LabelFor(m => m.InstitutionsName, new { @class = "esg-form__label", @id = "PGInstitutionName" })
+                    </div>
+                    <br />
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblFirstSigner + ":")
+                        @Html.LabelFor(m => m.FirstSurname, new { @class = "esg-form__label", @id = "PGFirstSigner" })
+                    </div>
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblSecondSigner + ":")
+                        @Html.LabelFor(m => m.SecondSigner, new { @class = "esg-form__label", @id = "PGSecondSigner" })
+                    </div>
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblThirdSigner + ":")
+                        @Html.LabelFor(m => m.ThirdSigner, new { @class = "esg-form__label", @id = "PGThirdSigner" })
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <hr />
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <h4 class="esg-form__label">@WebAdminUI.Resources.ElectronicDegree.Generate.lblMajor</h4> <br />
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblMajorID + ":")
+                        @Html.LabelFor(m => m.MajorId, new { @class = "esg-form__label", @id = "PGMajorId" })
+                    </div>
+                    <div class="esg-col-lg-8 esg-col-md-8 esg-col-sm-8 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblMajorName + ":")
+                        @Html.LabelFor(m => m.MajorName, new { @class = "esg-form__label", @id = "PGMajorName" })
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblStartDate + ":")
+                        @Html.LabelFor(m => m.StartDate, new { @class = "esg-form__label", @id = "PGMStartDate" })
+                    </div>
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblEndDate + ":")
+                        @Html.LabelFor(m => m.EndDate, new { @class = "esg-form__label", @id = "PGMEndDate" })
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblAuthorizationType + ":")
+                        @Html.LabelFor(m => m.AuthorizationType, new { @class = "esg-form__label", @id = "PGAuthorizationType" })
+                    </div>
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblRvoe + ":")
+                        @Html.LabelFor(m => m.Rvoe, new { @class = "esg-form__label", @id = "PGRove" })
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <hr />
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <h4 class="esg-form__label">@WebAdminUI.Resources.ElectronicDegree.Generate.lblIssuingDegree</h4> <br />
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblIssuingDate + ":")
+                        @Html.LabelFor(m => m.IssuingDate, new { @class = "esg-form__label", @id = "PGIssuingDate" })
+                    </div>
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblGraduationReqType + ":")
+                        @Html.LabelFor(m => m.GraduationRequirementType, new { @class = "esg-form__label", @id = "PGGraduationReqType" })
+                    </div>
+                    <div id="lblPGProfessionalExamDate" class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12" style="display:none">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblProfessionalExaminationDate + ":")
+                        @Html.LabelFor(m => m.ExemptionProfessionalExaminationDate, new { @class = "esg-form__label", @id = "PGExemptionExamDate" })
+                    </div>
+                    <div id="lblPGExcemptionExamDate" class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12" style="display:none">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblExemptionProfessionalExamDate + ":")
+                        @Html.LabelFor(m => m.ProfessionalExaminationDate, new { @class = "esg-form__label", @id = "PGProfessionalExamDate" })
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblCompletedSocialService + ":")
+                        @Html.LabelFor(m => m.CompletedSocialService, new { @class = "esg-form__label", @id = "PGCompletedSocialService" })
+                    </div>
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblSocialService + ":")
+                        @Html.LabelFor(m => m.SocialService, new { @class = "esg-form__label", @id = "PSocialService" })
+                    </div>
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblState + ":")
+                        @Html.LabelFor(m => m.State, new { @class = "esg-form__label", @id = "PGIDState" })
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <hr />
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                        <h4 class="esg-form__label">@WebAdminUI.Resources.ElectronicDegree.Generate.lblBackgroundStudies</h4> <br />
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblInstitutionOrigin + ":")
+                        @Html.LabelFor(m => m.InstitutionOrigin, new { @class = "esg-form__label", @id = "PGInstitutionOrigin" })
+                    </div>
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblTypeOfBackground + ":")
+                        @Html.LabelFor(m => m.TypeBackgroundStudy, new { @class = "esg-form__label", @id = "PGTypeBackgroundStudy" })
+                    </div>
+                </div>
+                <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblState + ":")
+                        @Html.LabelFor(m => m.State, new { @class = "esg-form__label", @id = "PGBSState" })
+                    </div>
+                    <div class="esg-col-lg-4 esg-col-md-4 esg-col-sm-4 esg-col-xs-12">
+                        @Html.Label(WebAdminUI.Resources.ElectronicDegree.Generate.lblLicenceNumber + ":")
+                        @Html.LabelFor(m => m.LicenceNumber, new { @class = "esg-form__label", @id = "PGLicenceNumber" })
+                    </div>
+                </div>
+            </div>
+            <div class="esg-container" style="text-align:end">
+                <div class="eds-button-group" role="group" style="margin-top:1rem" aria-label="button group">
+                    <button class="eds-button eds-button--secondary" id="btnBackPG" type="button">@WebAdminUI.Resources.ElectronicDegree.Generate.lblBack</button>
+                    <button class="eds-button eds-button--primary" id="btnCreate" type="button">@WebAdminUI.Resources.ElectronicDegree.Generate.lblGenerate</button>
+                </div>
+            </div>
+            <div class="esg-container">
+                <div id="divGenerateError" style="display:none">
+                    <div class="esg-alert esg-alert--error col-lg-12 col-md-12 col-sm-12 col-xs-12" role="alert">
+                        <span class="esg-alert__icon-wrapper">
+                            <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                                <svg class="esg-icon esg-icon--error-dark">
+                                    <use xlink:href="#icon-check"></use>
+                                </svg>
+                            </span>
+                        </span>
+                        <div class="esg-alert__message">@WebAdminUI.Resources.ElectronicDegree.Generate.lblErrorLegend</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

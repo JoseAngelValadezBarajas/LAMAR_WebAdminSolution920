@@ -1,0 +1,184 @@
+﻿<!--
+    <copyright file="Add.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model WebAdminUI.Areas.ElectronicDegree.Models.Institution.AddInstitutionViewModel
+
+@{
+    ViewBag.Title = WebAdminUI.Resources.ElectronicDegree.Institution.lblInstitutions;
+    var userName = ViewBag.Account as PowerCampus.Entities.Account;
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formCreate" }))
+{
+    <br />
+    <div class="esg-page-header">
+        <h1 class="esg-page-header__title">@WebAdminUI.Resources.ElectronicDegree.Institution.lblInstitutions</h1>
+    </div>
+    <div id="formAdd" class="esg-card--panel">
+        <div class="esg-card--panel__body">
+            <div class="esg-card--panel__content">
+                <div class="esg-container">
+                    <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                        <h4 class="esg-page-header__subtitle">@WebAdminUI.Resources.ElectronicDegree.Institution.lblAddInstitution</h4>
+                        <hr />
+                        <br />
+                    </div>
+                </div>
+                <div class="esg-container">
+                    <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                        <h4 class="esg-page-header__subtitle">@WebAdminUI.Resources.ElectronicDegree.Institution.lblInstitution</h4> <br />
+                    </div>
+                    <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                        <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                            <div id="divCode" class="esg-form__group">
+                                @Html.LabelFor(m => m.Code, new { @class = "esg-form__label esg-is-required" })<br />
+                                <div class="esg-form__input-group">
+                                    @Html.TextBoxFor(m => m.Code, new { @class = "esg-form__input", @id = "Code", @required = "required", maxLength = 7 })
+                                    @Html.ValidationMessageFor(m => m.Code, "", new { @class = "text-danger", @style = "color:red" })
+                                    @Html.LabelFor(m => m.CodeExists, new { @class = "esg-form__label", @id = "CodeExists", @style = "color:red; display:none" })
+                                    <div id="divCodeErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                        <svg class="esg-icon esg-icon--error">
+                                            <use xlink:href="#icon-error"></use>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                            <div id="divName" class="esg-form__group esg-has-feedback">
+                                @Html.LabelFor(m => m.Name, new { @class = "esg-form__label esg-is-required" })<br />
+                                <div class="esg-form__input-group">
+                                    @Html.TextBoxFor(m => m.Name, new { @class = "esg-form__input", @id = "Name", @required = "required", maxLength = 100 })
+                                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger", @style = "color:red" })
+                                    @Html.LabelFor(m => m.NameExists, new { @class = "esg-form__label", @id = "NameExists", @style = "color:red; display:none" })
+                                    <div id="divNameErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                        <svg class="esg-icon esg-icon--error">
+                                            <use xlink:href="#icon-error"></use>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                        <h4 class="esg-page-header__subtitle">@WebAdminUI.Resources.ElectronicDegree.Institution.lblPowerCampusMapping</h4> <br />
+                    </div>
+                    <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                        <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                            <div id="divEquivalents" class="esg-form__group">
+                                @Html.LabelFor(m => m.Equivalents, new { @class = "esg-form__label" })<br />
+                                @Html.DropDownListFor(m => m.Equivalents, new SelectList(Model.Equivalents, "Value", "Description"), "", new { @class = "esg-form__input", @id = "Equivalents" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                        <h4 class="esg-page-header__subtitle">@WebAdminUI.Resources.ElectronicDegree.Institution.lblDegreeFolio</h4> <br />
+                    </div>
+                    <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                        <h5 class="esg-page-header__subtitle">@WebAdminUI.Resources.ElectronicDegree.Institution.lblDegreeFolioLabel</h5> <br />
+                    </div>
+                    <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                        <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                            <div class="esg-form__group esg-has-feedback esg-has-hint">
+                                <label class="esg-form__label" for="FolioFormat">
+                                    @Html.LabelFor(m => m.FolioFormat, new { @class = "esg-form__label esg-is-required" })
+                                </label>
+                                <div class="esg-form__input-group">
+                                    @Html.TextBoxFor(m => m.FolioFormat, new { @class = "esg-form__input", @id = "FolioFormat", @readonly = "readonly", Value = "#ElectronicDegreeInstitution.Folio#", @required = "required", maxLength = 150 })
+                                    <div class="esg-form__feedback-icon esg-icon__container">
+                                        <svg class="esg-icon esg-icon--info-dark">
+                                            <use xlink:href="#icon-info"></use>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="esg-form__feedback-text">
+                                    @WebAdminUI.Resources.ElectronicDegree.Institution.lblFolioWarning
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                        <div class="esg-collapsible-group esg-collapsible-group--default" role="tablist" aria-multiselectable="true">
+                            <div class="esg-collapsible-group__heading" role="tab">
+                                <span class="esg-collapsible-group__title">
+                                    <a class="esg-collapsible-group__toggle esg-is-collapsed" id="groupHeadingOne" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseGroupOne" aria-expanded="true" aria-controls="collapseGroupOne">
+                                        @WebAdminUI.Resources.ElectronicDegree.Institution.lblFolioTokens
+                                        <span class="esg-collapsible-group__icon esg-icon__container" aria-hidden="True">
+                                            <svg id="expandIcon" class="esg-icon esg-icon--down">
+                                                <use xlink:href="#icon-arrow"></use>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="esg-collapsible-group__body esg-is-collapsed" id="collapseGroupOne" role="tab" aria-labelledby="groupHeadingOne">
+                                <div class="esg-checkbox">
+                                    <input id="chkSerialNum" type="checkbox" checked="checked" />
+                                    <label for="chkSerialNum">@WebAdminUI.Resources.ElectronicDegree.Institution.lblSerialNum</label>
+                                </div>
+                                <div class="esg-checkbox">
+                                    <input id="chkInstitutionName" type="checkbox" />
+                                    <label for="chkInstitutionName">@WebAdminUI.Resources.ElectronicDegree.Institution.lblInstitutionName</label>
+                                </div>
+                                <div class="esg-checkbox">
+                                    <input id="chkFirstName" type="checkbox" />
+                                    <label for="chkFirstName">@WebAdminUI.Resources.ElectronicDegree.Institution.lblStudentFirstName</label>
+                                </div>
+                                <div class="esg-checkbox">
+                                    <input id="chkFirstSurname" type="checkbox" />
+                                    <label for="chkFirstSurname">@WebAdminUI.Resources.ElectronicDegree.Institution.lblStudentFirstSurname</label>
+                                </div>
+                                <div class="esg-checkbox">
+                                    <input id="chkSecondSurname" type="checkbox" />
+                                    <label for="chkSecondSurname">@WebAdminUI.Resources.ElectronicDegree.Institution.lblStudentSecondSurname</label>
+                                </div>
+                                <div class="esg-checkbox">
+                                    <input id="chkPeopleId" type="checkbox" />
+                                    <label for="chkPeopleId">@WebAdminUI.Resources.ElectronicDegree.Institution.lblStudentPeopleId</label>
+                                </div>
+                                <div class="esg-checkbox">
+                                    <input id="chkCurp" type="checkbox" />
+                                    <label for="chkCurp">@WebAdminUI.Resources.ElectronicDegree.Institution.lblStudentCurp</label>
+                                </div>
+                                <div class="esg-checkbox">
+                                    <input id="chkMajor" type="checkbox" />
+                                    <label for="chkMajor">@WebAdminUI.Resources.ElectronicDegree.Institution.lblInstitutionMajor</label>
+                                </div>
+                                <div class="esg-checkbox">
+                                    <input id="chkInstitutionCode" type="checkbox" />
+                                    <label for="chkInstitutionCode">@WebAdminUI.Resources.ElectronicDegree.Institution.lblInstitutionCode</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="esg-card--panel__content" style="text-align:end">
+                    <div class="eds-button-group" role="group" style="margin-top:1rem" aria-label="button group">
+                        <button class="eds-button eds-button--secondary" id="btnCancel" type="button">@WebAdminUI.Resources.ElectronicDegree.Institution.lblCancel</button>
+                        <button class="eds-button eds-button--primary" id="btnAdd" type="button">@WebAdminUI.Resources.ElectronicDegree.Institution.lblAdd</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Overlaydiv" class="esg-modal-overlay" style="display:none; position:fixed; top:0; bottom:0; left:0; right:0;"></div>
+    <div id="Processing" class="esg-modal-dialog" style="display:none;">
+        <div class="esg-spinner-wrapper" style="position:absolute;">
+            <div class="esg-spinner"></div>
+        </div>
+    </div>
+}
+
+@section Scripts{
+    <script type="text/javascript">
+        var userName = '@userName.UserName';
+        var urlInstitutionIndex = '@Url.Action("Index","Institutions")';
+        var urlCreateInstitution = '@Url.Action("Create","Institutions")';
+        var urlValidateCode = '@Url.Action("ValidateCode", "Institutions")';
+        var urlValidateFolio = '@Url.Action("ValidateFolio", "Institutions")';
+        var urlValidateName = '@Url.Action("ValidateName", "Institutions")';
+    </script>
+    @Scripts.Render("~/bundles/ED/Institutions")
+}

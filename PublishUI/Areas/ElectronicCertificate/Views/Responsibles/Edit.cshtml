@@ -1,0 +1,226 @@
+<!--
+    <copyright file="Edit.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model WebAdminUI.Areas.ElectronicCertificate.Models.Responsibles.AddResponsiblesViewModel
+
+@{
+    ViewBag.Title = WebAdminUI.Resources.ElectronicCertificate.Responsible.lblResponsibles;
+    var userName = ViewBag.Account as PowerCampus.Entities.Account;
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formCreate" }))
+{
+    <br />
+    <div class="esg-page-header">
+        <h1 class="esg-page-header__title">@WebAdminUI.Resources.ElectronicCertificate.Responsible.lblResponsibles</h1>
+    </div>
+    if (Model.ResponsibleId > 0)
+    {
+        <input id="hdnResponsibleId" type="hidden" value=@Model.ResponsibleId />
+        <div id="formEditResponsibles" class="esg-card--panel">
+            <div class="esg-card--panel__body">
+                <div class="esg-card--panel__content">
+                    <div class="esg-container">
+                        <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                            <h4 class="esg-page-header__subtitle">@WebAdminUI.Resources.ElectronicCertificate.Responsible.lblEditResponsible</h4><hr /><br />
+                        </div>
+                    </div>
+                    <div class="esg-container">
+                        <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                            <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                                <div class="esg-form__group">
+                                    <label class="esg-is-hidden">
+                                        <input class="esg-form__switch" id="swtEditActive" type="checkbox" checked="@Model.IsActive" aria-labelledBy="toggle2label" />
+                                        <span class="esg-form__switch-toggle" aria-label="Checked switch label"></span>
+                                        <span class="esg-form__label" id="toggle2label">@WebAdminUI.Resources.ElectronicCertificate.Responsible.lblActive</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                            <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                                <div id="divCurp" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.Curp, new { @class = "esg-form__label esg-is-required" })<br />
+                                    <div class="esg-form__input-group">
+                                        @Html.TextBoxFor(m => m.Curp, new { @class = "esg-form__input", @id = "Curp", @required = "required", @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(m => m.Curp, "", new { @class = "text-danger", @style = "color:red" })
+                                        <div id="divCurpErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                            <svg class="esg-icon esg-icon--error">
+                                                <use xlink:href="#icon-error"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                                <div id="divName" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.Name, new { @class = "esg-form__label esg-is-required" })<br />
+                                    <div class="esg-form__input-group">
+                                        @if (Model.IsActive)
+                                        {
+                                            @Html.TextBoxFor(m => m.Name, new { @class = "esg-form__input", @id = "Name", @required = "required" })
+                                        }
+                                        else
+                                        {
+                                            @Html.TextBoxFor(m => m.Name, new { @class = "esg-form__input", @id = "Name", @required = "required", @readonly = "readonly" })
+                                        }
+                                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger", @style = "color:red" })
+                                        <div id="divNameErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                            <svg class="esg-icon esg-icon--error">
+                                                <use xlink:href="#icon-error"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                            <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                                <div id="divFirstSurname" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.FirstSurname, new { @class = "esg-form__label esg-is-required" })<br />
+                                    <div class="esg-form__input-group">
+                                        @if (Model.IsActive)
+                                        {
+                                            @Html.TextBoxFor(m => m.FirstSurname, new { @class = "esg-form__input", @id = "FirstSurname", @required = "required" })
+                                        }
+                                        else
+                                        {
+                                            @Html.TextBoxFor(m => m.FirstSurname, new { @class = "esg-form__input", @id = "FirstSurname", @required = "required", @readonly = "readonly" })
+                                        }
+                                        @Html.ValidationMessageFor(m => m.FirstSurname, "", new { @class = "text-danger", @style = "color:red" })
+                                        <div id="divFirstSurnameErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                            <svg class="esg-icon esg-icon--error">
+                                                <use xlink:href="#icon-error"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                                <div id="divSecondSurname" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.SecondSurname, new { @class = "esg-form__label" })<br />
+                                    <div class="esg-form__input-group">
+                                        @if (Model.IsActive)
+                                        {
+                                            @Html.TextBoxFor(m => m.SecondSurname, new { @class = "esg-form__input", @id = "SecondSurname" })
+                                        }
+                                        else
+                                        {
+                                            @Html.TextBoxFor(m => m.SecondSurname, new { @class = "esg-form__input", @id = "SecondSurname", @readonly = "readonly" })
+                                        }
+                                        <div id="divSecondSurnameErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                            <svg class="esg-icon esg-icon--error">
+                                                <use xlink:href="#icon-error"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                            <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                                <div id="divPosition" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.Position, new { @class = "esg-form__label esg-is-required" })<br />
+                                    <div class="esg-form__input-group">
+                                        @if (Model.IsActive)
+                                        {
+                                            @Html.DropDownListFor(m => m.ResponsiblePositionId, new SelectList(Model.Position.Position, "CodeValue", "Description"), new { @class = "esg-form__input", @id = "Position", @required = "required" })
+                                        }
+                                        else
+                                        {
+                                            @Html.DropDownListFor(m => m.ResponsiblePositionId, new SelectList(Model.Position.Position, "CodeValue", "Description"), new { @class = "esg-form__input", @id = "Position", @required = "required", @readonly = "readonly" })
+                                        }
+                                        @Html.ValidationMessageFor(m => m.Position, "", new { @class = "text-danger", @style = "color:red" })
+                                        <div id="divPositionErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                            <svg class="esg-icon esg-icon--error">
+                                                <use xlink:href="#icon-error"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                            <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                                <fieldset>
+                                    <legend>
+                                        @WebAdminUI.Resources.ElectronicCertificate.Responsible.lblFiel
+                                    </legend>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                            <div class="esg-col-lg-6 esg-col-md-6 esg-col-sm-6 esg-col-xs-12">
+                                <div id="divThumbprint" class="esg-form__group esg-has-feedback">
+                                    @Html.LabelFor(m => m.Thumbprint, new { @class = "esg-form__label" })<br />
+                                    <div class="esg-form__input-group">
+                                        @if (Model.IsActive)
+                                        {
+                                            @Html.TextBoxFor(m => m.Thumbprint, new { @class = "esg-form__input", @id = "Thumbprint", maxLength = 100 })
+                                        }
+                                        else
+                                        {
+                                            @Html.TextBoxFor(m => m.Thumbprint, new { @class = "esg-form__input", @id = "Thumbprint", @readonly = "readonly" })
+                                        }
+                                        @Html.ValidationMessageFor(m => m.Thumbprint, "", new { @class = "text-danger", @style = "color:red" })
+                                        @Html.LabelFor(m => m.ThumbprintExist, new { @class = "esg-form__label", @id = "ThumbprintExist", @style = "color:red; display:none" })
+                                        @Html.LabelFor(m => m.ThumbprintNoInstalled, new { @class = "esg-form__label", @id = "ThumbprintNoInstalled", @style = "color:red; display:none" })
+                                        @Html.LabelFor(m => m.ThumbprintNoPrivateKey, new { @class = "esg-form__label", @id = "ThumbprintNoPrivateKey", @style = "color:red; display:none" })
+                                        <div id="divThumbprintErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                            <svg class="esg-icon esg-icon--error">
+                                                <use xlink:href="#icon-error"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="esg-card--panel__content" style="text-align:end">
+                    <div class="eds-button-group" role="group" style="margin-top:1rem" aria-label="button group">
+                        <button class="eds-button eds-button--secondary" id="btnCancel" type="button">@WebAdminUI.Resources.ElectronicCertificate.Responsible.lblCancel</button>
+                        <button class="eds-button eds-button--primary" id="btnEdit" type="button">@WebAdminUI.Resources.ElectronicCertificate.Responsible.lblSave</button>
+                    </div>
+                </div>
+                <div id="divError" class="esg-card--panel__content" style="display:none">
+                    <div class="esg-container">
+                        <div class="esg-alert esg-alert--error" role="alert">
+                            <span class="esg-alert__icon-wrapper">
+                                <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                                    <svg class="esg-icon esg-icon--error-dark">
+                                        <use xlink:href="#icon-check"></use>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="esg-alert__message">@WebAdminUI.Resources.ElectronicCertificate.Responsible.lblError</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div id="Overlaydiv" class="esg-modal-overlay" style="display:none; position:fixed; top:0; bottom:0; left:0; right:0;"></div>
+    <div id="Processing" class="esg-modal-dialog" style="display:none;">
+        <div class="esg-spinner-wrapper" style="position:absolute;">
+            <div class="esg-spinner"></div>
+        </div>
+    </div>
+}
+
+@section Scripts{
+    <script type="text/javascript">
+        var userName = '@userName.UserName';
+        var urlCreateResponsible = '@Url.Action("Create","Responsibles")';
+        var urlGetEditResponsible = '@Url.Action("Set","Responsibles")';
+        var urlUpdateResponsible = '@Url.Action("Update","Responsibles")';
+        var urlResponsibleIndex = '@Url.Action("Index","Responsibles")';
+        var urlValidateThumbprint = '@Url.Action("Thumbprint", "Responsibles")';
+        var urlUnauthorized = '@Url.RouteUrl("ErrorUnauthorized")';
+        var responsibleId = '@userName.ResponsibleId';
+    </script>
+    @Scripts.Render("~/bundles/EC/Responsibles")
+}

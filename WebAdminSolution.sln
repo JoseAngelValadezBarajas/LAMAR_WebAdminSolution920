@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerCampus.BusinessInterfaces", "PowerCampus.BusinessInterfaces\PowerCampus.BusinessInterfaces.csproj", "{131B2535-D720-4A55-8634-941AB1C72435}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerCampus.Business", "PowerCampus.Business\PowerCampus.Business.csproj", "{11690D79-0BB9-4772-A889-A50972114A21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerCampus.DataAccess", "PowerCampus.DataAccess\PowerCampus.DataAccess.csproj", "{3D383AED-CF46-4AEB-8EE1-3469B8EBA5B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerCampus.Entities", "PowerCampus.Entities\PowerCampus.Entities.csproj", "{32B846BD-C8F6-4216-9F39-91E5A37F0253}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerCampus.UnitTests", "PowerCampus.UnitTests\PowerCampus.UnitTests.csproj", "{C4CFD48D-F36D-48B8-A9B2-8870A7177F34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAdminUI", "WebAdminUI\WebAdminUI.csproj", "{E2C97914-63E7-4462-A432-DB6DA6235A40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAdminServices", "WebAdminServices\WebAdminServices.csproj", "{82900EFE-DC70-4645-BE22-A4E1924299E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{131B2535-D720-4A55-8634-941AB1C72435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{131B2535-D720-4A55-8634-941AB1C72435}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{131B2535-D720-4A55-8634-941AB1C72435}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{131B2535-D720-4A55-8634-941AB1C72435}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11690D79-0BB9-4772-A889-A50972114A21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11690D79-0BB9-4772-A889-A50972114A21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11690D79-0BB9-4772-A889-A50972114A21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11690D79-0BB9-4772-A889-A50972114A21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D383AED-CF46-4AEB-8EE1-3469B8EBA5B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D383AED-CF46-4AEB-8EE1-3469B8EBA5B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D383AED-CF46-4AEB-8EE1-3469B8EBA5B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D383AED-CF46-4AEB-8EE1-3469B8EBA5B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32B846BD-C8F6-4216-9F39-91E5A37F0253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32B846BD-C8F6-4216-9F39-91E5A37F0253}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32B846BD-C8F6-4216-9F39-91E5A37F0253}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32B846BD-C8F6-4216-9F39-91E5A37F0253}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4CFD48D-F36D-48B8-A9B2-8870A7177F34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4CFD48D-F36D-48B8-A9B2-8870A7177F34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4CFD48D-F36D-48B8-A9B2-8870A7177F34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4CFD48D-F36D-48B8-A9B2-8870A7177F34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2C97914-63E7-4462-A432-DB6DA6235A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2C97914-63E7-4462-A432-DB6DA6235A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2C97914-63E7-4462-A432-DB6DA6235A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2C97914-63E7-4462-A432-DB6DA6235A40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82900EFE-DC70-4645-BE22-A4E1924299E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82900EFE-DC70-4645-BE22-A4E1924299E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82900EFE-DC70-4645-BE22-A4E1924299E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82900EFE-DC70-4645-BE22-A4E1924299E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45
+		SolutionGuid = {66231AD2-77BA-4F14-AADD-66346FB1CFA2}
+	EndGlobalSection
+EndGlobal

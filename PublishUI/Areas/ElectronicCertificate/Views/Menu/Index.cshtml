@@ -1,0 +1,73 @@
+<!--
+    <copyright file="Index.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+
+@{
+    ViewBag.Title = WebAdminUI.Resources.ElectronicCertificate.Menu.Title;
+    var permissions = ViewBag.Account as PowerCampus.Entities.Account;
+}
+
+<div class="esg-page-header">
+    <div class="esg-page-header__core-wrapper">
+        <div class="esg-page-header__text-wrapper">
+            <h1 class="esg-page-header__title">@ViewBag.Title</h1>
+        </div>
+    </div>
+    @if (permissions.permissions.Where(m => m.Description.Trim() == "ElectronicCertificateSetup").Select(m => m.Value).FirstOrDefault())
+    {
+        <div class="esg-page-header__options">
+            <span class="esg-icon__container">
+                <svg class="esg-icon esg-icon--left">
+                    <use xlink:href="#icon-settings"></use>
+                </svg>
+            </span>
+            <a href="@Url.Action("Index", "Setup")">
+                <div class="esg-icon__label">
+                    <span>@WebAdminUI.Resources.ElectronicCertificate.Menu.Setup</span>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+<div class="esg-row">
+    @if (permissions.permissions.Where(m => m.Description.Trim() == "GenerateElectronicCertificate").Select(m => m.Value).FirstOrDefault())
+    {
+        <div class="esg-col-md-6">
+            <div class="esg-pattern-wrap">
+                <div class="esg-card">
+                    <span class="esg-icon__container">
+                        <svg class="esg-icon">
+                            <use xlink:href="#icon-add"></use>
+                        </svg>
+                    </span>
+                    <a href="@Url.Action("Index", "Generations")">
+                        <div class="esg-icon__label">
+                            <h3>@WebAdminUI.Resources.ElectronicCertificate.Menu.GenerateElectonicCertificate</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+    @if (permissions.permissions.Where(m => m.Description.Trim() == "ElectronicCertificateOperations").Select(m => m.Value).FirstOrDefault())
+    {
+        <div class="esg-col-md-6">
+            <div class="esg-pattern-wrap">
+                <div class="esg-card">
+                    <span class="esg-icon__container">
+                        <svg class="esg-icon">
+                            <use xlink:href="#icon-check"></use>
+                        </svg>
+                    </span>
+                    <a href="@Url.Action("Index", "Operations")">
+                        <div class="esg-icon__label">
+                            <h3>@WebAdminUI.Resources.ElectronicCertificate.Menu.ElectronicCertificateOperations</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,78 @@
+<!--
+    <copyright file="Index.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model WebAdminUI.Areas.ElectronicCertificate.Models.Generation.ElectronicCertificateHeaderList
+
+@section Styles{
+    @Styles.Render("~/Content/datetime")
+}
+
+@Html.Partial("~/Areas/General/Views/Shared/_PageTitle.cshtml", WebAdminUI.Resources.ElectronicCertificate.Generate.lblGenerateElectronicCertificates)
+@Html.Partial("_GenerationBreadcrumbs")
+<div id="formGenerateED" class="esg-card--panel">
+    <div class="esg-card">
+        <div class="esg-card--panel__body">
+            <div class="esg-card--panel__content">
+                @Html.Partial("_Parameters", Model.ElectronicCertificateParameters)
+                <div class="esg-container">
+                    <div class="col-xs-12" style="text-align:end">
+                        @if (Model.CanGenerateNew)
+                        {
+                            <button class="eds-button eds-button--secondary" type="button" id="btnGenerate">
+                                <span class="esg-icon__container">
+                                    <svg class="esg-icon esg-icon__container">
+                                        <use xlink:href="#icon-add"></use>
+                                    </svg>
+                                </span>
+                                <div class="esg-icon__label">
+                                    @WebAdminUI.Resources.ElectronicCertificate.Generate.lblGenerateNew
+                                </div>
+                            </button>
+                        }
+                        else
+                        {
+                            <button class="eds-button eds-button--secondary" type="button" id="btnGenerate" disabled="disabled">
+                                <span id="spanBtnGenerate" class="esg-icon__container">
+                                    <svg class="esg-icon esg-icon__container">
+                                        <use xlink:href="#icon-add"></use>
+                                    </svg>
+                                </span>
+                                <div id="divBtnGenerate" class="esg-icon__label">
+                                    @WebAdminUI.Resources.ElectronicCertificate.Generate.lblGenerateNew
+                                </div>
+                            </button>
+                            <div id="lblGenerate" style="display: none; justify-content: flex-end">
+                                <div class="esg-tooltip esg-tooltip--bottom" role="tooltip">
+                                    <div class="esg-tooltip__arrow"></div>
+                                    <div class="esg-tooltip__content">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblNoCampusAssigned</div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="esg-card--panel__body">
+            <div id="ajaxpanel_ViewData"></div>
+            <div id="ajaxpanel_GeneratedTable"></div>
+        </div>
+    </div>
+</div>
+@Html.Partial("~/Areas/General/Views/Shared/_Loader.cshtml")
+
+@section Scripts{
+    <script type="text/javascript">
+        const urlGenerate = '@Url.Action("Generate", "Generations")';
+        const urlTable = '@Html.Raw(@Url.Action("_GeneratedTable", "Generations"))';
+        const urlViewData = '@Url.Action("_ViewData", "Generations")';
+        const urlDelete = '@Url.Action("Delete", "Generations")';
+        actionsAfterLoadTable = () => { };
+        cleanMultipleSelection = () => { };
+    </script>
+    @Scripts.Render("~/bundles/datetime")
+    @Scripts.Render("~/bundles/General/Pagination")
+    @Scripts.Render("~/bundles/EC/Generations")
+    @Scripts.Render("~/bundles/EC/CommonOperations")
+}

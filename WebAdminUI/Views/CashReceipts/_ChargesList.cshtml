@@ -1,0 +1,109 @@
+@model IEnumerable<WebAdminUI.Models.CashReceipts.ChargeCreditApplicationDetailsViewModel>
+@using WebAdminUI.HtmlHelpers
+
+<table class="esg-table">
+    <thead class="esg-table-head">
+        <tr class="esg-table-head__row">
+            <th scope="col" class="esg-table-head__th esg-is-active">
+                @Html.DisplayNameFor(m => m.AmountApplied)
+            </th>
+            <th scope="col" class="esg-table-head__th esg-is-active">
+                @Html.DisplayNameFor(m => m.ApplicationDate)
+            </th>
+            <th scope="col" class="esg-table-head__th esg-is-active">
+                @Html.DisplayNameFor(m => m.ChargeCreditDesc)
+            </th>
+            <th scope="col" class="esg-table-head__th esg-is-active">
+                @Html.DisplayNameFor(m => m.TotalAmount)
+            </th>
+            <th scope="col" class="esg-table-head__th esg-is-active">
+                @if (ViewBag.ChargesWithPPD)
+                {
+                    @WebAdminUI.Views.CashReceipts.App_LocalResources.CashReceiptsResources.lblPaymentReceipt
+                }
+                else
+                {
+                    @WebAdminUI.Views.CashReceipts.App_LocalResources.CashReceiptsResources.lblFiscalRecord
+                }
+            </th>
+        </tr>
+    </thead>
+    @if (Model != null)
+    {
+        <tbody class="esg-table-body">
+            @{
+                var btnView = WebAdminUI.Views.CashReceipts.App_LocalResources.CashReceiptsResources.btnView;
+                var btnCreate = WebAdminUI.Views.CashReceipts.App_LocalResources.CashReceiptsResources.btnCreate;
+                List<int?> children = new List<int?>();
+                List<int> rowSpan = new List<int>();
+                int i = -1;
+                int j = 0;
+                foreach (var item in Model)
+                {
+                    if (i == -1 || children[i] != item.InvoiceHeaderId)
+                    {
+                        children.Add(item.InvoiceHeaderId);
+                        rowSpan.Add(1);
+                        i++;
+                    }
+                    else
+                    {
+                        rowSpan[i]++;
+                    }
+                }
+                foreach (var item in Model)
+                {
+                    <tr class="esg-table-body__row">
+                        <td class="esg-table-body__td text-right">
+                            @Html.CurrencyFor(modelItem => item.AmountApplied, "report")
+                        </td>
+                        <td class="esg-table-body__td">
+                            @Html.DateFor(modelItem => item.ApplicationDate, "report")
+                        </td>
+                        <td class="esg-table-body__td">
+                            @Html.DisplayFor(modelItem => item.ChargeCreditDesc)
+                        </td>
+                        <td class="esg-table-body__td text-right">
+                            @Html.CurrencyFor(modelItem => item.TotalAmount, "report")
+                        </td>
+
+                        @if (ViewBag.ChargesWithPPD)
+                        {
+                            <td class="esg-table-body__td text-center vertical-center">
+                                @if (!item.CanCreateSupplement)
+                                {
+                                    @Html.ActionLink(btnView, "Edit", "FiscalRecords", new { id = item.InvoiceHeaderIdRelated }, new { })
+                                }
+                                else
+                                {
+                                    @Html.ActionLink(btnCreate, "Index", "PaymentReceipts", new { invoiceHeaderId = item.InvoiceHeaderId }, new { })
+                                }
+                            </td>
+                        }
+                        else
+                        {
+                            if (children[j] == item.InvoiceHeaderId)
+                            {
+                                <td class="esg-table-body__td text-center vertical-center" rowspan="@rowSpan[j]">
+                                    @if (item.InvoiceHeaderId != null && item.InvoiceHeaderId > 0)
+                                    {
+                                        @Html.ActionLink(btnView, "Edit", "FiscalRecords", new { id = item.InvoiceHeaderId }, new { })
+                                    }
+                                    else if (ViewBag.CanCreateInvoice)
+                                    {
+                                        @Html.ActionLink(btnCreate, "Create", "FiscalRecords", null, new { })
+                                    }
+                                </td>
+                                children[j] = -1;
+                                if (j < children.Count - 1)
+                                {
+                                    j++;
+                                }
+                            }
+                        }
+                    </tr>
+                }
+            }
+        </tbody>
+    }
+</table>

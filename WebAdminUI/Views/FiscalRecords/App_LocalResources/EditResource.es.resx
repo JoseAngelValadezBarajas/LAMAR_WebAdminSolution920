@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="UnitCode" xml:space="preserve">
+    <value>Clave de unidad</value>
+  </data>
+  <data name="CreateFiscalRecord" xml:space="preserve">
+    <value>Crear comprobante fiscal</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="FiscalRecType" xml:space="preserve">
+    <value>Tipo de comprobante fiscal</value>
+  </data>
+  <data name="IssComments" xml:space="preserve">
+    <value>Comentarios</value>
+  </data>
+  <data name="IssCurrency" xml:space="preserve">
+    <value>Moneda</value>
+  </data>
+  <data name="IssExchangeRate" xml:space="preserve">
+    <value>Tipo de cambio</value>
+  </data>
+  <data name="IssExpeditionAddr" xml:space="preserve">
+    <value>Dirección de expedición</value>
+  </data>
+  <data name="IssNameCorp" xml:space="preserve">
+    <value>Nombre o razón social</value>
+  </data>
+  <data name="IssTaxPayerID" xml:space="preserve">
+    <value>RFC</value>
+  </data>
+  <data name="IssTaxRegimen" xml:space="preserve">
+    <value>Régimen fiscal</value>
+  </data>
+  <data name="Issuer" xml:space="preserve">
+    <value>Emisor</value>
+  </data>
+  <data name="PaymentAccNum" xml:space="preserve">
+    <value>Número de cuenta de pago</value>
+  </data>
+  <data name="PaymentCondition" xml:space="preserve">
+    <value>Condiciones de pago</value>
+  </data>
+  <data name="paymentMethodDescDefault" xml:space="preserve">
+    <value>Método de pago</value>
+  </data>
+  <data name="PaymentType" xml:space="preserve">
+    <value>Forma de pago</value>
+  </data>
+  <data name="preferredReceiverEmail" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Cantidad</value>
+  </data>
+  <data name="receiptNumber" xml:space="preserve">
+    <value>Número de recibo</value>
+  </data>
+  <data name="ReceiverCorpName" xml:space="preserve">
+    <value>Nombre o razón social</value>
+  </data>
+  <data name="ReceiverFiscalAddress" xml:space="preserve">
+    <value>Residencia fiscal</value>
+  </data>
+  <data name="ReceiverFiscalID" xml:space="preserve">
+    <value>Número de registro de identidad fiscal</value>
+  </data>
+  <data name="Receiver" xml:space="preserve">
+    <value>Receptor</value>
+  </data>
+  <data name="SubTotal" xml:space="preserve">
+    <value>Subtotal</value>
+  </data>
+  <data name="TaxpayerID" xml:space="preserve">
+    <value>RFC</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="TotalTransferredTaxes" xml:space="preserve">
+    <value>Total de impuestos trasladados</value>
+  </data>
+  <data name="UnitAmount" xml:space="preserve">
+    <value>Valor unitario</value>
+  </data>
+  <data name="EmptyTaxPayerId" xml:space="preserve">
+    <value>Seleccione un RFC</value>
+  </data>
+  <data name="IssPlaceIssue" xml:space="preserve">
+    <value>Lugar de expedición</value>
+  </data>
+  <data name="IssSerial" xml:space="preserve">
+    <value>Serie</value>
+  </data>
+  <data name="Process" xml:space="preserve">
+    <value>Procesar</value>
+  </data>
+  <data name="lblEditPageTitle" xml:space="preserve">
+    <value>Detalle del comprobante fiscal</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>Requerido</value>
+  </data>
+  <data name="MaxLength" xml:space="preserve">
+    <value>La longitud máxima es 255.</value>
+  </data>
+  <data name="CFDI" xml:space="preserve">
+    <value>Uso del CFDI</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Monto</value>
+  </data>
+  <data name="CFDIRequired" xml:space="preserve">
+    <value>Ingrese un uso del CFDI</value>
+  </data>
+  <data name="IdNumber" xml:space="preserve">
+    <value>Número de ID</value>
+  </data>
+  <data name="IssAddRequired" xml:space="preserve">
+    <value>Ingrese una dirección de expedición</value>
+  </data>
+  <data name="IssPlaceRequired" xml:space="preserve">
+    <value>Ingrese un lugar de expedición</value>
+  </data>
+  <data name="IssTaxPIRequired" xml:space="preserve">
+    <value>Ingrese un RFC</value>
+  </data>
+  <data name="IssTaxRegRequired" xml:space="preserve">
+    <value>Ingrese un régimen fiscal</value>
+  </data>
+  <data name="ProductServiceCode" xml:space="preserve">
+    <value>Clave de producto/servicio</value>
+  </data>
+  <data name="TaxAmount" xml:space="preserve">
+    <value>Impuesto</value>
+  </data>
+  <data name="TaxPayerIdRequired" xml:space="preserve">
+    <value>Ingrese un RFC</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Unidad</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>Fecha de fin</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Fecha de inicio</value>
+  </data>
+  <data name="TitleGlobal" xml:space="preserve">
+    <value>Comprobantes fiscales globales</value>
+  </data>
+  <data name="ReceiverEmail" xml:space="preserve">
+    <value>Ingrese un correo electrónico</value>
+  </data>
+  <data name="YourEmail" xml:space="preserve">
+    <value>tu@correoelectronico.com</value>
+  </data>
+  <data name="ErrorEmail" xml:space="preserve">
+    <value>Ingrese un correo electrónico válido</value>
+  </data>
+  <data name="ReceiverEmailValidate" xml:space="preserve">
+    <value>Ingrese un correo electrónico válido</value>
+  </data>
+  <data name="Reprocess" xml:space="preserve">
+    <value>Reprocesar</value>
+  </data>
+  <data name="SubHeaderFiscalRecord" xml:space="preserve">
+    <value>Comprobante fiscal</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="DatetimeOfCancellation" xml:space="preserve">
+    <value>Fecha y hora de cancelación</value>
+  </data>
+  <data name="DatetimeOfIssue" xml:space="preserve">
+    <value>Fecha y hora de emisión</value>
+  </data>
+  <data name="DatetimeOfStamp" xml:space="preserve">
+    <value>Fecha y hora de timbrado</value>
+  </data>
+  <data name="Folio" xml:space="preserve">
+    <value>Folio</value>
+  </data>
+  <data name="Serie" xml:space="preserve">
+    <value>Serie</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Estatus</value>
+  </data>
+  <data name="StatusDetails" xml:space="preserve">
+    <value>Detalle del estatus</value>
+  </data>
+  <data name="UUID" xml:space="preserve">
+    <value>UUID</value>
+  </data>
+  <data name="PDFDownload" xml:space="preserve">
+    <value>Descargar PDF</value>
+  </data>
+  <data name="XMLDownload" xml:space="preserve">
+    <value>Descargar XML</value>
+  </data>
+  <data name="HeaderApprovedDateTime" xml:space="preserve">
+    <value>Fecha y hora</value>
+  </data>
+  <data name="HeaderPDFFile" xml:space="preserve">
+    <value>Archivo PDF</value>
+  </data>
+  <data name="HeaderXMLFile" xml:space="preserve">
+    <value>Archivo XML</value>
+  </data>
+  <data name="SubHeaderDocuments" xml:space="preserve">
+    <value>Documentos</value>
+  </data>
+  <data name="ViewList" xml:space="preserve">
+    <value>Ver listado</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="SendFiles" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
+  <data name="SendFiscalRecordEmail" xml:space="preserve">
+    <value>Enviar comprobante fiscal por correo electrónico</value>
+  </data>
+  <data name="CancelSendFiles" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="WarningEmail" xml:space="preserve">
+    <value>No se encontró la configuración para el envío de correo electrónico.</value>
+  </data>
+  <data name="btnBack" xml:space="preserve">
+    <value>Regresar</value>
+  </data>
+  <data name="btnCreditNotes" xml:space="preserve">
+    <value>Nota de crédito</value>
+  </data>
+  <data name="CFDIRelated" xml:space="preserve">
+    <value>CFDI relacionado</value>
+  </data>
+  <data name="RelationshipTypeTitle" xml:space="preserve">
+    <value>Tipo de relación</value>
+  </data>
+  <data name="PeopleOrganizationID" xml:space="preserve">
+    <value>ID Persona/Organización</value>
+  </data>
+  <data name="PeopleOrganizationName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="lblDetail" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="btnDeleteFiscalRecord" xml:space="preserve">
+    <value>Eliminar solicitud</value>
+  </data>
+  <data name="lblDeleteCreditNote" xml:space="preserve">
+    <value>Al eliminar la solicitud de nota de crédito, no se eliminan automáticamente los abonos generados. Eliminar manualmente los registros</value>
+  </data>
+  <data name="TitlePaymentReceipt" xml:space="preserve">
+    <value>Editar recibo de pago</value>
+  </data>
+  <data name="btnViewReceipt" xml:space="preserve">
+    <value>Ver recibo de caja</value>
+  </data>
+  <data name="btnViewRelated" xml:space="preserve">
+    <value>Ver relacionados</value>
+  </data>
+  <data name="lblCancelPPDDesc" xml:space="preserve">
+    <value>Ya existe al menos un comprobante con complemento de recepción de pagos para el comprobante por el total de la operación (PPD).</value>
+  </data>
+  <data name="lblCancelPPDDesc1" xml:space="preserve">
+    <value>Si desea corregir el RFC del receptor, cancele primero los complementos y después cancele el comprobante por el total de la operación. Genere un nuevo comprobante PPD con los datos correctos. 
+
+</value>
+  </data>
+  <data name="lblCanclePPDDesc2" xml:space="preserve">
+    <value>Si desea corregir los montos, genere una nota de crédito y después cancele los complementos. Genere un nuevo comprobante PPD para sustituir el anterior.</value>
+  </data>
+  <data name="lblFrequency" xml:space="preserve">
+    <value>Periodicidad</value>
+  </data>
+  <data name="lblMonth" xml:space="preserve">
+    <value>Mes</value>
+  </data>
+  <data name="RecTaxAddress" xml:space="preserve">
+    <value>Domicilio fiscal</value>
+  </data>
+  <data name="lblReceiverTaxRegimen" xml:space="preserve">
+    <value>Régimen fiscal</value>
+  </data>
+  <data name="lblYear" xml:space="preserve">
+    <value>Año</value>
+  </data>
+  <data name="btnSubstituteCancel" xml:space="preserve">
+    <value>Sustituir y cancelar</value>
+  </data>
+  <data name="lblSubstitutionWarning" xml:space="preserve">
+    <value>Cancelación en curso. Ver relacionados para rastrear el proceso.</value>
+  </data>
+  <data name="btnCancelRecord" xml:space="preserve">
+    <value>Cancelar comprobante</value>
+  </data>
+  <data name="lblCancelFiscalRecordTitle" xml:space="preserve">
+    <value>Cancelar el comprobante fiscal</value>
+  </data>
+  <data name="lblCancelInstructions" xml:space="preserve">
+    <value>Seleccione el motivo de cancelación, una vez finalizado el proceso correspondiente se solicitará la cancelación de este registro.</value>
+  </data>
+  <data name="lblCancellationReason" xml:space="preserve">
+    <value>Motivo de cancelación</value>
+  </data>
+  <data name="lblSelect" xml:space="preserve">
+    <value>Seleccione...</value>
+  </data>
+  <data name="lblCancelReasonRequired" xml:space="preserve">
+    <value>Seleccione un motivo de cancelación</value>
+  </data>
+  <data name="lblCreditNoteTypeOfRelationship" xml:space="preserve">
+    <value>01 - Nota de crédito de los documentos relacionados</value>
+  </data>
+  <data name="Cancellation" xml:space="preserve">
+    <value>Cancelación</value>
+  </data>
+  <data name="CancelReason" xml:space="preserve">
+    <value>Motivo</value>
+  </data>
+  <data name="CFDIRelatedSubstitution" xml:space="preserve">
+    <value>Folio de sustitución</value>
+  </data>
+  <data name="DatetimeOfStampCancellation" xml:space="preserve">
+    <value>Fecha y hora</value>
+  </data>
+  <data name="btnContinueCancellation" xml:space="preserve">
+    <value>Continuar cancelación</value>
+  </data>
+  <data name="lblCancellationInProgress" xml:space="preserve">
+    <value>El proceso de cancelación con motivo 04 que incluye la cancelación de la factura global, la creación de una o más facturas individuales y la creación de una nueva factura global con los recibos restantes, está en progreso.</value>
+  </data>
+  <data name="lblTotalPaymentsAmount" xml:space="preserve">
+    <value>Monto Total Pagos</value>
+  </data>
+  <data name="lblTotals" xml:space="preserve">
+    <value>Totales</value>
+  </data>
+  <data name="lblTotalTransferredBase0" xml:space="preserve">
+    <value>Total Traslados Base IVA 0</value>
+  </data>
+  <data name="lblTotalTransferredBase16" xml:space="preserve">
+    <value>Total Traslados Base IVA 16</value>
+  </data>
+  <data name="lblTotalTransferredBase8" xml:space="preserve">
+    <value>Total Traslados Base IVA 8</value>
+  </data>
+  <data name="lblTotalTransferredBaseExempt" xml:space="preserve">
+    <value>Total Traslados Base Exento</value>
+  </data>
+  <data name="lblTotalTransferredTaxes0" xml:space="preserve">
+    <value>Total Traslados Impuesto IVA 0</value>
+  </data>
+  <data name="lblTotalTransferredTaxes16" xml:space="preserve">
+    <value>Total Traslados Impuesto IVA 16</value>
+  </data>
+  <data name="lblTotalTransferredTaxes8" xml:space="preserve">
+    <value>Total Traslados Impuesto IVA 8</value>
+  </data>
+</root>

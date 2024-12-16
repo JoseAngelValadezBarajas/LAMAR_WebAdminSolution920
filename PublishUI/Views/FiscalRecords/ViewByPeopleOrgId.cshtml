@@ -1,0 +1,100 @@
+﻿@model List<WebAdminUI.Models.FiscalRecords.FiscalRecordViewModel>
+
+@{
+    ViewBag.Title = @WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.Title;
+}
+
+<div class="esg-page-header">
+    <a class="esg-page-header__button" role="button" title=@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.ButtonBack
+       href="@Url.Action("Menu", "FiscalRecords")">
+        <span class="esg-page-header__icon esg-icon__container">
+            <svg class="esg-icon esg-icon--left">
+                <use xlink:href="#icon-arrow"></use>
+            </svg>
+        </span>
+    </a>
+    <h1 class="esg-page-header__title">@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.Title</h1>
+</div>
+<div id="divDetails" data-pagination="true" class="esg-card--panel">
+    <div class="esg-card--panel__body">
+        <div class="esg-card--panel__content">
+            <table id="records_table_rows" class="esg-table" border="1">
+                <thead class="esg-table-head">
+                    <tr class="esg-table-head__row">
+                        <th class="esg-table-head__th esg-dropdown esg-is-active">
+                            <button class="esg-table-head__button esg-dropdown__toggle" id="dataTableFilter1" data-placeholder="false"
+                                    type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                @WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.PeopleOrganizationID
+                            </button>
+                        </th>
+                        <th class="esg-table-head__th esg-dropdown esg-is-active">
+                            <button class="esg-table-head__button esg-dropdown__toggle" id="dataTableFilter1" data-placeholder="false"
+                                    type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                @WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.DateOfIssue
+                            </button>
+                        </th>
+                        <th class="esg-table-head__th esg-dropdown esg-is-active">
+                            <button class="esg-table-head__button esg-dropdown__toggle" id="dataTableFilter1" data-placeholder="false"
+                                    type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                @WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.Serial
+                            </button>
+                        </th>
+                        <th class="esg-table-head__th esg-dropdown esg-is-active">
+                            <button class="esg-table-head__button esg-dropdown__toggle" id="dataTableFilter1" data-placeholder="false"
+                                    type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                @WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.Folio
+                            </button>
+                        </th>
+                        <th class="esg-table-head__th esg-dropdown esg-is-active">
+                            <button class="esg-table-head__button esg-dropdown__toggle" id="dataTableFilter1" data-placeholder="false"
+                                    type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                @WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.ReceiverTaxpayerID
+                            </button>
+                        </th>
+                        <th class="esg-table-head__th esg-dropdown esg-is-active">
+                            <button class="esg-table-head__button esg-dropdown__toggle" id="dataTableFilter1" data-placeholder="false"
+                                    type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                @WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.FiscalRecordType
+                            </button>
+                        </th>
+                        <th class="esg-table-head__th esg-dropdown esg-is-active">
+                            <button class="esg-table-head__button esg-dropdown__toggle" id="dataTableFilter1" data-placeholder="false"
+                                    type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                @WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.Status
+                            </button>
+                        </th>
+                        <th class="esg-table-head__th esg-dropdown esg-is-active">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="records_table_rows_tbody" class="esg-table-body">
+                    @if (Model != null)
+                    {
+                        for (var i = 0; i < Model.Count; i++)
+                        {
+                            var FiscalRecord = Model[i];
+                    <tr class="esg-table-body__row" id="@i">
+                        <td class="esg-table-body__td">@FiscalRecord.PeopleOrgCodeId</td>
+                        <td class="esg-table-body__td">@Html.DisplayFor(model => FiscalRecord.expeditionDateTime)</td>
+                        <td class="esg-table-body__td">@FiscalRecord.serialNumber</td>
+                        <td class="esg-table-body__td">@FiscalRecord.folio</td>
+                        <td class="esg-table-body__td">@FiscalRecord.receiverTaxPayerId</td>
+                        <td class="esg-table-body__td">@FiscalRecord.fiscalRecordType</td>
+                        <td class="esg-table-body__td">@FiscalRecord.requestState</td>
+                        <td class="esg-table-body__td" style="word-wrap:break-word;">
+                            @Html.ActionLink(@WebAdminUI.Views.FiscalRecords.App_LocalResources.ViewAllResource.View, "Edit", new { id = FiscalRecord.InvoiceHeaderId })
+                        </td>
+                    </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <br />
+            @Html.Partial("_Pagination", new ViewDataDictionary() { { "Count", (Model == null ? 0 : Model.Count()) }, { "MinRows", 5 }, { "DefaultSelected", 10 } })
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/FR/Pagination")
+}

@@ -1,0 +1,110 @@
+<!--
+    <copyright file="_GeneratedTable.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@using WebAdminUI.Resources.ElectronicCertificate
+@model List<WebAdminUI.Areas.ElectronicCertificate.Models.Generation.ElectronicCertificateViewModel>
+@{
+    var styleEmptyTable = Model.Count > 0 ? "display: none" : "display: block";
+}
+
+@if (Model.Count > 0)
+{
+    <div id="divECTable" data-pagination="true">
+        <div class="esg-col-xs-12">
+            <div class="esg-table__container">
+                <table id="ecTable" class="esg-table">
+                    <thead class="esg-table-head">
+                        <tr class="esg-table-head__row">
+                            <th class="esg-table-head__th" style="overflow-wrap: break-word; width: 10%">@Html.DisplayNameFor(m => m[0].Folio)</th>
+                            <th class="esg-table-head__th" style="width:20%">@Html.DisplayNameFor(m => m[0].Student)</th>
+                            <th class="esg-table-head__th" style="width:20%">@Html.DisplayNameFor(m => m[0].Campus)</th>
+                            <th class="esg-table-head__th" style="width:15%">@Html.DisplayNameFor(m => m[0].Program)</th>
+                            <th class="esg-table-head__th" style="width:10%">@Html.DisplayNameFor(m => m[0].CertificationType)</th>
+                            <th class="esg-table-head__th" style="width:8%">@Html.DisplayNameFor(m => m[0].IssuingDate)</th>
+                            <th class="esg-table-head__th" style="width:8%">@GeneratedTable.lblViewData</th>
+                            <th class="esg-table-head__th" style="width:9%">@GeneratedTable.lblDelete</th>
+                        </tr>
+                    </thead>
+                    <tbody class="esg-table-body" id="table_rows_tbody">
+                        @{
+                            int iEC = 0;
+                            foreach (var item in Model)
+                            {
+                                <tr class="esg-table-body__row" id="ecRow_@item.Id" style="overflow-wrap: break-word">
+                                    <td class="esg-table-body__td">
+                                        <label>@item.Folio</label>
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        <div style="display: flex; align-items: center;">
+                                            <div class="esg-avatar esg-avatar--small" style="display: flex; align-items: center; justify-content: center; color: white; background-color: #5353d1;">
+                                                <span>@item.Student.Substring(0, 1)</span>
+                                            </div>
+                                            <div style="display: flex; flex-direction: column; margin-left: 1rem;">
+                                                <label>@item.Student</label>
+                                                <label>@item.PeopleCodeId</label>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        <label>@item.Campus</label>
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        <label>@item.Program</label>
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        <label>@item.CertificationType</label>
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        <label>@item.IssuingDate</label>
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        <div align="right">
+                                            <button data-id="@item.Id" id="@string.Format("btnViewData_{0}", iEC)">
+                                                <span class="esg-icon__container no-pointer-events">
+                                                    <svg class="esg-icon no-pointer-events">
+                                                        <use xlink:href="#icon-view"></use>
+                                                    </svg>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        <div align="right">
+                                            <button data-id="@item.Id" id="@string.Format("btnDelete_{0}", iEC)">
+                                                <span class="esg-icon__container no-pointer-events">
+                                                    <svg class="esg-icon no-pointer-events">
+                                                        <use xlink:href="#icon-trash"></use>
+                                                    </svg>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                iEC++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br />
+        <div class="esg-col-xs-12">
+            @Html.Partial("~/Areas/General/Views/Shared/_Pagination.cshtml", new ViewDataDictionary() { { "Count", Model.Count }, { "MinRows", 5 }, { "DefaultSelected", 10 } })
+        </div>
+        @Html.Partial("~/Areas/General/Views/Shared/_ConfirmationModal.cshtml", new ViewDataDictionary() {
+            { "Id", "Delete" },
+            { "TitleText", GeneratedTable.lblDeleteTitle },
+            { "InstructionsText", GeneratedTable.lblDeleteInstructions },
+            { "ConfirmationText", GeneratedTable.lblDeleteConfirmation },
+            { "CancelText", GeneratedTable.lblCancel },
+            { "AcceptText", GeneratedTable.lblDelete }
+        })
+    </div>
+}
+<div id="divECEmptyTable" class="esg-col-xs-12" style="@styleEmptyTable">
+    <div style="padding: 1.5rem; background-color: #f8f8f8">
+        @GeneratedTable.lblNoGeneratedCertificate
+    </div>
+</div>

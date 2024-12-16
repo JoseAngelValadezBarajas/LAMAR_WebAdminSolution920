@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblAcademicRecord" xml:space="preserve">
+    <value>Registro académico</value>
+  </data>
+  <data name="lblApply" xml:space="preserve">
+    <value>Aplicar</value>
+  </data>
+  <data name="lblCampus" xml:space="preserve">
+    <value>Campus</value>
+  </data>
+  <data name="lblCampusSepCode" xml:space="preserve">
+    <value>Clave de campus en la SEP</value>
+  </data>
+  <data name="lblCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="lblElectronicCertificate" xml:space="preserve">
+    <value>Certificado electrónico</value>
+  </data>
+  <data name="lblFederalEntity" xml:space="preserve">
+    <value>Lugar de expedición</value>
+  </data>
+  <data name="lblFolio" xml:space="preserve">
+    <value>Folio</value>
+  </data>
+  <data name="lblFolioFormat" xml:space="preserve">
+    <value>Folio de control de certificado</value>
+  </data>
+  <data name="lblFolioFormatRequired" xml:space="preserve">
+    <value>*Folio de control de certificado</value>
+  </data>
+  <data name="lblFolioTokens" xml:space="preserve">
+    <value>Tokens del folio</value>
+  </data>
+  <data name="lblFolioWarning" xml:space="preserve">
+    <value>Se creó la configuración predeterminada para la generación de los folios de control de los certificados; este campo estará habilitado para que sea posible realizar cualquier modificación al generar cada certificado.</value>
+  </data>
+  <data name="lblInsitutionSepId" xml:space="preserve">
+    <value>ID del Nombre de la Institución</value>
+  </data>
+  <data name="lblSigningInstitutionId" xml:space="preserve">
+    <value>ID institución firmante</value>
+  </data>
+  <data name="lblInstitution" xml:space="preserve">
+    <value>Institución</value>
+  </data>
+  <data name="lblInstitutionCampus" xml:space="preserve">
+    <value>Institución-Campus</value>
+  </data>
+  <data name="lblInstitutionCampuses" xml:space="preserve">
+    <value>Instituciones-Campus</value>
+  </data>
+  <data name="lblInstitutionCode" xml:space="preserve">
+    <value>Clave.Institución</value>
+  </data>
+  <data name="lblInstitutionName" xml:space="preserve">
+    <value>Nombre.Institución</value>
+  </data>
+  <data name="lblNoInstitutionCampuses" xml:space="preserve">
+    <value>No hay Campus-Instituciones que mostrar.</value>
+  </data>
+  <data name="lblResponsible" xml:space="preserve">
+    <value>Responsable</value>
+  </data>
+  <data name="lblSave" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="lblSelect" xml:space="preserve">
+    <value>Seleccionar</value>
+  </data>
+  <data name="lblSetup" xml:space="preserve">
+    <value>Configuración</value>
+  </data>
+  <data name="lblStudentCurp" xml:space="preserve">
+    <value>CURP.Estudiante</value>
+  </data>
+  <data name="lblStudentFirstName" xml:space="preserve">
+    <value>PrimerNombre.Alumno</value>
+  </data>
+  <data name="lblStudentFirstSurname" xml:space="preserve">
+    <value>PrimerApellido.Alumno</value>
+  </data>
+  <data name="lblStudentPeopleId" xml:space="preserve">
+    <value>IDPersona.Alumno</value>
+  </data>
+  <data name="lblStudentSecondSurname" xml:space="preserve">
+    <value>SegundoApellido.Alumno</value>
+  </data>
+  <data name="lblTokensWarning" xml:space="preserve">
+    <value>Los tokens seleccionados en el folio de control de certificado puede generar folios que excedan los 40 caracteres y que la SEP no los admite.</value>
+  </data>
+  <data name="lblValidateCharacters" xml:space="preserve">
+    <value>Debe ingresar al menos 5 caracteres numéricos</value>
+  </data>
+</root>

@@ -1,0 +1,46 @@
+<!--
+    <copyright file="_SaveReceiverModal.cshtml" company="Ellucian">
+        Copyright 2022 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+
+@model WebAdminUI.Models.Receivers.ReceiverViewModel
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formSaveReceiver" }))
+{
+    <div id="ModalSaveReceiver" class="esg-modal-overlay" style="display:none; position:fixed; top:60px; bottom:0px; left:70px; right:0px;"></div>
+    <div class="SaveReceiverDiv" style="display:none;">
+        <div class="esg-modal-dialog">
+            <div class="esg-modal-dialog__header">
+                <button id="btnCloseSaveReceiver" class="esg-modal-dialog__close esg-icon__container" type="button" data-dismiss="modal" aria-hidden="true">
+                    <svg class="esg-icon esg-icon--large esg-icon--neutral">
+                        <use xlink:href="#icon-close"></use>
+                    </svg>
+                </button>
+                <h3 class="esg-modal-dialog__title">@WebAdminUI.Views.Receivers.App_LocalResources.CreateResource.ReceiverFiscalInformation</h3>
+            </div>
+            <div class="esg-modal-dialog__body">
+                <div class="esg-card--panel">
+                    @Html.Partial("_SaveReceiverPanel", Model, new ViewDataDictionary() { { "InModal", true } })
+                </div>
+            </div>
+            <div class="esg-modal-dialog__action-section esg-button-group esg-button-group--fluid" role="group" aria-label="button group">
+                <div class="esg-button-group__item" role="group">
+                    <button type="button" class="esg-button esg-button--secondary" id="btnCancelSaveReceiver">
+                        @WebAdminUI.Views.Receivers.App_LocalResources.CreateResource.lblCancel
+                    </button>
+                </div>
+                <div class="esg-button-group__item" role="group">
+                    <button id="btnCreateReceiver" type="button" class="esg-button esg-button--primary" style="display: none">
+                        @WebAdminUI.Views.Receivers.App_LocalResources.CreateResource.Create
+                    </button>
+                    <button id="btnUpdateReceiver" type="button" class="esg-button esg-button--primary" style="display: none">
+                        @WebAdminUI.Views.Receivers.App_LocalResources.CreateResource.Update
+                    </button>
+                    <button class="esg-button esg-button--primary" type="button" id="btnCloseSaveReceiverAfterSave" style="display: none;">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,217 @@
+<!--
+    <copyright file="_Student.cshtml" company="Ellucian">
+        Copyright 2020-2022 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model WebAdminUI.Areas.ElectronicCertificate.Models.Generation.GenerationViewModel
+
+<div id="stpStudent" style="display: block" class="esg-card--panel">
+    <div class="esg-card--panel__body">
+        <div class="esg-card--panel__content">
+            <div class="esg-container">
+                <div class="esg-col-xs-12">
+                    <div class="esg-col-xs-12 esg-col-sm-6">
+                        <h4 class="esg-form__label">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblStudent</h4> <br />
+                    </div>
+                </div>
+            </div>
+            <div class="esg-container">
+                <div class="esg-col-xs-12">
+                    <div class="esg-col-xs-12 esg-col-sm-6">
+                        <div id="divPeopleIdSearch" class="esg-form__group">
+                            <div class="esg-form__input-group">
+                                @Html.TextBoxFor(m => m.PeopleId, new { @class = "esg-form__input", @id = "PeopleIdSearch" })
+                                <button id="btnSearchPeopleId" class="esg-form__icon esg-icon__container esg-form__icon--submit" type="submit">
+                                    <svg class="esg-icon esg-icon--small esg-icon">
+                                        <use xlink:href="#icon-search"></use>
+                                    </svg>
+                                </button>
+                                <button id="btnCleanPeopleId" class="esg-form__icon esg-icon__container esg-form__icon--reset" type="reset">
+                                    <svg class="esg-icon esg-icon--small esg-icon">
+                                        <use xlink:href="#icon-clear"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="esg-container">
+                <div id="divBtnEditStudent" class="esg-col-xs-12" style="display: block; text-align: end">
+                    <a id="btnEditStudent" style="text-decoration: none;">
+                        <span class="esg-icon__container">
+                            <svg class="esg-icon esg-icon--small">
+                                <use xlink:href="#icon-edit"></use>
+                            </svg>
+                        </span>
+                        <div class="esg-icon__label">
+                            <h4>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblEdit</h4>
+                        </div>
+                    </a>
+                </div>
+                <div id="divEditStudent" class="esg-col-xs-12" style="display: none; text-align: end">
+                    <div style="display:inline-flex">
+                        <div style="margin-right: 1rem">
+                            <a id="btnCancelEditStudent" style="text-decoration: none;">
+                                <div class="esg-icon__label">
+                                    <h4>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCancel</h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a id="btnSaveStudent" style="text-decoration: none;">
+                                <span class="esg-icon__container--fill">
+                                    <svg class="esg-icon esg-icon--small">
+                                        <use xlink:href="#icon-save"></use>
+                                    </svg>
+                                </span>
+                                <div class="esg-icon__label">
+                                    <h4>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblSave</h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="esg-container">
+                <div class="esg-col-xs-12">
+                    <div class="esg-col-xs-12 esg-col-sm-6">
+                        <div id="divPeopleId" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(m => m.PeopleId, new { @class = "esg-form__label" })<br />
+                            <div class="esg-form__input-group">
+                                @Html.TextBoxFor(m => m.PeopleId, new { @class = "esg-form__input", @required = "required", @readonly = "readonly", @disabled = "disabled" })
+                                <label id="PeopleIdError" class="esg-form__label" for="Curp" style="color: #d64555; display: none">
+                                    @WebAdminUI.Resources.ElectronicCertificate.Generate.lblErrorPeopleID
+                                </label>
+                                <div id="divPeopleIdErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esg-col-xs-12 esg-col-sm-6">
+                        <div id="divCurp" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(m => m.Curp, new { @class = "esg-form__label esg-is-required" })<br />
+                            <div class="esg-form__input-group">
+                                @Html.TextBoxFor(m => m.Curp, new { @class = "esg-form__input", @required = "required", @readonly = "readonly", @disabled = "disabled" })
+                                <label id="CurpError" class="esg-form__label" for="Curp" style="color: #d64555; display: none">
+                                    @WebAdminUI.Resources.ElectronicCertificate.Generate.lblErrorCurp
+                                </label>
+                                <div id="divCurpErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="esg-col-xs-12">
+                    <div class="esg-col-xs-12 esg-col-sm-6">
+                        <div id="divName" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(m => m.Name, new { @class = "esg-form__label esg-is-required" })<br />
+                            <div class="esg-form__input-group">
+                                @Html.TextBoxFor(m => m.Name, new { @class = "esg-form__input", @required = "required", @readonly = "readonly", @disabled = "disabled" })
+                                <label id="NameError" class="esg-form__label" for="Name" style="color: #d64555; display: none">
+                                    @WebAdminUI.Resources.ElectronicCertificate.Generate.lblErrorName
+                                </label>
+                                <div id="divNameErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esg-col-xs-12 esg-col-sm-6">
+                        <div id="divFirstSurname" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(m => m.FirstSurname, new { @class = "esg-form__label esg-is-required" })<br />
+                            <div class="esg-form__input-group">
+                                @Html.TextBoxFor(m => m.FirstSurname, new { @class = "esg-form__input", @required = "required", @readonly = "readonly", @disabled = "disabled" })
+                                <label id="FirstSurnameError" class="esg-form__label" for="FirstSurname" style="color: #d64555; display: none">
+                                    @WebAdminUI.Resources.ElectronicCertificate.Generate.lblErrorFirstSurname
+                                </label>
+                                <div id="divFirstSurnameErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="esg-col-xs-12">
+                    <div class="esg-col-xs-12 esg-col-sm-6">
+                        <div id="divSecondSurname" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(m => m.SecondSurname, new { @class = "esg-form__label" })<br />
+                            <div class="esg-form__input-group">
+                                @Html.TextBoxFor(m => m.SecondSurname, new { @class = "esg-form__input", @readonly = "readonly", @disabled = "disabled" })
+                            </div>
+                        </div>
+                    </div>
+                    <input id="hdnGenderCode" type="hidden" value="" />
+                    <div class="esg-col-xs-12 esg-col-sm-6">
+                        <div id="divGenderIdentity" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(m => m.GenderIdentity, new { @class = "esg-form__label esg-is-required" })<br />
+                            <div class="esg-form__input-group">
+                                @Html.DropDownListFor(m => m.GenderIdentity, new SelectList(new List<string> {
+                                    @WebAdminUI.Resources.ElectronicCertificate.Generate.lblFemale,
+                                    @WebAdminUI.Resources.ElectronicCertificate.Generate.lblMale
+                                }),
+                                @WebAdminUI.Resources.ElectronicCertificate.Generate.lblSelect,
+                                new
+                                {
+                                    @class = "esg-form__input",
+                                    @required = "required",
+                                    @readonly = "readonly",
+                                    @disabled = "disabled"
+                                })
+                                <label id="GenderIdentityError" class="esg-form__label" for="GenderIdentity" style="color: #d64555; display: none">
+                                    @WebAdminUI.Resources.ElectronicCertificate.Generate.lblErrorGenderIdentity
+                                </label>
+                                <div id="divGenderIdentityErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="esg-col-xs-12">
+                    <div class="esg-col-xs-12 esg-col-sm-6">
+                        <div id="divBirthDate" class="esg-form__group esg-has-feedback">
+                            @Html.LabelFor(m => m.BirthDate, new { @class = "esg-form__label esg-is-required" })<br />
+                            <div class="esg-form__input-group">
+                                @Html.TextBoxFor(m => m.BirthDate, new { @class = "esg-form__input", @required = "required", @readonly = "readonly", @disabled = "disabled" })
+                                <label id="BirthDateError" class="esg-form__label" for="BirthDate" style="color: #d64555; display: none">
+                                    @WebAdminUI.Resources.ElectronicCertificate.Generate.lblErrorBirthDate
+                                </label>
+                                <div class="esg-form__icon esg-icon__container iconCalendarBirthDate">
+                                    <svg class="esg-icon esg-icon--small esg-icon">
+                                        <use xlink:href="#icon-calendar"></use>
+                                    </svg>
+                                </div>
+                                <div id="divBirthDateErr" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                    <svg class="esg-icon esg-icon--error">
+                                        <use xlink:href="#icon-error"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="divStudentFooter" class="esg-container" style=" display: block; text-align: end">
+                <div class="eds-button-group" role="group" style="margin-top:1rem" aria-label="button group">
+                    <button class="eds-button eds-button--secondary" id="btnCancelStudent" type="button">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCancel</button>
+                    <button class="eds-button eds-button--primary" id="btnValidateStudent" type="button">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblValidate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

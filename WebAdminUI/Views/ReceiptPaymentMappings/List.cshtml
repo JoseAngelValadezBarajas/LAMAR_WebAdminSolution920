@@ -1,0 +1,162 @@
+@using PowerCampus.Entities
+@model WebAdminUI.Models.ReceiptPaymentMapping.ReceiptPaymentMethodMappingViewModel
+
+@{
+    ViewBag.Title = WebAdminUI.Views.ReceiptPaymentMappings.App_LocalResources.ReceiptPayment.lblMappingTitle;
+}
+
+<div class="esg-page-header">
+    <h1 class="esg-page-header__title" style="height:30px">@WebAdminUI.Views.ReceiptPaymentMappings.App_LocalResources.ReceiptPayment.lblMappingTitle</h1>
+    <a class="esg-page-header__button" role="button" title=@WebAdminUI.Views.ReceiptPaymentMappings.App_LocalResources.ReceiptPayment.btnBack
+       href="@Url.Action("Settings", "FiscalRecords")">
+        <span class="esg-page-header__icon esg-icon__container">
+            <svg class="esg-icon esg-icon--left">
+                <use xlink:href="#icon-arrow"></use>
+            </svg>
+        </span>
+    </a>
+</div>
+
+<div class="esg-card--panel">
+    <div class="esg-card--panel__heading">
+        <span class="esg-card-widget__header-action">
+            <button id="AddNewMapping" type="button" class="esg-button esg-button--secondary esg-button--medium ">
+                <span class="esg-button__icon esg-icon__container  esg-button-icon--align-left" aria-hidden="true">
+                    <svg class="esg-icon esg-icon--left">
+                        <use xlink:href="#icon-add"></use>
+                    </svg>
+                </span>
+                <span class="button-label">
+                    @WebAdminUI.Views.ReceiptPaymentMappings.App_LocalResources.ReceiptPayment.btnAddMapping
+                </span>
+            </button>
+        </span>
+    </div>
+    <br />
+    <div class="esg-card--panel__body">
+        <div class="esg-card--panel__sub-heading">
+            <p class="esg-small">@WebAdminUI.Views.ReceiptPaymentMappings.App_LocalResources.ReceiptPayment.lblPageInstructions</p>
+        </div>
+        <div id="ModalAdd" class="esg-modal-overlay" style="display:none; position:fixed; top:60px; bottom:0px; left:70px; right:0px;"></div>
+        <div class="esg-card--panel__content">
+            <div class="esg-table__container">
+                <table class="esg-table">
+                    <thead class="esg-table-head">
+                        <tr class="esg-table-head__row">
+                            <th class="esg-table-head__button">
+                                @Html.DisplayNameFor(model => model.ChargeCreditDesc)
+                            </th>
+                            <th class="esg-table-head__button">
+                                @Html.DisplayNameFor(model => model.PaymentMethodDesc)
+                            </th>
+                            <th class="esg-table-head__button"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="records_table_rows" class="esg-table-body">
+                        @if (Model.ReceiptPaymentMethodList != null)
+                        {
+                            foreach (var item in Model.ReceiptPaymentMethodList)
+                            {
+                                <tr class="esg-table-body__row">
+                                    <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                        @Html.DisplayFor(modelItem => item.ChargeCreditDesc)
+                                    </td>
+                                    <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                        @Html.DisplayFor(modelItem => item.PaymentMethodDesc)
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        <a id="@string.Format("btnDelete{0}", item.ChargeCreditCodeId)" onclick="DeletePaymentTypeMapping(@item.ChargeCreditCodeId)">
+                                            @WebAdminUI.Views.ReceiptPaymentMappings.App_LocalResources.ReceiptPayment.lnkDelete
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="Overlaydiv" class="esg-modal-overlay" style="display:none; position:fixed; top:0; bottom:0; left:0; right:0;"></div>
+<div id="Processing" class="esg-modal-dialog" style="display:none;">
+    <div class="esg-spinner-wrapper" style="position:absolute;">
+        <div class="esg-spinner"></div>
+    </div>
+</div>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formCreate" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="AddNewMappingDiv" style="display:none;">
+        <div class="esg-modal-dialog">
+            <div class="esg-modal-dialog__header">
+                <button class="esg-modal-dialog__close esg-icon__container btnCancel" type="button" data-dismiss="modal" aria-hidden="true">
+                    <svg class="esg-icon esg-icon--large esg-icon--neutral">
+                        <use xlink:href="#icon-close"></use>
+                    </svg>
+                </button>
+                <h3 class="esg-card--panel__title">@WebAdminUI.Views.ReceiptPaymentMappings.App_LocalResources.ReceiptPayment.lblMappingTitle </h3>
+            </div>
+            <div class="row col-md-12">
+                <div class="esg-card--panel__body" style="margin-left:35px;">
+                    <div class="row">
+                        <div class="row col-md-7">
+                            <div class="form-group row">
+                                <div id="divChargeCreditCode" class="esg-form__group esg-has-feedback" style="width:350px">
+                                    @Html.LabelFor(model => model.ChargeCreditDesc, htmlAttributes: new { @class = "esg-form__label esg-is-required" })
+                                    <div class="esg-form__input-group" style="width:350px;">
+                                        @Html.DropDownListFor(model => model.ChargeCreditCodeId,
+                                                                    new SelectList(Model.ReceiptCodeList,
+                                                                    "Id", "Description"), new { @class = "esg-form__input", @id = "ChargeCreditCodeId" })
+                                        <div id="ChargeCreditCodeIdIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                            <svg class="esg-icon esg-icon--error">
+                                                <use xlink:href="#icon-error"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row col-md-5">
+                            <div class="form-group row">
+                                <div id="divPaymentMethodDesc" class="esg-form__group esg-has-feedback" style="width:350px;">
+                                    @Html.LabelFor(model => model.PaymentMethodDesc, htmlAttributes: new { @class = "esg-form__label esg-is-required" })
+                                    <div id="PaymentMethodCodeGroup" class="esg-form__input-group" style="width:350px;">
+                                        @Html.DropDownListFor(model => model.PaymentMethodCode,
+                                                                    new SelectList(Model.PaymentTypeList,
+                                                                    "Code", "Description"), new { @class = "esg-form__input", @id = "PaymentMethodCode" })
+                                        @Html.ValidationMessageFor(model => model.PaymentMethodCode, "", new { @class = "text-danger validation-label" })
+                                        <div id="PaymentMethodIdIcon" class="esg-form__feedback-icon esg-icon__container" style="display:none">
+                                            <svg class="esg-icon esg-icon--error">
+                                                <use xlink:href="#icon-error"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><br />
+            <div class="esg-modal-dialog__action-section esg-button-group esg-button-group--fluid" role="group" aria-label="button group">
+                <div class="esg-button-group__item" role="group">
+                    <input type="button" class="esg-button esg-button--secondary" value="@WebAdminUI.Views.ReceiptPaymentMappings.App_LocalResources.ReceiptPayment.btnCancelMapping" id="btnCancel" />
+                </div>
+                <div class="esg-button-group__item" role="group">
+                    <input type="button" class="esg-button esg-button--primary" value="@WebAdminUI.Views.ReceiptPaymentMappings.App_LocalResources.ReceiptPayment.btnSaveMapping" id="btnAdd" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts{
+    <script>
+        var urlReceiptPaymentList = '@Url.Action("List", "ReceiptPaymentMappings")';
+        var urlReceiptPaymentCreate = '@Url.Action("Create", "ReceiptPaymentMappings")';
+        var urlReceiptPaymentDelete = '@Url.Action("Delete", "ReceiptPaymentMappings")';
+        var urlHome = '@Url.Action("Index", "Home")';
+    </script>
+    @Scripts.Render("~/bundles/FR/ReceiptPayment")
+}

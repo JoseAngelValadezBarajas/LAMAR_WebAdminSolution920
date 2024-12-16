@@ -1,0 +1,167 @@
+@model WebAdminUI.Models.FiscalRecords.CashReceiptViewModel
+
+@{
+    var isSubstitution = Model.CancelReasonName == PowerCampus.Entities.Enum.CancelReasonName.ErrorRelacion;
+}
+
+@if (Model.chargesToInvoiceList == null)
+{
+    <div class="esg-alert esg-alert--warning" id="noFiscalRecordsDiv" role="alert" style="display:none; margin-left:50px;">
+        <span class="esg-alert__icon-wrapper">
+            <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                <svg class="esg-icon esg-icon--warning-dark">
+                    <use xlink:href="#icon-warning"></use>
+                </svg>
+            </span>
+        </span>
+        <div class="esg-alert__message">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.ReceiptsToInvoiceEmpty</div>
+    </div>
+}
+else
+{
+    <div class="row">
+
+        <div class="esg-card--panel__body" style="margin-left:60px;">
+
+            @if (Model.chargesToInvoiceList[0].isATax.Equals(true))
+            {
+                <div id="NullTaxMapping" class="esg-instruction" role="alert" style="width:98%">
+                    <span class="esg-instruction__icon-wrap">
+                        <span class="esg-instruction__icon esg-icon__container" aria-hidden="True">
+                            <svg class="esg-icon esg-icon--info-dark">
+                                <use xlink:href="#icon-info"></use>
+                            </svg>
+                        </span>
+                    </span><div class="esg-instruction__message">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.lblTaxMapping</div>
+                </div>
+            }
+
+            <div id="divCharges" data-pagination="true" class="esg-table__container">
+                <table class="esg-table" style="width:98%">
+                    <thead class="esg-table-head">
+                        <tr class="esg-table-head__row">
+                            @if (!isSubstitution && !Model.IsCancellation04)
+                            {
+                                <th class="esg-table-head__th" style="width: 70px"></th>
+                            }
+                            <th class="esg-table-head__th">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.ProductServiceCode</th>
+                            <th class="esg-table-head__th">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.IdNumber</th>
+                            <th class="esg-table-head__th">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.Quantity</th>
+                            <th class="esg-table-head__th">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.UnitCode</th>
+                            <th class="esg-table-head__th">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.Description</th>
+                            <th class="esg-table-head__th">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.UnitAmount</th>
+                            <th class="esg-table-head__th">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.TaxAmount</th>
+                            <th class="esg-table-head__th">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.Amount</th>
+                            <th class="esg-table-head__th">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.SubjectToTax</th>
+                        </tr>
+                    </thead>
+                    <tbody class="esg-table-body" id="records_table_rows_tbody">
+                        @if (Model.chargesToInvoiceList != null)
+                        {
+                            for (var i = 0; i < Model.chargesToInvoiceList.Count; i++)
+                            {
+                                var CashRe = Model.chargesToInvoiceList[i];
+                                <tr class="esg-table-body__row" id="@i">
+                                    @if (!isSubstitution && !Model.IsCancellation04)
+                                    {
+                                        <td class="esg-table-body__td">
+                                            <div class="esg-checkbox" style="margin: 0">
+                                                <input id="@(string.Format("chkIncludeReceipt_{0}", CashRe.ReceiptNumber))"
+                                                       name="chkIncludeReceipt"
+                                                       value="@CashRe.ReceiptNumber"
+                                                       type="checkbox"
+                                                       checked="checked"
+                                                       onclick="onCheckboxChange()" />
+                                                <label for="@(string.Format("chkIncludeReceipt_{0}", CashRe.ReceiptNumber))" class="checkbox-label-table"></label>
+                                            </div>
+                                        </td>
+                                    }
+                                    <td class="esg-table-body__td">
+                                        @Html.Label(CashRe.ProductServiceKey,
+                                         new
+                                         {
+                                             id = string.Format("ccPrdSrv_{0}", CashRe.ChargeCreditCode)
+                                         })
+                                        @Html.HiddenFor(m => CashRe.ChargeCreditCode,
+                                         new
+                                         {
+                                             id = string.Format("ccCode_{0}", CashRe.ChargeCreditCode),
+                                             Value = CashRe.ChargeCreditCode
+                                         })
+                                    </td>
+                                    <td class="esg-table-body__td">@CashRe.ReceiptNumber</td>
+                                    <td class="esg-table-body__td">@CashRe.Quantity</td>
+                                    <td class="esg-table-body__td">@CashRe.UnityKey</td>
+                                    <td class="esg-table-body__td">@CashRe.ChargeCreditDesc</td>
+                                    <td class="esg-table-body__td">@Html.DisplayFor(m => CashRe.UnitAmount)</td>
+                                    <td class="esg-table-body__td">@Html.DisplayFor(m => CashRe.TotalTaxes)</td>
+                                    <td class="esg-table-body__td">@Html.DisplayFor(m => CashRe.TotalUnit)</td>
+                                    <td class="esg-table-body__td">@CashRe.SubjectToTax</td>
+                                </tr>
+                            }
+
+                        }
+                    </tbody>
+                </table>
+                <br />
+                @Html.Partial("_Pagination", new ViewDataDictionary() { { "Count", (Model.chargesToInvoiceList == null ? 0 : Model.chargesToInvoiceList.Count()) }, { "MinRows", 5 }, { "DefaultSelected", 10 } })
+            </div>
+        </div>
+    </div>
+
+    if (!isSubstitution && !Model.IsCancellation04)
+    {
+        <div class="row" id="calculateTotalsSection" style="display:block">
+            <div class="esg-card--panel__body" style="margin-left:50px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="esg-button esg-button--primary" id="btnCalculateTotals" type="button" onclick="calculateTotals()">
+                        @WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.lblCalculateTotals
+                    </button>
+                </div>
+            </div>
+        </div>
+        <br />
+    }
+
+    <div id="totalsSection" class="row" style="display: @(isSubstitution || Model.IsCancellation04 ? "block" : "none")">
+        <div class="esg-card--panel__body" style="margin-left:50px;">
+            <div class="col-md-4" style="display:block">
+                <label class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.SubTotal</label><br />
+                @Html.TextBoxFor(m => m.SubTotal, new { @class = "form-control", @id = "SubTotal", @readonly = "readonly" })
+                <br /><br />
+
+                <label class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.TotalTransferredTaxes</label><br />
+                @Html.TextBoxFor(m => m.TotalTT, new { @class = "form-control", @id = "TotalTT", @readonly = "readonly" })
+                <br /><br />
+
+                <label class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.Total</label><br />
+                @Html.TextBoxFor(m => m.Total, new { @class = "form-control", @id = "Total", @readonly = "readonly" })
+                <br /><br />
+            </div>
+        </div>
+    </div>
+
+    if (!Model.IsCancellation04)
+    {
+        if (Model.chargesToInvoiceList[0].isATax.Equals(true))
+        {
+            <div class="row">
+                <div class="esg-button-group col-md-12" style="margin-left:50px; display:none" role="group" aria-label="button group">
+                    <button class="esg-button esg-button--primary btnProcessCG" id="btnProcessC" type="button"> @WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.Process </button>
+                    <br /><br />
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div id="processSection" class="esg-button-group col-md-12" style="margin-left:50px; display: @(isSubstitution || Model.IsCancellation04 ? "block" : "none")" role="group" aria-label="button group">
+                    <button class="esg-button esg-button--primary btnProcessCG" id="btnProcessC" type="button"> @WebAdminUI.Views.FiscalRecords.App_LocalResources.CreateResource.Process </button>
+                    <br /><br />
+                </div>
+            </div>
+        }
+    }
+
+    @Scripts.Render("~/bundles/FR/Pagination")
+}

@@ -1,0 +1,93 @@
+<!--
+    <copyright file="CancelGlobal.cshtml" company="Ellucian">
+        Copyright 2022 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+
+@model WebAdminUI.Models.FiscalRecords.FiscalRecordViewModel
+
+@{
+    ViewBag.Title = WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblTitle;
+}
+
+<div class="esg-card--panel">
+    <div class="esg-card--panel__body">
+        <div class="esg-card--panel__content">
+            <ol class="esg-step-progress">
+                <li id="liCancelGlobalInvoice" class="esg-step-progress__item esg-is-active">
+                    <a id="btnStpCancelGlobalInvoice" class="esg-step-progress__link" style="text-decoration: none!important;">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblCancelGlobalInvoice</a>
+                </li>
+                <li id="liNewInvoice" class="esg-step-progress__item">
+                    <a id="btnStpNewInvoices" class="esg-step-progress__link" style="cursor:not-allowed; color: currentColor; text-decoration:none!important;">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblNewInvoice</a>
+                </li>
+                <li id="liNewGlobalInvoice" class="esg-step-progress__item">
+                    <a id="btnStpNewGlobalInvoice" class="esg-step-progress__link" style="cursor:not-allowed; color: currentColor; text-decoration: none!important;">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblNewGlobalInvoice</a>
+                </li>
+            </ol>
+        </div>
+
+        @* CancelGlobalInvoice step *@
+        @Html.Partial("_CancelGlobalInvoice", Model)
+
+        @* NewInvoice step *@
+        <div id="stpNewInvoice" style="display: none" class="esg-card--panel"></div>
+
+        @* NewGlobalInvoice step *@
+        <div id="stpNewGlobalInvoice" style="display: none" class="esg-card--panel"></div>
+        <div id="stpNewGlobalInvoiceComplete" style="display: none" class="esg-card--panel">
+            <div class="esg-card--panel__body">
+                <div class="esg-card--panel__content">
+                    <div class="esg-container">
+                        <div class="esg-col-xs-12">
+                            <h4 class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblNewGlobalInvoice</h4>
+                        </div>
+                        <div class="esg-col-xs-12">
+                            <p>@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblNoReceiptsLeft</p>
+                        </div>
+                        <div id="newGlobalInvoiceFooter" class="esg-container" style="text-align:end">
+                            <div class="eds-button-group" role="group" style="margin-top:1rem" aria-label="button group">
+                                <button class="eds-button eds-button--secondary" id="btnBackNewInvoice" type="button">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.btnBack</button>
+                                <button class="eds-button eds-button--primary" id="btnFinish" type="button">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.btnFinish</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="Overlaydiv" class="esg-modal-overlay no-display" style="position:fixed; top:0; bottom:0; left:0; right:0;"></div>
+<div id="Processing" class="esg-modal-dialog no-display">
+    <div class="esg-spinner-wrapper" style="position:absolute;">
+        <div class="esg-spinner"></div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        // Variables
+        var invoiceHeaderId = @Html.Raw(Json.Encode(Model.InvoiceHeaderId));
+        var requestState = @Html.Raw(Json.Encode(Model.requestStateId));
+        var startDate = @Html.Raw(Json.Encode(Model.startDate));
+        var endDate = @Html.Raw(Json.Encode(Model.endDate));
+
+        // Urls
+        var urlCreateFiscalRecord = '@Url.Action("Create", "FiscalRecords")';
+        var urlDelete = '@Url.Action("DeleteInvoceFiscalRecord", "FiscalRecords")';
+        var urlGetCanceledGlobalInvoiceDetails = '@Url.Action("NewInvoiceTables", "FiscalRecords", new { invoiceHeaderId = Model.InvoiceHeaderId })';
+        var urlGetCashReceiptDetails = '@Url.Action("ReceiptDetails", "CashReceipts")';
+        var urlGetCFDIReceivers = '@Url.Action("GetCFDI", "Receivers")';
+        var urlGetIssuers = '@Url.Action("Get", "Issuers")';
+        var urlGetNewGlobalInvoiceDetails = '@Url.Action("NewGlobalInvoicePartialView", "FiscalRecords", new { invoiceHeaderId = Model.InvoiceHeaderId })';
+        var urlGetNewInvoiceToCreate = '@Url.Action("NewInvoicePartialView", "FiscalRecords")';
+        var urlGetReceivers = '@Url.Action("Get", "Receivers")';
+        var urlGetSerialNumber = '@Url.Action("GetSerialNumber", "Issuers")';
+        var urlGetTaxRegimen = '@Url.Action("GetTaxRegimen", "Issuers")';
+        var urlProcessGlobal = '@Url.Action("ProcessGlobal", "FiscalRecords")';
+        var urlReprocess = '@Url.Action("Reprocess", "FiscalRecords")';
+        var urlSelectIssuerSetUp = '@Url.Action("SelectIssuerSetUp", "Issuers")';
+        var urlViewAll = '@Url.Action("ViewAll", "FiscalRecords")';
+    </script>
+    @Scripts.Render("~/bundles/FR/CancelGlobal")
+}

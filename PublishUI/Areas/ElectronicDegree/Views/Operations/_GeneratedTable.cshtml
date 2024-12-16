@@ -1,0 +1,594 @@
+<!--
+    <copyright file="_GeneratedTable.cshtml" company="Ellucian">
+        Copyright 2020 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model WebAdminUI.Areas.ElectronicDegree.Models.ElectronicDegreeModelList
+
+@if (Model.ElectronicDegreesModel.Count > 0)
+{
+    <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+        <div class="esg-table__container">
+            <table id="table" class="esg-table">
+                <thead class="esg-table-head">
+                    <tr class="esg-table-head__row">
+                        <th class="esg-table-head__th" style="overflow-wrap: break-word; width: 15% ">@Html.DisplayNameFor(m => m.ElectronicDegreesModel[0].Folio)</th>
+                        <th class="esg-table-head__th" style="width:30%">@Html.DisplayNameFor(m => m.ElectronicDegreesModel[0].DisplayName)</th>
+                        <th class="esg-table-head__th" style="width:10%">@Html.DisplayNameFor(m => m.ElectronicDegreesModel[0].EducationLevel)</th>
+                        <th class="esg-table-head__th" style="width:20%">@Html.DisplayNameFor(m => m.ElectronicDegreesModel[0].Major)</th>
+                        <th class="esg-table-head__th" style="width:10%">@Html.DisplayNameFor(m => m.ElectronicDegreesModel[0].Status)</th>
+                        @if (Model.IsSentAvailable)
+                        {
+                            <th class="esg-table-head__th" style="width:10%">@WebAdminUI.Resources.ElectronicDegree.Operations.lblActions</th>
+                        }
+                        else
+                        {
+                            <th class="esg-table-head__th" style="width:5%">@Html.DisplayNameFor(m => m.ElectronicDegreesModel[0].ViewData)</th>
+                            <th class="esg-table-head__th" style="width:10%">@WebAdminUI.Resources.ElectronicDegree.Operations.lblDelete</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody class="esg-table-body" id="table_rows_tbody">
+                    @foreach (var item in Model.ElectronicDegreesModel)
+                    {
+                        if (!Model.IsSentAvailable && (item.Status == "S" || item.Status == "G"))
+                        {
+                            <tr class="esg-table-body__row" id="@item.PeopleCodeId">
+                                <td class="esg-table-body__td" style="overflow-wrap: break-word">
+                                    @Html.Label("", item.Folio)
+                                </td>
+                                <td class="esg-table-body__td">
+                                    @Html.Label("", item.DisplayName)
+                                </td>
+                                <td class="esg-table-body__td">
+                                    @Html.Label("", item.EducationLevel)
+                                </td>
+                                <td class="esg-table-body__td">
+                                    @Html.Label("", item.Major)
+                                </td>
+                                <td class="esg-table-body__td">
+                                    @if (item.Status == "S")
+                                    {
+                                        <span class="esg-label esg-label--success">
+                                            @WebAdminUI.Resources.ElectronicDegree.Operations.lblSent
+                                        </span>
+                                    }
+                                    @if (item.Status == "G")
+                                    {
+                                        <span class="esg-label esg-label--pending">
+                                            @WebAdminUI.Resources.ElectronicDegree.Operations.lblGenerated
+                                        </span>
+                                    }
+                                    @if (item.Status == "A")
+                                    {
+                                        <span class="esg-label esg-label--success">
+                                            @WebAdminUI.Resources.ElectronicDegree.Operations.lblAuthenticated
+                                        </span>
+                                    }
+                                    @if (item.Status == "R")
+                                    {
+                                        <span class="esg-label esg-label--error">
+                                            @WebAdminUI.Resources.ElectronicDegree.Operations.lblRejected
+                                        </span>
+                                    }
+                                    @if (item.Status == "C")
+                                    {
+                                        <span class="esg-label esg-label--draft">
+                                            @WebAdminUI.Resources.ElectronicDegree.Operations.lblCanceled
+                                        </span>
+                                    }
+                                </td>
+                                @if (Model.IsSentAvailable)
+                                {
+                                    <td class="esg-table-body__td">
+                                        <div align="right">
+                                            <button id="@string.Format("btnMore_{0}", item.ElectronicDegreeInformationId)" name="btnMore">
+                                                <span class="esg-icon__container">
+                                                    <svg class="esg-icon">
+                                                        <use xlink:href="#icon-more"></use>
+                                                    </svg>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div id="@string.Format("divMenu{0}", item.ElectronicDegreeInformationId)" style="display: none">
+                                            <div style="margin: 1.5rem; position: relative; height:11.125rem;">
+                                                <div class="esg-popover esg-popover--bottom">
+                                                    <div class="esg-popover__arrow"></div>
+                                                    <div class="esg-popover__content">
+                                                        <div class="esg-popover__text">
+                                                            <ul class="esg-list-group">
+                                                                @switch (item.Status)
+                                                                {
+                                                                    case "G":
+                                                                        <li class="esg-list-group__item">
+                                                                            <a class="esg-dropdown__link" href="#ViewData" id="@string.Format("id_{0}", item.ElectronicDegreeInformationId)">
+                                                                                @WebAdminUI.Resources.ElectronicDegree.Operations.lblViewData
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="esg-list-group__item">
+                                                                            <button onclick="if (SendED) { SendED('@(item.ElectronicDegreeInformationId)'); } return false;" class="esg-dropdown__link">
+                                                                                @WebAdminUI.Resources.ElectronicDegree.Operations.lblStampSend
+                                                                            </button>
+                                                                        </li>
+                                                                        <li class="esg-list-group__item">
+                                                                            <a id="@string.Format("Delete_{0}", item.ElectronicDegreeInformationId)" name="Delete" class="esg-dropdown__link">
+                                                                                @WebAdminUI.Resources.ElectronicDegree.Operations.lblDelete
+                                                                            </a>
+                                                                        </li>
+                                                                        if (item.HasXML)
+                                                                        {
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXml_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXml", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXml
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadOriginalString_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadOriginalString", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadOriginalString
+                                                                                </a>
+                                                                            </li>
+
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXmlStamp_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXmlStamp", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXmlStamp
+                                                                                </a>
+                                                                            </li>
+
+                                                                        }
+                                                                        break;
+
+                                                                    case "S":
+                                                                        <li class="esg-list-group__item">
+                                                                            <a class="esg-dropdown__link" href="#ViewData" id="@string.Format("id_{0}", item.ElectronicDegreeInformationId)">
+                                                                                @WebAdminUI.Resources.ElectronicDegree.Operations.lblViewData
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="esg-list-group__item">
+                                                                            <button onclick="if (UpdateStatusED) { UpdateStatusED('@(item.ElectronicDegreeInformationId)'); } return false;" class="esg-dropdown__link">
+                                                                                @WebAdminUI.Resources.ElectronicDegree.Operations.lblUpdateStatus
+                                                                            </button>
+                                                                        </li>
+                                                                        if (item.HasXML)
+                                                                        {
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXml_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXml", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXml
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadOriginalString_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadOriginalString", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadOriginalString
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXmlStamp_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXmlStamp", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXmlStamp
+                                                                                </a>
+                                                                            </li>
+                                                                        }
+                                                                        break;
+
+                                                                    case "A":
+                                                                        <li class="esg-list-group__item">
+                                                                            <a class="esg-dropdown__link" href="#ViewData" id="@string.Format("id_{0}", item.ElectronicDegreeInformationId)">
+                                                                                @WebAdminUI.Resources.ElectronicDegree.Operations.lblViewData
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="esg-list-group__item">
+                                                                            <a id="@string.Format("Cancel_{0}", item.ElectronicDegreeInformationId)" name="Cancel" class="esg-dropdown__link">
+                                                                                @WebAdminUI.Resources.ElectronicDegree.Operations.lblCancel
+                                                                            </a>
+                                                                        </li>
+                                                                        if (item.HasXML)
+                                                                        {
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXml_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXml", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXml
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadOriginalString_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadOriginalString", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadOriginalString
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXmlStamp_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXmlStamp", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXmlStamp
+                                                                                </a>
+                                                                            </li>
+                                                                        }
+                                                                        break;
+
+                                                                    case "R":
+                                                                        <li class="esg-list-group__item">
+                                                                            <a class="esg-dropdown__link" href="#ViewData" id="@string.Format("id_{0}", item.ElectronicDegreeInformationId)">
+                                                                                @WebAdminUI.Resources.ElectronicDegree.Operations.lblViewData
+                                                                            </a>
+                                                                        </li>
+                                                                        if (item.HasXML)
+                                                                        {
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXml_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXml", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXml
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadOriginalString_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadOriginalString", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadOriginalString
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXmlStamp_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXmlStamp", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXmlStamp
+                                                                                </a>
+                                                                            </li>
+                                                                        }
+                                                                        break;
+
+                                                                    case "C":
+                                                                        <li class="esg-list-group__item">
+                                                                            <a class="esg-dropdown__link" href="#ViewData" id="@string.Format("id_{0}", item.ElectronicDegreeInformationId)">
+                                                                                @WebAdminUI.Resources.ElectronicDegree.Operations.lblViewData
+                                                                            </a>
+                                                                        </li>
+                                                                        if (item.HasXML)
+                                                                        {
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXml_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXml", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXml
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadOriginalString_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadOriginalString", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadOriginalString
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXmlStamp_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXmlStamp", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXmlStamp
+                                                                                </a>
+                                                                            </li>
+                                                                        }
+                                                                        break;
+                                                                }
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><br />
+                                        </div>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="esg-table-body__td">
+                                        <div align="right">
+                                            <button id="@string.Format("btnView_{0}", item.ElectronicDegreeInformationId)" name="btnView">
+                                                <span class="esg-icon__container">
+                                                    <svg class="esg-icon">
+                                                        <use xlink:href="#icon-view"></use>
+                                                    </svg>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        @if (item.Status.Equals("G"))
+                                        {
+                                            <div align="right">
+                                                <button id="@string.Format("btnDelete_{0}", item.ElectronicDegreeInformationId)" name="Delete">
+                                                    <span class="esg-icon__container">
+                                                        <svg class="esg-icon">
+                                                            <use xlink:href="#icon-trash"></use>
+                                                        </svg>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        }
+                                    </td>
+                                }
+                            </tr>
+                        }
+                        else if (Model.IsSentAvailable)
+                        {
+                            <tr class="esg-table-body__row" id="@item.PeopleCodeId">
+                                <td class="esg-table-body__td" style="overflow-wrap: break-word">
+                                    @Html.Label("", item.Folio)
+                                </td>
+                                <td class="esg-table-body__td">
+                                    @Html.Label("", item.DisplayName)
+                                </td>
+                                <td class="esg-table-body__td">
+                                    @Html.Label("", item.EducationLevel)
+                                </td>
+                                <td class="esg-table-body__td">
+                                    @Html.Label("", item.Major)
+                                </td>
+                                <td class="esg-table-body__td">
+                                    @if (item.Status == "S")
+                                    {
+                                        <span class="esg-label esg-label--success">
+                                            @WebAdminUI.Resources.ElectronicDegree.Operations.lblSent
+                                        </span>
+                                    }
+                                    @if (item.Status == "G")
+                                    {
+                                        <span class="esg-label esg-label--pending">
+                                            @WebAdminUI.Resources.ElectronicDegree.Operations.lblGenerated
+                                        </span>
+                                    }
+                                    @if (item.Status == "A")
+                                    {
+                                        <span class="esg-label esg-label--success">
+                                            @WebAdminUI.Resources.ElectronicDegree.Operations.lblAuthenticated
+                                        </span>
+                                    }
+                                    @if (item.Status == "R")
+                                    {
+                                        <span class="esg-label esg-label--error">
+                                            @WebAdminUI.Resources.ElectronicDegree.Operations.lblRejected
+                                        </span>
+                                    }
+                                    @if (item.Status == "C")
+                                    {
+                                        <span class="esg-label esg-label--draft">
+                                            @WebAdminUI.Resources.ElectronicDegree.Operations.lblCanceled
+                                        </span>
+                                    }
+                                </td>
+                                @if (Model.IsSentAvailable)
+                                {
+                                    <td class="esg-table-body__td">
+                                        <div align="right">
+                                            <button id="@string.Format("btnMore_{0}", item.ElectronicDegreeInformationId)" name="btnMore">
+                                                <span class="esg-icon__container">
+                                                    <svg class="esg-icon">
+                                                        <use xlink:href="#icon-more"></use>
+                                                    </svg>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div id="@string.Format("divMenu{0}", item.ElectronicDegreeInformationId)" style="display: none">
+                                            <div style="margin: 1.5rem; position: relative; height:11.125rem;">
+                                                <div class="esg-popover esg-popover--bottom">
+                                                    <div class="esg-popover__arrow"></div>
+                                                    <div class="esg-popover__content">
+                                                        <div class="esg-popover__text">
+                                                            <ul class="esg-list-group">
+                                                                @switch (item.Status)
+                                                                {
+                                                                    case "G":
+                                                                        <li class="esg-list-group__item">
+                                                                            <a class="esg-dropdown__link" href="#ViewData" id="@string.Format("id_{0}", item.ElectronicDegreeInformationId)">
+                                                                                @WebAdminUI.Resources.ElectronicDegree.Operations.lblViewData
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="esg-list-group__item">
+                                                                            <button onclick="if (SendED) { SendED('@(item.ElectronicDegreeInformationId)'); } return false;" class="esg-dropdown__link">
+                                                                                @WebAdminUI.Resources.ElectronicDegree.Operations.lblStampSend
+                                                                            </button>
+                                                                        </li>
+                                                                        <li class="esg-list-group__item">
+                                                                            <a id="@string.Format("Delete_{0}", item.ElectronicDegreeInformationId)" name="Delete" class="esg-dropdown__link">
+                                                                                @WebAdminUI.Resources.ElectronicDegree.Operations.lblDelete
+                                                                            </a>
+                                                                        </li>
+                                                                        if (item.HasXML)
+                                                                        {
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXml_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXml", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXml
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadOriginalString_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadOriginalString", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadOriginalString
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXmlStamp_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXmlStamp", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXmlStamp
+                                                                                </a>
+                                                                            </li>
+                                                                        }
+                                                                        break;
+
+                                                                    case "S":
+                                                                        <li class="esg-list-group__item">
+                                                                            <a class="esg-dropdown__link" href="#ViewData" id="@string.Format("id_{0}", item.ElectronicDegreeInformationId)">
+                                                                                @WebAdminUI.Resources.ElectronicDegree.Operations.lblViewData
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="esg-list-group__item">
+                                                                            <button onclick="if (UpdateStatusED) { UpdateStatusED('@(item.ElectronicDegreeInformationId)'); } return false;" class="esg-dropdown__link">
+                                                                                @WebAdminUI.Resources.ElectronicDegree.Operations.lblUpdateStatus
+                                                                            </button>
+                                                                        </li>
+                                                                        if (item.HasXML)
+                                                                        {
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXml_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXml", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXml
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadOriginalString_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadOriginalString", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadOriginalString
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXmlStamp_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXmlStamp", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXmlStamp
+                                                                                </a>
+                                                                            </li>
+                                                                        }
+                                                                        break;
+
+                                                                    case "A":
+                                                                        <li class="esg-list-group__item">
+                                                                            <a class="esg-dropdown__link" href="#ViewData" id="@string.Format("id_{0}", item.ElectronicDegreeInformationId)">
+                                                                                @WebAdminUI.Resources.ElectronicDegree.Operations.lblViewData
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="esg-list-group__item">
+                                                                            <a id="@string.Format("Cancel_{0}_{1}", item.Folio, item.ElectronicDegreeInformationId)" name="Cancel" class="esg-dropdown__link">
+                                                                                @WebAdminUI.Resources.ElectronicDegree.Operations.lblCancel
+                                                                            </a>
+                                                                        </li>
+                                                                        if (item.HasXML)
+                                                                        {
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXml_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXml", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXml
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadOriginalString_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadOriginalString", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadOriginalString
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXmlStamp_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXmlStamp", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXmlStamp
+                                                                                </a>
+                                                                            </li>
+                                                                        }
+                                                                        break;
+
+                                                                    case "R":
+                                                                        <li class="esg-list-group__item">
+                                                                            <a class="esg-dropdown__link" href="#ViewData" id="@string.Format("id_{0}", item.ElectronicDegreeInformationId)">
+                                                                                @WebAdminUI.Resources.ElectronicDegree.Operations.lblViewData
+                                                                            </a>
+                                                                        </li>
+                                                                        if (item.HasXML)
+                                                                        {
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXml_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXml", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXml
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadOriginalString_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadOriginalString", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadOriginalString
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXmlStamo_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXmlStamp", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXmlStamp
+                                                                                </a>
+                                                                            </li>
+                                                                        }
+                                                                        break;
+
+                                                                    case "C":
+                                                                        <li class="esg-list-group__item">
+                                                                            <a class="esg-dropdown__link" href="#ViewData" id="@string.Format("id_{0}", item.ElectronicDegreeInformationId)">
+                                                                                @WebAdminUI.Resources.ElectronicDegree.Operations.lblViewData
+                                                                            </a>
+                                                                        </li>
+                                                                        if (item.HasXML)
+                                                                        {
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXml_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXml", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXml
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadOriginalString_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadOriginalString", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadOriginalString
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="esg-list-group__item">
+                                                                                <a id="btnDownloadXmlStamp_@item.ElectronicDegreeInformationId" class="esg-dropdown__link"
+                                                                                   href="@Url.Action("DownloadXmlStamp", "Operations", new { id = item.ElectronicDegreeInformationId })">
+                                                                                    @WebAdminUI.Resources.ElectronicDegree.Operations.lblDownloadXmlStamp
+                                                                                </a>
+                                                                            </li>
+                                                                        }
+                                                                        break;
+                                                                }
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><br />
+                                        </div>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="esg-table-body__td">
+                                        <div align="right">
+                                            <button id="@string.Format("btnView_{0}", item.ElectronicDegreeInformationId)" name="btnView">
+                                                <span class="esg-icon__container">
+                                                    <svg class="esg-icon">
+                                                        <use xlink:href="#icon-view"></use>
+                                                    </svg>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        <div align="right">
+                                            <button id="@string.Format("btnDelete_{0}", item.ElectronicDegreeInformationId)" name="Delete">
+                                                <span class="esg-icon__container">
+                                                    <svg class="esg-icon">
+                                                        <use xlink:href="#icon-trash"></use>
+                                                    </svg>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+        <div align="left">
+            @WebAdminUI.Resources.ElectronicDegree.Generate.lblNoGeneratedDegree
+            <br /><br />
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    var url = '@Url.Action("_ViewElectronicDegreeInfo","Operations", new { id="param-id" })';
+    var urlDelete = '@Url.Action("Delete","Operations")';
+    var urlGetCancelationCatalog = '@Url.Action("CancelationCatalog","Operations")';
+</script>

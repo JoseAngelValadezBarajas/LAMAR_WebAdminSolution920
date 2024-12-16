@@ -1,0 +1,88 @@
+<!--
+    <copyright file="_AddCourse.cshtml" company="Ellucian">
+        Copyright 2020 - 2022 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+
+@model WebAdminUI.Areas.ElectronicCertificate.Models.Generation.CoursesViewModel
+@if (Model != null)
+{
+    <div id="divAddCourseModal" class="esg-modal-dialog">
+        <div class="esg-modal-dialog__header">
+            <button class="esg-modal-dialog__close esg-icon__container"
+                    type="button"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                    id="btnClose">
+                <svg class="esg-icon esg-icon--large esg-icon--neutral">
+                    <use xlink:href="#icon-close"></use>
+                </svg>
+            </button>
+            <h3 class="esg-modal-dialog__title">
+                @WebAdminUI.Resources.ElectronicCertificate.Generate.lblAddCourses
+            </h3>
+        </div>
+        <div class="esg-modal-dialog__body">
+            <div class="esg-col-lg-12 esg-col-md-12 esg-col-sm-12 esg-col-xs-12">
+                <span class="esg-form__label">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCourse</span> <br />
+            </div>
+            <ul id="ullCourses_{0}" class="esg-list-group" style="display:none">
+                @foreach (var course in Model.CoursesDetailViewModel)
+                {
+                    <li id=@string.Format("course_{0}", course.CourseName)>
+                        @Html.Label("lblcourse", course.CourseName)
+                    </li>
+                }
+            </ul>
+            <div class="esg-dropdown" id="divAddCourses" style="margin-bottom:5%">
+                <button class="esg-button esg-button--secondary esg-dropdown__toggle" id="ddlAddCourse" )
+                        data-placeholder="false" type="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true" style="text-align:left; width:300px">
+                    @WebAdminUI.Resources.ElectronicCertificate.Generate.lblSelect
+                    <span class="esg-dropdown__icon esg-dropdown__icon--right esg-icon__container" aria-hidden="True"
+                          style="position:absolute; top:33%; left:90%">
+                        <svg class="esg-icon esg-icon--small esg-icon esg-icon--down">
+                            <use xlink:href="#icon-arrow"></use>
+                        </svg>
+                    </span>
+                </button>
+                <ul id="ullCourses" class="esg-dropdown__menu" aria-labelledby="dropdownMenuCheckbox"
+                    style="overflow-y:scroll; position:relative; max-height:200px">
+                    @foreach (var course in Model.CoursesDetailViewModel)
+                    {
+                        <li class="esg-dropdown__menu-item">
+                            <input id=@string.Format("ull_{0}", course.TranscriptDetailId) class="checkboxCourse"
+                                   type="checkbox"
+                                   value=@string.Format("ull_{0}", course.CourseCode)
+                                   data-transcriptdetailid="@course.TranscriptDetailId"
+                                   data-coursecode="@course.CourseCode"
+                                   data-coursename="@course.CourseName"
+                                   data-finalgrade=@course.FinalGrade
+                                   data-credit=@course.Credit
+                                   data-section="@course.Section"
+                                   data-eventtype="@course.EventType"
+                                   data-credittype="@course.CreditType"
+                                   data-graderemarkid=@course.GradeRemarkId
+                                   data-subjecttypeid=@course.SubjectTypeId
+                                   data-coursecycle="@course.CourseCycle"
+                                   data-coursecycleid="@course.CourseCycleId" />
+                            <label for=@string.Format("ull_{0}", course.TranscriptDetailId)>@course.CourseName</label>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="esg-modal-dialog__action-section esg-button-group esg-button-group--fluid" role="group" aria-label="button group">
+                <div class="esg-button-group__item" role="group">
+                    <button id="btnCancelAddCourse" class="esg-button esg-button--secondary esg-modal-dialog__button" type="button">
+                        @WebAdminUI.Resources.ElectronicCertificate.Generate.lblCancel
+                    </button>
+                </div>
+                <div class="esg-button-group__item" role="group">
+                    <button id="btnApplyAddCourse" class="esg-button esg-button--primary esg-modal-dialog__button" type="button">
+                        @WebAdminUI.Resources.ElectronicCertificate.Generate.lblApply
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

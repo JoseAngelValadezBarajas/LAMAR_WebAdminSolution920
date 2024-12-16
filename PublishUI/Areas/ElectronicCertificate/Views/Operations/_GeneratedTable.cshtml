@@ -1,0 +1,417 @@
+<!--
+    <copyright file="_GeneratedTable.cshtml" company="Ellucian">
+        Copyright 2020 - 2021 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@using WebAdminUI.Resources.ElectronicCertificate
+@using PowerCampus.Entities.ElectronicCertificate
+@model List<WebAdminUI.Areas.ElectronicCertificate.Models.Generation.ElectronicCertificateViewModel>
+@{
+    var styleEmptyTable = Model.Count > 0 ? "display: none" : "display: block";
+}
+
+@if (Model.Count > 0)
+{
+    <div id="divECTable" data-pagination="true">
+        <div class="esg-col-xs-12" style="text-align: right; margin-bottom: 1rem;">
+            <span id="FilesSelected" class="esg-icon__label" style="margin-right: 0.5rem;">
+            </span>
+            <button id="btnDownloadFiles" class="esg-button esg-button--secondary" type="button">
+                <span class="esg-icon__container no-pointer-events">
+                    <svg class="esg-icon esg-icon--small no-pointer-events">
+                        <use xlink:href="#icon-download"></use>
+                    </svg>
+                </span>
+                @GeneratedTable.lblDownload
+            </button>
+        </div>
+        <div class="esg-col-xs-12">
+            <div class="esg-table__container">
+                <table id="ecTable" class="esg-table">
+                    <thead class="esg-table-head">
+                        <tr class="esg-table-head__row">
+                            <th class="esg-table-head__th" style="width:4%"></th>
+                            <th class="esg-table-head__th" style="overflow-wrap: break-word; width: 10%">@Html.DisplayNameFor(m => m[0].Folio)</th>
+                            <th class="esg-table-head__th" style="width:18%">@Html.DisplayNameFor(m => m[0].Student)</th>
+                            <th class="esg-table-head__th" style="width:16%">@Html.DisplayNameFor(m => m[0].Campus)</th>
+                            <th class="esg-table-head__th" style="width:16%">@Html.DisplayNameFor(m => m[0].Program)</th>
+                            <th class="esg-table-head__th" style="width:8%">@Html.DisplayNameFor(m => m[0].CertificationType)</th>
+                            <th class="esg-table-head__th" style="width:8%">@Html.DisplayNameFor(m => m[0].IssuingDate)</th>
+                            <th class="esg-table-head__th" style="width:12%">@Html.DisplayNameFor(m => m[0].Status)</th>
+                            <th class="esg-table-head__th" style="width:8%">@GeneratedTable.lblActions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="esg-table-body" id="table_rows_tbody">
+                        @{
+                            int iEC = 0;
+                            foreach (var item in Model)
+                            {
+                                <tr class="esg-table-body__row" id="ecRow_@item.Id">
+                                    <td class="esg-table-body__td">
+                                        <div class="esg-checkbox">
+                                            <input id="chkSelectRow_@item.Id" data-id="@item.ElectronicCertificateFileId" data-status="@item.Status" type="checkbox" style="opacity: 1; position: relative" />
+                                        </div>
+                                    </td>
+                                    <td class="esg-table-body__td" style="overflow-wrap: break-word">
+                                        <label id="Folio_@item.Id">@item.Folio</label>
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        <div style="display: flex; align-items: center;">
+                                            <div class="esg-avatar esg-avatar--small" style="display: flex; align-items: center; justify-content: center; color: white; background-color: #5353d1;">
+                                                <span>@item.Student.Substring(0, 1)</span>
+                                            </div>
+                                            <div style="display: flex; flex-direction: column; margin-left: 1rem;">
+                                                <label>@item.Student</label>
+                                                <label>@item.PeopleCodeId</label>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        <label>@item.Campus</label>
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        <label>@item.Program</label>
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        <label>@item.CertificationType</label>
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        <label>@item.IssuingDate</label>
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        @switch (item.Status)
+                                        {
+                                            case CertificateStatus.Generated:
+                                                <span id="StatusLabel_@item.Id" class="esg-label esg-label--pending">
+                                                    @GeneratedTable.lblGenerated
+                                                </span>
+                                                break;
+                                            case CertificateStatus.Stamped:
+                                                <span id="StatusLabel_@item.Id" class="esg-label esg-label--draft">
+                                                    @GeneratedTable.lblStamped
+                                                </span>
+                                                break;
+                                            case CertificateStatus.Processed:
+                                                <span id="StatusLabel_@item.Id" class="esg-label esg-label--success">
+                                                    @GeneratedTable.lblProcessedCorrectly
+                                                </span>
+                                                break;
+                                            case CertificateStatus.Error:
+                                                <span id="StatusLabel_@item.Id" class="esg-label esg-label--error">
+                                                    @GeneratedTable.lblError
+                                                </span>
+                                                break;
+                                            case CertificateStatus.Canceled:
+                                                <span id="StatusLabel_@item.Id" class="esg-label">
+                                                    @GeneratedTable.lblCanceled
+                                                </span>
+                                                break;
+                                            default:
+                                                <span id="StatusLabel_@item.Id" class="esg-label"></span>
+                                                break;
+                                        }
+                                        @{
+                                            string btnMoreInfoStyle = "display: none;";
+                                            string divPaymentFolioStyle = "display: none;";
+                                            string divSepFilesStyle = "display: none;";
+                                            string btnDownloadXmlStyle = "display: none;";
+                                            string btnDownloadPdfStyle = "display: none;";
+                                            if (item.Status == "P" && (item.HasPdfFile || item.HasXmlFile))
+                                            {
+                                                divSepFilesStyle = "display: block;";
+                                                if (item.HasXmlFile)
+                                                {
+                                                    btnDownloadXmlStyle = "display: block;";
+                                                }
+                                                if (item.HasPdfFile)
+                                                {
+                                                    btnDownloadPdfStyle = "display: block;";
+                                                }
+                                            }
+                                            if (item.Status != "G")
+                                            {
+                                                btnMoreInfoStyle = "display: inline-block;";
+                                            }
+                                            if (item.Status != "S")
+                                            {
+                                                divPaymentFolioStyle = "display: block;";
+                                            }
+                                        }
+                                        <button data-index="@iEC" id="btnMoreInfo_@item.Id" style="@btnMoreInfoStyle">
+                                            <span class="esg-icon__container no-pointer-events">
+                                                <svg class="esg-icon esg-icon--small no-pointer-events">
+                                                    <use xlink:href="#icon-info"></use>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                        <div id="divMoreInfo_@iEC" data-popover="true" style="display: none">
+                                            <div style="position: absolute; right: 16rem;">
+                                                <div class="esg-popover esg-popover--bottom" style="width: 20rem;">
+                                                    <div class="esg-popover__arrow"></div>
+                                                    <div class="esg-popover__content">
+                                                        <div class="esg-popover__text">
+                                                            <div class="esg-container">
+                                                                <div id="divPaymentFolio_@item.Id" class="esg-row no-border" style="padding: 0.5rem 0 0 0; @divPaymentFolioStyle">
+                                                                    <div class="esg-col-xs-6">
+                                                                        <lable>@GeneratedTable.lblPaymentFolio</lable>
+                                                                    </div>
+                                                                    <div class="esg-col-xs-6">
+                                                                        <lable id="PaymentFolio_@item.Id">@item.PaymentFolio</lable>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="esg-row no-border" style="padding: 0.5rem 0 0 0;">
+                                                                    <div class="esg-col-xs-6">
+                                                                        <lable>@GeneratedTable.lblNotes</lable>
+                                                                    </div>
+                                                                    <div class="esg-col-xs-6">
+                                                                        <lable id="Notes_@item.Id">@item.Notes</lable>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="divSepFiles_@item.Id" class="esg-row no-border" style="padding: 0.5rem 0 0 0; @divSepFilesStyle">
+                                                                    <div class="esg-col-xs-6">
+                                                                        <lable>@GeneratedTable.lblFiles</lable>
+                                                                    </div>
+                                                                    <div class="esg-col-xs-6">
+                                                                        <div class="esg-col-xs-12">
+                                                                            <a data-has-file="@item.HasXmlFile" data-size="@item.XmlSize" id="btnDownloadXml_@item.Id"
+                                                                               href="@Url.Action("XMLDownload", "Operations", new { id = item.ElectronicCertificateFileId })"
+                                                                               style="@btnDownloadXmlStyle">
+                                                                                <span class="esg-icon__container no-pointer-events">
+                                                                                    <svg class="esg-icon esg-icon--small no-pointer-events">
+                                                                                        <use xlink:href="#icon-download"></use>
+                                                                                    </svg>
+                                                                                </span>
+                                                                                <div class="esg-icon__label">
+                                                                                    <span>@GeneratedTable.lblDownloadXML</span>
+                                                                                </div>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="esg-col-xs-12">
+                                                                            <a data-has-file="@item.HasPdfFile" data-size="@item.PdfSize" id="btnDownloadPdf_@item.Id"
+                                                                               href="@Url.Action("PDFDownload", "Operations", new { id = item.ElectronicCertificateFileId })"
+                                                                               style="margin-top: 0.5rem; @btnDownloadPdfStyle">
+                                                                                <span class="esg-icon__container">
+                                                                                    <svg class="esg-icon esg-icon--small">
+                                                                                        <use xlink:href="#icon-download"></use>
+                                                                                    </svg>
+                                                                                </span>
+                                                                                <div class="esg-icon__label">
+                                                                                    <span>@GeneratedTable.lblDownloadPDF</span>
+                                                                                </div>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="esg-table-body__td">
+                                        <div align="right">
+                                            <button data-index="@iEC" id="btnMenu_@iEC">
+                                                <span class="esg-icon__container no-pointer-events">
+                                                    <svg class="esg-icon no-pointer-events">
+                                                        <use xlink:href="#icon-more"></use>
+                                                    </svg>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div id="divMenu_@iEC" data-popover="true" style="display: none">
+                                            <div style="position: absolute; right: 11rem;">
+                                                <div class="esg-popover esg-popover--bottom">
+                                                    <div class="esg-popover__arrow" style="left: 87%"></div>
+                                                    <div class="esg-popover__content">
+                                                        <div class="esg-popover__text">
+                                                            <ul class="esg-list-group">
+                                                                <li class="esg-list-group__item">
+                                                                    <button data-id="@item.Id" id="btnViewData_@iEC" class="esg-dropdown__link">
+                                                                        @GeneratedTable.lblViewData
+                                                                    </button>
+                                                                </li>
+                                                                @if (item.Status == "G")
+                                                                {
+                                                                    <li class="esg-list-group__item">
+                                                                        <button data-id="@item.Id" data-file-id="@item.ElectronicCertificateFileId" id="btnStamp_@iEC" class="esg-dropdown__link">
+                                                                            @GeneratedTable.lblStamp
+                                                                        </button>
+                                                                    </li>
+                                                                }
+                                                                <li class="esg-list-group__item">
+                                                                    <button data-id="@item.ElectronicCertificateFileId" id="btnDownload_@iEC" class="esg-dropdown__link">
+                                                                        @GeneratedTable.lblDownload
+                                                                    </button>
+                                                                </li>
+                                                                <li class="esg-list-group__item">
+                                                                    <button data-id="@item.Id" data-file-id="@item.ElectronicCertificateFileId" id="btnUpdateStatus_@iEC" class="esg-dropdown__link">
+                                                                        @GeneratedTable.lblUpdateStatus
+                                                                    </button>
+                                                                </li>
+                                                                <li class="esg-list-group__item">
+                                                                    <button data-id="@item.Id" id="btnDelete_@iEC" class="esg-dropdown__link">
+                                                                        @GeneratedTable.lblDelete
+                                                                    </button>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                iEC++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br />
+        <div class="esg-col-xs-12">
+            @Html.Partial("~/Areas/General/Views/Shared/_Pagination.cshtml", new ViewDataDictionary() {
+                { "Count", Model.Count },
+                { "MinRows", 5 },
+                { "DefaultSelected", 10 }
+            })
+        </div>
+        @Html.Partial("~/Areas/General/Views/Shared/_ConfirmationModal.cshtml", new ViewDataDictionary() {
+            { "Id", "Delete" },
+            { "TitleText", GeneratedTable.lblDeleteTitle },
+            { "InstructionsText", GeneratedTable.lblDeleteInstructions },
+            { "ConfirmationText", GeneratedTable.lblDeleteConfirmation },
+            { "CancelText", GeneratedTable.lblCancel },
+            { "AcceptText", GeneratedTable.lblDelete }
+        })
+    </div>
+    <input id="hdnUpdateStatusId" type="hidden" value="" />
+    <input id="hdnUpdateStatusFileId" type="hidden" value="" />
+    <div id="divModalUpdateStatus" class="esg-modal-dialog" style="display: none;">
+        <div class="esg-modal-dialog__header">
+            <button id="btnCloseModalUpdateStatus" class="esg-modal-dialog__close esg-icon__container" type="button" data-dismiss="modal" aria-hidden="true">
+                <svg class="esg-icon esg-icon--large esg-icon--neutral">
+                    <use xlink:href="#icon-close"></use>
+                </svg>
+            </button>
+            <h3 class="esg-modal-dialog__title">@Operations.lblUpdateStatus</h3>
+        </div>
+        <div class="esg-modal-dialog__body">
+            <div class="esg-container">
+                <div class="esg-col-xs-12">
+                    <div class="esg-col-xs-12 esg-col-sm-6">
+                        <div class="esg-form__group esg-has-feedback">
+                            <label for="NewStatus" class="esg-form__label esg-is-required">@Operations.lblNewStatus</label>
+                            <br />
+                            <div class="esg-form__input-group">
+                                <select class="esg-form__input" id="NewStatus" required="required">
+                                    <option value="" selected>@Generate.lblSelect</option>
+                                    <option value="@CertificateStatus.Canceled">@GeneratedTable.lblCancel</option>
+                                    <option value="@CertificateStatus.Error">@GeneratedTable.lblError</option>
+                                    <option value="@CertificateStatus.Processed">@GeneratedTable.lblProcessedCorrectly</option>
+                                    <option value="@CertificateStatus.Stamped">@GeneratedTable.lblStamped</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="divPaymentFolio" class="esg-col-xs-12 esg-col-sm-6">
+                        <div class="esg-form__group esg-has-feedback">
+                            <label for="PaymentFolio" class="esg-form__label">@Operations.lblPaymentFolio</label>
+                            <br />
+                            <div class="esg-form__input-group">
+                                <input id="PaymentFolio" type="text" class="esg-form__input" value="" maxlength="25" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="divNotes" class="esg-col-xs-12">
+                    <div class="esg-col-xs-12">
+                        <div class="esg-form__group esg-has-feedback">
+                            <label for="Notes" class="esg-form__label">@Operations.lblNotes</label>
+                            <br />
+                            <div class="esg-form__input-group">
+                                <textarea id="Notes" type="text" class="esg-form__input" value="" maxlength="100" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <section id="uploadFilesSection">
+                    <div id="divStampFileTitle" class="esg-col-xs-12">
+                        <h5 class="esg-form__label">@Operations.lblUpdateXml</h5>
+                    </div>
+                    <div id="divProcessFileTitle" class="esg-col-xs-12">
+                        <h5 class="esg-form__label">@Operations.lblUploadFiles</h5>
+                    </div>
+                    <div class="esg-col-xs-12">
+                        <div class="esg-col-xs-12">
+                            <button id="btnChooseFile" class="esg-button esg-button--secondary" type="button" style="margin-bottom: 1rem;">
+                                @Operations.lblChooseFile
+                            </button>
+                            <input id="btnLoadFile" type="file" name="btnLoadFile" accept="" onchange="onECFileChange(this.files)" style="display: none" />
+                        </div>
+                    </div>
+                    <div id="divFilesTable" class="esg-col-xs-12" style="padding-bottom: 1rem">
+                        <div class="esg-table__container">
+                            <table class="esg-table">
+                                <thead class="esg-table-head">
+                                    <tr class="esg-table-head__row">
+                                        <th class="esg-table-head__th" style="width:60%">@Operations.lblName</th>
+                                        <th class="esg-table-head__th" style="width:20%">@Operations.lblType</th>
+                                        <th class="esg-table-head__th" style="width:20%">@Operations.lblSize</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="esg-table-body" id="table_rows_tbody">
+                                    <tr id="XmlFileRow" class="esg-table-body__row">
+                                        <td class="esg-table-body__td">
+                                            <label id="XmlName"></label>
+                                        </td>
+                                        <td class="esg-table-body__td">
+                                            <label id="XmlType"></label>
+                                        </td>
+                                        <td class="esg-table-body__td">
+                                            <label id="XmlSize"></label>
+                                        </td>
+                                    </tr>
+                                    <tr id="PdfFileRow" class="esg-table-body__row">
+                                        <td class="esg-table-body__td">
+                                            <label id="PdfName"></label>
+                                        </td>
+                                        <td class="esg-table-body__td">
+                                            <label id="PdfType"></label>
+                                        </td>
+                                        <td class="esg-table-body__td">
+                                            <label id="PdfSize"></label>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="divNoFiles" class="esg-col-xs-12">
+                        <div style="padding: 1.5rem; background-color: #f8f8f8">
+                            @Operations.lblNoUploadedFiles
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="esg-modal-dialog__action-section esg-button-group esg-button-group--fluid" role="group" aria-label="button group">
+            <div class="esg-button-group__item" role="group">
+                <button id="btnCancelUpdateStatus" class="esg-button esg-button--secondary esg-modal-dialog__button" type="button">
+                    @Operations.lblCancel
+                </button>
+            </div>
+            <div class="esg-button-group__item" role="group">
+                <button id="btnUpdateStatus" class="esg-button esg-button--primary esg-modal-dialog__button" type="button">
+                    @Operations.lblSave
+                </button>
+            </div>
+        </div>
+    </div>
+}
+<div id="divECEmptyTable" class="esg-col-xs-12" style="@styleEmptyTable">
+    <div style="padding: 1.5rem; background-color: #f8f8f8">
+        @GeneratedTable.lblNoGeneratedCertificate
+    </div>
+</div>

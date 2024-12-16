@@ -1,0 +1,81 @@
+﻿@model IEnumerable<WebAdminUI.Models.Issuers.IssuerViewModel>
+
+@{
+    ViewBag.Title = @WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.List;
+}
+
+<div class="esg-page-header">
+    <a class="esg-page-header__button" role="button" title=@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.ButtonBack
+       href="@Url.Action("Menu", "FiscalRecords")">
+        <span class="esg-page-header__icon esg-icon__container">
+            <svg class="esg-icon esg-icon--left">
+                <use xlink:href="#icon-arrow"></use>
+            </svg>
+        </span>
+    </a>
+    <h1 class="esg-page-header__title">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.IssuerFiscalInformation</h1>
+</div>
+<div class="esg-card--panel">
+    <div class="esg-card--panel__heading">
+        <h3 class="esg-card--panel__title"></h3>
+        <span class="esg-card-widget__header-action">
+            <button id="AddNewMapping" type="button" class="esg-button esg-button--secondary esg-button--medium " onclick="window.location = 'Create';">
+                <span class="esg-button__icon esg-icon__container  esg-button-icon--align-left" aria-hidden="true">
+                    <svg class="esg-icon esg-icon--left">
+                        <use xlink:href="#icon-add"></use>
+                    </svg>
+                </span>
+                <span class="button-label">
+                    @Html.ActionLink(@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.btnAddIssuer, "Create")
+                </span>
+            </button>
+        </span>
+    </div>
+    <div class="esg-card--panel__body">
+        <div class="esg-card--panel__sub-heading">
+            <p class="esg-small">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.List</p>
+        </div>
+        <div id="dvCharges" data-pagination="true" class="esg-card--panel__content">
+            <div class="esg-table__container">
+                <table class="esg-table">
+                    <thead class="esg-table-head">
+                        <tr class="esg-table-head__row">
+                            <th class="esg-table-head__button">
+                                @Html.DisplayNameFor(model => model.InvoiceOrganization.TaxpayerId)
+                            </th>
+                            <th class="esg-table-head__button">
+                                @Html.DisplayNameFor(model => model.InvoiceOrganization.CorporateName)
+                            </th>
+                            <th class="esg-table-head__button"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="records_table_rows_tbody" class="esg-table-body">
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+                        <tr class="esg-table-body__row">
+                            <td class="esg-table-body__td">
+                                @Html.DisplayFor(modelItem => item.InvoiceOrganization.TaxpayerId)
+                            </td>
+                            <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                @Html.DisplayFor(modelItem => item.InvoiceOrganization.CorporateName)
+                            </td>
+                            <td class="esg-table-body__td">
+                                @Html.ActionLink(@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Edit, "Edit", new { id = item.InvoiceOrganization.InvoiceOrganizationId })
+                            </td>
+                        </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                <br />
+                @Html.Partial("_Pagination", new ViewDataDictionary() { { "Count", (Model == null ? 0 : Model.Count()) }, { "MinRows", 5 }, { "DefaultSelected", 10 } })
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/FR/Pagination")
+}

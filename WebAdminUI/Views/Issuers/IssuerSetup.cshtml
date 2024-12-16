@@ -1,0 +1,169 @@
+﻿@model  WebAdminUI.Models.Issuers.IssuerDefaultViewModel
+
+@{
+    ViewBag.Title = WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.SetupTitle;
+}
+
+<div class="esg-page-header">
+    <a class="esg-page-header__button" role="button" title="@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.ButtonBack" href="@Url.Action("Menu", "FiscalRecords")">
+        <span class="esg-page-header__icon esg-icon__container">
+            <svg class="esg-icon esg-icon--left">
+                <use xlink:href="#icon-arrow"></use>
+            </svg>
+        </span>
+    </a>
+    <h1 class="esg-page-header__title">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.SetupTitle</h1>
+</div>
+<form id="formCreateSetUp">
+    <input id="DefaultId" name="IssDefaultId" type="hidden" aria-hidden="true" />
+    <input id="DefaultInvoiceOrganizationId" name="IssInvoiceOrganizationId" type="hidden" aria-hidden="true" />
+    <input id="txtUpdate" value="@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Update" type="hidden" aria-hidden="true" />
+
+    <div class="esg-card--panel">
+        <div class="esg-card--panel__body">
+            <div class="esg-card--panel__content">
+                <div class="content-margin">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <fieldset>
+                                <legend>@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.GeneralData</legend>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div id="DefaulTaxpayerIdGroup" class="esg-form__group esg-has-feedback">
+                                            @Html.LabelFor(m => m.IssInvoiceTaxpayerId, new { @class = "esg-form__label" })
+                                            <div class="esg-form__input-group">
+                                                <input id="DefaulTaxpayerId" name="IssInvoiceTaxpayerId" type="text" class="esg-form__input" />
+                                                <div id="DefaulTaxpayerIdDivLookup" class="esg-form__icon esg-icon__container esg-form__icon--submit">
+                                                    <svg class="esg-icon esg-icon--small">
+                                                        <use xlink:href="#icon-lookup"></use>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="dvByAddress">
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <fieldset>
+                                <legend>@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Invoices</legend>
+                                <div id="dvByRFC">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div id="DefaultIssuingAddressGroup" class="esg-form__group esg-has-feedback">
+                                                @Html.LabelFor(m => m.IssIssuingAddress, new { @class = "esg-form__label" })
+                                                <select id="DefaultIssuingAddress" name="IssInvoiceExpeditionId" class="esg-form__input"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div id="DefaultSerialGroup" class="esg-form__group esg-has-feedback">
+                                            @Html.LabelFor(m => m.IssSerialNumber, new { @class = "esg-form__label" })
+                                            <select id="DefaultSerial" name="IssInvoiceReceiptId" class="esg-form__input"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div id="DefaultPaymentConditionsGroup" class="esg-form__group esg-has-feedback">
+                                            @Html.LabelFor(m => m.IssPaymentConditions, new { @class = "esg-form__label" })
+                                            <textarea id="DefaultPaymentCondition" name="IssPaymentConditions" class="esg-form__input" maxlength="500"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <fieldset>
+                                <legend>@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.CreditNotes</legend>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div id="DefaultSerialForNoteGroup" class="esg-form__group esg-has-feedback">
+                                            @Html.LabelFor(m => m.IssSerialNumberCreditNote, new { @class = "esg-form__label" })
+                                            <select id="DefaultSerialForCreditNote" name="IssCreditNoteReceiptId" class="esg-form__input"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div id="DefaultSerialForNoteGroup" class="esg-form__group esg-has-feedback">
+                                            <label for="DefaultChargeCreditCode" class="esg-form__label">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.ChargeCreditCode</label>
+                                            <select id="DefaultChargeCreditCode" name="IssChargeCreditCodeId" class="esg-form__input"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div id="DefaultSerialForNoteGroup" class="esg-form__group esg-has-feedback">
+                                            <label for="DefaultChargeCreditCodeTax" class="esg-form__label">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.ChargeCreditCodeTax</label>
+                                            <select id="DefaultChargeCreditCodeTax" name="IssChargeCreditCodeTaxId" class="esg-form__input"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div id="alertError" class="esg-alert esg-alert--error no-display" role="alert">
+                                <span class="esg-alert__icon-wrapper">
+                                    <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                                        <svg class="esg-icon esg-icon--error-dark">
+                                            <use xlink:href="#icon-error"></use>
+                                        </svg>
+                                    </span>
+                                </span>
+                                <div class="esg-alert__message">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Error</div>
+                            </div>
+                            <div id="alertSuccess" class="esg-alert esg-alert--success no-display" role="alert">
+                                <span class="esg-alert__icon-wrapper">
+                                    <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                                        <svg class="esg-icon esg-icon--success-dark">
+                                            <use xlink:href="#icon-check"></use>
+                                        </svg>
+                                    </span>
+                                </span>
+                                <div class="esg-alert__message">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Success</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="esg-card--panel__footer">
+            <div>
+                <div class="esg-button-group" role="group" aria-label="button group">
+                    <input type="button" class="esg-button esg-button--secondary" id="btnCancel" value="@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Cancel" />
+                    <input type="button" class="esg-button esg-button--primary" id="btnSave" value="@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Save" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div id="Overlaydiv" class="esg-modal-overlay no-display"></div>
+<div id="Processing" class="esg-modal-dialog no-display">
+    <div class="esg-spinner-wrapper">
+        <div class="esg-spinner"></div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        var urlGetTaxRegimen = '@Url.Action("GetTaxRegimen", "Issuers")';
+        var urlGetSerialNumber = '@Url.Action("GetSerialNumber", "Issuers")';
+        var urlGetChargeCreditCode = '@Url.Action("GetChargeCreditCode", "Issuers")';
+        var urlSelectIssuerSetUp = '@Url.Action("SelectIssuerSetUp", "Issuers")';
+        var urlGet = '@Url.Action("Get", "Issuers")';
+        var urlCreateIssuerSetUp = '@Url.Action("CreateIssuerSetUp", "Issuers")';
+    </script>
+    @Scripts.Render("~/bundles/FR/IssuerSetup")
+}

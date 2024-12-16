@@ -1,0 +1,81 @@
+<!--
+    <copyright file="_ReceiversTable.cshtml" company="Ellucian">
+        Copyright 2022 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+
+@model IEnumerable<WebAdminUI.Models.Receivers.ReceiverViewModel>
+
+@if (Model != null && Model.Count() > 0)
+{
+    <div id="dvCharges" data-pagination="true" class="esg-card--panel__content">
+        <div class="esg-table__container">
+            <table class="esg-table">
+                <thead class="esg-table-head">
+                    <tr class="esg-table-head__row">
+                        <th class="esg-table-head__button">
+                            @Html.DisplayNameFor(model => model.TaxPayerId)
+                        </th>
+                        <th class="esg-table-head__button">
+                            @Html.DisplayNameFor(model => model.CorporateName)
+                        </th>
+                        <th class="esg-table-head__button"></th>
+                    </tr>
+                </thead>
+                <tbody id="records_table_rows_tbody" class="esg-table-body">
+                    @if (Model != null)
+                    {
+                        for (var i = 0; i < Model.Count(); i++)
+                        {
+                            var items = Model.ToList();
+                            <tr class="esg-table-body__row" id="@i">
+                                <td class="esg-table-body__td">
+                                    @Html.DisplayFor(modelItem => items[i].TaxPayerId)
+                                </td>
+                                <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                    @Html.DisplayFor(modelItem => items[i].CorporateName)
+                                </td>
+                                <td class="esg-table-body__td">
+                                    @Html.ActionLink(@WebAdminUI.Views.Receivers.App_LocalResources.CreateResource.Edit, "Edit", new { id = items[i].InvoiceTaxpayerId, foreignId = items[i].InvoiceForeignTaxpayerId })
+                                    @if (!items[i].HasInvoice)
+                                    {
+                                        <a class="btnOpenDeleteModal"
+                                           data-taxpayer-id="@items[i].InvoiceTaxpayerId"
+                                           data-taxpayer="@items[i].TaxPayerId"
+                                           data-name="@items[i].CorporateName"
+                                           style="margin-left:10px">
+                                            @WebAdminUI.Views.Receivers.App_LocalResources.CreateResource.Delete
+                                        </a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <br />
+            @Html.Partial("_Pagination", new ViewDataDictionary() { { "Count", (Model == null ? 0 : Model.Count()) }, { "MinRows", 5 }, { "DefaultSelected", 10 } })
+        </div>
+    </div>
+}
+else
+{
+    <div id="noResultsAlert" class="row" style="margin-left: 20px">
+        <div class="col-xs-12">
+            <div class="esg-alert esg-alert--warning" role="alert">
+                <span class="esg-alert__icon-wrapper">
+                    <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                        <svg class="esg-icon esg-icon--warning-dark">
+                            <use xlink:href="#icon-warning"></use>
+                        </svg>
+                    </span>
+                </span>
+                <div class="esg-alert__message">
+                    @WebAdminUI.Views.Receivers.App_LocalResources.CreateResource.lblNoResults
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@Scripts.Render("~/bundles/FR/Pagination")

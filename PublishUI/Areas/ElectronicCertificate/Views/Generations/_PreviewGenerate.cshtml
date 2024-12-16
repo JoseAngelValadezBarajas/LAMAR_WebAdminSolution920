@@ -1,0 +1,377 @@
+<!--
+    <copyright file="_Student.cshtml" company="Ellucian">
+        Copyright 2020 - 2022 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model WebAdminUI.Areas.ElectronicCertificate.Models.Generation.GenerationViewModel
+
+<div id="stpPreviewGenerate" style="display:none;" class="esg-card--panel">
+    <div class="esg-card--panel__body">
+        <div class="esg-card--panel__content">
+            <div>
+                <h3>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblPreviewData</h3>
+                <div>
+                    <div class="esg-container">
+                        <div class="esg-col-xs-6 esg-grid-overlay">
+                            <h4><strong>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblControl</strong></h4>
+                        </div>
+                        <div class="esg-col-xs-6 esg-align-right esg-grid-overlay">
+                            <div id="divEditFolio" class="esg-page-header__options">
+                                <span class="esg-icon__container">
+                                    <svg class="esg-icon esg-icon--small">
+                                        <use xlink:href="#icon-edit"></use>
+                                    </svg>
+                                </span>
+                                <a id="btnEditFolio">
+                                    <div class="esg-icon__label">
+                                        <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblEdit</span>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div id="divSaveCancelFolio" class="esg-page-header__options" style="display: none;">
+                                <div style="display:inline-block; margin-right:1rem;">
+                                    <a id="btnCancelEditFolio">
+                                        <div class="esg-icon__label">
+                                            <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCancel</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div style="display:inline-block">
+                                    <span class="esg-icon__container--fill">
+                                        <svg class="esg-icon esg-icon--small">
+                                            <use xlink:href="#icon-document"></use>
+                                        </svg>
+                                    </span>
+                                    <a id="btnSaveFolio">
+                                        <div class="esg-icon__label">
+                                            <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblSave</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="esg-container">
+                        <div class="esg-col-xs-12 esg-grid-overlay">
+                            <div id="folioFormGroup" class="esg-form__group">
+                                <label class="esg-form__label esg-is-required" for="inputFolio">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblFolio</label>
+                                <div class="esg-form__input-group">
+                                    <input class="esg-form__input" type="text" id="inputFolio" disabled />
+                                    <div id="divFolioErrorIcon"></div>
+                                </div>
+                                <div id="divFolioErrorEmpty" class="esg-form__feedback-text" style="display: none">
+                                    @WebAdminUI.Resources.ElectronicCertificate.Generate.lblEnterFolio
+                                </div>
+                                <div id="divFolioErrorCharacters" class="esg-form__feedback-text" style="display: none">
+                                    @WebAdminUI.Resources.ElectronicCertificate.Generate.lblErrorMaxChar
+                                </div>
+                            </div>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="esg-container">
+                        <div class="esg-col-xs-12 esg-grid-overlay">
+                            <h4><strong>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblStudent</strong></h4>
+                        </div>
+                    </div>
+                    <div class="esg-container">
+                        <div class="esg-col-xs-12">
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblPeopleIdPreview</span>
+                                <span id="previewStudentPeopleId"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCurpPreview</span>
+                                <span id="previewStudentCurp"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblNamePreview</span>
+                                <span id="previewStudentName"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblFirstSurnamePreview</span>
+                                <span id="previewStudentFirstSurname"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblSecondSurnamePreview</span>
+                                <span id="previewStudentSecondSurname"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblGenderIdentityPreview</span>
+                                <span id="previewStudentGenderIdentity"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblBirthDatePreview</span>
+                                <span id="previewStudentBirthDate"></span>
+                            </p>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="esg-container">
+                        <div class="esg-col-xs-12 esg-grid-overlay">
+                            <h4><strong>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblInstitution</strong></h4>
+                        </div>
+                    </div>
+                    <div class="esg-container">
+                        <div class="esg-col-xs-12">
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblNameIdPreview</span>
+                                <span id="previewInstitutionNameId"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblSigningInstitutionId</span>
+                                <span id="previewSigningInstitutionId"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblNamePreview</span>
+                                <span id="previewInstitutionName"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCampusIdPreview</span>
+                                <span id="previewInstitutionCampusId"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCampusPreview</span>
+                                <span id="previewInstitutionCampus"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblFederalEntityIdPreview</span>
+                                <span id="previewInstitutionFederalEntityId"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblFederalEntityPreview</span>
+                                <span id="previewInstitutionFederalEntity"></span>
+                            </p>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="esg-container">
+                        <div class="esg-col-xs-12 esg-grid-overlay">
+                            <h4><strong>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblResponsible</strong></h4>
+                        </div>
+                    </div>
+                    <div class="esg-container">
+                        <div class="esg-col-xs-12">
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCurpPreview</span>
+                                <span id="previewResponsibleCurp"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblNamePreview</span>
+                                <span id="previewResponsibleName"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblFirstSurnamePreview</span>
+                                <span id="previewResponsibleFirstSurname"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblSecondSurnamePreview</span>
+                                <span id="previewResponsibleSecondSurname"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblJobTitleIdPreview</span>
+                                <span id="previewResponsibleJobTitleId"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblJobTitlePreview</span>
+                                <span id="previewResponsibleJobTitle"></span>
+                            </p>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="esg-container">
+                        <div class="esg-col-xs-12 esg-grid-overlay">
+                            <h4><strong>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblMajor</strong></h4>
+                        </div>
+                    </div>
+                    <div class="esg-container">
+                        <div class="esg-col-xs-12">
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblIdPreview</span>
+                                <span id="previewMajorId"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblNamePreview</span>
+                                <span id="previewMajorName"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblPeriodTypeIdPreview</span>
+                                <span id="previewMajorPeriodTypeId"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblPeriodTypePreview</span>
+                                <span id="previewMajorPeriodType"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblPlanCodePreview</span>
+                                <span id="previewMajorPlanCode"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblStudyLevelIdPreview</span>
+                                <span id="previewMajorStudyLevelId"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblStudyLevelPreview</span>
+                                <span id="previewMajorStudyLevel"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblMinimumGradePreview</span>
+                                <span id="previewMajorMinimumGrade"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblMaximumGradePreview</span>
+                                <span id="previewMajorMaximumGrade"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblMinPassingGradePreview</span>
+                                <span id="previewMinPassingGrade"></span>
+                            </p>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="esg-container">
+                        <div class="esg-col-xs-12 esg-grid-overlay">
+                            <h4><strong>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblRvoe</strong></h4>
+                        </div>
+                    </div>
+                    <div class="esg-container">
+                        <div class="esg-col-xs-12">
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblNumberPreview</span>
+                                <span id="previewRvoeNumber"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblIssuingDatePreview</span>
+                                <span id="previewRvoeIssuingDate"></span>
+                            </p>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="esg-container">
+                        <div class="esg-col-xs-12 esg-grid-overlay">
+                            <h4><strong>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCourses</strong></h4>
+                        </div>
+                    </div>
+                    <div class="esg-container">
+                        <div class="esg-col-xs-12">
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblTotalPreview</span>
+                                <span id="previewCoursesTotal"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblAssignedPreview</span>
+                                <span id="previewCoursesAssigned"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblAveragePreview</span>
+                                <span id="previewCoursesAverage"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblTotalCreditsPreview</span>
+                                <span id="previewCoursesTotalCredits"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblObtainedCreditsPreview</span>
+                                <span id="previewCoursesObtainedCredits"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCyclesTotal</span>
+                                <span id="previewCyclesTotal"></span>
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="esg-container">
+                            <div class="esg-col-xs-12 esg-grid-overlay">
+                                <div class="esg-table__container">
+                                    <table id="courses_table" class="esg-table">
+                                        <thead class="esg-table-head">
+                                            <tr class="esg-table-head__row">
+                                                <th class="esg-table-head__th" style="width:10%">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCycleRequired</th>
+                                                <th class="esg-table-head__th" style="width:10%">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblIdRequired</th>
+                                                <th class="esg-table-head__th" style="width:25%">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblName</th>
+                                                <th class="esg-table-head__th" style="width:10%">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblGradeRequired</th>
+                                                <th class="esg-table-head__th" style="width:20%">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblObservations</th>
+                                                <th class="esg-table-head__th" style="width:15%">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblTypeRequired</th>
+                                                <th class="esg-table-head__th" style="width:10%">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCreditsRequired</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="esg-table-body" id="coursesPreview_table_rows_tbody">
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br />
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="esg-container">
+                        <div class="esg-col-xs-12 esg-grid-overlay">
+                            <h4><strong>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblIssuingDegree</strong></h4>
+                        </div>
+                    </div>
+                    <div class="esg-container">
+                        <div class="esg-col-xs-12">
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCertificationTypeIdPreview</span>
+                                <span id="previewIssuingDegreeCertificationTypeId"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblCertificationTypePreview</span>
+                                <span id="previewIssuingDegreeCertificationType"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblIssuingDatePreview</span>
+                                <span id="previewIssuingDegreeIssuingDate"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblIssuingPlaceIdPreview</span>
+                                <span id="previewIssuingDegreeIssuingPlaceId"></span>
+                            </p>
+                            <p class="datum">
+                                <span>@WebAdminUI.Resources.ElectronicCertificate.Generate.lblIssuingPlacePreview</span>
+                                <span id="previewIssuingDegreeIssuingPlace"></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="esg-container" style="text-align:end">
+                <div class="eds-button-group" role="group" style="margin-top:1rem" aria-label="button group">
+                    <button class="eds-button eds-button--secondary" id="btnBackIssuingCertificate" type="button">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblBack</button>
+                    <button class="eds-button eds-button--primary" id="btnGenerateCertificate" type="button">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblGenerate</button>
+                </div>
+            </div>
+            <div class="esg-container">
+                <div id="divGenerateError" style="display:none">
+                    <div class="esg-alert esg-alert--error col-xs-12" role="alert">
+                        <span class="esg-alert__icon-wrapper">
+                            <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                                <svg class="esg-icon esg-icon--error-dark">
+                                    <use xlink:href="#icon-check"></use>
+                                </svg>
+                            </span>
+                        </span>
+                        <div class="esg-alert__message">@WebAdminUI.Resources.ElectronicCertificate.Generate.lblErrorLegend</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

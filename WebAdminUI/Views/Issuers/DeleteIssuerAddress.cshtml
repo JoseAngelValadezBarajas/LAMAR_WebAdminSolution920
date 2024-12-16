@@ -1,0 +1,53 @@
+﻿@model WebAdminUI.Models.Issuers.InvoiceExpeditionViewModel
+
+@{
+    ViewBag.Title = WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.DeleteIssuerAddress;
+}
+
+<div>
+    <div class="esg-card--panel">
+        <div class="esg-card--panel__heading">
+            <h3 class="esg-card--panel__title">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.IssuerFiscalInformation</h3>
+        </div>
+        <div class="esg-card--panel__body">
+            <div class="esg-card--panel__sub-heading">
+                <p class="esg-small">@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.Confirm</p>
+            </div>
+            <div class="esg-card--panel__content">
+                <dl class="dl-horizontal">
+                    @Html.HiddenFor(model => model.InvoiceOrganizationId)
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PostalCode)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PostalCode)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.State)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.State)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+    @Html.AntiForgeryToken()
+    <div class="form-actions no-color">
+        <input type="button" class="esg-button esg-button--secondary" value="@WebAdminUI.Views.Issuers.App_LocalResources.IssuerResource.BackIssuer" id="btnBackIssuer" onclick="location.href='@Url.Action("Edit", "Issuers", new { id = Request.QueryString["id"] })'" />
+        <input type="submit" value="Delete" class="btn btn-default" />
+    </div>
+    }
+</div>

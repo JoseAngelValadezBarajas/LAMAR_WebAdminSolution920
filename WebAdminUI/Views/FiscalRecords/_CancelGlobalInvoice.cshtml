@@ -1,0 +1,136 @@
+<!--
+    <copyright file="_CreateGlobalInvoice.cshtml" company="Ellucian">
+        Copyright 2022 Ellucian Company L.P. and its affiliates.
+    </copyright>
+-->
+@model WebAdminUI.Models.FiscalRecords.FiscalRecordViewModel
+
+@{
+    bool disableNext = Model.FiscalRecordStatusEnum != PowerCampus.Entities.enumFiscalRecordStatus.Canceled;
+    bool isCancellationRequest = Model.FiscalRecordStatusEnum == PowerCampus.Entities.enumFiscalRecordStatus.RequestedCancellation;
+    bool providerCannotCancel = Model.FiscalRecordStatusEnum == PowerCampus.Entities.enumFiscalRecordStatus.ProviderCannotCancel;
+}
+
+<div id="stpCancelGlobalInvoice" class="esg-card--panel">
+    <div class="esg-card--panel__body">
+        <div class="esg-card--panel__content">
+            <div class="esg-container">
+                <div class="esg-col-xs-12">
+                    <h4 class="esg-form__label">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblCancelGlobalInvoice</h4>
+                </div>
+                <br />
+                <div class="esg-col-xs-12">
+                    <p>@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblInstructionsCancelGlobalInvoice</p>
+                </div>
+                <div class="esg-col-xs-12">
+                    <div class="esg-table__container">
+                        <br />
+                        <table class="esg-table">
+                            <thead class="esg-table-head">
+                                <tr class="esg-table-head__row">
+                                    <th class="esg-table-head__th">@Html.DisplayNameFor(m => m.expeditionDateTime)</th>
+                                    <th class="esg-table-head__th">@Html.DisplayNameFor(m => m.serialNumber)</th>
+                                    <th class="esg-table-head__th">@Html.DisplayNameFor(m => m.folio)</th>
+                                    <th class="esg-table-head__th">@Html.DisplayNameFor(m => m.receiverTaxPayerId)</th>
+                                    <th class="esg-table-head__th">@Html.DisplayNameFor(m => m.VoucherType)</th>
+                                    <th class="esg-table-head__th">@Html.DisplayNameFor(m => m.requestState)</th>
+                                    <th class="esg-table-head__th"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="esg-table-body">
+                                <tr class="esg-table-body__row">
+                                    <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                        @Html.DisplayFor(model => model.expeditionDateTime)
+                                    </td>
+                                    <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                        @Html.DisplayFor(model => model.serialNumber)
+                                    </td>
+                                    <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                        @Html.DisplayFor(model => model.folio)
+                                    </td>
+                                    <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                        @Html.DisplayFor(model => model.receiverTaxPayerId)
+                                    </td>
+                                    <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                        @Html.DisplayFor(model => model.VoucherType)
+                                    </td>
+                                    <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                        @Html.DisplayFor(model => model.requestState)
+                                    </td>
+                                    <td style="word-wrap:break-word;" class="esg-table-body__td">
+                                        <span>@Html.ActionLink(WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.btnView, "Edit", new { id = Model.InvoiceHeaderId })</span>
+                                        @if (Model.FiscalRecordStatusEnum == PowerCampus.Entities.enumFiscalRecordStatus.ProviderCannotCancel)
+                                        {
+                                            <span style="margin-left:10px">
+                                                <a href="" id="btnReprocess">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.btnReprocess</a>
+                                            </span>
+                                        }
+                                        @if (Model.FiscalRecordStatusEnum == PowerCampus.Entities.enumFiscalRecordStatus.ProviderCannotCancel ||
+                                            Model.FiscalRecordStatusEnum == PowerCampus.Entities.enumFiscalRecordStatus.RequestedCancellation)
+                                        {
+                                            <span style="margin-left:10px">
+                                                <a href="" id="btnDelete">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.btnDeleteRequest</a>
+                                            </span>
+                                        }
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="infoAlert" class="esg-card--panel__content" style="display:@(isCancellationRequest ? "block" : "none")">
+                <div class="esg-container">
+                    <div class="esg-alert esg-alert--info" role="alert">
+                        <span class="esg-alert__icon-wrapper">
+                            <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                                <svg class="esg-icon esg-icon--info-dark">
+                                    <use xlink:href="#icon-error"></use>
+                                </svg>
+                            </span>
+                        </span>
+                        <div class="esg-alert__message">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblInfoAlertStep1</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="errorAlert" class="esg-card--panel__content" style="display:@(providerCannotCancel ? "block" : "none")">
+                <div class="esg-container">
+                    <div class="esg-alert esg-alert--error" role="alert">
+                        <span class="esg-alert__icon-wrapper">
+                            <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                                <svg class="esg-icon esg-icon--error-dark">
+                                    <use xlink:href="#icon-error"></use>
+                                </svg>
+                            </span>
+                        </span>
+                        <div id="errorMessage" class="esg-alert__message">@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.lblErrorAlertStep1</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="successAlert" class="esg-card--panel__content" style="display:none">
+                <div class="esg-container">
+                    <div class="esg-alert esg-alert--success" role="alert">
+                        <span class="esg-alert__icon-wrapper">
+                            <span class="esg-alert__icon esg-icon__container" aria-hidden="True">
+                                <svg class="esg-icon esg-icon--error-dark">
+                                    <use xlink:href="#icon-error"></use>
+                                </svg>
+                            </span>
+                        </span>
+                        <div id="successMessage" class="esg-alert__message"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cancelGlobalInvoiceFooter" class="esg-container" style="text-align:end">
+                <div class="eds-button-group" role="group" style="margin-top:1rem" aria-label="button group">
+                    @Html.ActionLink(WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.btnBack, "ViewAll", null, new { @class = "eds-button eds-button--secondary" })
+                    <button class="eds-button eds-button--primary" id="btnNextNewInvoice" type="button" onclick="moveToStpNewInvoice()" @(disableNext ? "disabled" : "")>@WebAdminUI.Views.FiscalRecords.App_LocalResources.CancelGlobalResource.btnNext</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

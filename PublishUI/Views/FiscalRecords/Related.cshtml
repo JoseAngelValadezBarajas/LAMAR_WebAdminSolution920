@@ -1,0 +1,112 @@
+@model WebAdminUI.Models.FiscalRecords.FiscalRecordOriginViewModel
+@using WebAdminUI.HtmlHelpers
+@using WebAdminUI.Models.FiscalRecords
+
+@{
+    ViewBag.Title = WebAdminUI.Views.FiscalRecords.App_LocalResources.Related.lblTitleRelated;
+    FiscalRecordOriginViewModel related = ViewBag.Related as FiscalRecordOriginViewModel;
+}
+
+<div class="esg-page-header">
+    <a class="esg-page-header__button" role="button" title="@WebAdminUI.Views.Shared.Resources.LayoutResources.btnBack" href="@Url.Action("Menu", "FiscalRecords")">
+        <span class="esg-page-header__icon esg-icon__container">
+            <svg class="esg-icon esg-icon--left">
+                <use xlink:href="#icon-arrow"></use>
+            </svg>
+        </span>
+    </a>
+    <h1 class="esg-page-header__title">@WebAdminUI.Views.FiscalRecords.App_LocalResources.Related.lblTitleRelated</h1>
+</div>
+
+<div class="esg-card--panel">
+    <div class="esg-card--panel__body">
+        <div class="esg-card--panel__content">
+            <div class="content-margin">
+
+                @*Origin*@
+                @if (Model.Origin != null && Model.Origin.Count() > 0)
+                {
+                    <div id="divOrigin" data-pagination="true">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <fieldset>
+                                    <legend>
+                                        <span class="esg-icon__container">
+                                            <svg class="esg-icon esg-icon--right">
+                                                <use xlink:href="#icon-arrow"></use>
+                                            </svg>
+                                        </span>
+                                        <span>@WebAdminUI.Views.FiscalRecords.App_LocalResources.Related.lblOrigin</span><br />
+                                        @if (Model.Origin[0].FiscalRecordType.Equals(PowerCampus.Entities.Constants.FiscalRecordTypeEgreso))
+                                        {
+                                            <span style="margin-left:1.9%; position:relative">@WebAdminUI.Views.FiscalRecords.App_LocalResources.Related.lblCreditNote</span>
+                                        }
+                                        @if (Model.Origin[0].FiscalRecordType.Equals(PowerCampus.Entities.Constants.FiscalRecordTypePago))
+                                        {
+                                            <span style="margin-left:1.9%; position:relative">@WebAdminUI.Views.FiscalRecords.App_LocalResources.Related.lblPaymentReceipt</span>
+                                        }
+                                    </legend>
+                                    <div class="esg-table__container">
+                                        @Html.Partial("_RelatedList", Model.Origin)
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                @Html.Partial("_Pagination", new ViewDataDictionary() { { "Count", (Model.Origin == null ? 0 : Model.Origin.Count()) }, { "MinRows", 5 }, { "DefaultSelected", 10 } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                }
+
+                @*Parent*@
+                @if (Model.Parent != null && Model.Parent.Count() > 0)
+                {
+                    <div id="divParent" data-pagination="true">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <fieldset>
+                                    <legend>
+                                        <span class="esg-icon__container">
+                                            <svg class="esg-icon esg-icon--down">
+                                                <use xlink:href="#icon-arrow"></use>
+                                            </svg>
+                                        </span>
+                                        @if (Model.Parent != null && Model.Parent[0].PaymentMethod != null && Model.Parent[0].FiscalRecordType.Equals(PowerCampus.Entities.Constants.FiscalRecordTypeIngreso) && Model.Parent[0].PaymentMethod.Equals("PUE"))
+                                        {
+                                            <span>@WebAdminUI.Views.FiscalRecords.App_LocalResources.Related.lblChildsSection</span><br />
+                                            <span style="margin-left:1.9%; position:relative">@WebAdminUI.Views.FiscalRecords.App_LocalResources.Related.lblFiscalRecord</span>
+                                        }
+                                        else
+                                        {
+                                            <span>@WebAdminUI.Views.FiscalRecords.App_LocalResources.Related.lblChildsSection</span><br />
+                                        }
+                                    </legend>
+                                    <div class="esg-table__container">
+                                        @Html.Partial("_RelatedList", Model.Parent)
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                @Html.Partial("_Pagination", new ViewDataDictionary() { { "Count", (Model.Parent == null ? 0 : Model.Parent.Count()) }, { "MinRows", 5 }, { "DefaultSelected", 10 } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/FR/Pagination")
+}

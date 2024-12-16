@@ -1,0 +1,98 @@
+@model IEnumerable<WebAdminUI.Models.FiscalRecords.FiscalRecordRelatedViewModel>
+@using WebAdminUI.HtmlHelpers
+@{
+    var hasRealtionshipType = false;
+    var isCurrentCFDI = false;
+
+    if (ViewBag.InvoiceHeaderId == Model.First().InvoiceHeaderId)
+    {
+        isCurrentCFDI = true;
+    }
+    if (Model != null)
+    {
+        hasRealtionshipType = Model.Count(d => !string.IsNullOrEmpty(d.RelationshipType)) > 0;
+    }
+}
+<table class="esg-table">
+    <thead class="esg-table-head">
+        <tr class="esg-table-head__row">
+            <th scope="col" class="esg-table-head__th esg-is-active">
+                @Html.DisplayNameFor(m => m.ExpeditionDateTime)
+            </th>
+            <th scope="col" class="esg-table-head__th esg-is-active">
+                @Html.DisplayNameFor(m => m.UUID)
+            </th>
+            <th scope="col" class="esg-table-head__th esg-is-active">
+                @Html.DisplayNameFor(m => m.Folio)
+            </th>
+            <th scope="col" class="esg-table-head__th esg-is-active">
+                @Html.DisplayNameFor(m => m.SerialNumber)
+            </th>
+            <th scope="col" class="esg-table-head__th esg-is-active">
+                @Html.DisplayNameFor(m => m.RequestState)
+            </th>
+            <th scope="col" class="esg-table-head__th esg-is-active">
+                @Html.DisplayNameFor(m => m.Total)
+            </th>
+            @if ((hasRealtionshipType && !(ViewBag.ShowSupplementChildren ?? false)) || !isCurrentCFDI)
+            {
+                <th scope="col" class="esg-table-head__th esg-is-active">
+                    @WebAdminUI.Views.FiscalRecords.App_LocalResources.Related.lblRelationshipType
+                </th>
+            }
+            <th scope="col" class="esg-table-head__th esg-is-active">
+                @WebAdminUI.Views.FiscalRecords.App_LocalResources.Related.lblFiscalRecordType
+            </th>
+            <th scope="col" class="esg-table-head__th esg-is-active">
+                @WebAdminUI.Views.FiscalRecords.App_LocalResources.Related.lblDetail
+            </th>
+        </tr>
+    </thead>
+    @if (Model != null)
+    {
+        <tbody class="esg-table-body">
+            @foreach (var item in Model)
+            {
+                var btnView = WebAdminUI.Views.FiscalRecords.App_LocalResources.Related.btnView;
+                <tr class="esg-table-body__row">
+                    <td class="esg-table-body__td">
+                        @Html.DateTimeFor(modelItem => item.ExpeditionDateTime, "report")
+                    </td>
+                    <td class="esg-table-body__td">
+                        @Html.DisplayFor(modelItem => item.UUID)
+                    </td>
+                    <td class="esg-table-body__td">
+                        @Html.DisplayFor(modelItem => item.Folio)
+                    </td>
+                    <td class="esg-table-body__td">
+                        @Html.DisplayFor(modelItem => item.SerialNumber)
+                    </td>
+                    <td class="esg-table-body__td">
+                        @Html.DisplayFor(modelItem => item.RequestState)
+                    </td>
+                    <td class="esg-table-body__td text-right">
+                        @Html.CurrencyFor(modelItem => item.Total, "report")
+                    </td>
+                    @if ((hasRealtionshipType && !(ViewBag.ShowSupplementChildren ?? false)) || (!isCurrentCFDI && !item.VoucherType.Equals('I')))
+                    {
+                        <td class="esg-table-body__td">
+                            @Html.DisplayFor(modelItem => item.RelationshipType)
+                            @if (!string.IsNullOrEmpty(item.RelationshipType) && !string.IsNullOrEmpty(item.RelationshipType2))
+                            {
+                                <br />
+                                <br />
+                            }
+                            @Html.DisplayFor(modelItem => item.RelationshipType2)
+                        </td>
+                    }
+                    <td class="esg-table-body__td text-center">
+                        @Html.DisplayFor(modelItem => item.FiscalRecordType)
+                    </td>
+                    <td class="esg-table-body__td text-center">
+                        @Html.ActionLink(btnView, "Edit", "FiscalRecords", new { id = item.InvoiceHeaderId }, new { })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    }
+</table>

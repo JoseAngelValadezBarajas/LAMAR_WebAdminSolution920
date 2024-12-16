@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblAcademicRecords" xml:space="preserve">
+    <value>Registros académicos</value>
+  </data>
+  <data name="lblAssignedPreview" xml:space="preserve">
+    <value>Asignado:</value>
+  </data>
+  <data name="lblAveragePreview" xml:space="preserve">
+    <value>Promedio:</value>
+  </data>
+  <data name="lblBack" xml:space="preserve">
+    <value>Regresar</value>
+  </data>
+  <data name="lblBirthDate" xml:space="preserve">
+    <value>Fecha de nacimiento</value>
+  </data>
+  <data name="lblCampus" xml:space="preserve">
+    <value>Campus</value>
+  </data>
+  <data name="lblCampusCodeConflict" xml:space="preserve">
+    <value>El campo «Clave del campus en la SEP» no se mapeó al configurar «Campus-Instituciones»</value>
+  </data>
+  <data name="lblCampusName" xml:space="preserve">
+    <value>Nombre del campus</value>
+  </data>
+  <data name="lblCampusSepId" xml:space="preserve">
+    <value>ID de campus en la SEP</value>
+  </data>
+  <data name="lblBirthDatePreview" xml:space="preserve">
+    <value>Fecha de nacimiento:</value>
+  </data>
+  <data name="lblCampusIdPreview" xml:space="preserve">
+    <value>ID del campus:</value>
+  </data>
+  <data name="lblCampusPreview" xml:space="preserve">
+    <value>Campus:</value>
+  </data>
+  <data name="lblCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="lblCertificationTypeIdPreview" xml:space="preserve">
+    <value>ID de tipo de certificación:</value>
+  </data>
+  <data name="lblCertificationTypePreview" xml:space="preserve">
+    <value>Tipo de certificación:</value>
+  </data>
+  <data name="lblControl" xml:space="preserve">
+    <value>Control</value>
+  </data>
+  <data name="lblContinue" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="lblCourses" xml:space="preserve">
+    <value>Cursos</value>
+  </data>
+  <data name="lblCoursesMappingConflict" xml:space="preserve">
+    <value>El mapeo de los cursos del plan académico está incompleto.</value>
+  </data>
+  <data name="lblCreditsRequired" xml:space="preserve">
+    <value>Créditos*</value>
+  </data>
+  <data name="lblCurp" xml:space="preserve">
+    <value>CURP</value>
+  </data>
+  <data name="lblCurpPreview" xml:space="preserve">
+    <value>CURP:</value>
+  </data>
+  <data name="lblCycleRequired" xml:space="preserve">
+    <value>Ciclo*</value>
+  </data>
+  <data name="lblEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="lblStudyLevelIdPreview" xml:space="preserve">
+    <value>ID del nivel de estudios:</value>
+  </data>
+  <data name="lblStudyLevelPreview" xml:space="preserve">
+    <value>Nivel de estudios:</value>
+  </data>
+  <data name="lblStudyLevel" xml:space="preserve">
+    <value>Nivel de estudios</value>
+  </data>
+  <data name="lblElectronicCertificate" xml:space="preserve">
+    <value>Certificado electrónico</value>
+  </data>
+  <data name="lblEnterFolio" xml:space="preserve">
+    <value>Ingresar un folio</value>
+  </data>
+  <data name="lblErrorBirthDate" xml:space="preserve">
+    <value>Falta la fecha de nacimiento</value>
+  </data>
+  <data name="lblErrorCampusSepId" xml:space="preserve">
+    <value>El «ID de campus en la SEP» no ha sido mapeado.</value>
+  </data>
+  <data name="lblErrorSigningInstitutionId" xml:space="preserve">
+    <value>El campo "ID institución firmante" no fue mapeado en la configuración de "Instituciones-Campus"</value>
+  </data>
+  <data name="lblErrorCurp" xml:space="preserve">
+    <value>La «CURP» no ha sido mapeada.</value>
+  </data>
+  <data name="lblErrorStudyLevel" xml:space="preserve">
+    <value>El «Nivel de estudios» no ha sido mapeado.</value>
+  </data>
+  <data name="lblErrorFederalEntity" xml:space="preserve">
+    <value>La «Entidad federativa» no ha sido mapeada.</value>
+  </data>
+  <data name="lblErrorFederalEntityCatalogMapping" xml:space="preserve">
+    <value>El «Mapeo del catálogo de la entidad federativa» no ha sido configurado.</value>
+  </data>
+  <data name="lblErrorFirstSurname" xml:space="preserve">
+    <value>El «Primer apellido» no ha sido mapeado.</value>
+  </data>
+  <data name="lblErrorGenderIdentity" xml:space="preserve">
+    <value>El valor obtenido no coincide con las opciones disponibles</value>
+  </data>
+  <data name="lblErrorId" xml:space="preserve">
+    <value>El «ID» no ha sido mapeado.</value>
+  </data>
+  <data name="lblErrorInstitutionSepId" xml:space="preserve">
+    <value>El «ID de institución en la SEP» no ha sido mapeado.</value>
+  </data>
+  <data name="lblErrorIssuingDate" xml:space="preserve">
+    <value>La «Fecha de expedición» no ha sido mapeada.</value>
+  </data>
+  <data name="lblErrorJobTitle" xml:space="preserve">
+    <value>El «Cargo laboral» no ha sido mapeado.</value>
+  </data>
+  <data name="lblErrorMaximumGrade" xml:space="preserve">
+    <value>La «Calificación máxima» no ha sido mapeada.</value>
+  </data>
+  <data name="lblErrorMinimumGrade" xml:space="preserve">
+    <value>La «Calificación mínima» no ha sido mapeada.</value>
+  </data>
+  <data name="lblErrorMinimumPassingGrade" xml:space="preserve">
+    <value>La «Calificación mínima aprobatoria» no ha sido mapeada.</value>
+  </data>
+  <data name="lblErrorMaxChar" xml:space="preserve">
+    <value>El número máximo de caracteres permitido es 40.</value>
+  </data>
+  <data name="lblErrorName" xml:space="preserve">
+    <value>El «Nombre» no ha sido mapeado.</value>
+  </data>
+  <data name="lblErrorNumber" xml:space="preserve">
+    <value>El «Número» no ha sido mapeado.</value>
+  </data>
+  <data name="lblErrorPeopleID" xml:space="preserve">
+    <value>El «ID de persona» no ha sido mapeado.</value>
+  </data>
+  <data name="lblErrorPeriodType" xml:space="preserve">
+    <value>El «Tipo de período» no ha sido mapeado.</value>
+  </data>
+  <data name="lblErrorPlanCode" xml:space="preserve">
+    <value>La «Clave del plan» no ha sido mapeada.</value>
+  </data>
+  <data name="lblFederalEntity" xml:space="preserve">
+    <value>Entidad federativa</value>
+  </data>
+  <data name="lblFederalEntityCatalogMapping" xml:space="preserve">
+    <value>Mapeo del catálogo de la entidad federativa</value>
+  </data>
+  <data name="lblFederalEntityIdPreview" xml:space="preserve">
+    <value>ID de la entidad federativa:</value>
+  </data>
+  <data name="lblFederalEntityPreview" xml:space="preserve">
+    <value>Entidad federativa:</value>
+  </data>
+  <data name="lblFemale" xml:space="preserve">
+    <value>Femenino</value>
+  </data>
+  <data name="lblFirstSurname" xml:space="preserve">
+    <value>Primer apellido</value>
+  </data>
+  <data name="lblFirstSurnamePreview" xml:space="preserve">
+    <value>Primer apellido:</value>
+  </data>
+  <data name="lblFolio" xml:space="preserve">
+    <value>Folio</value>
+  </data>
+  <data name="lblGenderIdentity" xml:space="preserve">
+    <value>Identidad de género</value>
+  </data>
+  <data name="lblGenderIdentityPreview" xml:space="preserve">
+    <value>Identidad de género:</value>
+  </data>
+  <data name="lblGenerateElectronicCertificates" xml:space="preserve">
+    <value>Generar certificados electrónicos</value>
+  </data>
+  <data name="lblGenerateNew" xml:space="preserve">
+    <value>Generar nuevo</value>
+  </data>
+  <data name="lblId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="lblInstitutionCodeConflict" xml:space="preserve">
+    <value>El campo «ID de institución en la SEP» no se mapeó al configurar «Campus-Institución»</value>
+  </data>
+  <data name="lblInstitutionName" xml:space="preserve">
+    <value>Nombre de la institución</value>
+  </data>
+  <data name="lblInstitutionSepId" xml:space="preserve">
+    <value>ID del Nombre de la Institución</value>
+  </data>
+  <data name="lblGradeRequired" xml:space="preserve">
+    <value>Calificación*</value>
+  </data>
+  <data name="lblIdPreview" xml:space="preserve">
+    <value>ID:</value>
+  </data>
+  <data name="lblIdRequired" xml:space="preserve">
+    <value>ID*</value>
+  </data>
+  <data name="lblInstitution" xml:space="preserve">
+    <value>Institución</value>
+  </data>
+  <data name="lblIssuingCertificate" xml:space="preserve">
+    <value>Expedición de certificado</value>
+  </data>
+  <data name="lblIssuingDate" xml:space="preserve">
+    <value>Fecha de expedición</value>
+  </data>
+  <data name="lblJobTitle" xml:space="preserve">
+    <value>Cargo laboral</value>
+  </data>
+  <data name="lblMajor" xml:space="preserve">
+    <value>Carrera</value>
+  </data>
+  <data name="lblIssuingDatePreview" xml:space="preserve">
+    <value>Fecha de expedición:</value>
+  </data>
+  <data name="lblIssuingDegree" xml:space="preserve">
+    <value>Expedición de título</value>
+  </data>
+  <data name="lblIssuingPlaceIdPreview" xml:space="preserve">
+    <value>ID de lugar de expedición:</value>
+  </data>
+  <data name="lblIssuingPlacePreview" xml:space="preserve">
+    <value>Lugar de expedición:</value>
+  </data>
+  <data name="lblIssuingPlace" xml:space="preserve">
+    <value>Lugar de expedición</value>
+  </data>
+  <data name="lblMale" xml:space="preserve">
+    <value>Masculino</value>
+  </data>
+  <data name="lblMaximumGrade" xml:space="preserve">
+    <value>Calificación máxima</value>
+  </data>
+  <data name="lblMinimumGrade" xml:space="preserve">
+    <value>Calificación mínima</value>
+  </data>
+  <data name="lblMinimumPassingGrade" xml:space="preserve">
+    <value>Calificación mínima aprobatoria</value>
+  </data>
+  <data name="lblMaximumGradePreview" xml:space="preserve">
+    <value>Calificación máxima:</value>
+  </data>
+  <data name="lblMinimumGradePreview" xml:space="preserve">
+    <value>Calificación mínima:</value>
+  </data>
+  <data name="lblMinPassingGradePreview" xml:space="preserve">
+    <value>Calificación mínima aprobatoria:</value>
+  </data>
+  <data name="lblName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="lblNameIdPreview" xml:space="preserve">
+    <value>ID de nombre:</value>
+  </data>
+  <data name="lblNamePreview" xml:space="preserve">
+    <value>Nombre:</value>
+  </data>
+  <data name="lblNoCampusAssigned" xml:space="preserve">
+    <value>Su cuenta de operador no tiene un campus asignado</value>
+  </data>
+  <data name="lblNoStudiesPrograms" xml:space="preserve">
+    <value>No hay programas de estudio para mostrar.</value>
+  </data>
+  <data name="lblNumber" xml:space="preserve">
+    <value>Número</value>
+  </data>
+  <data name="lblOperatorCampusConflict" xml:space="preserve">
+    <value>Este campus no está asignado a su cuenta de operador.</value>
+  </data>
+  <data name="lblNumberPreview" xml:space="preserve">
+    <value>Número:</value>
+  </data>
+  <data name="lblObservations" xml:space="preserve">
+    <value>Observaciones</value>
+  </data>
+  <data name="lblObtainedCreditsPreview" xml:space="preserve">
+    <value>Créditos obtenidos:</value>
+  </data>
+  <data name="lblPeopleID" xml:space="preserve">
+    <value>ID de persona</value>
+  </data>
+  <data name="lblPeopleIdPreview" xml:space="preserve">
+    <value>ID de persona:</value>
+  </data>
+  <data name="lblPeriodTypeIdPreview" xml:space="preserve">
+    <value>ID de tipo de período:</value>
+  </data>
+  <data name="lblPeriodTypePreview" xml:space="preserve">
+    <value>Tipo de período:</value>
+  </data>
+  <data name="lblPlanCodePreview" xml:space="preserve">
+    <value>Clave del plan:</value>
+  </data>
+  <data name="lblJobTitleIdPreview" xml:space="preserve">
+    <value>ID de cargo laboral:</value>
+  </data>
+  <data name="lblJobTitlePreview" xml:space="preserve">
+    <value>Cargo laboral:</value>
+  </data>
+  <data name="lblPreviewData" xml:space="preserve">
+    <value>Vista previa de los datos</value>
+  </data>
+  <data name="lblPeriodType" xml:space="preserve">
+    <value>Tipo de período</value>
+  </data>
+  <data name="lblPlanCode" xml:space="preserve">
+    <value>Clave del plan</value>
+  </data>
+  <data name="lblPreviewGenerate" xml:space="preserve">
+    <value>Previsualizar y generar</value>
+  </data>
+  <data name="lblProgram" xml:space="preserve">
+    <value>Programa</value>
+  </data>
+  <data name="lblResponsible" xml:space="preserve">
+    <value>Responsable</value>
+  </data>
+  <data name="lblResponsibleCampusConflict" xml:space="preserve">
+    <value>Este campus no tiene ningún responsable asignado.</value>
+  </data>
+  <data name="lblRvoe" xml:space="preserve">
+    <value>RVOE</value>
+  </data>
+  <data name="lblRvoeInfoConflict" xml:space="preserve">
+    <value>La información sobre el RVOE está incompleta.</value>
+  </data>
+  <data name="lblSave" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="lblSecondSurname" xml:space="preserve">
+    <value>Segundo apellido</value>
+  </data>
+  <data name="lblSecondSurnamePreview" xml:space="preserve">
+    <value>Segundo apellido:</value>
+  </data>
+  <data name="lblSelect" xml:space="preserve">
+    <value>Seleccione...</value>
+  </data>
+  <data name="lblStatus" xml:space="preserve">
+    <value>Estatus</value>
+  </data>
+  <data name="lblStudent" xml:space="preserve">
+    <value>Alumno</value>
+  </data>
+  <data name="lblStudiesPrograms" xml:space="preserve">
+    <value>Programas de estudio</value>
+  </data>
+  <data name="lblStudiesProgramsInstructions" xml:space="preserve">
+    <value>Seleccionar la opción para la que debe generarse el título:</value>
+  </data>
+  <data name="lblStudiesProgramsStatus" xml:space="preserve">
+    <value>Estatus de los programas de estudio</value>
+  </data>
+  <data name="lblTerm" xml:space="preserve">
+    <value>Período</value>
+  </data>
+  <data name="lblTotalCreditsPreview" xml:space="preserve">
+    <value>Total de créditos:</value>
+  </data>
+  <data name="lblTotalPreview" xml:space="preserve">
+    <value>Total:</value>
+  </data>
+  <data name="lblTypeRequired" xml:space="preserve">
+    <value>Tipo*</value>
+  </data>
+  <data name="lblValidate" xml:space="preserve">
+    <value>Validar</value>
+  </data>
+  <data name="lblAcceptValidate" xml:space="preserve">
+    <value>Aceptar y validar</value>
+  </data>
+  <data name="lblGenerate" xml:space="preserve">
+    <value>Generar</value>
+  </data>
+  <data name="lblIssuingCertificateModalTitle" xml:space="preserve">
+    <value>La información del certificado total está incompleta</value>
+  </data>
+  <data name="lblLessTotalCourses" xml:space="preserve">
+    <value>El número de cursos asignados es menor que el total de los cursos.</value>
+  </data>
+  <data name="lblLessTotalCredits" xml:space="preserve">
+    <value>El número de créditos obtenidos es menor que el total de los créditos.</value>
+  </data>
+  <data name="lblTotalCourses" xml:space="preserve">
+    <value>Total de cursos</value>
+  </data>
+  <data name="lblAsignedCourses" xml:space="preserve">
+    <value>Cursos asignados</value>
+  </data>
+  <data name="lblAverage" xml:space="preserve">
+    <value>Promedio</value>
+  </data>
+  <data name="lblCertificationType" xml:space="preserve">
+    <value>Tipo de certificación</value>
+  </data>
+  <data name="lblObtainedCredits" xml:space="preserve">
+    <value>Créditos obtenidos</value>
+  </data>
+  <data name="lblTotalCredits" xml:space="preserve">
+    <value>Total de créditos</value>
+  </data>
+  <data name="lblErrorLegend" xml:space="preserve">
+    <value>Se produjo un error al procesar su solicitud para generar un certificado electrónico. Revise los archivos de registro para obtener más detalles.</value>
+  </data>
+  <data name="lblEnterIssuingDate" xml:space="preserve">
+    <value>Ingrese una fecha de expedición</value>
+  </data>
+  <data name="lblEnterValidFormat" xml:space="preserve">
+    <value>Ingrese una fecha de expedición utilizando el formato AAAA-MM-DD</value>
+  </data>
+  <data name="lblSelectCertificationType" xml:space="preserve">
+    <value>Seleccione un tipo de certificación</value>
+  </data>
+  <data name="lblSelectIssuingPlace" xml:space="preserve">
+    <value>Seleccione un lugar de expedición</value>
+  </data>
+  <data name="lblCredits" xml:space="preserve">
+    <value>Créditos</value>
+  </data>
+  <data name="lblCycle" xml:space="preserve">
+    <value>Ciclo</value>
+  </data>
+  <data name="lblGrade" xml:space="preserve">
+    <value>Calificación</value>
+  </data>
+  <data name="lblInclude" xml:space="preserve">
+    <value>Incluye</value>
+  </data>
+  <data name="lblType" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="lblViewData" xml:space="preserve">
+    <value>Ver datos</value>
+  </data>
+  <data name="lblFolioPreview" xml:space="preserve">
+    <value>Folio:</value>
+  </data>
+  <data name="lblCreditType" xml:space="preserve">
+    <value>Tipo de crédito:</value>
+  </data>
+  <data name="lblSection" xml:space="preserve">
+    <value>Sección:</value>
+  </data>
+  <data name="lblType1" xml:space="preserve">
+    <value>Tipo:</value>
+  </data>
+  <data name="lblAdd" xml:space="preserve">
+    <value>Agregar</value>
+  </data>
+  <data name="lblAddCourses" xml:space="preserve">
+    <value>Agregar cursos</value>
+  </data>
+  <data name="lblApply" xml:space="preserve">
+    <value>Aplicar</value>
+  </data>
+  <data name="lblCourse" xml:space="preserve">
+    <value>*Curso</value>
+  </data>
+  <data name="lblError" xml:space="preserve">
+    <value>Debe seleccionar al menos un curso antes de continuar el proceso y poder generar un certificado electrónico.</value>
+  </data>
+  <data name="lblErrorCycle" xml:space="preserve">
+    <value>Debe establecer un ciclo para cada curso incluido. Después, podrá continuar el proceso para poder generar un certificado electrónico</value>
+  </data>
+  <data name="lblSigningInstitutionId" xml:space="preserve">
+    <value>ID institución firmante</value>
+  </data>
+  <data name="lblCyclesTotal" xml:space="preserve">
+    <value>Número total de ciclos:</value>
+  </data>
+  <data name="lblSigningCodeConflict" xml:space="preserve">
+    <value>El campo "ID institución firmante" no fue mapeado en la configuración de "Instituciones-Campus"</value>
+  </data>
+</root>

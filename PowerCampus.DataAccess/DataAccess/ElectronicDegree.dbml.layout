@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 15.75, 26.875" name="ElectronicDegree">
+	<DataContextMoniker Name="/ElectronicDegreeDataContext" />
+	<nestedChildShapes>
+		<classShape Id="952e6921-5ee1-4744-a30f-eb37a91f8cf7" isExpanded="false" absoluteBounds="3.5, 13.5, 2, 0.44999999999999929">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeTransaction" />
+			<nestedChildShapes>
+				<elementListCompartment Id="cd718f3c-9cac-41dd-a865-fa3e93280d36" absoluteBounds="3.515, 13.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<classShape Id="2b43bd77-1882-46c5-babf-93b71eb4630a" isExpanded="false" absoluteBounds="0.75, 0.75, 2, 0.44999999999999996">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/ABT_OPTIONRIGHT" />
+			<nestedChildShapes>
+				<elementListCompartment Id="21c5567d-c26f-4571-954d-efe8e0e8e96a" absoluteBounds="0.76499999999999968, 1.21, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<classShape Id="4600e5d8-8e7a-4d5a-8ab1-11a3640e9551" isExpanded="false" absoluteBounds="0.75, 13.5, 2, 0.44999999999999929">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/ABT_USER" />
+			<nestedChildShapes>
+				<elementListCompartment Id="318099ba-835b-485c-bdd8-a27df6214546" absoluteBounds="0.76499999999999968, 13.96, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<associationConnector edgePoints="[(2.75 : 13.725); (2.97916666666667 : 13.725 : JumpStart); (3.14583333333333 : 13.725 : JumpEnd); (3.5 : 13.725)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ABT_USER/ABT_USER_ElectronicDegreeTransaction" />
+			<nodes>
+				<classShapeMoniker Id="4600e5d8-8e7a-4d5a-8ab1-11a3640e9551" />
+				<classShapeMoniker Id="952e6921-5ee1-4744-a30f-eb37a91f8cf7" />
+			</nodes>
+		</associationConnector>
+		<classShape Id="e6f54a4d-2b27-4e14-b4fe-3c5079ce9870" isExpanded="false" absoluteBounds="0.75, 12.125, 2, 0.44999999999999929">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/CODE_ABREVIATIONTITLE" />
+			<nestedChildShapes>
+				<elementListCompartment Id="38b2933a-4310-42ab-ab7d-99805e2171cc" absoluteBounds="0.76499999999999968, 12.585, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<classShape Id="90007384-a7b9-4172-8ffc-034c2767f65f" isExpanded="false" absoluteBounds="3.5, 11.5, 2, 0.44999999999999929">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/Signer" />
+			<nestedChildShapes>
+				<elementListCompartment Id="c3a234d2-dd48-4791-bb2e-8a30b3c769f7" absoluteBounds="3.5149999999999997, 11.96, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<associationConnector edgePoints="[(1.43419230769231 : 13.5); (3.125 : 13.1139230769231); (3.125 : 12.0429851060868); (3.20027365477618 : 12.0246916778825 : JumpStart); (3.36222634522382 : 11.9853330214706 : JumpEnd); (3.50761438461538 : 11.95)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ABT_USER/ABT_USER_Signer" />
+			<nodes>
+				<classShapeMoniker Id="4600e5d8-8e7a-4d5a-8ab1-11a3640e9551" />
+				<classShapeMoniker Id="90007384-a7b9-4172-8ffc-034c2767f65f" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(2.75 : 12.125); (2.91884656585485 : 12.0856024679672 : JumpStart); (3.08115343414515 : 12.0477308653661 : JumpEnd); (3.20009656585485 : 12.0199774679672 : JumpStart); (3.36240343414515 : 11.9821058653661 : JumpEnd); (3.5 : 11.95)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/CODE_ABREVIATIONTITLE/CODE_ABREVIATIONTITLE_Signer" />
+			<nodes>
+				<classShapeMoniker Id="e6f54a4d-2b27-4e14-b4fe-3c5079ce9870" />
+				<classShapeMoniker Id="90007384-a7b9-4172-8ffc-034c2767f65f" />
+			</nodes>
+		</associationConnector>
+		<classShape Id="51a9266b-2269-42da-86d2-d38772bc399f" isExpanded="false" absoluteBounds="3.5, 15.875, 2, 0.45000000000000107">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeInstitution" />
+			<nestedChildShapes>
+				<elementListCompartment Id="60179262-99ca-4038-b401-e8a5597269f7" absoluteBounds="3.5149999999999997, 16.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<associationConnector edgePoints="[(2.74030769230769 : 13.95); (3.00357443490112 : 14.2132667425934 : JumpStart); (3.12142556509888 : 14.3311178727912 : JumpEnd); (3.40625 : 14.6159423076923); (3.40625 : 15.78125); (3.5 : 15.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ABT_USER/ABT_USER_ElectronicDegreeInstitution" />
+			<nodes>
+				<classShapeMoniker Id="4600e5d8-8e7a-4d5a-8ab1-11a3640e9551" />
+				<classShapeMoniker Id="51a9266b-2269-42da-86d2-d38772bc399f" />
+			</nodes>
+		</associationConnector>
+		<classShape Id="983559b4-9eec-45d7-aac7-8b333be44573" isExpanded="false" absoluteBounds="9.25, 14.75, 2, 0.44999999999999929">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeInstMajor" />
+			<nestedChildShapes>
+				<elementListCompartment Id="c0c01e2b-9e3e-4577-99d6-5fce0ef71798" absoluteBounds="9.265, 15.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<associationConnector edgePoints="[(2.75 : 13.9427297692308); (3.00357443490112 : 14.1963042041319 : JumpStart); (3.12142556509888 : 14.3141553343297 : JumpEnd); (3.28125 : 14.4739797692308); (3.28125 : 14.0625); (6.16666666666667 : 14.0625 : JumpStart); (6.33333333333333 : 14.0625 : JumpEnd); (8.5625 : 14.0625); (9.25 : 14.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ABT_USER/ABT_USER_ElectronicDegreeInstMajor" />
+			<nodes>
+				<classShapeMoniker Id="4600e5d8-8e7a-4d5a-8ab1-11a3640e9551" />
+				<classShapeMoniker Id="983559b4-9eec-45d7-aac7-8b333be44573" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(5.5 : 15.96875); (7.41666666666667 : 15.96875 : JumpStart); (7.58333333333333 : 15.96875 : JumpEnd); (8.79166666666667 : 15.96875 : JumpStart); (9.08333333333333 : 15.96875 : JumpEnd); (9.75 : 15.96875); (9.75 : 15.2)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeInstitution/ElectronicDegreeInstitution_ElectronicDegreeInstMajor" />
+			<nodes>
+				<classShapeMoniker Id="51a9266b-2269-42da-86d2-d38772bc399f" />
+				<classShapeMoniker Id="983559b4-9eec-45d7-aac7-8b333be44573" />
+			</nodes>
+		</associationConnector>
+		<classShape Id="3231c770-8dcb-4274-b2f3-bb6a14dee32a" isExpanded="false" absoluteBounds="9.25, 16.5, 2, 0.45000000000000284">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeInstSigner" />
+			<nestedChildShapes>
+				<elementListCompartment Id="1c905b21-3fe7-4a4c-ae09-9bee78a8c96a" absoluteBounds="9.265, 16.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<associationConnector edgePoints="[(2.75 : 13.9468836153846); (3.00357443490112 : 14.2004580502857 : JumpStart); (3.12142556509888 : 14.3183091804835 : JumpEnd); (3.12811638461538 : 14.325); (5.73439743589744 : 14.325 : JumpStart); (5.91594771794871 : 14.325 : JumpEnd); (6.16666666666667 : 14.325 : JumpStart); (6.33333333333333 : 14.325 : JumpEnd); (8.875 : 14.325); (8.875 : 16.125); (9.93419230769231 : 16.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ABT_USER/ABT_USER_ElectronicDegreeInstSigner" />
+			<nodes>
+				<classShapeMoniker Id="4600e5d8-8e7a-4d5a-8ab1-11a3640e9551" />
+				<classShapeMoniker Id="3231c770-8dcb-4274-b2f3-bb6a14dee32a" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(5.5 : 11.725); (6.25 : 11.725); (6.25 : 14.625); (9 : 14.625); (9 : 16.125); (10.25 : 16.125); (10.25 : 16.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/Signer/Signer_ElectronicDegreeInstSigner" />
+			<nodes>
+				<classShapeMoniker Id="90007384-a7b9-4172-8ffc-034c2767f65f" />
+				<classShapeMoniker Id="3231c770-8dcb-4274-b2f3-bb6a14dee32a" />
+			</nodes>
+		</associationConnector>
+		<classShape Id="cf45327b-8112-43f3-a468-09e3a9fa0cf4" isExpanded="false" absoluteBounds="6.5, 20.5, 2, 2.5401025390625023">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeInstitution" />
+			<nestedChildShapes>
+				<elementListCompartment Id="9c8f1044-2f8b-4488-97ff-aaac5ea0963f" absoluteBounds="6.5150000000000006, 20.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<associationConnector edgePoints="[(8.5 : 20.5615374615385); (8.9375 : 20.1240374615385); (8.9375 : 15.5125); (9.25 : 15.2)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeInstitution/ElectronicDegreeInstitution_ElectronicDegreeInstMajor" />
+			<nodes>
+				<classShapeMoniker Id="cf45327b-8112-43f3-a468-09e3a9fa0cf4" />
+				<classShapeMoniker Id="983559b4-9eec-45d7-aac7-8b333be44573" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(8.5 : 21.7700512695313); (10.25 : 21.7700512695313); (10.25 : 16.95)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeInstitution/ElectronicDegreeInstitution_ElectronicDegreeInstSigner" />
+			<nodes>
+				<classShapeMoniker Id="cf45327b-8112-43f3-a468-09e3a9fa0cf4" />
+				<classShapeMoniker Id="3231c770-8dcb-4274-b2f3-bb6a14dee32a" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(1.71182442307693 : 13.95); (1.71182442307693 : 22.6513012695313); (6.26041666666667 : 22.6513012695313 : JumpStart); (6.42708333333333 : 22.6513012695313 : JumpEnd); (6.5 : 22.6513012695313)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ABT_USER/ABT_USER_ElectronicDegreeInstitution" />
+			<nodes>
+				<classShapeMoniker Id="4600e5d8-8e7a-4d5a-8ab1-11a3640e9551" />
+				<classShapeMoniker Id="cf45327b-8112-43f3-a468-09e3a9fa0cf4" />
+			</nodes>
+		</associationConnector>
+		<classShape Id="b81504bf-84b0-4947-8ecc-52b154b01bea" isExpanded="false" absoluteBounds="0.75, 2.75, 2, 0.45000000000000018">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/CODE_FEDERALENTITY" />
+			<nestedChildShapes>
+				<elementListCompartment Id="ab57ae9e-230b-472f-8c64-c30cb0a721ff" absoluteBounds="0.76500000000000057, 3.21, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<classShape Id="deaace14-ba50-446d-85fa-ebbc66cac35d" isExpanded="false" absoluteBounds="3.75, 17.5, 2, 0.45000000000000284">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/CODE_STATE" />
+			<nestedChildShapes>
+				<elementListCompartment Id="fb46362b-c972-467a-9b1f-43005799eee5" absoluteBounds="3.7650000000000006, 17.96, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<classShape Id="8d93d0b0-1e1b-4a48-97c4-6bacda9e3041" isExpanded="false" absoluteBounds="6.75, 7.5, 2, 0.44999999999999929">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/PEOPLE" />
+			<nestedChildShapes>
+				<elementListCompartment Id="476061ae-954c-4e31-ab69-6c94bfd48ad3" absoluteBounds="6.765, 7.96, 1.9700000000000002, 7.941446940104167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<classShape Id="46df07de-c182-45d3-914d-878b8b7b73c6" isExpanded="false" absoluteBounds="6.25, 14.75, 2, 0.44999999999999929">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeOperator" />
+			<nestedChildShapes>
+				<elementListCompartment Id="ff5ad656-b9a5-4281-a478-867c00c9c863" absoluteBounds="6.265, 15.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<associationConnector edgePoints="[(2.75 : 13.9385759230769); (2.90625 : 14.3177297692308); (2.90625 : 14.125); (5.63261438461538 : 14.125); (6.25761438461538 : 14.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ABT_USER/ABT_USER_ElectronicDegreeOperator" />
+			<nodes>
+				<classShapeMoniker Id="4600e5d8-8e7a-4d5a-8ab1-11a3640e9551" />
+				<classShapeMoniker Id="46df07de-c182-45d3-914d-878b8b7b73c6" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(5.5 : 15.875); (6.25 : 15.2)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeInstitution/ElectronicDegreeInstitution_ElectronicDegreeOperator" />
+			<nodes>
+				<classShapeMoniker Id="51a9266b-2269-42da-86d2-d38772bc399f" />
+				<classShapeMoniker Id="46df07de-c182-45d3-914d-878b8b7b73c6" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(2.75 : 13.9344220769231); (3.6875 : 14.8719220769231); (3.6875 : 14.25); (5.74273076923077 : 14.25); (6.25 : 14.7572692307692)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ABT_USER/ABT_USER_ElectronicDegreeOperator1" />
+			<nodes>
+				<classShapeMoniker Id="4600e5d8-8e7a-4d5a-8ab1-11a3640e9551" />
+				<classShapeMoniker Id="46df07de-c182-45d3-914d-878b8b7b73c6" />
+			</nodes>
+		</associationConnector>
+		<classShape Id="6e7cc405-8fe7-415d-8970-0c5e21b8d7d4" isExpanded="false" absoluteBounds="3.5, 21.75, 2, 0.45000000000000284">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreePermission" />
+			<nestedChildShapes>
+				<elementListCompartment Id="d24a8185-c43d-48b7-bd77-f7665d518f6a" absoluteBounds="3.5149999999999997, 22.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<associationConnector edgePoints="[(2.73615384615385 : 13.95); (3.125 : 14.3388461538462); (3.125 : 21.3625394615385); (3.51246053846154 : 21.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ABT_USER/ABT_USER_ElectronicDegreePermission" />
+			<nodes>
+				<classShapeMoniker Id="4600e5d8-8e7a-4d5a-8ab1-11a3640e9551" />
+				<classShapeMoniker Id="6e7cc405-8fe7-415d-8970-0c5e21b8d7d4" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(2.74446153846154 : 13.95); (3.00357443490112 : 14.2091128964396 : JumpStart); (3.12142556509888 : 14.3269640266374 : JumpEnd); (3.21875 : 14.4242884615385); (3.21875 : 21.4649433076923); (3.50380669230769 : 21.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ABT_USER/ABT_USER_ElectronicDegreePermission1" />
+			<nodes>
+				<classShapeMoniker Id="4600e5d8-8e7a-4d5a-8ab1-11a3640e9551" />
+				<classShapeMoniker Id="6e7cc405-8fe7-415d-8970-0c5e21b8d7d4" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(2.74861538461538 : 13.95); (3.00357443490112 : 14.2049590502857 : JumpStart); (3.12142556509888 : 14.3228101804835 : JumpEnd); (3.34375 : 14.5451346153846); (3.34375 : 21.5985961538462); (3.5 : 21.7548461538462)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ABT_USER/ABT_USER_ElectronicDegreePermission2" />
+			<nodes>
+				<classShapeMoniker Id="4600e5d8-8e7a-4d5a-8ab1-11a3640e9551" />
+				<classShapeMoniker Id="6e7cc405-8fe7-415d-8970-0c5e21b8d7d4" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(2.75 : 13.936499); (3.00357443490112 : 14.1900734349011 : JumpStart); (3.12142556509888 : 14.3079245650989 : JumpEnd); (3.15625 : 14.342749); (3.15625 : 21.41975); (3.5 : 21.7635)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ABT_USER/ABT_USER_ElectronicDegreePermission3" />
+			<nodes>
+				<classShapeMoniker Id="4600e5d8-8e7a-4d5a-8ab1-11a3640e9551" />
+				<classShapeMoniker Id="6e7cc405-8fe7-415d-8970-0c5e21b8d7d4" />
+			</nodes>
+		</associationConnector>
+		<classShape Id="97700d6b-6f74-4924-8567-7cedcf8ffc44" isExpanded="false" absoluteBounds="3.75, 20.5, 2, 0.45000000000000284">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/CODE_SCHOLARSHIPLEVEL" />
+			<nestedChildShapes>
+				<elementListCompartment Id="79242902-0528-4b8c-a665-b3d19d788a9e" absoluteBounds="3.7649999999999997, 20.96, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<classShape Id="4063eb58-f186-4730-bab7-b05a37bf9205" isExpanded="false" absoluteBounds="3.75, 0.75, 2, 0.44999999999999929">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/CODE_BACKGROUNDSTUDYTYPE" />
+			<nestedChildShapes>
+				<elementListCompartment Id="7e944e88-a3e7-47cf-a54d-b352e44627ef" absoluteBounds="3.7650000000000006, 1.21, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<classShape Id="e51c1fb8-5695-4eaa-bb7e-c78d54bf1a17" isExpanded="false" absoluteBounds="3.75, 19.25, 2, 0.45000000000000284">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/INSTITUTION" />
+			<nestedChildShapes>
+				<elementListCompartment Id="7dc89b6b-587f-4a09-b88e-d413e9144329" absoluteBounds="3.765, 19.71, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<classShape Id="cb62a870-945d-4b0d-a105-8ecb5fad53ec" isExpanded="false" absoluteBounds="1, 24.875, 2, 0.45000000000000284">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/ORGANIZATION" />
+			<nestedChildShapes>
+				<elementListCompartment Id="e8b6d0b2-4c02-41d1-a153-f424832f8960" absoluteBounds="1.0149999999999997, 25.335, 1.9700000000000002, 6.2107340494791661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<classShape Id="88174024-1607-4b46-8abb-b85574a9d9bb" absoluteBounds="6.5, 16.125, 2, 3.1170068359375023">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeMapping" />
+			<nestedChildShapes>
+				<elementListCompartment Id="1a76979b-69a7-4cf7-bd4e-ef6202316715" absoluteBounds="6.5150000000000006, 16.585, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<associationConnector edgePoints="[(2.75 : 13.6125); (3.0625 : 13.6125); (3.0625 : 14.5); (3.23224458974357 : 14.5 : JumpStart); (3.39891125641023 : 14.5 : JumpEnd); (3.60416666666667 : 14.5 : JumpStart); (3.77083333333333 : 14.5 : JumpEnd); (5.90939743589745 : 14.5 : JumpStart); (6.09094771794871 : 14.5 : JumpEnd); (6.16666666666667 : 14.5 : JumpStart); (6.33333333333333 : 14.5 : JumpEnd); (8.5 : 14.5); (8.5 : 15.5); (7.5 : 15.5); (7.5 : 16.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ABT_USER/ABT_USER_ElectronicDegreeMapping" />
+			<nodes>
+				<classShapeMoniker Id="4600e5d8-8e7a-4d5a-8ab1-11a3640e9551" />
+				<classShapeMoniker Id="88174024-1607-4b46-8abb-b85574a9d9bb" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(5.75 : 20.5); (6.125 : 20.125); (6.125 : 19.5846991436298); (6.5 : 17.2122946213942)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/CODE_SCHOLARSHIPLEVEL/CODE_SCHOLARSHIPLEVEL_ElectronicDegreeMapping" />
+			<nodes>
+				<classShapeMoniker Id="97700d6b-6f74-4924-8567-7cedcf8ffc44" />
+				<classShapeMoniker Id="88174024-1607-4b46-8abb-b85574a9d9bb" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(5.75 : 17.725); (6.5 : 17.725)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/CODE_STATE/CODE_STATE_ElectronicDegreeMapping" />
+			<nodes>
+				<classShapeMoniker Id="deaace14-ba50-446d-85fa-ebbc66cac35d" />
+				<classShapeMoniker Id="88174024-1607-4b46-8abb-b85574a9d9bb" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(5.75 : 19.475); (6 : 19.475); (6 : 18.1771507286659); (6.26415429500505 : 18.1771507286659 : JumpStart); (6.43082096167172 : 18.1771507286659 : JumpEnd); (6.5 : 18.1771507286659)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/INSTITUTION/INSTITUTION_ElectronicDegreeMapping" />
+			<nodes>
+				<classShapeMoniker Id="e51c1fb8-5695-4eaa-bb7e-c78d54bf1a17" />
+				<classShapeMoniker Id="88174024-1607-4b46-8abb-b85574a9d9bb" />
+			</nodes>
+		</associationConnector>
+		<classShape Id="a54ece36-4f00-493d-a07c-e31204c3ad2d" isExpanded="false" absoluteBounds="3.75, 24.875, 2, 0.45000000000000284">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/Rvoe" />
+			<nestedChildShapes>
+				<elementListCompartment Id="a63e73fd-8f10-430e-97f9-fc8f1e266fb4" absoluteBounds="3.7650000000000006, 25.335, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<associationConnector edgePoints="[(5.75 : 24.8971528461538); (6.34375 : 24.3034028461538); (6.34375 : 19.4321019897837); (6.53384515384615 : 19.2420068359375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/Rvoe/Rvoe_ElectronicDegreeMapping" />
+			<nodes>
+				<classShapeMoniker Id="a54ece36-4f00-493d-a07c-e31204c3ad2d" />
+				<classShapeMoniker Id="88174024-1607-4b46-8abb-b85574a9d9bb" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(3 : 25.1); (3.75 : 25.1)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ORGANIZATION/ORGANIZATION_Rvoe" />
+			<nodes>
+				<classShapeMoniker Id="cb62a870-945d-4b0d-a105-8ecb5fad53ec" />
+				<classShapeMoniker Id="a54ece36-4f00-493d-a07c-e31204c3ad2d" />
+			</nodes>
+		</associationConnector>
+		<classShape Id="34c9d819-8fa2-47cb-a3bb-62d94fb61280" isExpanded="false" absoluteBounds="3.75, 2.75, 2, 0.45000000000000018">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/CODE_AUTHORIZATIONTYPE" />
+			<nestedChildShapes>
+				<elementListCompartment Id="b803df72-3cd0-46c3-97c8-2b39dc6c4dbd" absoluteBounds="3.7650000000000006, 3.21, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<classShape Id="b80c194f-68dc-4a9d-a68e-fe8ac7cba0df" isExpanded="false" absoluteBounds="1, 23.75, 2, 0.45000000000000284">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/DEGREQ" />
+			<nestedChildShapes>
+				<elementListCompartment Id="56766dc7-c844-4450-8189-9049c7e08d6a" absoluteBounds="1.0150000000000006, 24.21, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<associationConnector edgePoints="[(3 : 24.2); (3.75 : 24.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/DEGREQ/DEGREQ_Rvoe" />
+			<nodes>
+				<classShapeMoniker Id="b80c194f-68dc-4a9d-a68e-fe8ac7cba0df" />
+				<classShapeMoniker Id="a54ece36-4f00-493d-a07c-e31204c3ad2d" />
+			</nodes>
+		</associationConnector>
+		<classShape Id="600989df-b733-4ea5-9fcc-4c2d617f6e45" isExpanded="false" absoluteBounds="1, 26.125, 2, 0.45000000000000284">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/CODE_DEPARTMENT" />
+			<nestedChildShapes>
+				<elementListCompartment Id="c369ce88-5fef-4ddd-8318-7f5c21a57437" absoluteBounds="1.0150000000000006, 26.585, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<associationConnector edgePoints="[(3 : 26.125); (3.75 : 25.325)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/CODE_DEPARTMENT/CODE_DEPARTMENT_Rvoe" />
+			<nodes>
+				<classShapeMoniker Id="600989df-b733-4ea5-9fcc-4c2d617f6e45" />
+				<classShapeMoniker Id="a54ece36-4f00-493d-a07c-e31204c3ad2d" />
+			</nodes>
+		</associationConnector>
+		<classShape Id="6b01ed58-9b1e-4906-8901-d416d2b462f6" isExpanded="false" absoluteBounds="3.75, 9.5, 2, 0.44999999999999929">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/CODE_LEGALBASE" />
+			<nestedChildShapes>
+				<elementListCompartment Id="08b97a16-4605-4943-afa4-cc76bbbd4fc7" absoluteBounds="3.7650000000000006, 9.96, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<classShape Id="08df5b7a-caa1-45dc-abae-635b5cbbfbb1" isExpanded="false" absoluteBounds="6.5, 13.5, 2, 0.44999999999999929">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeMajor" />
+			<nestedChildShapes>
+				<elementListCompartment Id="1728c867-ce11-4090-a0a3-ff9134873273" absoluteBounds="6.515, 13.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<associationConnector edgePoints="[(8.5 : 13.95); (9.25 : 14.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeMajor/ElectronicDegreeMajor_ElectronicDegreeInstMajor" />
+			<nodes>
+				<classShapeMoniker Id="08df5b7a-caa1-45dc-abae-635b5cbbfbb1" />
+				<classShapeMoniker Id="983559b4-9eec-45d7-aac7-8b333be44573" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(2.75 : 13.5110759230769); (3.38607592307692 : 12.875); (5.875 : 12.875); (6.19107443490112 : 13.1910744349011 : JumpStart); (6.30892556509888 : 13.3089255650989 : JumpEnd); (6.5 : 13.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ABT_USER/ABT_USER_ElectronicDegreeMajor" />
+			<nodes>
+				<classShapeMoniker Id="4600e5d8-8e7a-4d5a-8ab1-11a3640e9551" />
+				<classShapeMoniker Id="08df5b7a-caa1-45dc-abae-635b5cbbfbb1" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(5.75 : 9.725); (6 : 9.725); (6 : 12.1699039713542); (6.16666666666667 : 12.1699039713542 : JumpStart); (6.33333333333333 : 12.1699039713542 : JumpEnd); (6.8750005 : 12.1699039713542); (6.8750005 : 13.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/CODE_LEGALBASE/CODE_LEGALBASE_ElectronicDegreeMajor" />
+			<nodes>
+				<classShapeMoniker Id="6b01ed58-9b1e-4906-8901-d416d2b462f6" />
+				<classShapeMoniker Id="08df5b7a-caa1-45dc-abae-635b5cbbfbb1" />
+			</nodes>
+		</associationConnector>
+		<classShape Id="f441e74b-58a5-4798-a7c8-39b290319922" absoluteBounds="6.5, 9.375, 2, 2.7324039713541666">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeRequest" />
+			<nestedChildShapes>
+				<elementListCompartment Id="f2bb2d0d-9a0f-4966-94a7-c18272d6e422" absoluteBounds="6.5150000000000006, 9.835, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<associationConnector edgePoints="[(2.75 : 13.5221528461538); (3.28125 : 12.9909028461538); (3.28125 : 10.725); (6.5 : 10.725)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ABT_USER/ABT_USER_ElectronicDegreeRequest" />
+			<nodes>
+				<classShapeMoniker Id="4600e5d8-8e7a-4d5a-8ab1-11a3640e9551" />
+				<classShapeMoniker Id="f441e74b-58a5-4798-a7c8-39b290319922" />
+			</nodes>
+		</associationConnector>
+		<classShape Id="4b3f48f6-0cd8-4628-9420-60869cf3012a" absoluteBounds="12.75, 0.75, 2, 4.4631168619791666">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/CODE_CURRICULUM" />
+			<nestedChildShapes>
+				<elementListCompartment Id="54ae4c04-09e6-40de-84c7-c4bf9a12a64e" absoluteBounds="12.765, 1.2100000000000009, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<classShape Id="1d0b7d1e-9973-4862-a095-7337d757ae36" isExpanded="false" absoluteBounds="0.75, 4.75, 2, 0.44999999999999929">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/CODE_DEGREECANCELATION" />
+			<nestedChildShapes>
+				<elementListCompartment Id="1a905cb7-6169-47ef-b37d-28ab300e7ac4" absoluteBounds="0.76500000000000057, 5.21, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<classShape Id="eb069d73-25ae-432e-a750-a85183deb02a" absoluteBounds="6.5, 2.125, 2, 4.4631168619791666">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/CODE_ACATERM" />
+			<nestedChildShapes>
+				<elementListCompartment Id="39f34a15-2396-4298-aff3-0c2b013526ee" absoluteBounds="6.515, 2.585, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<classShape Id="b9160f05-7255-4669-8b35-245f8e8f89b7" isExpanded="false" absoluteBounds="0.75, 11, 2, 0.45">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/CODE_SIGNERPOSITION" />
+			<nestedChildShapes>
+				<elementListCompartment Id="c20865f4-a028-4e9b-b250-686a2d804cab" absoluteBounds="0.76499999999999968, 11.46, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<associationConnector edgePoints="[(2.75000000000001 : 11.45); (3.5 : 11.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/CODE_SIGNERPOSITION/CODE_SIGNERPOSITION_Signer" />
+			<nodes>
+				<classShapeMoniker Id="b9160f05-7255-4669-8b35-245f8e8f89b7" />
+				<classShapeMoniker Id="90007384-a7b9-4172-8ffc-034c2767f65f" />
+			</nodes>
+		</associationConnector>
+		<classShape Id="0e07695b-5607-4c33-a98c-37a419549dce" absoluteBounds="9.875, 4, 2, 8.8860498046875">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeInformation" />
+			<nestedChildShapes>
+				<elementListCompartment Id="cabe6683-ac4c-43a2-87f2-5212100c7020" absoluteBounds="9.89, 4.46, 1.9700000000000002, 8.3260498046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<associationConnector edgePoints="[(9.875 : 10.7412019856771); (8.5 : 10.7412019856771)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeInformation/ElectronicDegreeInformation_ElectronicDegreeRequest" />
+			<nodes>
+				<classShapeMoniker Id="0e07695b-5607-4c33-a98c-37a419549dce" />
+				<classShapeMoniker Id="f441e74b-58a5-4798-a7c8-39b290319922" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(1.75 : 13.5); (1.75 : 12.825); (3 : 12.825); (3 : 8.6625); (9.875 : 8.6625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ABT_USER/ABT_USER_ElectronicDegreeInformation" />
+			<nodes>
+				<classShapeMoniker Id="4600e5d8-8e7a-4d5a-8ab1-11a3640e9551" />
+				<classShapeMoniker Id="0e07695b-5607-4c33-a98c-37a419549dce" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(8.75 : 7.725); (9.875 : 7.725)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/PEOPLE/PEOPLE_ElectronicDegreeInformation" />
+			<nodes>
+				<classShapeMoniker Id="8d93d0b0-1e1b-4a48-97c4-6bacda9e3041" />
+				<classShapeMoniker Id="0e07695b-5607-4c33-a98c-37a419549dce" />
+			</nodes>
+		</associationConnector>
+		<classShape Id="31f1103c-4b0e-41bf-b06c-3060d2be77f5" absoluteBounds="13.5, 11, 2, 3.3093082682291666">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeInfoSigner" />
+			<nestedChildShapes>
+				<elementListCompartment Id="696469ab-63aa-41a8-bd81-aeb2c685d83c" absoluteBounds="13.515, 11.46, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<classShape Id="beec3e62-b20f-46c6-8d19-eb2eca177b3e" absoluteBounds="9.875, 5.625, 2, 9.2706526692708326">
+			<DataClassMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeInformation" />
+			<nestedChildShapes>
+				<elementListCompartment Id="9851012a-c1e9-4dc1-92f5-5456e601dd6e" absoluteBounds="9.89, 6.085, 1.9700000000000002, 8.7106526692708321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+			</nestedChildShapes>
+		</classShape>
+		<associationConnector edgePoints="[(9.875 : 10.7412019856771); (8.5 : 10.7412019856771)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeInformation/ElectronicDegreeInformation_ElectronicDegreeRequest" />
+			<nodes>
+				<classShapeMoniker Id="beec3e62-b20f-46c6-8d19-eb2eca177b3e" />
+				<classShapeMoniker Id="f441e74b-58a5-4798-a7c8-39b290319922" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(11.875 : 11.9430249023438); (13.5 : 11.9430249023438)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ElectronicDegreeInformation/ElectronicDegreeInformation_ElectronicDegreeInfoSigner" />
+			<nodes>
+				<classShapeMoniker Id="0e07695b-5607-4c33-a98c-37a419549dce" />
+				<classShapeMoniker Id="31f1103c-4b0e-41bf-b06c-3060d2be77f5" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(2.22398913461539 : 13.95); (2.22398913461539 : 14.4125); (2.97916666666667 : 14.4125 : JumpStart); (3.31175741025641 : 14.4125 : JumpEnd); (3.43229166666667 : 14.4125 : JumpStart); (3.59895833333333 : 14.4125 : JumpEnd); (3.60416666666667 : 14.4125 : JumpStart); (3.77083333333333 : 14.4125 : JumpEnd); (5.82189743589745 : 14.4125 : JumpStart); (6.00344771794871 : 14.4125 : JumpEnd); (6.16666666666667 : 14.4125 : JumpStart); (6.33333333333333 : 14.4125 : JumpEnd); (8.79166666666667 : 14.4125 : JumpStart); (9.01692708333333 : 14.4125 : JumpEnd); (9.875 : 14.4125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/ABT_USER/ABT_USER_ElectronicDegreeInformation" />
+			<nodes>
+				<classShapeMoniker Id="4600e5d8-8e7a-4d5a-8ab1-11a3640e9551" />
+				<classShapeMoniker Id="beec3e62-b20f-46c6-8d19-eb2eca177b3e" />
+			</nodes>
+		</associationConnector>
+		<associationConnector edgePoints="[(8.75 : 7.725); (9.875 : 7.725)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+			<AssociationMoniker Name="/ElectronicDegreeDataContext/PEOPLE/PEOPLE_ElectronicDegreeInformation" />
+			<nodes>
+				<classShapeMoniker Id="8d93d0b0-1e1b-4a48-97c4-6bacda9e3041" />
+				<classShapeMoniker Id="beec3e62-b20f-46c6-8d19-eb2eca177b3e" />
+			</nodes>
+		</associationConnector>
+	</nestedChildShapes>
+</ordesignerObjectsDiagram>

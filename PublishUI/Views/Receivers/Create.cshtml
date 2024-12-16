@@ -1,0 +1,54 @@
+@model WebAdminUI.Models.Receivers.ReceiverViewModel
+
+@{
+    ViewBag.Title = WebAdminUI.Views.Receivers.App_LocalResources.CreateResource.Create;
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formSaveReceiver" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="esg-page-header">
+        <a class="esg-page-header__button" role="button" title=@WebAdminUI.Views.Receivers.App_LocalResources.CreateResource.ButtonBack
+           href="@Url.Action("List", "Receivers")">
+            <span class="esg-page-header__icon esg-icon__container">
+                <svg class="esg-icon esg-icon--left">
+                    <use xlink:href="#icon-arrow"></use>
+                </svg>
+            </span>
+        </a>
+        <h1 class="esg-page-header__title">@WebAdminUI.Views.Receivers.App_LocalResources.CreateResource.ReceiverFiscalInformation</h1>
+    </div>
+    <div class="esg-card--panel">
+        @Html.Partial("_SaveReceiverPanel", Model, new ViewDataDictionary() { { "InModal", false } })
+        <div class="esg-card--panel__footer">
+            <div>
+                <div class="esg-button-group" role="group" aria-label="button group">
+                    <input type="button" class="esg-button esg-button--secondary" value="@WebAdminUI.Views.Receivers.App_LocalResources.CreateResource.ViewList" id="btnViewList" onclick="location.href='@Url.Action("List", "Receivers")'" />
+                    <input type="button" class="esg-button esg-button--secondary" value="@WebAdminUI.Views.Receivers.App_LocalResources.CreateResource.ClearAll" id="btnClearAll" />
+                    <input type="button" class="esg-button esg-button--primary" value="@WebAdminUI.Views.Receivers.App_LocalResources.CreateResource.Create" id="btnCreateReceiver" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div id="Overlaydiv" class="esg-modal-overlay" style="display:none; position:fixed; top:0; bottom:0; left:0; right:0;"></div>
+<div id="Processing" class="esg-modal-dialog" style="display:none;">
+    <div class="esg-spinner-wrapper" style="position:absolute;">
+        <div class="esg-spinner"></div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        const urlListReceivers = '@Url.Action("List", "Receivers")';
+        const urlGetReceiver = '@Url.Action("Get", "Receivers")';
+        const urlCreateReceiver = '@Url.Action("Create", "Receivers")';
+        const urlEditReceiver = '@Url.Action("Edit", "Receivers")';
+        const urlGetCountires = '@Url.Action("GetCountries", "Receivers")';
+        const urlHome = '@Url.Action("Index", "Home")';
+        const urlGetPostalCode = '@Url.Action("GetPostalCode", "Issuers")';
+        const urlGetTaxRegimenCatalog = '@Url.Action("GetTaxRegimenCatalog", "Issuers")';
+        var ForeignTaxpayerId = '@PowerCampus.Entities.Constants.ForeignTaxPayerId';
+    </script>
+    @Scripts.Render("~/bundles/FR/Receiver")
+}

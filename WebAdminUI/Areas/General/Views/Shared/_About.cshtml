@@ -1,0 +1,33 @@
+@model WebAdminUI.Areas.General.Models.AboutViewModel
+
+<div class="esg-modal-dialog">
+    <div class="esg-modal-dialog__header">
+        <button class="esg-modal-dialog__close esg-icon__container" type="button" data-dismiss="modal" onclick="closeAbout();" aria-hidden="true">
+            <svg class="esg-icon esg-icon--large esg-icon--neutral">
+                <use xlink:href="#icon-close"></use>
+            </svg>
+        </button>
+        <h3 class="esg-modal-dialog__title">@WebAdminUI.Models.Resources.AboutViewModelResource.lblPageTitle</h3>
+    </div>
+    <div class="esg-modal-dialog__body">
+        <ul class="esg-modal-dialog__details-list">
+            <li><b>@Html.DisplayNameFor(model => model.UIVersion)</b> @Html.DisplayFor(model => model.UIVersion)</li>
+            <li><b>@Html.DisplayNameFor(model => model.Version)</b> @Html.DisplayFor(model => model.Version)<br /></li>
+            <li>
+                <b>@Html.DisplayNameFor(model => model.Copyright) </b>
+                @string.Format(WebAdminUI.Models.Resources.AboutViewModelResource.lblCopyright1, Model.Copyright)<br />
+                @WebAdminUI.Models.Resources.AboutViewModelResource.lblCopyright2
+                <br />
+            </li>
+            <li><b>@Html.DisplayNameFor(model => model.Trademark)</b> @WebAdminUI.Models.Resources.AboutViewModelResource.lblTrademark1<br /></li>
+            <li><b>@Html.DisplayNameFor(model => model.BuildDate)</b> @Html.DisplayFor(model => model.BuildDate)</li>
+        </ul>
+    </div>
+    <div class="esg-modal-dialog__action-section">
+        <button class="esg-button esg-button--secondary esg-modal-dialog__button" onclick="closeAbout();" type="button">
+            @WebAdminUI.Models.Resources.AboutViewModelResource.btnClose
+        </button>
+    </div>
+</div>
+<div class="esg-modal-overlay"></div>
+<div id="divOverlay" class="esg-modal-overlay"></div>

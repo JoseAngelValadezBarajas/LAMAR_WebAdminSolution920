@@ -1,0 +1,40 @@
+﻿@model PowerCampus.Entities.FiscalRecord
+
+@{
+    ViewBag.Title = "Fiscal Records";
+}
+
+<h2>All Fiscal Records</h2>
+
+<table>
+    <tr>
+        <td>Version</td>
+        <td>Serial</td>
+        <td>Folio</td>
+        <td>Expedition Date</td>
+        <td>Payment Type</td>
+        <td>Certificate Number</td>
+        <td>Certificate</td>
+        <td>Payment Condition</td>
+        <td>Sut total</td>
+        <td>Total</td>
+        <td>Currency</td>
+        <td>Exchange Rate</td>
+        <td>Type</td>
+    </tr>
+    <tr>
+        <td>@Model.version</td>
+        <td>@Model.serial</td>
+        <td>@Model.folio</td>
+        <td>@Model.expeditionDateTime</td>
+        <td>@Model.paymentType</td>
+        <td>@Model.certificateNumber</td>
+        <td>@Model.certificate</td>
+        <td>@Model.paymentCondition</td>
+        <td>@Model.subTotal</td>
+        <td>@Model.total</td>
+        <td>@Model.currency</td>
+        <td>@Model.exchangeRate</td>
+        <td>@Model.fiscalRecordType</td>
+    </tr>
+</table>
